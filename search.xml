@@ -21,7 +21,7 @@
       <link href="2020/07/01/kao-yan-xian-xing-dai-shu-zhi-shi-dian-ti-gang-xing-lie-shi/"/>
       <url>2020/07/01/kao-yan-xian-xing-dai-shu-zhi-shi-dian-ti-gang-xing-lie-shi/</url>
       
-        <content type="html"><![CDATA[<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="行列式的性质"><a href="#行列式的性质" class="headerlink" title="行列式的性质"></a>行列式的性质</h3><ol><li>经过转置后行列式的值不变。</li><li>两行或两列互换位置，行列式的值变号。</li><li>某行或某列如有公因子$k$，则可以把$k$提出行列式的记号外。</li><li>如果行列式某行或者某列是两个元素之和，则可以把行列式拆分成两个行列式之和。</li><li>把某行或某列的k倍加到另一行，行列式的值不变。</li></ol><h3 id="行列式的算法"><a href="#行列式的算法" class="headerlink" title="行列式的算法"></a>行列式的算法</h3><ol><li>行列式的余子式和代数余子式的区别是代数余子式有正负，余子式没有正负，都是正的。</li></ol><h3 id="行列式的展开的巧妙算法"><a href="#行列式的展开的巧妙算法" class="headerlink" title="行列式的展开的巧妙算法"></a>行列式的展开的巧妙算法</h3><ol><li>上下三角形行列式的值等于主对角线元素的乘积。</li><li></li></ol>]]></content>
+        <content type="html"><![CDATA[<h2 id="第一章"><a href="#第一章" class="headerlink" title="第一章"></a>第一章</h2><h3 id="行列式的性质"><a href="#行列式的性质" class="headerlink" title="行列式的性质"></a>行列式的性质</h3><ol><li>经过转置后行列式的值不变。</li><li>两行或两列互换位置，行列式的值变号。</li><li>某行或某列如有公因子$k$，则可以把$k$提出行列式的记号外。</li><li>如果行列式某行或者某列是两个元素之和，则可以把行列式拆分成两个行列式之和。</li><li>把某行或某列的k倍加到另一行，行列式的值不变。</li></ol><h3 id="行列式的算法"><a href="#行列式的算法" class="headerlink" title="行列式的算法"></a>行列式的算法</h3><ol><li>行列式的余子式和代数余子式的区别是代数余子式有正负，余子式没有正负，都是正的。</li></ol><h3 id="行列式的展开的巧妙算法"><a href="#行列式的展开的巧妙算法" class="headerlink" title="行列式的展开的巧妙算法"></a>行列式的展开的巧妙算法</h3><ol><li>上下三角形行列式的值等于主对角线元素的乘积。</li><li>范德蒙行列式</li><li>爪型行列式</li></ol>]]></content>
       
       
       
