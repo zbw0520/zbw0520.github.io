@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>Java数组知识总结</title>
+      <link href="2020/09/28/java-xue-xi-bi-ji/"/>
+      <url>2020/09/28/java-xue-xi-bi-ji/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Java数组简介"><a href="#Java数组简介" class="headerlink" title="Java数组简介"></a>Java数组简介</h2><ul><li>数组是一系列<strong>同类型</strong>元素的<strong>有序</strong>集合。</li><li>数组只能存储<strong>固定数量</strong>的元素，即，数组的长度在数组最初创建的时候就确定了，之后不能变动。</li></ul><h2 id="Java数组的特点"><a href="#Java数组的特点" class="headerlink" title="Java数组的特点"></a>Java数组的特点</h2><ul><li>数组是**引用类型</li><li>**的。</li><li>所有的元素都<strong>按照顺序</strong>存储在一块<strong>连续的</strong>内存中。</li><li>数组的每一个元素都要通过他的数字底标访问其元素。</li><li>数组中的元素可以是任意类型的变量。</li><li>数组的最大大小被<code>Integer.MAX_VALUE</code>定义;</li></ul><h2 id="Java数组使用的步骤（三部曲）"><a href="#Java数组使用的步骤（三部曲）" class="headerlink" title="Java数组使用的步骤（三部曲）"></a>Java数组使用的步骤（三部曲）</h2><ol><li>将一个变量<strong>声明</strong>为数组类型（declaration）;</li><li>创建一个数组对象的<strong>实例</strong>（instantiation）;</li><li>用某些值<strong>初始化</strong>数组（initialization）;</li></ol><pre><code>int[] array;    //declarationint array[];    //declarationarray = new int[10] //instantiationint[] numbers = &#123;1, 2, 3, 4&#125;    //instantiation &amp; initializationint[] numbers = new int [10];   //declaration &amp; instantitionfloat[] floatNumbers;   //declaration floatNumbers = new float[] &#123; 1.02f, 0.03f, 4f &#125;  //instantiation and initialization</code></pre><h2 id="Java数组提供的几个实用工具-Utility"><a href="#Java数组提供的几个实用工具-Utility" class="headerlink" title="Java数组提供的几个实用工具(Utility)"></a>Java数组提供的几个实用工具(Utility)</h2><pre><code>Array.length    //return the length of the arrayArray.toString  //return the string of the arrayArray.equals    //compare two different arrays</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机软件 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 计算机理论 </tag>
+            
+            <tag> 知识梳理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>考研线性代数知识点提纲（行列式）</title>
       <link href="2020/07/01/kao-yan-xian-xing-dai-shu-zhi-shi-dian-ti-gang-xing-lie-shi/"/>
       <url>2020/07/01/kao-yan-xian-xing-dai-shu-zhi-shi-dian-ti-gang-xing-lie-shi/</url>
@@ -256,13 +287,13 @@
       
         <tags>
             
+            <tag> 知识梳理 </tag>
+            
             <tag> 考研数学 </tag>
             
             <tag> 高等数学 </tag>
             
             <tag> 极限连续函数 </tag>
-            
-            <tag> 知识梳理 </tag>
             
         </tags>
       
