@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Java中继承特点的总结</title>
+      <link href="2020/10/13/java-ji-cheng/"/>
+      <url>2020/10/13/java-ji-cheng/</url>
+      
+        <content type="html"><![CDATA[<h2 id="继承的概念"><a href="#继承的概念" class="headerlink" title="继承的概念"></a>继承的概念</h2><ul><li>将父类（基类）的属性和方法给予子类（派生类）；</li><li>一种类与类的关系；</li><li>使用已存在的类的定义作为基础建立新的类；</li><li>新类的定义可以增加新的数据或者新的功能，也可以用父类的功能，但不能选择性地继承父类；</li><li>两个类满足”A is a b”的关系是就可以使用继承。</li></ul><h2 id="继承的实现"><a href="#继承的实现" class="headerlink" title="继承的实现"></a>继承的实现</h2><ul><li>利用<code>extends</code>实现继承；</li><li>只能支持单一继承，只有一个父类。</li></ul><pre class=" language-Java"><code class="language-Java">//子类Class Cat extends Animal&#123;&#125;//父类Class Animal&#123;&#125;</code></pre><ul><li>此时父类的所有属性和方法都会在子类中存在</li></ul><h2 id="方法重写和方法重载"><a href="#方法重写和方法重载" class="headerlink" title="方法重写和方法重载"></a>方法重写和方法重载</h2><ul><li><p>方法重写  </p><ol><li>有继承关系的子类中</li><li>方法名相同，参数列表相同，方法返回值相同</li><li>访问修饰符限定范围大于等于父类方法</li><li>方法参数名无关</li></ol></li><li><p>方法重写  </p><ol><li>在同一个类中</li><li>方法名相同，参数列表不同</li><li>方法返回值、访问修饰符任意</li><li>与方法的参数名无关</li></ol></li></ul><h2 id="super关键字的使用"><a href="#super关键字的使用" class="headerlink" title="super关键字的使用"></a><code>super</code>关键字的使用</h2><ul><li><code>super</code>关键字主要是用来调用多参父类构造方法的。在默认情况下，实例化子类的过程中，虚拟机默认调用的是父类的无参构造方法，如果用户与要调用父类的多参构造需要使用<code>super</code>关键字。</li><li>代表父类引用。</li><li>子类对象的构造过程中必须调用其父类的构造方法。</li><li>如果子类的构造方法中没有显示标注，则系统默认调用父类的无参构造方法。</li><li>如果子类构造方法没有显示标注，且父类没有无参构造方法，系统将提示错误。</li><li>使用<code>super</code>调用父类指定构造方法，必须要在子类的构造方法的第一行。</li></ul><pre class=" language-Java"><code class="language-Java">public void Cat()&#123;    super("xxx",18);    System.out.println("这是子类的无参构造方法");&#125;super.print();   //访问父类成员方法super.name;     //访问父类属性super();        //访问父类构造方法</code></pre><ul><li><strong>注意</strong><code>super</code>关键字只能在子类构造方法中使用，且必须位于构造方法的第一行。</li></ul><h2 id="子类实例化时的程序执行顺序问题"><a href="#子类实例化时的程序执行顺序问题" class="headerlink" title="子类实例化时的程序执行顺序问题"></a>子类实例化时的程序执行顺序问题</h2><ul><li>总结一下来说是，父类与静态代码块先行，子类、构造代码块以及构造方法紧随其后；</li><li>父类静态成员<code>-&gt;</code>子类静态成员<code>-&gt;</code>父类对象构造<code>-&gt;</code>子类对象构造。</li></ul><pre class=" language-Java"><code class="language-Java">/***我是父类的静态代码块*我是子类的静态代码块*我是父类的构造代码块*我是父类的多参构造方法*我是子类的构造代码块*我是子类的无参构造方法**/</code></pre><h2 id="this关键字与super关键字的对比"><a href="#this关键字与super关键字的对比" class="headerlink" title="this关键字与super关键字的对比"></a><code>this</code>关键字与<code>super</code>关键字的对比</h2><ul><li><code>this</code>关键字用来调用当前类允许被访问的属性和方法；</li><li><code>super</code>关键字用来调用父类当中允许被访问的属性和方法。</li><li><code>this</code>和<code>super</code>关键字都不能在静态方法中被使用。</li><li><code>this</code>和<code>super</code>不能同时出现在同一个构造方法中，一个关键字只能出现在一个构造方法中。</li></ul><h2 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h2><table><thead><tr><th>访问修饰符</th><th>本类</th><th>同包</th><th>子类</th><th>其他</th></tr></thead><tbody><tr><td>private</td><td>$\checkmark$</td><td></td><td></td><td></td></tr><tr><td>默认</td><td>$\checkmark$</td><td>$\checkmark$</td><td></td><td></td></tr><tr><td>protected</td><td>$\checkmark$</td><td>$\checkmark$</td><td>$\checkmark$</td><td></td></tr><tr><td>public</td><td>$\checkmark$</td><td>$\checkmark$</td><td>$\checkmark$</td><td>$\checkmark$</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机软件 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> 知识总结 </tag>
+            
+            <tag> 继承 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Approximate Computing. A Survey</title>
       <link href="2020/10/12/lun-wen-fan-yi/"/>
       <url>2020/10/12/lun-wen-fan-yi/</url>
