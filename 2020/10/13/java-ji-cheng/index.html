@@ -422,14 +422,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    836
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -466,30 +466,36 @@ Class Animal&#123;
 <ul>
 <li>此时父类的所有属性和方法都会在子类中存在</li>
 </ul>
-<h2 id="方法重写和方法重载"><a href="#方法重写和方法重载" class="headerlink" title="方法重写和方法重载"></a>方法重写和方法重载</h2><ul>
-<li><p>方法重写  </p>
-<ol>
-<li>有继承关系的子类中</li>
-<li>方法名相同，参数列表相同，方法返回值相同</li>
-<li>访问修饰符限定范围大于等于父类方法</li>
-<li>方法参数名无关</li>
-</ol>
-</li>
-<li><p>方法重写  </p>
-<ol>
-<li>在同一个类中</li>
-<li>方法名相同，参数列表不同</li>
-<li>方法返回值、访问修饰符任意</li>
-<li>与方法的参数名无关</li>
-</ol>
-</li>
-</ul>
+<h2 id="方法重写和方法重载"><a href="#方法重写和方法重载" class="headerlink" title="方法重写和方法重载"></a>方法重写和方法重载</h2><table>
+<thead>
+<tr>
+<th>方法重写</th>
+<th>方法重载</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>在满足继承关系的子类中</td>
+<td>在同一个类中</td>
+</tr>
+<tr>
+<td>方法名、参数个数、顺序、返回值与父类相同、或者与父类兼容</td>
+<td>方法名相同</td>
+</tr>
+<tr>
+<td>访问修饰符的限定范围大于等于父类方法</td>
+<td>参数个数、顺序、类型不同</td>
+</tr>
+<tr>
+<td></td>
+<td>返回值类型、访问修饰符任意</td>
+</tr>
+</tbody></table>
 <h2 id="super关键字的使用"><a href="#super关键字的使用" class="headerlink" title="super关键字的使用"></a><code>super</code>关键字的使用</h2><ul>
-<li><code>super</code>关键字主要是用来调用多参父类构造方法的。在默认情况下，实例化子类的过程中，虚拟机默认调用的是父类的无参构造方法，如果用户与要调用父类的多参构造需要使用<code>super</code>关键字。</li>
-<li>代表父类引用。</li>
-<li>子类对象的构造过程中必须调用其父类的构造方法。</li>
-<li>如果子类的构造方法中没有显示标注，则系统默认调用父类的无参构造方法。</li>
-<li>如果子类构造方法没有显示标注，且父类没有无参构造方法，系统将提示错误。</li>
+<li><code>super</code>关键字主要是用来调用多参父类构造方法的。在默认情况下，实例化子类的过程中，虚拟机默认调用的是父类的无参构造方法，如果用户与要调用父类的多参构造需要使用<code>super</code>关键字；</li>
+<li>代表父类引用；</li>
+<li>子类对象的构造过程中必须调用其父类的构造方法；</li>
+<li>如果子类的构造方法中没有显示标注，则系统默认调用父类的无参构造方法；</li>
+<li>如果子类构造方法没有显示标注，且父类没有无参构造方法，系统将提示错误；</li>
 <li>使用<code>super</code>调用父类指定构造方法，必须要在子类的构造方法的第一行。</li>
 </ul>
 <pre class=" language-Java"><code class="language-Java">public void Cat()&#123;
@@ -517,8 +523,8 @@ super();        //访问父类构造方法</code></pre>
 **/</code></pre>
 <h2 id="this关键字与super关键字的对比"><a href="#this关键字与super关键字的对比" class="headerlink" title="this关键字与super关键字的对比"></a><code>this</code>关键字与<code>super</code>关键字的对比</h2><ul>
 <li><code>this</code>关键字用来调用当前类允许被访问的属性和方法；</li>
-<li><code>super</code>关键字用来调用父类当中允许被访问的属性和方法。</li>
-<li><code>this</code>和<code>super</code>关键字都不能在静态方法中被使用。</li>
+<li><code>super</code>关键字用来调用父类当中允许被访问的属性和方法；</li>
+<li><code>this</code>和<code>super</code>关键字都不能在静态方法中被使用；</li>
 <li><code>this</code>和<code>super</code>不能同时出现在同一个构造方法中，一个关键字只能出现在一个构造方法中。</li>
 </ul>
 <h2 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h2><table>
@@ -558,6 +564,43 @@ super();        //访问父类构造方法</code></pre>
 <td>$\checkmark$</td>
 <td>$\checkmark$</td>
 <td>$\checkmark$</td>
+</tr>
+</tbody></table>
+<h2 id="Object关键字"><a href="#Object关键字" class="headerlink" title="Object关键字"></a><code>Object</code>关键字</h2><ul>
+<li><code>Object</code>类是所有类的父类；</li>
+<li>Java中的每一个类都可以使用<code>Object</code>中定义的方法。</li>
+</ul>
+<pre class=" language-Java"><code class="language-Java">equals()
+toString()</code></pre>
+<h2 id="final修饰符"><a href="#final修饰符" class="headerlink" title="final修饰符"></a><code>final</code>修饰符</h2><ul>
+<li>修饰类表示不允许被继承；</li>
+<li>修饰方法表示不允许被子类重写；</li>
+<li>修饰变量表示不允许修改；</li>
+<li><code>final</code>修饰的方法可以被继承；</li>
+<li>引用类型的变量：初始化之后不能再指向另一个对象，但指向的对象的内容是可以变动的；</li>
+<li>可以配合<code>static</code>使用。</li>
+</ul>
+<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><ul>
+<li>可以声明在包、类、属性、方法、局部变量、方法参数的前面，用来对这些元素进行说明、注释。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>按照运行机制分类</th>
+<th>按照来源分类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>源码注解</td>
+<td>来自JDK的注解</td>
+</tr>
+<tr>
+<td>编译时注解</td>
+<td>来自第三方的注解</td>
+</tr>
+<tr>
+<td>运行时注解</td>
+<td>我们自己定义的注解</td>
 </tr>
 </tbody></table>
 
@@ -981,6 +1024,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </main>
 
 
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
 
 
     <footer class="page-footer bg-color">
@@ -1049,7 +1099,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">23.9k</span>&nbsp;字
+                class="white-color">25.5k</span>&nbsp;字
             
             
             
