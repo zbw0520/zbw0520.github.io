@@ -422,7 +422,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    106
+                    254
                 </div>
                 
 
@@ -455,6 +455,17 @@
 </ul>
 <p><img src="/2020/10/16/java-yi-chang/2.png" alt="异常处理的几种方式"></p>
 <p><img src="/2020/10/16/java-yi-chang/3.png" alt="try-catch-finally结构"></p>
+<ul>
+<li>实际应用中的经验与总结<ul>
+<li>处理运行时异常时，采用逻辑去合理规避同时辅助try-catch处理；</li>
+<li>在多重catch块后面，可以加一个catch（Exception）来处理可能会被遗漏的异常；</li>
+<li>对于不确定的代码，也可以加上try-catch，处理潜在的异常；</li>
+<li>尽量去处理异常，切忌知识简单地调用<code>printStackTrace()</code>去打印输出；</li>
+<li>具体如何处理异常，要根据不同的任务需求和异常类型去决定；</li>
+<li>尽量添加finally语句块去释放占用的资源。</li>
+</ul>
+</li>
+</ul>
 
             </div>
             <hr/>
@@ -946,7 +957,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">31.9k</span>&nbsp;字
+                class="white-color">32.1k</span>&nbsp;字
             
             
             
