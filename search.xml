@@ -5,10 +5,10 @@
     
     <entry>
       <title>Java中异常特点的总结</title>
-      <link href="2020/10/16/java-yi-chang/java-yi-chang/"/>
-      <url>2020/10/16/java-yi-chang/java-yi-chang/</url>
+      <link href="2020/10/16/java-yi-chang/"/>
+      <url>2020/10/16/java-yi-chang/</url>
       
-        <content type="html"><![CDATA[<h2 id="程序中的异常"><a href="#程序中的异常" class="headerlink" title="程序中的异常"></a>程序中的异常</h2><ul><li>在程序运行过程中，意外发生的情况，背离我们程序本身意图的表现，都可以理解为异常；</li><li>利用Java中的异常机制，我们可以更好地提升程序的健壮性；</li><li>在Java中，通过Throwable及其子类描述各种不同的异常类型。</li></ul><p><img src="/2020/10/16/java-yi-chang/java-yi-chang/1.png" alt="1"></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="程序中的异常"><a href="#程序中的异常" class="headerlink" title="程序中的异常"></a>程序中的异常</h2><ul><li>在程序运行过程中，意外发生的情况，背离我们程序本身意图的表现，都可以理解为异常；</li><li>利用Java中的异常机制，我们可以更好地提升程序的健壮性；</li><li>在Java中，通过Throwable及其子类描述各种不同的异常类型。</li></ul><p><img src="/images/1.png" alt="1"></p>]]></content>
       
       
       <categories>
