@@ -434,14 +434,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -487,7 +487,7 @@
 </ul>
 <h2 id="关于接口引用指向实现类对象的说明"><a href="#关于接口引用指向实现类对象的说明" class="headerlink" title="关于接口引用指向实现类对象的说明"></a>关于接口引用指向实现类对象的说明</h2><ul>
 <li>这实际上是一种多态的思想。<strong>多态的定义</strong>：指的是允许不同类的对象对同一个消息做出响应，即同一个消息可以根据发送对象的不同而采取多种不同的行为方式。（发送消息就是函数调用）；</li>
-<li><code>List list</code>是在栈区开辟一个空间放<code>list</code>的引用，并没有创建对象所以不知道真正的对象是<code>ArrayList</code>还是<code>LinkedList</code>。当<code>list = new ArrayList();</code>的时候就创建了ArrayList对象，并且把开始创建的list引用指向这个对象。需要强调，<code>ArrayList</code>和<code>LinkedList</code>都是<code>List</code>的实现类；</li>
+<li><code>List list</code>是在栈区开辟一个空间放<code>list</code>的引用，并没有创建对象所以不知道真正的对象是<code>ArrayList</code>还是<code>LinkedList</code>。当<code>list = new ArrayList();</code>的时候就创建了ArrayList对象，并且把开始创建的<code>list</code>引用指向这个对象。需要强调，<code>ArrayList</code>和<code>LinkedList</code>都是<code>List</code>的实现类；</li>
 <li>那么为什么一般都使用<code>List list = new ArrayList();</code>而不用<code>ArrayList list = new ArrayList();</code>呢？因为<code>List</code>这个接口有多个实现类，如<code>LinkedList</code>或者<code>Vector</code>等等，现在你用的是<code>ArrayList</code>实现类，有可能之后需求更改需要使用其他的实现类了。如果使用的是前一种方法，那么只需要改变一开始的引用赋值的那一行代码就可以了，其他使用到<code>list</code>对象的代码根本不需要改动。假设如果你一开始就是用了第二种方法，尤其是你还是用了<code>ArrayList</code>这个实现类特有的方法，那么就需要更改非常多的代码，对程序的重构是没有好处的。因此，一般没有特别需求的情况下，使用<code>List list = new ArrayList();</code>是比较方便程序代码的重构的，这就是所谓的面向接口编程的好处。<strong>注意</strong>：如果采用了<code>List list = new ArrayList();</code>的方法创建实例对象，那么<code>ArrayList</code>这个实现类自己特有的方法是不可以被访问到的；</li>
 <li>接口的灵活性就在于“规定了一个类必须做什么，而不管你如何做”。我们可以定义一个接口类型的实例，当引用调用方法时，它会根据实际引用的类的实例来判断具体调用哪个方法，这和超类对象引用访问子类对象的机制是类似的。</li>
 </ul>
@@ -507,6 +507,30 @@
 <pre class=" language-Java"><code class="language-Java">Iterator it= set.iterator();
 while(it.hasNext())&#123;
     System.out.print(it.next()+" ");
+&#125;</code></pre>
+<h2 id="hashCode-与equal-方法的重写"><a href="#hashCode-与equal-方法的重写" class="headerlink" title="hashCode()与equal()方法的重写"></a><code>hashCode()</code>与<code>equal()</code>方法的重写</h2><ul>
+<li>重写这两个方法主要用在<code>Hash</code>相关的集合中，主要定义hash码的产生方式以及如何判定对象是否相等，重写这个方法可以定制Set的判定相等模式。</li>
+<li>以下代码为上述两个方法重写的示例，在IDEAJ中可以通过自动插入方式自动编写这两个方法。</li>
+</ul>
+<pre class=" language-Java"><code class="language-Java">@Override
+public boolean equals(Object o) &#123;
+    //判断对象是否相等，相等则返回true，不用继续比较属性了
+    if(this==o)
+        return true;
+    //判断obj是否是Cat类的对象
+    if(o.getClass()==Cat.class)&#123;
+        Cat cat=(Cat)o;
+        return cat.getName().equals(this.getName())
+                &&cat.getMonth()==this.getMonth()
+                &&cat.getSpecies().equals(this.getSpecies());
+    &#125;
+    else
+        return false;
+&#125;
+
+@Override
+public int hashCode() &#123;
+    return Objects.hash(name, month, species);
 &#125;</code></pre>
 
             </div>
@@ -1027,7 +1051,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">38.7k</span>&nbsp;字
+                class="white-color">38.9k</span>&nbsp;字
             
             
             
