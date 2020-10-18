@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Java中String类型的总结, 古惑仔的CAMP">
+    <meta name="keywords" content="Java中String类型和StringBuilder类型的总结, 古惑仔的CAMP">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Java中String类型的总结 | 古惑仔的CAMP</title>
+    <title>Java中String类型和StringBuilder类型的总结 | 古惑仔的CAMP</title>
     <link rel="icon" type="image/jpeg" href="/profile.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -258,12 +258,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Java中String类型的总结</h1>
+                    <h1 class="description center-align post-title">Java中String类型和StringBuilder类型的总结</h1>
                 </div>
             </div>
         </div>
@@ -388,6 +388,10 @@
                                 <span class="chip bg-color">String</span>
                             </a>
                         
+                            <a href="/tags/StringBuilder/">
+                                <span class="chip bg-color">StringBuilder</span>
+                            </a>
+                        
                             <a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
                                 <span class="chip bg-color">知识总结</span>
                             </a>
@@ -422,14 +426,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    285
+                    714
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -509,6 +513,29 @@
 </tr>
 </tbody></table>
 <h2 id="利用String创建新对象时，常量池的作用"><a href="#利用String创建新对象时，常量池的作用" class="headerlink" title="利用String创建新对象时，常量池的作用"></a>利用String创建新对象时，常量池的作用</h2><p><img src="/2020/10/18/javastring-lei-xing/1.png" alt="创建对象时常量池、堆、栈的不同的作用示意图"></p>
+<ul>
+<li>内存中，对象的引用是存在栈中，对象存储在常量池和堆中，常量池中的对象和堆中的对象的地址空间是完全不一样的。</li>
+</ul>
+<h2 id="String类型的不可变性"><a href="#String类型的不可变性" class="headerlink" title="String类型的不可变性"></a>String类型的不可变性</h2><pre class=" language-Java"><code class="language-Java">public static void main(String[] args)&#123;
+    //String的不可变性：只有通过赋值，字符串才会发生改变
+    //String对象一旦被创建，则不能修改，是不可变的
+    //所谓的修改其实是创建了新的对象，所指向的内存空间不变
+    String s1 = "imooc";    //在常量池中生成一个imooc对象，在栈中会有一个引用指向imooc对象
+    s1 = "hello," + s1; //在常量池中又生成了新的hello imooc对象，把s1的引用指向新的hello imooc对象，原先的imooc引用被废除掉了.
+    System.out.println("s1=" + s1);
+&#125;</code></pre>
+<ul>
+<li>通过赋值操作对s1引用的值进行了改变，s1不再指向imooc所在的内存空间，而是指向了”hello,imooc”；</li>
+<li><strong>注意</strong>，在做字符串连接处理得时候并没有改变引用的方向，只是在指向引用的时候改变了引用指向的对象；</li>
+<li>以上操作都是在常量池中完成的。</li>
+</ul>
+<p><img src="/2020/10/18/javastring-lei-xing/2.png" alt="修改String类型常量池对象时，内存中发生的操作示意图"></p>
+<h2 id="字符串StringBuilder"><a href="#字符串StringBuilder" class="headerlink" title="字符串StringBuilder"></a>字符串<code>StringBuilder</code></h2><ul>
+<li><strong><code>String</code>和<code>StringBuilder</code>的区别</strong>：String具有不可变性，而<code>StringBuilder</code>不具备；</li>
+<li><strong>建议</strong>：当频繁操作字符串时，使用<code>StringBuilder</code>。使用<code>String</code>类，频繁操作字符串时，会产生很多的中间变量与常量池垃圾，因此要采用<code>StringBuilder</code>类；</li>
+<li><code>StringBuilder</code>和<code>StringBuffer</code>两者基本相似，StringBuffer是线程安全的，<code>StringBuilder</code>则没有，所以<code>StringBuilder</code>性能略高。一般都是单线程程序，所以一般都是用<code>StringBuilder</code>。</li>
+<li><code>StringBuilder</code>不会创建新的对象，因此可以大大提升性能。</li>
+</ul>
 
             </div>
             <hr/>
@@ -578,6 +605,10 @@
                             
                                 <a href="/tags/String/">
                                     <span class="chip bg-color">String</span>
+                                </a>
+                            
+                                <a href="/tags/StringBuilder/">
+                                    <span class="chip bg-color">StringBuilder</span>
                                 </a>
                             
                                 <a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
@@ -650,18 +681,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/10/18/javastring-lei-xing/">
+                <a href="/2020/10/18/java-ji-he/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Java中String类型的总结">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Java中集合的总结">
                         
-                        <span class="card-title">Java中String类型的总结</span>
+                        <span class="card-title">Java中集合的总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -671,9 +701,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-18
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-18
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -686,7 +716,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -694,12 +723,24 @@
                         <span class="chip bg-color">Java</span>
                     </a>
                     
-                    <a href="/tags/String/">
-                        <span class="chip bg-color">String</span>
-                    </a>
-                    
                     <a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
                         <span class="chip bg-color">知识总结</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%9B%86%E5%90%88/">
+                        <span class="chip bg-color">集合</span>
+                    </a>
+                    
+                    <a href="/tags/List/">
+                        <span class="chip bg-color">List</span>
+                    </a>
+                    
+                    <a href="/tags/Set/">
+                        <span class="chip bg-color">Set</span>
+                    </a>
+                    
+                    <a href="/tags/Map/">
+                        <span class="chip bg-color">Map</span>
                     </a>
                     
                 </div>
@@ -1000,7 +1041,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">37.2k</span>&nbsp;字
+                class="white-color">37.8k</span>&nbsp;字
             
             
             
