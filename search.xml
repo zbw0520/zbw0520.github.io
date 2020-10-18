@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Java中String类型的总结</title>
+      <link href="2020/10/18/javastring-lei-xing/"/>
+      <url>2020/10/18/javastring-lei-xing/</url>
+      
+        <content type="html"><![CDATA[<h2 id="String类的常用方法"><a href="#String类的常用方法" class="headerlink" title="String类的常用方法"></a>String类的常用方法</h2><table><thead><tr><th>方法</th><th>说明</th></tr></thead><tbody><tr><td>int length()</td><td>返回当前字符串长度</td></tr><tr><td>int indexOf(int ch)</td><td>查找字符在该字符串中第一次出现的位置</td></tr><tr><td>int indexOf(String str)</td><td>查找str字符串在该字符串中第一次出现的位置</td></tr><tr><td>int lastIndexOf(int ch)</td><td>查找ch字符在该字符串中最后一次出现的位置</td></tr><tr><td>int lastIndexOf(String str)</td><td>查找str字符串在该字符串中最后一次出现的位置</td></tr><tr><td>String subString(int beginIndex)</td><td>获取从beginIndex位置开始到结束的子字符串</td></tr><tr><td>String subString(int beginIndex, int endIndex)</td><td>获取从beginIndex位置开始到endIndex位置的子字符串</td></tr><tr><td>String trim()</td><td>返回去除了前后空格的字符串</td></tr><tr><td>boolean equals(Object obj)</td><td>将该字符串与指定对象比较，返回true或false</td></tr><tr><td>String toLowerCase()</td><td>将字符串转换为小写</td></tr><tr><td>String toUpperCase()</td><td>将字符串转换为大写</td></tr><tr><td>char charAt(int index)</td><td>获取字符串中指定位置的字符</td></tr><tr><td>String[] split(String regex,int limit)</td><td>将字符串分割为子字符串，返回字符串数组</td></tr><tr><td>byte[] getBytes()</td><td>将该字符串转换为byte数组</td></tr></tbody></table><h2 id="利用String创建新对象时，常量池的作用"><a href="#利用String创建新对象时，常量池的作用" class="headerlink" title="利用String创建新对象时，常量池的作用"></a>利用String创建新对象时，常量池的作用</h2><p><img src="/2020/10/18/javastring-lei-xing/1.png" alt="创建对象时常量池、堆、栈的不同的作用示意图"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机软件 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> String </tag>
+            
+            <tag> 知识总结 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>考研英语大作文整理</title>
       <link href="2020/10/18/zuo-wen-ju-shi-yu-ci-hui/"/>
       <url>2020/10/18/zuo-wen-ju-shi-yu-ci-hui/</url>
@@ -283,9 +312,9 @@
             
             <tag> Java </tag>
             
-            <tag> 构造函数 </tag>
-            
             <tag> 知识总结 </tag>
+            
+            <tag> 构造函数 </tag>
             
         </tags>
       
