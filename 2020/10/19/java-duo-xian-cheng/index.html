@@ -430,14 +430,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    791
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
 
@@ -462,6 +462,8 @@
 <li>创建一个<code>Thread</code>类，或者一个<code>Thread</code>子类的对象；</li>
 <li>创建一个实现<code>Runnable</code>接口的类的对象。</li>
 </ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">new</span> <span class="token class-name">MyThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//方法一，通过创建Thread子类的对象创建进程</span>
+<span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MyRunnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//方法二，通过Runnable接口类传入Thread类构造函数，构造Thread对象，此方法更为常用，更适合需要继承另一个父类的情况</span></code></pre>
 <h2 id="Thread类中的常用方法"><a href="#Thread类中的常用方法" class="headerlink" title="Thread类中的常用方法"></a><code>Thread</code>类中的常用方法</h2><table>
 <thead>
 <tr>
@@ -583,6 +585,30 @@
 <li>各个线程是通过竞争CPU时间而获得运行机会的；</li>
 <li>各线程什么时候得到CPU时间，占用多久，是不可预测的；</li>
 <li>一个正在运行着的线程在什么地方被暂停是不确定的。</li>
+</ul>
+<h2 id="线程同步问题"><a href="#线程同步问题" class="headerlink" title="线程同步问题"></a>线程同步问题</h2><ul>
+<li><p>以取款为例，说明为什么要引入线程同步这个概念</p>
+<ol>
+<li>为了保证在存款或取款的时候，不允许其他线程对账户余额进行操作；</li>
+<li>需要将<code>Bank</code>对象进行锁定；</li>
+<li>使用关键字<code>synchronized</code>实现，可以确保共享对象在同一个时刻只能被一个线程访问，进一步保证执行完整性。</li>
+</ol>
+</li>
+<li><p><code>synchronized</code>关键字用在</p>
+<ul>
+<li>成员方法</li>
+<li>静态方法</li>
+<li>语句块</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">saveAccount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">//成员方法</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">saveAccount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true">//静态方法</span>
+<span class="token keyword">synchronized</span> <span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>   <span class="token comment" spellcheck="true">//语句块，obj指的是需要被锁定的对象，{...}是指作用语句块，即作用范围</span></code></pre>
+<h2 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h2><ul>
+<li>wait()方法：中断方法的执行，使线程等待；</li>
+<li>notify()方法：唤醒处于等待的某个线程，使其结束等待；</li>
+<li>notifyAll()方法：唤醒所有处于等待的线程，使它们结束等待。</li>
 </ul>
 
             </div>
@@ -1097,7 +1123,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">40.8k</span>&nbsp;字
+                class="white-color">41.1k</span>&nbsp;字
             
             
             
