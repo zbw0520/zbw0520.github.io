@@ -544,7 +544,8 @@
 </ul>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">join</span><span class="token punctuation">(</span><span class="token keyword">long</span> millis<span class="token punctuation">)</span></code></pre>
 <ul>
-<li>作用：等待该线程终止的最长时间为millis毫秒</li>
+<li>作用：等待该线程终止的最长时间为millis毫秒；</li>
+<li>抢占CPU使用权，迫使其他线程放弃CPU使用权。</li>
 </ul>
 <h2 id="线程优先级"><a href="#线程优先级" class="headerlink" title="线程优先级"></a>线程优先级</h2><ul>
 <li><p>Java为线程类提供了10个优先级；</p>
@@ -555,14 +556,14 @@
 </li>
 <li><p>数字越大，表示优先级越高；</p>
 </li>
-<li><p>优先级常量</p>
+<li><p>优先级常量：</p>
 <ul>
 <li>MAX_PRIORITY：线程的最高优先级10；</li>
 <li>MIN_PRIORITY：线程的最低优先级1；</li>
-<li>NORM_PRIORITY：线程的默认优先级5（与主线程相同）</li>
+<li>NORM_PRIORITY：线程的默认优先级5（与主线程相同）。</li>
 </ul>
 </li>
-<li><p>优先级相关的方法</p>
+<li><p>优先级相关的方法：</p>
 </li>
 </ul>
 <table>
@@ -608,7 +609,8 @@
 <h2 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h2><ul>
 <li>wait()方法：中断方法的执行，使线程等待；</li>
 <li>notify()方法：唤醒处于等待的某个线程，使其结束等待；</li>
-<li>notifyAll()方法：唤醒所有处于等待的线程，使它们结束等待。</li>
+<li>notifyAll()方法：唤醒所有处于等待的线程，使它们结束等待；</li>
+<li>以生产者消费者的例子可以很好地说明通信需求的原因。</li>
 </ul>
 
             </div>
@@ -1123,7 +1125,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">41.1k</span>&nbsp;字
+                class="white-color">41.6k</span>&nbsp;字
             
             
             
