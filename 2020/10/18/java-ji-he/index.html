@@ -434,14 +434,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    6 分
                 </div>
                 
 
@@ -480,6 +480,7 @@
 </ul>
 <h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a><code>ArrayList</code></h2><ul>
 <li><code>ArrayList</code>底层是由数组实现的；</li>
+<li>元素有序且可以重复；</li>
 <li>动态增长，以满足应用程序的需求；</li>
 <li>在列表尾部插入或删除数据非常有效；</li>
 <li>更适合查找和更新元素；</li>
@@ -502,11 +503,12 @@
 <li><code>Iterator</code>接口可以以统一的方式对各种集合元素进行遍历；</li>
 <li><code>hasNext()</code>方法检测集合中是否还有下一个元素；</li>
 <li><code>next()</code>方法返回集合中的下一个元素。</li>
+<li><strong>集合在进行遍历的时候是不允许进行元素的添加和删除的，如果要添加和删除需要在迭代循环的时候删除元素之后退出循环。</strong></li>
 <li>使用迭代器遍历元素的示例代码如下：</li>
 </ul>
 <pre class=" language-Java"><code class="language-Java">Iterator it= set.iterator();
-while(it.hasNext())&#123;
-    System.out.print(it.next()+" ");
+while(it.hasNext())&#123;    //判断是否还有下一个元素
+    System.out.print(it.next()+" ");   //it.next()代表了下一个元素
 &#125;</code></pre>
 <h2 id="hashCode-与equal-方法的重写"><a href="#hashCode-与equal-方法的重写" class="headerlink" title="hashCode()与equal()方法的重写"></a><code>hashCode()</code>与<code>equal()</code>方法的重写</h2><ul>
 <li>重写这两个方法主要用在<code>Hash</code>相关的集合中，主要定义hash码的产生方式以及如何判定对象是否相等，重写这个方法可以定制Set的判定相等模式。</li>
@@ -531,6 +533,34 @@ public boolean equals(Object o) &#123;
 @Override
 public int hashCode() &#123;
     return Objects.hash(name, month, species);
+&#125;</code></pre>
+<h2 id="泛型的概念"><a href="#泛型的概念" class="headerlink" title="泛型的概念"></a>泛型的概念</h2><ul>
+<li>JavaSE 5.0之后引入的概念；</li>
+<li>利用对<code>Object</code>类型的引用实现参数类型的任意化，任意化的缺点就是要做显式的类型转换，这对于后期维护代码和修改代码来说带来了比较大的工作量。并且制定类型还会产生运行时错误，这是我们不希望看到的。使用泛型，就可以独立于特定数据类型来一次性定义算法，然后把算法应用于各种数据类型，而不需要做额外的工作。因此Java中定义了泛型的概念。</li>
+<li>Java中泛型的概念和C++中模板的区别：C++为每一种数据类型都构建了底层代码，而Java只构建了一份代码，当需要另一种类型时，Java会重新构建代码。所以C++模板的代码体积比较大，但是由于代码已经全部构建好了，因此C++的执行速度更快。</li>
+<li>泛型的写法</li>
+</ul>
+<pre class=" language-Java"><code class="language-Java">Set<Cat> set = new HashSet<Cat>();
+Iterator<Cat> it = set.iterator();</code></pre>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a><code>Map</code></h2><ul>
+<li><code>Map</code>中的数据是以键值对（key-value）的形式存储的；</li>
+<li>key-value是以<code>Entry</code>类型的对象实例存在的，<code>Entry</code>是接口类；</li>
+<li>可以通过<code>key</code>值快速查找<code>value</code>；</li>
+<li>一个映射不能包含重复的键</li>
+<li>每个键最多只能映射到一个值</li>
+</ul>
+<h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a><code>HashMap</code></h2><ul>
+<li>基于哈希表的<code>Map</code>接口的实现；</li>
+<li>允许使用<code>null</code>值和<code>null</code>键，一个<code>Map</code>中只能有一个<code>null</code>键；</li>
+<li><code>key</code>值不允许重复；</li>
+<li>HashMap中的Entry对象是无序排列的。</li>
+</ul>
+<h2 id="增强型for循环的使用"><a href="#增强型for循环的使用" class="headerlink" title="增强型for循环的使用"></a>增强型for循环的使用</h2><ul>
+<li>我们也可以用增强型for循环来代替迭代器去遍历集合。</li>
+</ul>
+<pre class=" language-Java"><code class="language-Java">for(String str:set)&#123;
+    if(str.equals("你好"))
+        System.out.println("已经找到的对应的字符串");
 &#125;</code></pre>
 
             </div>
@@ -685,18 +715,17 @@ public int hashCode() &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/10/18/java-ji-he/">
+                <a href="/2020/10/19/java-duo-xian-cheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Java中集合的总结">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Java中多线程特点的总结">
                         
-                        <span class="card-title">Java中集合的总结</span>
+                        <span class="card-title">Java中多线程特点的总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -706,9 +735,9 @@ public int hashCode() &#123;
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-18
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-19
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -721,7 +750,6 @@ public int hashCode() &#123;
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -733,20 +761,16 @@ public int hashCode() &#123;
                         <span class="chip bg-color">知识总结</span>
                     </a>
                     
-                    <a href="/tags/%E9%9B%86%E5%90%88/">
-                        <span class="chip bg-color">集合</span>
+                    <a href="/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+                        <span class="chip bg-color">多线程</span>
                     </a>
                     
-                    <a href="/tags/List/">
-                        <span class="chip bg-color">List</span>
+                    <a href="/tags/%E8%BF%9B%E7%A8%8B/">
+                        <span class="chip bg-color">进程</span>
                     </a>
                     
-                    <a href="/tags/Set/">
-                        <span class="chip bg-color">Set</span>
-                    </a>
-                    
-                    <a href="/tags/Map/">
-                        <span class="chip bg-color">Map</span>
+                    <a href="/tags/%E7%BA%BF%E7%A8%8B/">
+                        <span class="chip bg-color">线程</span>
                     </a>
                     
                 </div>
@@ -1051,7 +1075,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">38.9k</span>&nbsp;字
+                class="white-color">39.9k</span>&nbsp;字
             
             
             
