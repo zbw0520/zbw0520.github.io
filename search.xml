@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>基于Hexo的Matery主题博客部署问题与解决方案汇总</title>
+      <link href="2020/10/19/hexo-bo-ke-bu-shu/"/>
+      <url>2020/10/19/hexo-bo-ke-bu-shu/</url>
+      
+        <content type="html"><![CDATA[<h2 id="版本问题"><a href="#版本问题" class="headerlink" title="版本问题"></a>版本问题</h2><ul><li>以下是我目前使用的各软件版本。这个版本可以实现目前已经探索到的所有的功能，推荐使用以下版本。</li></ul><pre class=" language-bash"><code class="language-bash">hexo: 4.2.0hexo-cli: 4.2.0os: Linux 5.4.0-48-generic linux x64node: 14.12.0v8: 8.4.371.19-node.16uv: 1.39.0zlib: 1.2.11brotli: 1.0.9ares: 1.16.0modules: 83nghttp2: 1.41.0napi: 7llhttp: 2.1.2openssl: 1.1.1gcldr: 37.0icu: 67.1tz: 2020aunicode: 13.0</code></pre><h2 id="npm包管理器问题"><a href="#npm包管理器问题" class="headerlink" title="npm包管理器问题"></a>npm包管理器问题</h2><ul><li>该包管理器的源默认是在国外，如果你是在中国大陆的话，推荐使用阿里的源，这个源可以大大增加下载速度，提升效率。执行下面的命令可以自动换源。</li></ul><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">npm</span> config <span class="token keyword">set</span> -g registry https://registry.npm.taobao.org</code></pre><h2 id="Node-js版本问题"><a href="#Node-js版本问题" class="headerlink" title="Node.js版本问题"></a>Node.js版本问题</h2><ul><li>Node.js的最低版本限制与Hexo版本的对应关系</li></ul><table><thead><tr><th>Hexo版本</th><th>最低兼容Node.js版本</th></tr></thead><tbody><tr><td>5.0+</td><td>10.13.0</td></tr><tr><td>4.1 - 4.2</td><td>8.10</td></tr><tr><td>4.0</td><td>8.6</td></tr><tr><td>3.3 - 3.9</td><td>6.9</td></tr><tr><td>3.2 - 3.3</td><td>0.12</td></tr><tr><td>3.0 - 3.1</td><td>0.10 or iojs</td></tr><tr><td>0.0.1 - 2.8</td><td>0.10</td></tr></tbody></table><h2 id="变换Hexo版本问题"><a href="#变换Hexo版本问题" class="headerlink" title="变换Hexo版本问题"></a>变换Hexo版本问题</h2><ul><li>Hexo版本可以很容易地变换，通过以下命令就可以进行变换，<strong>注意</strong>，Hexo可供下载的版本可以在其对应的github上的releases板块查询到，不能将Hexo改到没有的版本上去，这样脚本会报错。</li></ul><pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> i hexo@4.2.0    <span class="token comment" spellcheck="true">#将版本更换为4.2.0</span><span class="token function">npm</span> i hexo@5.1.1    <span class="token comment" spellcheck="true">#将版本更换为5.1.1</span></code></pre><h2 id="关于Hexo不能在CodeBlock里面正确显示curly-bracket的问题"><a href="#关于Hexo不能在CodeBlock里面正确显示curly-bracket的问题" class="headerlink" title="关于Hexo不能在CodeBlock里面正确显示curly bracket的问题"></a>关于Hexo不能在CodeBlock里面正确显示curly bracket的问题</h2><ul><li>这个问题跟Hexo的版本有关，如果你是安装的<code>5.0.0</code>及以上的版本，会遇到这个问题，解决方案就是把你的hexo版本降低到<code>4.x.x</code>。这就可以非常完美地解决这个问题。但是，也不可以无限降低，我本人在尝试的时候发现当版本降低到<code>4.1.1</code>及以下时，Hexo就不能正常工作了，不清楚这是什么问题。推荐的版本是<code>4.2.0</code>和<code>4.2.1</code>。</li></ul><h2 id="关于博客在本地可以显示，但挂载到Github上的时候就无法访问的问题"><a href="#关于博客在本地可以显示，但挂载到Github上的时候就无法访问的问题" class="headerlink" title="关于博客在本地可以显示，但挂载到Github上的时候就无法访问的问题"></a>关于博客在本地可以显示，但挂载到Github上的时候就无法访问的问题</h2><ul><li>这个问题的原因很大可能是因为你的DNS服务商的问题，有的DNS服务商会故意屏蔽部分域名，你可以试一下改变DNS服务商，在这里推荐的服务商是阿里或者腾讯。</li></ul><h2 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 博客部署 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> Matery </tag>
+            
+            <tag> 博客 </tag>
+            
+            <tag> Q&amp;A </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java中多线程特点的总结</title>
       <link href="2020/10/19/java-duo-xian-cheng/"/>
       <url>2020/10/19/java-duo-xian-cheng/</url>
