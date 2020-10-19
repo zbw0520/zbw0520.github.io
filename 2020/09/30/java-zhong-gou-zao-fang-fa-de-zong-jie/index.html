@@ -29,7 +29,7 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.0.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -422,7 +422,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    397
+                    409
                 </div>
                 
 
@@ -452,26 +452,26 @@
 <li>当有指定构造方法时，无论是有参数还是没有参数的构造方法，都不会自动添加五参数的构造方法;</li>
 <li>一个类中可以有若干个构造方法;</li>
 </ul>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> 构造方法名<span class="token punctuation">(</span>可选参数<span class="token number">1</span><span class="token punctuation">,</span>可选参数<span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> 构造方法名<span class="token punctuation">(</span>可选参数<span class="token number">1</span><span class="token punctuation">,</span>可选参数<span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">//初始化代码</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
 <h2 id="构造方法使用的注意事项"><a href="#构造方法使用的注意事项" class="headerlink" title="构造方法使用的注意事项"></a>构造方法使用的注意事项</h2><ul>
 <li>构造函数有<strong>两种</strong>办法给新实例化的对象的属性赋值。构造函数内如果要调用实例化的参数属性，需要使用<code>this.属性</code>的形式来调用新实例化的属性；<strong>或者</strong>也可以使用与对象属性名不同的参数名来实现对新实例化对象属性的赋值;</li>
 </ul>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Cat</span><span class="token punctuation">{</span>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Cat</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     String name<span class="token punctuation">;</span>
     <span class="token keyword">int</span> month<span class="token punctuation">;</span>
     <span class="token keyword">double</span> weight<span class="token punctuation">;</span>
     String species<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">//使用与类的属性名不同的参数名称来实现对新实例化的对象属性的赋值</span>
-<span class="token keyword">public</span> <span class="token function">Cat</span><span class="token punctuation">(</span>String newName<span class="token punctuation">,</span> <span class="token keyword">int</span> newMonth<span class="token punctuation">,</span> <span class="token keyword">double</span> newWeight<span class="token punctuation">,</span> String newSpecies<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">public</span> <span class="token function">Cat</span><span class="token punctuation">(</span>String newName<span class="token punctuation">,</span> <span class="token keyword">int</span> newMonth<span class="token punctuation">,</span> <span class="token keyword">double</span> newWeight<span class="token punctuation">,</span> String newSpecies<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     name <span class="token operator">=</span> newName<span class="token punctuation">;</span>
     month <span class="token operator">=</span> newMonth<span class="token punctuation">;</span>
     weight <span class="token operator">=</span> newWeight<span class="token punctuation">;</span>
     species <span class="token operator">=</span> newSpecies<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
 <h2 id="This关键字的使用"><a href="#This关键字的使用" class="headerlink" title="This关键字的使用"></a><code>This</code>关键字的使用</h2><ul>
 <li><code>This</code>可以调用当且对象当中的属性以及方法，使用<code>This</code>关键字可以实现构造函数给当前属性赋初值，这种方案广泛用于构造函数的赋初值问题。</li>
 </ul>
@@ -960,7 +960,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">40.2k</span>&nbsp;字
+                class="white-color">40.3k</span>&nbsp;字
             
             
             
