@@ -430,14 +430,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    445
+                    621
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -522,8 +522,40 @@ File file1<span class="token operator">=</span><span class="token keyword">new</
 <li>如果返回值为-1，则表示已经到达文件末尾</li>
 <li>读完文件之后需要使用<code>close()</code>方法来释放资源</li>
 </ul>
-<h4 id="缓冲输入流BufferedInputStream"><a href="#缓冲输入流BufferedInputStream" class="headerlink" title="缓冲输入流BufferedInputStream"></a>缓冲输入流BufferedInputStream</h4><h3 id="字节输出流"><a href="#字节输出流" class="headerlink" title="字节输出流"></a>字节输出流</h3><p><img src="/2020/10/19/java-shu-ru-shu-chu-liu/2.png" alt="字节输出流结构示意图"></p>
-<h2 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h2><h2 id="对象的序列化和反序列化"><a href="#对象的序列化和反序列化" class="headerlink" title="对象的序列化和反序列化"></a>对象的序列化和反序列化</h2>
+<h4 id="缓冲输入流BufferedInputStream"><a href="#缓冲输入流BufferedInputStream" class="headerlink" title="缓冲输入流BufferedInputStream"></a>缓冲输入流BufferedInputStream</h4><ul>
+<li>提高读写速度</li>
+<li>需要与文件输入输出流结合，把输入流的子类当成构造函数参数输入。</li>
+</ul>
+<h3 id="字节输出流"><a href="#字节输出流" class="headerlink" title="字节输出流"></a>字节输出流</h3><p><img src="/2020/10/19/java-shu-ru-shu-chu-liu/2.png" alt="字节输出流结构示意图"></p>
+<h4 id="缓冲输入流BufferedOutputStream"><a href="#缓冲输入流BufferedOutputStream" class="headerlink" title="缓冲输入流BufferedOutputStream"></a>缓冲输入流BufferedOutputStream</h4><ul>
+<li>提高读写速度</li>
+<li>需要与文件输入输出流结合，把输出流的子类当成构造函数参数输入。</li>
+</ul>
+<h2 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h2><ul>
+<li>适用于发送和接收字符的情况使用</li>
+</ul>
+<h3 id="字符输入流"><a href="#字符输入流" class="headerlink" title="字符输入流"></a>字符输入流</h3><p><img src="/2020/10/19/java-shu-ru-shu-chu-liu/3.png" alt="字符输入流结构示意图"></p>
+<h3 id="字符输出流"><a href="#字符输出流" class="headerlink" title="字符输出流"></a>字符输出流</h3><p><img src="/2020/10/19/java-shu-ru-shu-chu-liu/4.png" alt="字符输出流结构示意图"></p>
+<h3 id="字节字符转换流"><a href="#字节字符转换流" class="headerlink" title="字节字符转换流"></a>字节字符转换流</h3><ul>
+<li><code>InputStreamReader()</code></li>
+<li><code>OutputStreamReader()</code></li>
+<li>可以把二进制字节流与字符流互相转化</li>
+</ul>
+<h2 id="对象的序列化和反序列化"><a href="#对象的序列化和反序列化" class="headerlink" title="对象的序列化和反序列化"></a>对象的序列化和反序列化</h2><h3 id="对象序列化"><a href="#对象序列化" class="headerlink" title="对象序列化"></a>对象序列化</h3><ul>
+<li><p>步骤：</p>
+<ol>
+<li>创建一个类，继承<code>Serializable</code>接口；</li>
+<li>创建对象；</li>
+<li>将对象写入文件；</li>
+<li>从文件读取对象信息。</li>
+</ol>
+</li>
+<li><p>对象输入流<code>ObjectInputStream</code></p>
+</li>
+<li><p>对象输出流<code>ObjectOutputStream</code></p>
+</li>
+</ul>
+
             </div>
             <hr/>
 
@@ -1034,7 +1066,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">41.6k</span>&nbsp;字
+                class="white-color">41.7k</span>&nbsp;字
             
             
             
