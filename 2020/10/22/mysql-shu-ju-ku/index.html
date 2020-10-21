@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JMySQL数据库特点的总结, 古惑仔的CAMP">
+    <meta name="keywords" content="MySQL数据库特点的总结, 古惑仔的CAMP">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JMySQL数据库特点的总结 | 古惑仔的CAMP</title>
+    <title>MySQL数据库特点的总结 | 古惑仔的CAMP</title>
     <link rel="icon" type="image/jpeg" href="/profile.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -263,7 +263,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JMySQL数据库特点的总结</h1>
+                    <h1 class="description center-align post-title">MySQL数据库特点的总结</h1>
                 </div>
             </div>
         </div>
@@ -422,14 +422,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    445
+                    712
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -514,10 +514,41 @@ SELECT DATABASE()   #得到当前打开的数据库</code></pre>
 <li>SQL支持折行操作，拆分的时候不能把完整的单词拆开</li>
 <li>数据库名称、表名称、字段名称不要使用MySQL的保留字，如果必须使用，需要使用反引号将其括起来</li>
 </ul>
-<h2 id="数据库相关操作"><a href="#数据库相关操作" class="headerlink" title="数据库相关操作"></a>数据库相关操作</h2><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><ul>
-<li>CREATE (DATABASE|SCHEMA) db_name;</li>
-<li>注意，数据库名称最好有意义，名称不要包含特殊字符或者MySQL关键字。</li>
+<h2 id="数据库相关操作"><a href="#数据库相关操作" class="headerlink" title="数据库相关操作"></a>数据库相关操作</h2><pre class=" language-mysql"><code class="language-mysql">CREATE (DATABASE|SCHEMA) db_name; #注意，数据库名称最好有意义，名称不要包含特殊字符或者MySQL关键字。
+SHOW (DATABASES|SCHEMAS);
+CREATE DATABASE [IF NOT EXISTS] db_name;
+SHOW WARNINGS; #查看警告
+CREATE DATABASE [IF NOT EXISTS] db_name DEFAULT CHARACTER SET [=] charset; #创建数据库的时候指定编码方式
+ALTER DATABASE db_name DEFAULT CHARACTER SET [=] charset; #修改指定数据库的编码方式。
+USE db_name; #打开指定数据库
+SELECT (DATABASE|SCHEMA); #得到当前打开的数据库
+DROP DATABASE db_name; #删除数据库
+DROP DATABASE [IF EXISTS] db_name; #如果数据库存在则删除</code></pre>
+<h2 id="数据表相关操作"><a href="#数据表相关操作" class="headerlink" title="数据表相关操作"></a>数据表相关操作</h2><h3 id="数据表"><a href="#数据表" class="headerlink" title="数据表"></a>数据表</h3><ul>
+<li>数据表是数据库最重要的组成部分之一，数据保存在数据表中;</li>
+<li>数据表由行(row)和列(column)来组成;</li>
+<li>每个数据表中至少要有一列，行可以有零行或若干行;</li>
+<li>表名要求唯一，不要包含特殊字符，最好含义明确。</li>
 </ul>
+<h3 id="创建数据表"><a href="#创建数据表" class="headerlink" title="创建数据表"></a>创建数据表</h3><pre class=" language-mysql"><code class="language-mysql">CREATE TABLE [IF NOT EXISTS] tbl_name(
+  字段名称 字段类型 [完整性约束条件],
+  字段名称 字段类型 [完整性约束条件],
+  ...
+)ENGINE=存储引擎 CHARSET=编码方式;</code></pre>
+<h2 id="MySQL数据类型"><a href="#MySQL数据类型" class="headerlink" title="MySQL数据类型"></a>MySQL数据类型</h2><ul>
+<li><p>数值型</p>
+<ul>
+<li>整数型</li>
+<li>浮点数</li>
+<li>定点数</li>
+</ul>
+</li>
+<li><p>字符串类型</p>
+</li>
+<li><p>日期时间类型</p>
+</li>
+</ul>
+<p><img src="/2020/10/22/mysql-shu-ju-ku/int.png" alt="数值型数据类型信息示意图"></p>
 
             </div>
             <hr/>
@@ -668,9 +699,9 @@ SELECT DATABASE()   #得到当前打开的数据库</code></pre>
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="JMySQL数据库特点的总结">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="MySQL数据库特点的总结">
                         
-                        <span class="card-title">JMySQL数据库特点的总结</span>
+                        <span class="card-title">MySQL数据库特点的总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1017,7 +1048,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">42.2k</span>&nbsp;字
+                class="white-color">42.5k</span>&nbsp;字
             
             
             
