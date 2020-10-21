@@ -422,14 +422,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    712
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
 
@@ -534,7 +534,22 @@ DROP DATABASE [IF EXISTS] db_name; #如果数据库存在则删除</code></pre>
   字段名称 字段类型 [完整性约束条件],
   字段名称 字段类型 [完整性约束条件],
   ...
-)ENGINE=存储引擎 CHARSET=编码方式;</code></pre>
+)ENGINE=存储引擎 CHARSET=编码方式;
+unsigned  #无符号，没有负数，从零开始
+zerofill #零填充，当显示长度不够时可以使用前补0的效果填充至指定长度
+NOT NULL #非空约束，也就是插入值的时候这个字段必须要给值
+DEFAULT #默认值，如果插入记录的时候没有给字段赋值，则使用默认值
+PRIMARY KEY #主键，标志记录的唯一性，即值不能重复，而且一个表只能有一个主键，如果一个字段是主键，则自动禁止为空
+UNIQUE KEY #唯一性，表示不能重复，一个表中可以有多个字段是唯一索引，但是NULL值除外
+AUTO_INCREMENT #自动增长，只能用于数值列，而且配合索引
+FOREIGN KEY # 外键约束</code></pre>
+<h3 id="查看当前数据库下已有的数据表"><a href="#查看当前数据库下已有的数据表" class="headerlink" title="查看当前数据库下已有的数据表"></a>查看当前数据库下已有的数据表</h3><pre class=" language-mysql"><code class="language-mysql">SHOW TABLES;
+SHOW [FULL] TABLES [{FROM|IN} db_name] [LIKE 'pattern'|WHERE expr];</code></pre>
+<h3 id="查看指定数据表的详细信息"><a href="#查看指定数据表的详细信息" class="headerlink" title="查看指定数据表的详细信息"></a>查看指定数据表的详细信息</h3><pre class=" language-mysql"><code class="language-mysql">SHOW CREATE TABLE tbl_name;</code></pre>
+<h3 id="查看表结构"><a href="#查看表结构" class="headerlink" title="查看表结构"></a>查看表结构</h3><pre class=" language-mysql"><code class="language-mysql">DESC tbl_name;
+DESCRIBE tbl_name;
+SHOW COLUMNS FROM tbl_name;</code></pre>
+<h3 id="删除指定的数据表"><a href="#删除指定的数据表" class="headerlink" title="删除指定的数据表"></a>删除指定的数据表</h3><pre class=" language-mysql"><code class="language-mysql">DROP TABLE [IF EXISTS] tbl_name;</code></pre>
 <h2 id="MySQL数据类型"><a href="#MySQL数据类型" class="headerlink" title="MySQL数据类型"></a>MySQL数据类型</h2><ul>
 <li><p>数值型</p>
 <ul>
@@ -543,14 +558,22 @@ DROP DATABASE [IF EXISTS] db_name; #如果数据库存在则删除</code></pre>
 <li>定点数</li>
 </ul>
 </li>
-<li><p>字符串类型</p>
-</li>
-<li><p>日期时间类型</p>
-</li>
 </ul>
 <p><img src="/2020/10/22/mysql-shu-ju-ku/int.png" alt="整数型数据类型信息示意图"></p>
 <p><img src="/2020/10/22/mysql-shu-ju-ku/float.png" alt="浮点数和定点数数据类型信息示意图"></p>
+<ul>
+<li><p>字符串类型</p>
+<ul>
+<li>CHAR效率高于VARCHAR, CHAR相当于拿空间换时间, VARCHAR拿时间换空间；</li>
+<li>CHAR默认存储数据的时候，后面会用空格填充到指定长度；而在检索的时候会去掉后面的空格；VARCHAR在保存的时候不进行填充，尾部的空格会留下；</li>
+<li>TEXT列不能有默认值，检索的时候不存在大小写转换。</li>
+</ul>
+</li>
+</ul>
 <p><img src="/2020/10/22/mysql-shu-ju-ku/char.png" alt="字符串数据类型信息示意图"></p>
+<ul>
+<li>日期时间类型</li>
+</ul>
 <p><img src="/2020/10/22/mysql-shu-ju-ku/date.png" alt="日期时间数据类型信息示意图"></p>
 
             </div>
@@ -1051,7 +1074,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">42.5k</span>&nbsp;字
+                class="white-color">42.9k</span>&nbsp;字
             
             
             
