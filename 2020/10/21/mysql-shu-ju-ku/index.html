@@ -413,7 +413,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-10-22
+                    2020-10-21
                 </div>
                 
 
@@ -422,14 +422,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    3.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    15 分
                 </div>
                 
 
@@ -550,31 +550,430 @@ SHOW [FULL] TABLES [{FROM|IN} db_name] [LIKE 'pattern'|WHERE expr];</code></pre>
 DESCRIBE tbl_name;
 SHOW COLUMNS FROM tbl_name;</code></pre>
 <h3 id="删除指定的数据表"><a href="#删除指定的数据表" class="headerlink" title="删除指定的数据表"></a>删除指定的数据表</h3><pre class=" language-mysql"><code class="language-mysql">DROP TABLE [IF EXISTS] tbl_name;</code></pre>
-<h2 id="MySQL数据类型"><a href="#MySQL数据类型" class="headerlink" title="MySQL数据类型"></a>MySQL数据类型</h2><ul>
-<li><p>数值型</p>
-<ul>
+<h3 id="表结构相关操作"><a href="#表结构相关操作" class="headerlink" title="表结构相关操作"></a>表结构相关操作</h3><pre class=" language-mysql"><code class="language-mysql">ALTER TABLE tbl_name ADD 字段名称 字段属性 [完整性约束条件] [FIRST|AFTER 字段名称] --添加字段
+ALTER TABLE tbl_name DROP 字段名称 --删除字段
+
+-- 一条语句完成多项操作
+ALTER TABLE user1
+ADD age TINYINT UNSIGNED NOT NULL DEFAULT 18,
+ADD addr VARCHAR(100) NOT NULL DEFAULT 'Beijing'
+
+-- 添加默认值
+ALTER TABLE tble_name
+ALTER 字段名称 SET DEFAULT 默认值
+
+-- 删除默认值
+ALTER TABLE tble_name
+ALTER 字段名称 DROP DEFAULT
+
+-- 添加主键
+ALTER TABLE tble_name
+ADD PRIMARY KEY(字段名称)
+
+-- 删除主键
+ALTER TABLE tbl_name
+DROP PRIMARY KEY;
+
+-- 添加唯一
+ALTER TABLE tbl_name
+ADD UNIQUE KEY|INDEX index_name (字段名称)
+
+-- 删除唯一
+ALTER TABLE tble_name
+DROP INDEX index_name;
+
+-- 修改字段类型、字段属性
+ALTER TABLE tbl_name
+MODIFY 字段名称 字段类型 [字段属性] [FIRST|AFTER 字段名称]
+
+-- 修改字段名称、字段类型、字段属性
+ALTER TABLE tbl_name
+CHANGE 原字段名称 新字段名称 字段类型 字段属性[FIRST|AFTER 字段名称]
+
+-- 修改数据表名称(两种方法)
+ALTER TABLE tbl_name RENAME [TO|AS] new tbl_name;
+RENAME TABLE tbl_name TO new_tbl_name;</code></pre>
+<h2 id="MySQL数据类型"><a href="#MySQL数据类型" class="headerlink" title="MySQL数据类型"></a>MySQL数据类型</h2><h3 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h3><ul>
 <li>整数型</li>
 <li>浮点数</li>
 <li>定点数</li>
 </ul>
-</li>
-</ul>
-<p><img src="/2020/10/22/mysql-shu-ju-ku/int.png" alt="整数型数据类型信息示意图"></p>
-<p><img src="/2020/10/22/mysql-shu-ju-ku/float.png" alt="浮点数和定点数数据类型信息示意图"></p>
-<ul>
-<li><p>字符串类型</p>
-<ul>
+<p><img src="/2020/10/21/mysql-shu-ju-ku/int.png" alt="整数型数据类型信息示意图"></p>
+<p><img src="/2020/10/21/mysql-shu-ju-ku/float.png" alt="浮点数和定点数数据类型信息示意图"></p>
+<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><ul>
 <li>CHAR效率高于VARCHAR, CHAR相当于拿空间换时间, VARCHAR拿时间换空间；</li>
 <li>CHAR默认存储数据的时候，后面会用空格填充到指定长度；而在检索的时候会去掉后面的空格；VARCHAR在保存的时候不进行填充，尾部的空格会留下；</li>
 <li>TEXT列不能有默认值，检索的时候不存在大小写转换。</li>
 </ul>
+<p><img src="/2020/10/21/mysql-shu-ju-ku/char.png" alt="字符串数据类型信息示意图"></p>
+<h3 id="日期时间类型"><a href="#日期时间类型" class="headerlink" title="日期时间类型"></a>日期时间类型</h3><p><img src="/2020/10/21/mysql-shu-ju-ku/date.png" alt="日期时间数据类型信息示意图"></p>
+<h2 id="MySQL存储引擎"><a href="#MySQL存储引擎" class="headerlink" title="MySQL存储引擎"></a>MySQL存储引擎</h2><h3 id="MyISAM存储引擎"><a href="#MyISAM存储引擎" class="headerlink" title="MyISAM存储引擎"></a>MyISAM存储引擎</h3><ul>
+<li><p>在MySQL5.5之前一直使用的默认存储引擎是MyISAM存储引擎；</p>
+</li>
+<li><p>会在磁盘中产生三个文件：</p>
+<ul>
+<li>.frm，表结构文件</li>
+<li>.MYD，数据文件</li>
+<li>.MYI，索引文件</li>
+</ul>
+</li>
+<li><p>可以在建表的时候指定数据文件和索引文件的存储位置，只有MyISAM表支持：</p>
+<ul>
+<li>DATA DIRECTORY [=] 数据保存的绝对路径</li>
+<li>INDEX DIRECTORY [=] 索引文件保存的绝对路径</li>
+</ul>
+</li>
+<li><p>MyISAM最大支持的数据量：2的64次方条记录；</p>
+</li>
+<li><p>每个表最多可以建立64个索引</p>
+</li>
+<li><p>如果是复合索引，每个复合索引最多包含16个列，索引值最大是1000B</p>
+</li>
+<li><p>MyISAM引擎的存储格式</p>
+<ul>
+<li><p>定长(FIXED 静态)</p>
+<ul>
+<li>是指字段中不包含像VARCHAR/TEXT/BLOB</li>
+<li>静态表的查询速度很快</li>
+</ul>
+</li>
+<li><p>动态(DYNAMIC)</p>
+<ul>
+<li>字段中包含了VARCHAR/TEXT/BLOB</li>
+</ul>
+</li>
+<li><p>压缩(COMPRESSED)</p>
+<ul>
+<li>通过myisampack创建</li>
+</ul>
 </li>
 </ul>
-<p><img src="/2020/10/22/mysql-shu-ju-ku/char.png" alt="字符串数据类型信息示意图"></p>
-<ul>
-<li>日期时间类型</li>
+</li>
 </ul>
-<p><img src="/2020/10/22/mysql-shu-ju-ku/date.png" alt="日期时间数据类型信息示意图"></p>
+<h3 id="InnoDB存储引擎"><a href="#InnoDB存储引擎" class="headerlink" title="InnoDB存储引擎"></a>InnoDB存储引擎</h3><ul>
+<li><p>设计遵循ACID模型，支持事务，具有从服务崩溃中恢复的能力，能够最大限度地保护用户的数据；</p>
+<ul>
+<li>原子性(Atomicity)</li>
+<li>一致性(Consistency)</li>
+<li>隔离性(Isolation)</li>
+<li>持久性(Durability)</li>
+</ul>
+</li>
+<li><p>支持行级锁，好处是可以提升用户高并发时的读写性能；</p>
+</li>
+<li><p>支持外键，保证数据的一致性和完整性；</p>
+</li>
+<li><p>InnoDB有自己的独立缓冲池，常用的数据和索引都在缓存中；</p>
+</li>
+<li><p>对于INSERT、UPDATE、DELETE操作，InnoDB会使用一种change buffering的机制来自动优化，还可以提供一致性的读，并且还能够缓存变更的数据，减少磁盘I/O，提高性能；</p>
+</li>
+<li><p>创建InnoDB表之后产生两个文件：</p>
+<ul>
+<li>.frm，表结构文件</li>
+<li>.ibd，数据和索引存储在表空间中</li>
+</ul>
+</li>
+<li><p>使用InnoDB的表时，都需要创建主键，最好是配合上AUTO_INCREMENT，也可以把经常查询的列作为主键。</p>
+</li>
+</ul>
+<h2 id="MySQL数据操作"><a href="#MySQL数据操作" class="headerlink" title="MySQL数据操作"></a>MySQL数据操作</h2><h3 id="添加记录"><a href="#添加记录" class="headerlink" title="添加记录"></a>添加记录</h3><pre class=" language-mysql"><code class="language-mysql">INSERT [INTO] tbl_name[(col_name,...)] {VALUE|VALUES}
+-- [(col_name,...)] 表示字段
+-- 不指定字段名称
+INSERT tbl_name VALUE(value...)
+-- 列出指定字段
+INSERT tbl_name(字段名称,...) VALUES(值,...)
+-- 一次添加多条记录
+INSERT  tbl_name[(字段名称,...)] VALUES(值,...),(值,...);
+
+INSERT tbl_name SET 字段名称=值,...;
+INSERT tbl_name[(字段名称...)] SELECT 字段名称,... FROM tbl_name [WHERE];</code></pre>
+<h3 id="修改记录"><a href="#修改记录" class="headerlink" title="修改记录"></a>修改记录</h3><pre class=" language-mysql"><code class="language-mysql">UPDATE tbl_name SET 字段名称=值，字段名称=值 [WHERE 条件]
+--如果不加条件，整个表中的记录都会被更新</code></pre>
+<h3 id="删除记录"><a href="#删除记录" class="headerlink" title="删除记录"></a>删除记录</h3><pre class=" language-mysql"><code class="language-mysql">DELETE FROM tbl_name [WHERE 条件]
+-- 如果不添加条件，表中所有记录都会被删除
+-- DELETE清空数据表的时候不会重置AUTO_INCREMENT的值，可以通过ALTER语句将其重置
+-- 重置AUTO_INCREMENT值的方法
+ALTER TABLE tbl_name AUTO_INCREMENT=1;
+-- 一步解决上述两个问题
+TRUNCATE [TABLE] tbl_name;
+-- 清空表中所有记录
+-- 会重置AUTO_INCREMENT的值</code></pre>
+<h3 id="查询记录"><a href="#查询记录" class="headerlink" title="查询记录"></a>查询记录</h3><pre class=" language-mysql"><code class="language-mysql">SELECT select_expr,... FROM tbl_name
+[WHERE 条件]
+[GROUP BY {col_name|position} HAVING 二次筛选]
+[ORDER BY {col_name|position|expr}[ASC|DESC]]
+[LIMIT 限制结果集的显示条数]
+-- 查询表中的所有记录，*代表所有字段
+SELECT * FROM tbl_name;
+-- 库名.表名的形式来选择字段
+SELECT 字段名称,... FROM db_name.tbl_name;
+-- 给字段起别名
+SELECT 字段名称 [AS] 别名名称,... FROM db_name.tbl_name;
+-- 给数据表起别名
+SELECT 字段名称,... FROM tbl_name [AS] 别名;
+-- 表名.字段名称
+SELECT tbl_name.col_name,... FROM tbl_name;
+-- WHERE条件，会筛选出符合条件的记录
+-- 比较运算符
+> >= = <= != <=>
+-- 利用<=>来检测NULL值
+SELECT id,username,age,userDesc FROM user1
+WHERE userDesc<=>NULL;
+-- 检测NULL值
+SELECT id,username,age,userDesc FROM user1
+where userDesc IS [NOT] NULL;
+-- <=>与=的区别 <=>可以检测NULL值
+-- 指定范围 [NOT]BETWEEN...AND...
+SELECT id,username,age,sex FROM user1
+where age BETWEEN 18 AND 30;
+-- 指定集合 [NOT]IN(...)
+SELECT id,username,age FROM user1
+WHERE id IN(1,3,5,7,9);
+-- 逻辑运算符 AND OR
+SELECT id,username,age,sex FROM user1
+WHERE sex='男' AND age>=20;
+-- 模糊查询 [NOT] LIKE
+SELECT id,username,age,sex FROM user1
+WHERE username LIKE 'king'
+-- 通配符 %任意长度的字符串 _任意一个字符
+SELECT id,username,age,sex FROM user1
+WHERE username LIKE '%三%'
+-- 分组操作 GROUP BY 把值相同的放到一个组中，最终查询出的结果只会显示组中一条数据
+SELECT id,username,age,sex FROM user1
+GROUP BY sex;
+-- 分组操作配合GROUP_CONCAT()字段查看组中成员的信息
+SELECT GROUP-CONCAT(username),age,sex,addr FROM user1
+GROUP BY sex;
+-- 分组操作配合聚合函数使用
+COUNT() #统计记录总数，如果写的是COUNT(字段名称)，字段中的值为NULL，不统计进来，写COUNT(*)全部统计
+SUM()   #求和
+MAX()   #求最大值
+MIN()   #求最小值
+AVG()   #求平均值
+-- 配合WITH ROLLUP关键字使用，会在记录末尾添加一条记录，是上面所有记录的综合
+SELECT GROUP_CONCAT(usrname) AS usersDetail,
+COUNT(*) AS totalUsers
+FROM user1
+GROUP BY sex
+WITH ROLLUP;
+-- HAVING子句对分组结果进行二次筛选
+SELECT GROUP_CONCAT(usrname) AS usersDetail,
+COUNT(*) AS totalUsers
+FROM user1
+GROUP BY sex
+HAVING COUNT(*)>=3
+-- ORDER BY 排序
+ORDER BY 字段名称 ASC|DESC
+SELECT id,username,age
+FROM user1
+ORDER BY age ASC;
+ORDER BY RAND();    #随机显示记录
+-- LIMIT 限制结果集显示条数
+LIMIT 值  #显示结果集的前几条记录
+LIMIT offset, row_count  #从offset开始显示几条记录</code></pre>
+<h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3><p>– 多表联查的上限是3个表，超过三个表的时候，查询的效率是很低的。</p>
+<h4 id="笛卡尔积形式"><a href="#笛卡尔积形式" class="headerlink" title="笛卡尔积形式"></a>笛卡尔积形式</h4><ul>
+<li>全部循环连接一遍</li>
+</ul>
+<h4 id="内连接形式"><a href="#内连接形式" class="headerlink" title="内连接形式"></a>内连接形式</h4><ul>
+<li>查询两个表中符合连接条件的记录</li>
+</ul>
+<pre class=" language-mysql"><code class="language-mysql">SELECT 字段名称,... FROM tbl_name1
+INNER JOIN tbl_name2
+ON 连接条件
+------------
+SELECT emp.id,emp.username,emp.age,dep.depName
+FROM emp
+INNER JOIN dep
+ON emp.depId=dep.id</code></pre>
+<h4 id="外连接形式"><a href="#外连接形式" class="headerlink" title="外连接形式"></a>外连接形式</h4><ul>
+<li><p>左外连接</p>
+<ul>
+<li>先显示左表中的全部记录，再去右表中查询符合条件的记录，不符合的以NULL值代替</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-mysql"><code class="language-mysql">SELECT 字段名称,... FROM tbl_name1
+OUTER LEFT JOIN tbl_name2
+ON 条件</code></pre>
+<ul>
+<li><p>右外连接</p>
+<ul>
+<li>先显示右表中的全部记录，再去左表中查询符合条件的记录，不符合的以NULL值代替</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-mysql"><code class="language-mysql">SELECT 字段名称,... FROM tbl_name1
+OUTER RIGHT JOIN tbl_name2
+ON 条件</code></pre>
+<h3 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a>外键约束</h3><ul>
+<li>注意：只有InnoDB的存储引擎支持外键</li>
+</ul>
+<h4 id="创建外键"><a href="#创建外键" class="headerlink" title="创建外键"></a>创建外键</h4><ul>
+<li><p>建表时指定外键</p>
+<ul>
+<li><p>子表的外键字段和主表的主键字段类型要相似；如果是数值型要求一致，并且无符号也要一致；如果是字符型，要求类型一致，长度也要相同；</p>
+</li>
+<li><p>如果外键字段没有创建索引，MySQL会自动帮我们添加索引；</p>
+</li>
+<li><p>子表的外键关联的必须是父表的主键。</p>
+</li>
+<li><p>外键约束的参照操作</p>
+<ol>
+<li>CASCADE 从父表删除或更新，子表也跟着删除或者更新，级联对的操作</li>
+<li>SET NULL 从父表删除或者更新记录，并且设置子表的外键列为null才可以。</li>
+<li>NO ACTION|RESTRICT 默认操作</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-mysql"><code class="language-mysql">[CONSTRAINT 外键名称] FOREIGN KEY(字段名称) REFERENCES 主表(字段名称)</code></pre>
+<ul>
+<li><p>动态添加删除外键</p>
+<ul>
+<li>动态添加外键时表中的数据一定要是合法的，没有脏值，否则外键没法创建成功。</li>
+</ul>
+</li>
+</ul>
+<pre class=" language-mysql"><code class="language-mysql">--添加外键
+ALTER TABLE tbl_name
+[CONSTRAINT 外键名称] ADD FOREIGN KEY(外键字段) REFERENCES 主表(主键字段)
+--删除外键
+ALTER TABLE news
+DROP FOREIGN KEY cateId_fk_newsCate;</code></pre>
+<h3 id="特殊形式的查询"><a href="#特殊形式的查询" class="headerlink" title="特殊形式的查询"></a>特殊形式的查询</h3><h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><h5 id="内层语句查询的结果可以作为外层语句查询的条件"><a href="#内层语句查询的结果可以作为外层语句查询的条件" class="headerlink" title="内层语句查询的结果可以作为外层语句查询的条件"></a>内层语句查询的结果可以作为外层语句查询的条件</h5><pre class=" language-mysql"><code class="language-mysql">SELECT 字段名称 FROM tbl_name WHERE col_name=(SELECT col_name FROM tbl_name)</code></pre>
+<h5 id="由in引发的子查询"><a href="#由in引发的子查询" class="headerlink" title="由in引发的子查询"></a>由in引发的子查询</h5><pre class=" language-mysql"><code class="language-mysql">SELECT * FROM emp
+WHERE depId IN (SELECT id FROM dep);</code></pre>
+<h5 id="由比较运算符引出的子查询"><a href="#由比较运算符引出的子查询" class="headerlink" title="由比较运算符引出的子查询"></a>由比较运算符引出的子查询</h5><pre class=" language-mysql"><code class="language-mysql">SELECT id,username,score FROM stud
+WHERE score>=(SELECT score FROM level WHERE id=1);
+
+SELECT id,username,score FROM stud
+WHERE score<=(SELECT score FROM level WHERE id=3);</code></pre>
+<h5 id="由EXISTS引发的子查询"><a href="#由EXISTS引发的子查询" class="headerlink" title="由EXISTS引发的子查询"></a>由EXISTS引发的子查询</h5><pre class=" language-mysql"><code class="language-mysql">--只有exists后面的语句为真才会执行前面的语句
+SELECT * FROM emp
+WHERE EXISTS(SELECT depName FROM dep WHERE id=10)</code></pre>
+<h5 id="ANY-SOME-ALL子查询"><a href="#ANY-SOME-ALL子查询" class="headerlink" title="ANY SOME ALL子查询"></a>ANY SOME ALL子查询</h5><p><img src="/2020/10/21/mysql-shu-ju-ku/1.png" alt="ANY SOME ALL子查询示意图"></p>
+<pre class=" language-mysql"><code class="language-mysql">SELECT * FROM stu
+WHERE score>=ANY(SELECT score FROM level);
+
+SELECT * FROM stu
+WHERE score>=SOME(SELECT score FROM level);
+
+SELECT * FROM stu
+WHERE score>=ALL(SELECT score FROM level);</code></pre>
+<h5 id="INSERT…SELECT子查询"><a href="#INSERT…SELECT子查询" class="headerlink" title="INSERT…SELECT子查询"></a>INSERT…SELECT子查询</h5><pre class=" language-mysql"><code class="language-mysql">INSERT user1(username)
+SELECT username FROM user;
+
+INSERT user2 SET username=(SELECT username FROM stu WHERE id=9)
+
+-- 去掉字段的重复值
+SELECT DISTINCT(username) FROM user2;</code></pre>
+<h5 id="CREATE…SELECT子查询"><a href="#CREATE…SELECT子查询" class="headerlink" title="CREATE…SELECT子查询"></a>CREATE…SELECT子查询</h5><pre class=" language-mysql"><code class="language-mysql">CREATE TABLE user1(
+  id INT UNSIGNED AUTO_INCREMENT KEY,
+  username VARCHAR(20)
+)SELECT id,username FROM emp;</code></pre>
+<h4 id="联合查询"><a href="#联合查询" class="headerlink" title="联合查询"></a>联合查询</h4><h5 id="UNION"><a href="#UNION" class="headerlink" title="UNION"></a>UNION</h5><ul>
+<li>会去掉两个表中重复的值</li>
+</ul>
+<pre class=" language-mysql"><code class="language-mysql">SELECT 字段名称,... FROM tbl_name1
+UNION
+SELECT 字段名称,... FROM tbl_name2
+UNION
+...</code></pre>
+<h5 id="UNION-ALL"><a href="#UNION-ALL" class="headerlink" title="UNION ALL"></a>UNION ALL</h5><ul>
+<li>进行简单的合并，并不会去掉重复值</li>
+</ul>
+<pre class=" language-mysql"><code class="language-mysql">SELECT 字段名称,... FROM tbl_name1
+UNION ALL
+SELECT 字段名称,... FROM tbl_name2
+UNION ALL
+...</code></pre>
+<h4 id="自身连接查询"><a href="#自身连接查询" class="headerlink" title="自身连接查询"></a>自身连接查询</h4><ul>
+<li>无限级分类的实现形式，有点类似于链表，可以以链的形式寻找父分类。</li>
+</ul>
+<pre class=" language-mysql"><code class="language-mysql">SELECT s.id,s.cateName AS sCateName,p.cateName AS pCateName
+FROM cate AS s
+LEFT JOIN cate AS p
+ON s.pId=p.id;</code></pre>
+<h2 id="MySQL常用函数"><a href="#MySQL常用函数" class="headerlink" title="MySQL常用函数"></a>MySQL常用函数</h2><h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><p><img src="/2020/10/21/mysql-shu-ju-ku/%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0.png" alt="数学函数简介"></p>
+<h3 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h3><pre class=" language-mysql"><code class="language-mysql">-- CHAR_LENGTH():得到字符串的字符数
+SELECT CHAR_LENGTH('ABC');
+
+-- LENGTH():返回字符串的长度，与上面的函数的区别在于对中文的识别
+SELECT LENGTH('ABC')
+
+-- CONCAT(s1,s2,...):将字符串合并为一个字符串
+SELECT CONCAT('A','B','C');
+
+-- CONCAT_WS(x,s1,s2,s3,...):以指定分隔符拼接字符串
+SELECT CONCAT_WS('-','A','B','C');
+
+-- 将字符串转换为大写或者小写 UPPER()|UCASE() LOWER()|LCASE()
+select upper('hello king'),ucase('hello imooc'),lower('HELLO ADMIN'),LCASE('HELLO EVERYBODY');
+
+-- 字符串的翻转REVERSE()
+SELECT REVERSE('ABC');
+
+-- LEFT()|RIGHT():返回字符串的前几个字符或者后几个字符
+SELECT LEFT('HELLO',2),RIGHT('HELLO',2);
+
+--LPAD()|RPAD():用字符串填充到指定长度
+SELECT LPAD('abc',10,'?');
+
+-- 去掉字符串两端的空格TRIM()|LTRIM()|RTRIM()
+SELECT TRIM(' ABC '),LTRIM(' ABC '),RTRIM(' ABC ');
+
+-- REPEAT(S,n):重复指定的字符串
+SELECT REPEAT('HELLO',3);
+
+-- REPLACE(s1,s2,s3):字符串的替换，在s1中找到s2用s3来替换
+SELECT REPLACE('HELLO KING','KING','QUEEN');
+
+-- SUBSTRING(s1,n1,n2):字符串的截取，把s1字符串从n1处开始截取n2位
+SELECT SUBSTRING('abcdef',1,3);
+
+-- STRCMP(s1,s2):比较字符串的ASCII码值
+SELECT STRCMP('A','C');</code></pre>
+<h3 id="日期时间函数"><a href="#日期时间函数" class="headerlink" title="日期时间函数"></a>日期时间函数</h3><pre class=" language-mysql"><code class="language-mysql">-- 返回当前时间
+SELECT CURTIME(),CURRENT_TIME();
+
+-- 返回当前的日期时间
+SELECT NOW(),CURRENT_TIMESTAMP(),SYSDATE();
+
+-- 返回日期中的月份和月份的名称
+SELECT MONTH('2017-02-19');
+SELECT MONTH(CURDATE()),MONTHNAME(CURDATE());
+
+-- 返回星期
+SELECT DAYNAME(NOW());
+
+-- 返回一周内的第几天
+SELECT DAYOFWEEK(NOW());
+
+-- 返回一年中的信息
+SELECT WEEK(NOW());
+SELECT YEAR(NOW());
+SELECT DAY(NOW());
+SELECT HOUR(NOW());
+SELECT MINUTE(NOW());
+SELECT SECOND(NOW());
+
+-- 计算两个日期之间相差的天数
+SELECT DATEDIFF('2017-03-01','2017-09-30');</code></pre>
+<p><img src="/2020/10/21/mysql-shu-ju-ku/%E6%98%9F%E6%9C%9F%E5%9B%BE.png" alt="星期与一周内的第几天的对应关系图"></p>
+<h3 id="其他常用函数"><a href="#其他常用函数" class="headerlink" title="其他常用函数"></a>其他常用函数</h3><pre class=" language-mysql"><code class="language-mysql">-- 得到版本信息、连接数以及数据库名
+SELECT VERSION(),CONNECTION_ID(),DATABASE();
+
+-- 得到当前登录的用户
+SELECT USER(),CURRENT_USER(),SYSTEM_USER(),SESSION_USER();
+
+-- 返回上一步产生的自增长ID
+SELECT LAST_INSERT_ID();
+
+-- 使用加密算法，返回加密字符串
+SELECT MD5('KING');
+SELECT PASSWORD('king'); #默认加密算法</code></pre>
 
             </div>
             <hr/>
@@ -600,7 +999,7 @@ SHOW COLUMNS FROM tbl_name;</code></pre>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://zbw0520.github.io/2020/10/22/mysql-shu-ju-ku/">http://zbw0520.github.io/2020/10/22/mysql-shu-ju-ku/</a>
+                    <a href="http://zbw0520.github.io/2020/10/21/mysql-shu-ju-ku/">http://zbw0520.github.io/2020/10/21/mysql-shu-ju-ku/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -692,7 +1091,7 @@ SHOW COLUMNS FROM tbl_name;</code></pre>
         repo: 'gitalk',
         owner: 'zbw0520',
         admin: ["zbw0520"],
-        id: '2020-10-22T19-23-30',
+        id: '2020-10-21T19-23-30',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -716,18 +1115,17 @@ SHOW COLUMNS FROM tbl_name;</code></pre>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/10/22/mysql-shu-ju-ku/">
+                <a href="/2020/10/22/deep-in-memory-architectures-sram/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="MySQL数据库特点的总结">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Deep In-memory Architectures in SRAM">
                         
-                        <span class="card-title">MySQL数据库特点的总结</span>
+                        <span class="card-title">Deep In-memory Architectures in SRAM</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -737,35 +1135,46 @@ SHOW COLUMNS FROM tbl_name;</code></pre>
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-22
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-22
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
+                            <a href="/categories/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1/" class="post-category">
+                                    集成电路设计
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
-                        <span class="chip bg-color">知识总结</span>
+                    <a href="/tags/%E8%AE%BA%E6%96%87%E7%BF%BB%E8%AF%91/">
+                        <span class="chip bg-color">论文翻译</span>
                     </a>
                     
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/In-memory/">
+                        <span class="chip bg-color">In-memory</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
-                        <span class="chip bg-color">数据库</span>
+                    <a href="/tags/%E5%AD%98%E5%82%A8%E5%99%A8/">
+                        <span class="chip bg-color">存储器</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BC%93%E5%AD%98/">
+                        <span class="chip bg-color">缓存</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9E%B6%E6%9E%84/">
+                        <span class="chip bg-color">架构</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%98%E7%AE%97%E4%B8%80%E4%BD%93%E5%8C%96/">
+                        <span class="chip bg-color">存算一体化</span>
                     </a>
                     
                 </div>
@@ -813,12 +1222,12 @@ SHOW COLUMNS FROM tbl_name;</code></pre>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
                     <a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
                         <span class="chip bg-color">知识总结</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                     <a href="/tags/%E8%BE%93%E5%85%A5%E6%B5%81/">
@@ -1074,7 +1483,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">42.9k</span>&nbsp;字
+                class="white-color">48.8k</span>&nbsp;字
             
             
             
