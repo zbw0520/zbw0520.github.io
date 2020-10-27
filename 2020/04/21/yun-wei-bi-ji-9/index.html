@@ -248,7 +248,7 @@
         let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
-                alert('密码错误，将返回主页！');
+                alert('呀，不好意思，密码错了哦！');
                 location.href = '/';
             }
         }
@@ -1010,6 +1010,11 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
                     class="white-color"></span>&nbsp;次
             </span>
             
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
             
             <br>
             
