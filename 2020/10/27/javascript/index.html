@@ -422,7 +422,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    564
+                    597
                 </div>
                 
 
@@ -520,6 +520,94 @@ var fun1=function(x){
 <li>运算符的优先级</li>
 </ul>
 <p><img src="/2020/10/27/javascript/3.png" alt="运算符的优先级"></p>
+<h2 id="程序控制语句"><a href="#程序控制语句" class="headerlink" title="程序控制语句"></a>程序控制语句</h2><ul>
+<li>条件判断类的控制语句</li>
+</ul>
+<pre class=" language-JS"><code class="language-JS">var n=10;
+var str;
+if(n > 10){
+  str = "n>10";
+}else if(n < 10){
+  str = "n<10";
+}else{
+  str = "n=10";
+}
+console.log(str);</code></pre>
+<ul>
+<li><code>switch</code>语句</li>
+</ul>
+<pre class=" language-JS"><code class="language-JS">var myscore = 95;
+var str;
+var n = myscore/10;
+switch(myscore){
+  case 10:
+    str = "满分";
+    break;
+  case 9:
+    str = "优秀";
+    break;
+  case 8:
+  case 7:
+    str = "良好";
+    break;
+  case 6:
+    str = "及格";
+    break;
+  default:
+    str = "不及格";
+    break;
+}</code></pre>
+<h2 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h2><p><img src="/2020/10/27/javascript/4.png" alt="内置函数示意图"></p>
+<pre class=" language-JS"><code class="language-JS">str.substr(0,3);  //起始位置，长度
+str.substring(0,3); //起始位置，结束位置
+str.length;
+str.indexOf(1);</code></pre>
+<h3 id="字符函数"><a href="#字符函数" class="headerlink" title="字符函数"></a>字符函数</h3><h4 id="分割操作"><a href="#分割操作" class="headerlink" title="分割操作"></a>分割操作</h4><pre class=" language-JS"><code class="language-JS">var str="aa,ttt,121,gg,kk,aa,bb";
+var arr=str.split(","); //把数组以逗号为分界线进行分割，分割后装入数组中
+console.log(arr[0]);  //打印数组，输出为aa,ttt,121,gg,kk,aa,bb</code></pre>
+<h4 id="连接操作"><a href="#连接操作" class="headerlink" title="连接操作"></a>连接操作</h4><pre class=" language-JS"><code class="language-JS">str.concat("55","77","00");</code></pre>
+<h4 id="替换操作"><a href="#替换操作" class="headerlink" title="替换操作"></a>替换操作</h4><pre class=" language-JS"><code class="language-JS">str.replace("aa","bb"); //将第一个参数代表的内容替换为第二参数代表的内容</code></pre>
+<h3 id="日期函数"><a href="#日期函数" class="headerlink" title="日期函数"></a>日期函数</h3><pre class=" language-JS"><code class="language-JS">var d1=new Date();
+var d2=new Date("1999-5-20 16:54:21");
+console.log(d2.getDate());
+console.log(d1.getDate());
+console.log(d2.getMonth()); //月份是从零开始的，0-11，这是从java1.0中继承过来的。
+var n=d2.getTime()-d1.getTime();  //返回两个日期之间相差的毫秒数
+console.log(parseInt(n/(24*3600*1000)));  //输出天数
+//2020-01-01 15:58 日期格式化
+function fun_Fmtdate() {
+    var d1 = new Date();
+    var y, m, d, h, mi, s;
+    var time;
+    y = d1.getFullYear();
+    m = d1.getMonth();
+    d = d1.getDate();
+    h = d1.getHours();
+    mi = d1.getMinutes();
+    s = d1.getSeconds();
+    time = y + "-" + m + "-" + d + " " + h + ":" + mi + ":" + s;
+    return time;
+}
+</code></pre>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="数组的创建"><a href="#数组的创建" class="headerlink" title="数组的创建"></a>数组的创建</h3><pre class=" language-JS"><code class="language-JS">// 声明或创建一个不指定长度的数组，又称实例化创建
+var arrayObj = new Array();
+// 声明或创建一个数组并指定长度
+var arrayObj = new Array(5);
+// 声明或创建一个带有默认值的数组
+var arrayObj = new Array(2, 4, "a");
+// 创建一个数组并赋值的简写，又称隐式创建数据
+var arrayObj = [2, 4, "a"];</code></pre>
+<h3 id="数组的遍历"><a href="#数组的遍历" class="headerlink" title="数组的遍历"></a>数组的遍历</h3><pre class=" language-JS"><code class="language-JS">console.log(array[0]);
+// for循环遍历1，这种方式比较方便便捷。
+for(var i in arrayObj){
+  console.log(i);
+}
+// for循环遍历2
+var i = 0;
+var n = arrayObj.length;
+for(i;i<n;i++){
+  console.log(arrayObj[i]);
+}</code></pre>
 
             </div>
             <hr/>
