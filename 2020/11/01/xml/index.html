@@ -1,0 +1,1287 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="XML特点及其总结, 古惑仔的CAMP">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>XML特点及其总结 | 古惑仔的CAMP</title>
+    <link rel="icon" type="image/jpeg" href="/profile.jpg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/profile.jpg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">古惑仔的CAMP</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/profile.jpg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">古惑仔的CAMP</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('呀，不好意思，密码错了哦！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">XML特点及其总结</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Web%E5%BC%80%E5%8F%91/">
+                                <span class="chip bg-color">Web开发</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
+                                <span class="chip bg-color">知识总结</span>
+                            </a>
+                        
+                            <a href="/tags/XML/">
+                                <span class="chip bg-color">XML</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Web%E5%BC%80%E5%8F%91/" class="post-category">
+                                Web开发
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-11-01
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    1.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    5 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="XML介绍与用途"><a href="#XML介绍与用途" class="headerlink" title="XML介绍与用途"></a>XML介绍与用途</h2><h3 id="什么是XML"><a href="#什么是XML" class="headerlink" title="什么是XML"></a>什么是XML</h3><ul>
+<li>XML的全称是E<code>X</code>tensible <code>M</code>arkup <code>L</code>anguage，可扩展标记语言。</li>
+<li>编写XML就是编写标签，与HTML非常类似，扩展名<code>.xml</code>。</li>
+<li>良好的人机可读性。</li>
+</ul>
+<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>employee</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>张三<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>age</span><span class="token punctuation">></span></span>31<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>age</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>height</span><span class="token punctuation">></span></span>178<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>height</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>employee</span><span class="token punctuation">></span></span></code></pre>
+<h3 id="XML与HTML的比较"><a href="#XML与HTML的比较" class="headerlink" title="XML与HTML的比较"></a>XML与HTML的比较</h3><ul>
+<li>XML与HTML非常相似，都是编写标签。</li>
+<li>XML没有预定义标签，HTML存在大量预定义标签。</li>
+<li>XML重在保存和传输数据，HTML用于显示信息。</li>
+</ul>
+<p><img src="/2020/11/01/xml/1.png" alt="XML与HTML的比较示意图"></p>
+<h3 id="XML用途"><a href="#XML用途" class="headerlink" title="XML用途"></a>XML用途</h3><ul>
+<li>Java程序的配置描述文件。</li>
+</ul>
+<p><img src="/2020/11/01/xml/2.png" alt="Web配置文件示例"></p>
+<ul>
+<li>用于保存程序产生的数据</li>
+</ul>
+<p><img src="/2020/11/01/xml/3.png" alt="数据包裹示意图"></p>
+<ul>
+<li>网络间的数据传输</li>
+</ul>
+<p><img src="/2020/11/01/xml/4.png" alt="网络数据包裹示意图"></p>
+<h3 id="XML的文档结构"><a href="#XML的文档结构" class="headerlink" title="XML的文档结构"></a>XML的文档结构</h3><ul>
+<li>第一行必须是XML声明；</li>
+<li>有且仅有一个根节点；</li>
+<li>XML标签的书写规则与HTML相同。</li>
+</ul>
+<h3 id="XML声明"><a href="#XML声明" class="headerlink" title="XML声明"></a>XML声明</h3><ul>
+<li>XML声明说明了XML文档的基本信息，包括版本号与字符集，写在XML第一行。</li>
+</ul>
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token comment" spellcheck="true">&lt;!-- 版本号常见为1.0/1.1 --></span>
+<span class="token comment" spellcheck="true">&lt;!-- UTF-8字符集，用于支持中文 --></span></code></pre>
+<h3 id="XML语法检查方法"><a href="#XML语法检查方法" class="headerlink" title="XML语法检查方法"></a>XML语法检查方法</h3><ul>
+<li>使用浏览器可以直接检查XML文件，直接把XML文件拖入浏览器就可以了。</li>
+</ul>
+<h2 id="XML的语法规则"><a href="#XML的语法规则" class="headerlink" title="XML的语法规则"></a>XML的语法规则</h2><h3 id="合法的标签名"><a href="#合法的标签名" class="headerlink" title="合法的标签名"></a>合法的标签名</h3><ul>
+<li>标签名要有意义；</li>
+<li>建议标签名使用英文小写字母，单词直接使用”-“进行分割；</li>
+<li>建议多级标签之间不要存在重名的情况。</li>
+</ul>
+<h3 id="适当的注释与缩进"><a href="#适当的注释与缩进" class="headerlink" title="适当的注释与缩进"></a>适当的注释与缩进</h3><ul>
+<li>适当的注释与缩进可以让XML文档更容易阅读</li>
+</ul>
+<h3 id="合理使用属性"><a href="#合理使用属性" class="headerlink" title="合理使用属性"></a>合理使用属性</h3><ul>
+<li>标签属性用于描述标签不可或缺的信息；</li>
+<li>对标签分组或者为标签设置Id时常用属性表示；</li>
+<li>唯一的身份信息一般作为属性表示。</li>
+</ul>
+<p><img src="/2020/11/01/xml/5.png" alt="合理的属性使用示例"></p>
+<h3 id="处理特殊字符"><a href="#处理特殊字符" class="headerlink" title="处理特殊字符"></a>处理特殊字符</h3><ul>
+<li><p>标签体中，出现<code>&lt;``&gt;</code>等字符，会破坏文档结构，使文件没有办法被正确解析。</p>
+</li>
+<li><p>解决方案1：使用实体引用；</p>
+</li>
+<li><p>解决方案2：使用CDATA标签。</p>
+<ul>
+<li>CDATA指的是不应由XML解析器解析的文本数据</li>
+<li>从<code>&lt;![CDATA[</code>开始，到<code>]]&gt;</code>结束</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2020/11/01/xml/6.png" alt="XML支持的实体引用示意图"></p>
+<h3 id="有序的子元素"><a href="#有序的子元素" class="headerlink" title="有序的子元素"></a>有序的子元素</h3><ul>
+<li>在XML多层嵌套的子元素中，标签前后顺序应该保持一致，这是约定俗成的表达方法，虽然不这样写不会出现错误，但不利于阅读。</li>
+</ul>
+<h2 id="XML语义约束"><a href="#XML语义约束" class="headerlink" title="XML语义约束"></a>XML语义约束</h2><ul>
+<li>XML文档结构正确，但可能不是有效的。</li>
+<li>XML语义约束就是用于规定XML文档中允许出现哪些元素</li>
+<li>XML语义约束有两种定义方式：DTD和XML Schema</li>
+</ul>
+<h3 id="Document-Type-Definition"><a href="#Document-Type-Definition" class="headerlink" title="Document Type Definition"></a>Document Type Definition</h3><ul>
+<li>DTD(Document Type Definition，文档类型定义)是一种简单易用的语义约束方式；</li>
+<li>DTD文件的扩展名为.dtd。</li>
+</ul>
+<pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!-- 定义了hr节点下只允许出现1个employee子节点 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!ELEMENT</span> <span class="token attr-name">hr(employee)</span><span class="token punctuation">></span></span>
+
+<span class="token comment" spellcheck="true">&lt;!-- employee节点下必须包含以下四个节点，且按顺序出现 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!ELEMENT</span> <span class="token attr-name">employee(name,age,salary,department)</span><span class="token punctuation">></span></span>
+
+<span class="token comment" spellcheck="true">&lt;!-- 设置节点属性值 节点名称 属性名称 值的类型 默认值 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!ATTLIST</span> <span class="token attr-name">employee</span> <span class="token attr-name">no</span> <span class="token attr-name">CDATA</span> <span class="token attr-name">""</span><span class="token punctuation">></span></span>
+
+<span class="token comment" spellcheck="true">&lt;!-- 定义name标签体只能是文本，#PCDATA代表文本元素 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!ELEMENT</span> <span class="token attr-name">name(#PCDATA)</span><span class="token punctuation">></span></span></code></pre>
+<h4 id="DTD定义结点及节点数量"><a href="#DTD定义结点及节点数量" class="headerlink" title="DTD定义结点及节点数量"></a>DTD定义结点及节点数量</h4><ul>
+<li>利用DTD中的<code>&lt;!ELEMENT&gt;</code>标签，我们可以定义XML文档中允许出现的节点及数量。</li>
+<li>如果某个子节点需要多次重复出现，则需要在子节点后增加相应的描述符。</li>
+</ul>
+<pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!-- hr节点下最少出现1个employee子节点 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!ELEMENT</span> <span class="token attr-name">hr(employee+)</span><span class="token punctuation">></span></span>
+<span class="token comment" spellcheck="true">&lt;!-- hr节点下出现0~n个employee子节点 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!ELEMENT</span> <span class="token attr-name">hr(employee*)</span><span class="token punctuation">></span></span>
+<span class="token comment" spellcheck="true">&lt;!-- hr节点下最多出现1个employee子节点 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!ELEMENT</span> <span class="token attr-name">hr(employee?)</span><span class="token punctuation">></span></span></code></pre>
+<h4 id="XML引用DTD文件"><a href="#XML引用DTD文件" class="headerlink" title="XML引用DTD文件"></a>XML引用DTD文件</h4><ul>
+<li>在XML中使用<code>&lt;!DOCTYPE&gt;</code>标签来引用DTD文件</li>
+</ul>
+<pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!-- 书写格式 --></span>
+<span class="token doctype">&lt;!DOCTYPE 根节点 SYSTEM "dtd文件路径"></span>
+<span class="token comment" spellcheck="true">&lt;!-- 示例： --></span>
+<span class="token doctype">&lt;!DOCTYPE hr SYSTEM "hr.dtd"></span></code></pre>
+<h3 id="XML-Schema"><a href="#XML-Schema" class="headerlink" title="XML Schema"></a>XML Schema</h3><ul>
+<li>XML Schema比DTD更复杂，提供了更多的功能；</li>
+<li>XML Schema提供了数据类型、格式限定、数据范围等特性；</li>
+<li>XML Schema是W3C标准。</li>
+</ul>
+<pre class=" language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>schema</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>element</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>hr<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token comment" spellcheck="true">&lt;!--complexType标签含义是复杂节点，包含子节点时必须使用这个标签--></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>complexType</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sequence</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>element</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>employee<span class="token punctuation">"</span></span> <span class="token attr-name">minOccurs</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">maxOccurs</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>unbounded<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>complexType</span><span class="token punctuation">></span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sequence</span><span class="token punctuation">></span></span>
+                            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>element</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>string<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+                            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>element</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>age<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>integer<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+                            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>element</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>salary<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>integer<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+                            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>element</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>department<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+                                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>complexType</span><span class="token punctuation">></span></span>
+                                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>sequence</span><span class="token punctuation">></span></span>
+                                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>element</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dname<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>string<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+                                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>element</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>address<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>string<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+                                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sequence</span><span class="token punctuation">></span></span>
+                                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>complexType</span><span class="token punctuation">></span></span>
+                            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>element</span><span class="token punctuation">></span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sequence</span><span class="token punctuation">></span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>attribute</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>no<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>string<span class="token punctuation">"</span></span> <span class="token attr-name">use</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>required<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>complexType</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>element</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sequence</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>complexType</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>element</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>schema</span><span class="token punctuation">></span></span></code></pre>
+<h2 id="Java解析XML"><a href="#Java解析XML" class="headerlink" title="Java解析XML"></a>Java解析XML</h2><ul>
+<li>DOM(Document Object Model)定义了访问和操作XML文档的标准方法，DOM把XML文档作为树结构来查看，能够通过DOM树来读写所有元素。</li>
+</ul>
+<h3 id="Dom4j"><a href="#Dom4j" class="headerlink" title="Dom4j"></a>Dom4j</h3><ul>
+<li>Dom4j是一个易用的、开源的库，用于解析XML。它应用于Java平台，具有性能优异、功能强大和极其易使用的特点。</li>
+<li>Dom4j将XML视为<code>Document</code>对象。</li>
+<li>XML标签被Dom4j视为<code>Element</code>对象</li>
+</ul>
+<h2 id="XPath路径表达式"><a href="#XPath路径表达式" class="headerlink" title="XPath路径表达式"></a>XPath路径表达式</h2><ul>
+<li>XPath路径表达式是XML文档中查询数据的语言；</li>
+<li>掌握XPath可以极大得提高在提取数据时的开发效率；</li>
+<li>学习XPath本质就是掌握各种形式表达式的使用技巧。</li>
+</ul>
+<h3 id="Jaxen介绍"><a href="#Jaxen介绍" class="headerlink" title="Jaxen介绍"></a>Jaxen介绍</h3><ul>
+<li>Jaxen是一个Java编写的开源的XPath库。这是适应多种不同那个的对象模型，包括DOM，XOM，dom4j和JDOM。</li>
+<li>Dom4j底层以来Jaxen实现XPath查询</li>
+<li>Jaxen下载地址：jaxen.codehaus.org</li>
+</ul>
+<p><img src="/2020/11/01/xml/7.png" alt="XPath基本表达式示意图"></p>
+<p><img src="/2020/11/01/xml/8.png" alt="XPath基本表达式案例示意图"></p>
+<p><img src="/2020/11/01/xml/9.png" alt="XPath谓语表达式示意图"></p>
+<ul>
+<li>xpath实例代码</li>
+</ul>
+<pre class=" language-java"><code class="language-java">xpt<span class="token punctuation">.</span><span class="token function">xpath</span><span class="token punctuation">(</span><span class="token string">"/hr/employee"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//显示根节点下的所有员工</span>
+xpt<span class="token punctuation">.</span><span class="token function">xpath</span><span class="token punctuation">(</span><span class="token string">"//employee"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token operator">/</span><span class="token operator">/</span>显示所有员工
+xpt<span class="token punctuation">.</span><span class="token function">xpath</span><span class="token punctuation">(</span><span class="token string">"//employee[salary&lt;4000]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">/</span><span class="token operator">/</span>显示工资小于<span class="token number">4000</span>的员工
+xpt<span class="token punctuation">.</span><span class="token function">xpath</span><span class="token punctuation">(</span><span class="token string">"//employee[name='李铁柱']"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token operator">/</span><span class="token operator">/</span>显示姓名为李铁柱的员工
+xpt<span class="token punctuation">.</span><span class="token function">xpath</span><span class="token punctuation">(</span><span class="token string">"//employee[@no=3310]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token operator">/</span><span class="token operator">/</span>显示工号为<span class="token number">3310</span>的员工
+xpt<span class="token punctuation">.</span><span class="token function">xpath</span><span class="token punctuation">(</span><span class="token string">"//employee[1]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token operator">/</span><span class="token operator">/</span>显示第一名员工
+xpt<span class="token punctuation">.</span><span class="token function">xpath</span><span class="token punctuation">(</span><span class="token string">"//employee[last()]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token operator">/</span><span class="token operator">/</span>显示最后的一名员工
+xpt<span class="token punctuation">.</span><span class="token function">xpath</span><span class="token punctuation">(</span><span class="token string">"//employee[position()&lt;6]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token operator">/</span><span class="token operator">/</span>显示前六名员工
+xpt<span class="token punctuation">.</span><span class="token function">xpath</span><span class="token punctuation">(</span><span class="token string">"//employee[3] | //employee[8]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">/</span><span class="token operator">/</span>同时显示第<span class="token number">3</span>名和第<span class="token number">8</span>名员工</code></pre>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">南航古惑仔</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://zbw0520.github.io/2020/11/01/xml/">http://zbw0520.github.io/2020/11/01/xml/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">南航古惑仔</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Web%E5%BC%80%E5%8F%91/">
+                                    <span class="chip bg-color">Web开发</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
+                                    <span class="chip bg-color">知识总结</span>
+                                </a>
+                            
+                                <a href="/tags/XML/">
+                                    <span class="chip bg-color">XML</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '557459e94f8028e44090',
+        clientSecret: '7e65ed52757a822f485fe8d2f5ccacd8d9ecf933',
+        repo: 'gitalk',
+        owner: 'zbw0520',
+        admin: ["zbw0520"],
+        id: '2020-11-01T16-36-16',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/11/02/servelet/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Servelet特点及其总结">
+                        
+                        <span class="card-title">Servelet特点及其总结</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-02
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Web%E5%BC%80%E5%8F%91/" class="post-category">
+                                    Web开发
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Web%E5%BC%80%E5%8F%91/">
+                        <span class="chip bg-color">Web开发</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
+                        <span class="chip bg-color">知识总结</span>
+                    </a>
+                    
+                    <a href="/tags/Servelet/">
+                        <span class="chip bg-color">Servelet</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/10/27/javascript/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="JavaScript特点的总结">
+                        
+                        <span class="card-title">JavaScript特点的总结</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-10-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Web%E5%BC%80%E5%8F%91/" class="post-category">
+                                    Web开发
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Web%E5%BC%80%E5%8F%91/">
+                        <span class="chip bg-color">Web开发</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
+                        <span class="chip bg-color">知识总结</span>
+                    </a>
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 古惑仔的CAMP<br />'
+            + '文章作者: 南航古惑仔<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="song"
+                   id="1375804780"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2020</span>
+            <a href="/about" target="_blank">南航古惑仔</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">56.5k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "4";
+                    var startDate = "09";
+                    var startHour = "15";
+                    var startMinute = "15";
+                    var startSecond = "15";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/zbw0520" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:zhbw0520@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1620419196" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1620419196" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
