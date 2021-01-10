@@ -4,11 +4,73 @@
   
     
     <entry>
-      <title>Servelet特点及其总结</title>
-      <link href="2020/11/02/servelet/"/>
-      <url>2020/11/02/servelet/</url>
+      <title>LDO低压稳压线性电源的设计</title>
+      <link href="2021/01/19/ldo/"/>
+      <url>2021/01/19/ldo/</url>
       
-        <content type="html"><![CDATA[<h2 id="软件结构发展史"><a href="#软件结构发展史" class="headerlink" title="软件结构发展史"></a>软件结构发展史</h2><ol><li>单机时代-桌面应用，数据保存在本地;</li><li>联机时代(Client-Server模式，C/S结构);</li><li>互联网时代(Browser-Server模式，B/S结构)。</li></ol><h2 id="B-S模式执行流程"><a href="#B-S模式执行流程" class="headerlink" title="B/S模式执行流程"></a>B/S模式执行流程</h2><ul><li>通过用户输入的网址，利用DNS服务器，查询到IP地址，将请求发送给web服务器，获取程序。</li></ul><h2 id="请求与响应"><a href="#请求与响应" class="headerlink" title="请求与响应"></a>请求与响应</h2><ul><li>从浏览器发出送给服务器的数据包称为”请求(Request)”;</li><li>从服务器返回给浏览器的结果称为”响应(Response)”;</li></ul><h2 id="J2EE"><a href="#J2EE" class="headerlink" title="J2EE"></a>J2EE</h2><ul><li>J2EE(Java 2 platform Enterprise Edition)是指”Java 2企业版”;</li><li>开发BS(Web)应用程序就是J2EE最核心的功能</li><li>J2EE由13个功能模块组成</li></ul><p><img src="/2020/11/02/servelet/1.png" alt="J2EE功能模块示意图"></p><h2 id="Apache-Tomcat"><a href="#Apache-Tomcat" class="headerlink" title="Apache Tomcat"></a>Apache Tomcat</h2><ul><li>Tomcat是Apache软件基金会旗下一款免费的开源的Web应用服务器程序。</li></ul><p>![Apache Tomcat(2.png)</p><h2 id="J2EE与Tomcat的关系"><a href="#J2EE与Tomcat的关系" class="headerlink" title="J2EE与Tomcat的关系"></a>J2EE与Tomcat的关系</h2><ul><li>J2EE是一组技术规范和指南，具体实现由软件厂商决定；</li><li>Tomcat本质上是J2EE Web(Servlet与JSP)的规范的一种实现；</li><li>J2SE是J2EE运行的基石，运行Tomcat离不开J2SE(JRE&amp;JDK)。</li></ul><h2 id="Servelet"><a href="#Servelet" class="headerlink" title="Servelet"></a>Servelet</h2><ul><li>Servelet(Server Applet)服务器小程序，主要功能用于生成动态Web内容。</li></ul><p><img src="/2020/11/02/servelet/3.png" alt="Tomcat与Servelet的关系"></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="LDO的基本结构与性能指标"><a href="#LDO的基本结构与性能指标" class="headerlink" title="LDO的基本结构与性能指标"></a>LDO的基本结构与性能指标</h2><p><img src="/2021/01/19/ldo/1.png" alt="LDO的基本结构示意图"></p><h3 id="内部组成部分"><a href="#内部组成部分" class="headerlink" title="内部组成部分"></a>内部组成部分</h3><ul><li>误差放大器，Error Amplifier</li><li>调整管，文章中又称传输管</li><li>电阻分压网络</li></ul><p>上述几个部分组成了一个负反馈，使得输出节点可以严格跟随$V_{ref}$进行变化。这个$V_{ref}$由带隙基准源组成，这个基准源可以生成一个与$PVT$弱相关的一个电流，使得电流流过一个电阻，便可以生成一个电压。$C_{out}$的作用是把高频噪声短路到地上，而$r_{esr}$的的作用是等效$C_{out}$的等效串联电阻，这个值需要调节以保证LDO环路的稳定性。</p><h2 id="LDO的性能指标"><a href="#LDO的性能指标" class="headerlink" title="LDO的性能指标"></a>LDO的性能指标</h2><ul><li>直流特性</li><li>交流特性</li><li>瞬态特性</li><li>效率</li></ul><h3 id="直流特性"><a href="#直流特性" class="headerlink" title="直流特性"></a>直流特性</h3><ul><li>线性调整率，linear regulation</li><li>负载调整率，load regulation</li><li>温度系数，temperature coefficient</li><li>漏失电压</li></ul><h4 id="线性调整率"><a href="#线性调整率" class="headerlink" title="线性调整率"></a>线性调整率</h4><ul><li><strong>作用</strong>：给定LDO对应于不同静态输入电压以及负载电流条件下的稳压输出能力，表征了LDO的性能。</li><li><strong>定义</strong>：LDO静态输出电压变化随静态输入电压变化之比，具体表示为如下:</li></ul><p>$$<br>\frac{\Delta V_{out}}{\Delta V_{in}}=\frac{1}{A_{err}F}+\frac{1}{F}\frac{\Delta V_{ref}}{\Delta V_{in}}<br>$$</p><ul><li>其中，$A_{err}$为误差放大器的增益，$F$为电阻反馈系数，$\frac{\Delta V_{out}}{\Delta V_{in}}$为电压基准源随静态输入电压的变化率。</li><li><strong>结论</strong>：线性调整率主要取决于误差放大器的直流增益，放大器直流增益$A_{err}$越大，则性能越好。此外，如果基准源相对于输入电压的精度也限制了LDO的性能。</li></ul><h4 id="负载率调整"><a href="#负载率调整" class="headerlink" title="负载率调整"></a>负载率调整</h4><ul><li><strong>作用</strong>：与线性调整率一样，给定了LDO对于不同静态输入电压以及负载电流条件下的稳压输出能力，表征了LDO的性能。</li><li><strong>定义</strong>：负载调整率是指LDO静态输出电压变化随负载电流变化之比，它可以表示为：</li></ul><p>$$<br>\frac{\Delta V_{out}}{\Delta I_{L}}=\frac{r_{op}}{1+AF}<br>$$</p><ul><li>其中，$r_{op}$是指传输管的输出阻抗，$AF$是环路的直流增益<code>Loop Gain</code>。</li><li><strong>结论</strong>：$r_{op}$越小，$AF$越大，则LDO的稳压性能越好。</li><li><u><strong>注意</strong></u>：在这里，负载调整率仅仅代表输出电压随负载电流的<strong>直流</strong>变化，并不能完全表征负载电流瞬时变化时的动态特性。</li></ul><h4 id="温度系数"><a href="#温度系数" class="headerlink" title="温度系数"></a>温度系数</h4><ul><li><strong>作用</strong>：表征LDO输出电压随温度的漂移。</li><li><strong>定义</strong>：该参数主要受到电压基准源以及误差放大器的失调电压的温度漂移的影响，可以表示为：</li></ul><p>$$<br>TC=\frac{1}{V_{out}}\cdot\frac{\frac{\Delta V_{ref,Temp}+\Delta V_{os,Temp}}{F}}{\Delta Temp}<br>$$</p><ul><li>其中，$\Delta V_{ref,Temp}$以及$\Delta V_{os,Temp}$分别表示电压基准源以及误差放大器失调电压在$\Delta Temp$范围内的变化量。</li></ul><h4 id="漏失电压"><a href="#漏失电压" class="headerlink" title="漏失电压"></a>漏失电压</h4><ul><li><strong>作用</strong>：表征漏失电压$V_{dsat,pt}$决定了最大输出电流以及最小输入电压的值。</li><li><strong>定义</strong>：<strong>漏失电压</strong>、<strong>最大输出电流</strong>以及<strong>最小输入电压</strong>这三个量都取决于调整管的参数。在实际设计中，通常会根据最大输出电流以及漏失电压的要求来确定传输管的尺寸，从而使得在最大输出电流的情况下，</li></ul><p>$$<br>V_{DO}=I_{L,max}r_{ON}=V_{dsat,pt}<br>$$</p><ul><li>其中，最大负载电流时传输管的$V_{dsat}$即为漏失电压。</li></ul><h3 id="交流特性"><a href="#交流特性" class="headerlink" title="交流特性"></a>交流特性</h3><ul><li>电源抑制比（PSRR）</li><li>噪声</li></ul><h4 id="电源抑制比"><a href="#电源抑制比" class="headerlink" title="电源抑制比"></a>电源抑制比</h4><ul><li><strong>作用</strong>：表征LDO抑制电源线上的高频噪声的能力。</li><li><strong>定义</strong>：与<u>传输管的寄生电容</u>有关，并且与<u>环路增益</u>成反比。</li><li><strong>提高电源抑制比的方法</strong>：误差放大器在提高LDO的PSRR方面起到很重要的作用。</li></ul><h4 id="噪声"><a href="#噪声" class="headerlink" title="噪声"></a>噪声</h4><ul><li><p><strong>来源</strong>：电压基准源以及误差放大器的噪声。</p></li><li><p><strong>减小噪声的方法</strong>：</p><ul><li>电压基准源产生的噪声<br>可以通过加入RC低通滤波器有效滤除一部分。</li><li>误差放大器产生的噪声<br>可以通过增加静态电流以及加大输入管尺寸等改善。</li></ul></li></ul><h3 id="瞬态特性"><a href="#瞬态特性" class="headerlink" title="瞬态特性"></a>瞬态特性</h3><h4 id="LDO瞬态特性"><a href="#LDO瞬态特性" class="headerlink" title="LDO瞬态特性"></a>LDO瞬态特性</h4><ul><li><strong>作用</strong>：表征其对负载电流以及输入电压的瞬态变化进行稳压的能力。</li><li><strong>定义</strong>：LDO的瞬态特性取决于在大信号下的电路性能，例如，<u>对传输管的栅极寄生电容进行快速充放电的能力</u>以及<u>寄生电容的馈通</u>等。</li></ul><h4 id="负载瞬态变化特性"><a href="#负载瞬态变化特性" class="headerlink" title="负载瞬态变化特性"></a>负载瞬态变化特性</h4><ul><li><strong>作用</strong>：LDO对于快速负载瞬态变化进行稳压的能力。</li><li><strong>定义</strong>：可以用负载电流从0变为最大时，输出端的电压变化幅度。LDO在大负载电流变化下的稳压能力与其闭环单位增益带宽、输出电流变化幅度以及输出电容的大小的因素有关，可以表示为：</li></ul><p>$$<br>\Delta V_{out}=\frac{I_{L,max}\cdot\Delta t}{C_{out}}<br>$$</p><ul><li>其中$\Delta t$表示LDO的响应时间，它与环路的单位增益带宽成反比。</li><li><strong>提高该特性的方法</strong>：提高LDO环路的带宽；提高传输管（调整管）前一级的压摆率（slew rate），即，提高前一级电路对传输管寄生电容的充放电能力。</li></ul><h4 id="纹波抑制比"><a href="#纹波抑制比" class="headerlink" title="纹波抑制比"></a>纹波抑制比</h4><ul><li><strong>作用</strong>：表征LDO对于大幅度输入电压波纹的抑制能力。</li><li><strong>定义</strong>：LDO的输出电压波纹与输入1电压波纹之比。</li><li><strong>补充说明</strong>：在<strong>输入电压比较小</strong>的情况下，这一指标与PSRR（电源抑制比）是近似相等的；当<strong>输入电压变化比较大</strong>的情况下，电路的一些大信号特性会使得纹波抑制比偏离PSRR所预测的值。</li></ul><h3 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h3><ul><li><strong>定义</strong>：主要有三个量决定：静态电流、负载电流以及传输管的漏失电压，它可以表示为：</li></ul><p>$$<br>Eff=\frac{输出功率}{输入功率}=\frac{V_{out}I_{L}}{V_{in}(I_{Q}+I_{L})}<br>$$</p><ul><li><strong>补充说明</strong>：当负载电流远大于静态电流时，即$I_{Q}+I_{L}\approx \frac{V_{out}}{V_{in}}=\frac{V_{in}-V_{DO}}{V_{in}}$</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 模拟集成电路 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LDO </tag>
+            
+            <tag> 模拟集成电路设计 </tag>
+            
+            <tag> Cadence </tag>
+            
+            <tag> 电源技术 </tag>
+            
+            <tag> 线性电源技术 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>RHEL虚拟机开启Cadence操作指南</title>
+      <link href="2021/01/09/rhel-xu-ni-ji-kai-qi-cadence-cao-zuo-zhi-nan/"/>
+      <url>2021/01/09/rhel-xu-ni-ji-kai-qi-cadence-cao-zuo-zhi-nan/</url>
+      
+        <content type="html"><![CDATA[<h2 id="步骤分解"><a href="#步骤分解" class="headerlink" title="步骤分解"></a>步骤分解</h2><ol><li>安装VMware。</li><li>在VMware中打开虚拟机文件。</li><li>开启虚拟机并登陆。</li><li>在控制台中输入命令。</li><li>成功！</li></ol><h2 id="安装VMware"><a href="#安装VMware" class="headerlink" title="安装VMware"></a>安装VMware</h2><ul><li>直接按照网络上的教程以及程序安装包的提示安装即可。</li></ul><h2 id="打开Cadence软件方法"><a href="#打开Cadence软件方法" class="headerlink" title="打开Cadence软件方法"></a>打开Cadence软件方法</h2><ul><li><strong><em>注意</em></strong>：这一步需要虚拟机保存的路径名称（父文件夹）的名字不能为中文，如果是中文，可能会打不开。</li></ul><ol><li>把虚拟机从<code>给大四</code>文件夹中拷贝出来，放置到某个你喜欢的文件夹下，文件夹名称为英文。</li><li>打开VMware，在左上方选择<code>文件</code>，之后选择<code>打开</code>，在弹出的文件寻找框中找到名为<code>Linux6.7-64.vmx</code>的文件。</li><li>等待一会儿，就可以在虚拟机左侧框中找到名为<code>Linux6.7-64</code>的虚拟机，点击打开并运行。</li></ol><p><img src="/2021/01/09/rhel-xu-ni-ji-kai-qi-cadence-cao-zuo-zhi-nan/1.png"></p><ol start="4"><li>等待一会儿，可以看到虚拟机开机界面如上，选择用户<code>cdsmgr</code>，输入密码<code>cadence</code>便可以开机。</li><li>进入桌面之后，可以看到桌面上有若干图标和文件夹，根据你设计工艺的需要选择对应的文件夹。这里只提供了两种工艺库<code>smic18</code>和<code>tsmc40</code>。</li></ol><p><img src="/2021/01/09/rhel-xu-ni-ji-kai-qi-cadence-cao-zuo-zhi-nan/2.png"></p><ol start="6"><li>点开文件夹，这里以<code>smic18</code>为例，点开<code>smic18</code>文件夹之后，我们可以看到里面有若干文件和文件夹，最关键的配置文件是<code>cshrc_2016</code>，这个文件存储了变量信息，我们需要使变量信息生效。右键空白处，点击<code>open in terminal</code>使用如下命令。</li></ol><pre class=" language-bash"><code class="language-bash"><span class="token function">source</span> cshrc_2016</code></pre><p><img src="/2021/01/09/rhel-xu-ni-ji-kai-qi-cadence-cao-zuo-zhi-nan/3.png"></p><ol start="7"><li>最后在使用命令<code>&amp; virtuoso</code>便可以打开cadence软件。打开耗时根据你使用的硬盘种类的不同可能会比较久也可能会很快。</li></ol><ul><li><p><input checked disabled type="checkbox">  成功!</p></li><li><p>成功的界面如下。</p></li></ul><p><img src="/2021/01/09/rhel-xu-ni-ji-kai-qi-cadence-cao-zuo-zhi-nan/4.png"></p><h2 id="TroubleShooting"><a href="#TroubleShooting" class="headerlink" title="TroubleShooting"></a>TroubleShooting</h2><ul><li><p>如果你的虚拟机出现无法找到<code>xxx</code>文件之类的提示，请检查虚拟机的路径是否包含英文，将虚拟机文件放置在英文路径下。</p></li><li><p>如果你使用<code>source cshrc_2016</code>命令提示无法找到文件，请检查terminal的文件路径是否正确。如果仍无法找到文件，请在使用<code>source cshrc_2016</code>之前使用如下命令</p><pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /home/cdsmgr/Desktop/smic18</code></pre></li><li><p>如果你遇到cadence无法打开的情况，请多等待一会儿，或者尝试重启虚拟机，或者检查你是否跟随此教程执行了所有命令。</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 模拟集成电路 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Cadence </tag>
+            
+            <tag> 模拟集成电路 </tag>
+            
+            <tag> 软件安装 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Servlet特点及其总结</title>
+      <link href="2020/11/02/servlet/"/>
+      <url>2020/11/02/servlet/</url>
+      
+        <content type="html"><![CDATA[<h2 id="软件结构发展史"><a href="#软件结构发展史" class="headerlink" title="软件结构发展史"></a>软件结构发展史</h2><ol><li>单机时代-桌面应用，数据保存在本地;</li><li>联机时代(Client-Server模式，C/S结构);</li><li>互联网时代(Browser-Server模式，B/S结构)。</li></ol><h2 id="B-S模式执行流程"><a href="#B-S模式执行流程" class="headerlink" title="B/S模式执行流程"></a>B/S模式执行流程</h2><ul><li>通过用户输入的网址，利用DNS服务器，查询到IP地址，将请求发送给web服务器，获取程序。</li></ul><h2 id="请求与响应"><a href="#请求与响应" class="headerlink" title="请求与响应"></a>请求与响应</h2><ul><li>从浏览器发出送给服务器的数据包称为”请求(Request)”;</li><li>从服务器返回给浏览器的结果称为”响应(Response)”;</li></ul><h2 id="J2EE"><a href="#J2EE" class="headerlink" title="J2EE"></a>J2EE</h2><ul><li>J2EE(Java 2 platform Enterprise Edition)是指”Java 2企业版”;</li><li>开发BS(Web)应用程序就是J2EE最核心的功能</li><li>J2EE由13个功能模块组成</li></ul><p><img src="/2020/11/02/servlet/1.png" alt="J2EE功能模块示意图"></p><h2 id="Apache-Tomcat"><a href="#Apache-Tomcat" class="headerlink" title="Apache Tomcat"></a>Apache Tomcat</h2><ul><li>Tomcat是Apache软件基金会旗下一款免费的开源的Web应用服务器程序。</li></ul><p>![Apache Tomcat(2.png)</p><h2 id="J2EE与Tomcat的关系"><a href="#J2EE与Tomcat的关系" class="headerlink" title="J2EE与Tomcat的关系"></a>J2EE与Tomcat的关系</h2><ul><li>J2EE是一组技术规范和指南，具体实现由软件厂商决定；</li><li>Tomcat本质上是J2EE Web(Servlet与JSP)的规范的一种实现；</li><li>J2SE是J2EE运行的基石，运行Tomcat离不开J2SE(JRE&amp;JDK)。</li></ul><h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><ul><li>Servlet(Server Applet)服务器小程序，主要功能用于生成动态Web内容。</li></ul><p><img src="/2020/11/02/servlet/3.png" alt="Tomcat与Servlet的关系"></p><h2 id="标准Java-Web工程结构"><a href="#标准Java-Web工程结构" class="headerlink" title="标准Java Web工程结构"></a>标准Java Web工程结构</h2><p><img src="/2020/11/02/servlet/4.png" alt="标准Java Web工程结构"></p><h2 id="Servlet开发步骤"><a href="#Servlet开发步骤" class="headerlink" title="Servlet开发步骤"></a>Servlet开发步骤</h2><ol><li>创建Servlet类，继承HttpServlet；</li><li>重写service方法，编写程序代码；</li><li>配置web.xml，绑定URL。</li></ol><h2 id="Servlet的访问方法"><a href="#Servlet的访问方法" class="headerlink" title="Servlet的访问方法"></a>Servlet的访问方法</h2><ul><li><code>http://IP地址:端口/context-path/url-mapping</code></li><li>远程访问使用IP地址，本地访问localhost(127.0.0.1)</li><li>context-path称为“上下文路径”，默认为工程名</li></ul><h2 id="请求参数"><a href="#请求参数" class="headerlink" title="请求参数"></a>请求参数</h2><ul><li>请求参数是指浏览器通过请求向Tomcat提交的数据</li><li>请求参数通常是用户输入的数据，待Servlet进行处理</li><li>参数名1=值1&amp;参数名2=值2&amp;参数名n=值n…</li></ul><h2 id="Servlet接收请求参数"><a href="#Servlet接收请求参数" class="headerlink" title="Servlet接收请求参数"></a>Servlet接收请求参数</h2><pre class=" language-JAVA"><code class="language-JAVA">request.getParameter()  //接收单个参数request.getParameterValues()  //接收多个同名参数</code></pre><h2 id="Get和Post请求方法"><a href="#Get和Post请求方法" class="headerlink" title="Get和Post请求方法"></a>Get和Post请求方法</h2><ul><li><p>Get方法是将数据通过在URL附加数据显性向服务器发送数据</p><ul><li><code>http://localhost:8080/FirstServlet/sample?name=zhangsan</code></li></ul></li><li><p>Post方式会将数据存放在”请求体”中隐性向服务器发送数据</p><ul><li><code>http://localhost:8080/FirstServlet/sample</code></li><li>请求体：<code>name=zhangsan</code></li></ul></li></ul><pre class=" language-HTML"><code class="language-HTML"><!-- 设置方式 --><form action="/FirstServlet/sample" method="post"><!-- 默认不写method情况下使用Get方法 --><form action="/FirstServlet/sample"></code></pre><h2 id="Get与Post处理方式"><a href="#Get与Post处理方式" class="headerlink" title="Get与Post处理方式"></a>Get与Post处理方式</h2><pre class=" language-JAVA"><code class="language-JAVA">//所有请求，起到了对两种不同处理方式的分发作用public void service(){}//Get请求public void doGet(){}//Post请求public void doPost(){}</code></pre><h2 id="Get和Post应用场景"><a href="#Get和Post应用场景" class="headerlink" title="Get和Post应用场景"></a>Get和Post应用场景</h2><ul><li><p>Get常用于不包含敏感信息的查询功能，百度谷歌查询结果</p><ul><li>例如<code>https://www.baidu.com/s?wd=imooc&amp;rsv_spt=1</code></li></ul></li><li><p>Post方式用于安全性要求较高的功能或者服务器的写操作</p><ul><li>用户登录</li><li>用户注册</li><li>更新公司账目</li></ul></li></ul><h2 id="Servlet生命周期"><a href="#Servlet生命周期" class="headerlink" title="Servlet生命周期"></a>Servlet生命周期</h2><ul><li><p>共分为5个阶段</p><ol><li>装载 - <code>web.xml</code></li><li>创建 = 构造函数</li><li>初始化 - init()</li><li>提供服务 - service()</li><li>销毁 - destroy()</li></ol></li></ul><h2 id="使用注解简化配置"><a href="#使用注解简化配置" class="headerlink" title="使用注解简化配置"></a>使用注解简化配置</h2><ul><li>Servlet 3.x字后引入了”注解Annotation”特性</li><li>注解用于简化Web应用程序的配置过程</li><li>Servlet核心注解：<code>@WebServlet</code></li></ul><pre class=" language-JAVA"><code class="language-JAVA">@WebServlet("/anno")public class Annotation extends HttpServlet{  @Override  protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {    resp.getWriter().println("I am annotation servlet!");  }}</code></pre><h2 id="启动自动加载Servlet"><a href="#启动自动加载Servlet" class="headerlink" title="启动自动加载Servlet"></a>启动自动加载Servlet</h2><ul><li>web.xml使用<code>&lt;load-on-startup&gt;</code>设置启动加载；</li><li><code>&lt;load-on-startup&gt;0~9999&lt;/load-on=startup&gt;</code>，执行的时候会按照标签内部的序号从小到大依次执行；</li><li>启动时加载在生产中常用于系统的预处理，将复杂的程序在启动时加载好，在执行过程中不需要进行额外的处理，可以减少使用时候的卡顿；</li><li>需要重写init()函数。</li></ul><pre class=" language-HTML"><code class="language-HTML"><!-- 采用web.xml文件配置启动自动加载 --><servlet>  <servlet-name>create</servlet-name>  <servlet-class>com.imooc.servlet.CreateServlet</servlet-class>  <load-on-startup>0</load-on-startup>  <!-- 0代表最先被加载 --></servlet></code></pre><pre class=" language-JAVA"><code class="language-JAVA">// 采用注解方式实现启动自动加载，注意，一定要设置url才能生效，loadOnStartup的值是加载顺序@WebServlet(urlPatterns="/unused",loadOnStartup=2)public class AnalysisServlet extends HttpServlet{  @Override  public void init() throws ServletException{    System.out.println("正在分析结果");  }}</code></pre><h2 id="HTTP请求的结构"><a href="#HTTP请求的结构" class="headerlink" title="HTTP请求的结构"></a>HTTP请求的结构</h2><ul><li>HTTP请求包含三部分：请求行、请求头、请求体</li></ul>]]></content>
       
       
       <categories>
@@ -22,9 +84,40 @@
             
             <tag> Web开发 </tag>
             
+            <tag> Servlet </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>网络配置与路由详解及其总结</title>
+      <link href="2020/11/02/wang-luo-pei-zhi-yu-lu-you-xiang-jie/"/>
+      <url>2020/11/02/wang-luo-pei-zhi-yu-lu-you-xiang-jie/</url>
+      
+        <content type="html"><![CDATA[<h2 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h2><pre class=" language-BASH"><code class="language-BASH"># 显示是否响应广播设置cat /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts# 设置是否响应广播echo 0 > /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts# 广播pingping -b 255.255.255.255</code></pre><ul><li>广播ping的ttl值可以用来判断系统类型，128为windows，64为linux</li><li>子网掩码不同不一定代表不能通信</li></ul><h2 id="route命令"><a href="#route命令" class="headerlink" title="route命令"></a>route命令</h2><ul><li>路由管理命令</li><li>查看：route -n</li><li>添加：route add</li></ul><pre class=" language-BASH"><code class="language-BASH">route add [-net|-host] target [netmask Nm] [gw Gw] [[dev] If]</code></pre><ul><li>目标：192.168.1.3 网关：172.16.0.1</li></ul><pre class=" language-BASH"><code class="language-BASH">route add -host 193.168.1.3 gw 172.16.0.1 dev eth0</code></pre><ul><li>目标：192.168.0.0 网关 172.16.0.1</li></ul><pre class=" language-BASH"><code class="language-BASH">route add -net 192.168.0.0 netmask 255.255.255.0 gw 172.16.0.1 dev eth0route add -net 192.168.0.0/24 gw 172.16.0.1 dev etho0</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 运维技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
             <tag> 知识总结 </tag>
             
-            <tag> Servelet </tag>
+            <tag> 运维 </tag>
+            
+            <tag> Linux </tag>
+            
+            <tag> CentOS </tag>
+            
+            <tag> 计算机网络 </tag>
             
         </tags>
       

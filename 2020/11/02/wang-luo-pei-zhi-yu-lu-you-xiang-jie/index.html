@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Servelet特点及其总结, 古惑仔的CAMP">
+    <meta name="keywords" content="网络配置与路由详解及其总结, 古惑仔的CAMP">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Servelet特点及其总结 | 古惑仔的CAMP</title>
+    <title>网络配置与路由详解及其总结 | 古惑仔的CAMP</title>
     <link rel="icon" type="image/jpeg" href="/profile.jpg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -258,12 +258,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Servelet特点及其总结</h1>
+                    <h1 class="description center-align post-title">网络配置与路由详解及其总结</h1>
                 </div>
             </div>
         </div>
@@ -380,16 +380,24 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Web%E5%BC%80%E5%8F%91/">
-                                <span class="chip bg-color">Web开发</span>
-                            </a>
-                        
                             <a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
                                 <span class="chip bg-color">知识总结</span>
                             </a>
                         
-                            <a href="/tags/Servelet/">
-                                <span class="chip bg-color">Servelet</span>
+                            <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                                <span class="chip bg-color">运维</span>
+                            </a>
+                        
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="/tags/CentOS/">
+                                <span class="chip bg-color">CentOS</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">计算机网络</span>
                             </a>
                         
                     </div>
@@ -400,8 +408,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Web%E5%BC%80%E5%8F%91/" class="post-category">
-                                Web开发
+                            <a href="/categories/%E8%BF%90%E7%BB%B4%E6%8A%80%E6%9C%AF/" class="post-category">
+                                运维技术
                             </a>
                         
                     </div>
@@ -422,7 +430,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    285
+                    176
                 </div>
                 
 
@@ -444,37 +452,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="软件结构发展史"><a href="#软件结构发展史" class="headerlink" title="软件结构发展史"></a>软件结构发展史</h2><ol>
-<li>单机时代-桌面应用，数据保存在本地;</li>
-<li>联机时代(Client-Server模式，C/S结构);</li>
-<li>互联网时代(Browser-Server模式，B/S结构)。</li>
-</ol>
-<h2 id="B-S模式执行流程"><a href="#B-S模式执行流程" class="headerlink" title="B/S模式执行流程"></a>B/S模式执行流程</h2><ul>
-<li>通过用户输入的网址，利用DNS服务器，查询到IP地址，将请求发送给web服务器，获取程序。</li>
+                <h2 id="广播"><a href="#广播" class="headerlink" title="广播"></a>广播</h2><pre class=" language-BASH"><code class="language-BASH"># 显示是否响应广播设置
+cat /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
+# 设置是否响应广播
+echo 0 > /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
+# 广播ping
+ping -b 255.255.255.255</code></pre>
+<ul>
+<li>广播ping的ttl值可以用来判断系统类型，128为windows，64为linux</li>
+<li>子网掩码不同不一定代表不能通信</li>
 </ul>
-<h2 id="请求与响应"><a href="#请求与响应" class="headerlink" title="请求与响应"></a>请求与响应</h2><ul>
-<li>从浏览器发出送给服务器的数据包称为”请求(Request)”;</li>
-<li>从服务器返回给浏览器的结果称为”响应(Response)”;</li>
+<h2 id="route命令"><a href="#route命令" class="headerlink" title="route命令"></a>route命令</h2><ul>
+<li>路由管理命令</li>
+<li>查看：route -n</li>
+<li>添加：route add</li>
 </ul>
-<h2 id="J2EE"><a href="#J2EE" class="headerlink" title="J2EE"></a>J2EE</h2><ul>
-<li>J2EE(Java 2 platform Enterprise Edition)是指”Java 2企业版”;</li>
-<li>开发BS(Web)应用程序就是J2EE最核心的功能</li>
-<li>J2EE由13个功能模块组成</li>
+<pre class=" language-BASH"><code class="language-BASH">route add [-net|-host] target [netmask Nm] [gw Gw] [[dev] If]</code></pre>
+<ul>
+<li>目标：192.168.1.3 网关：172.16.0.1</li>
 </ul>
-<p><img src="/2020/11/02/servelet/1.png" alt="J2EE功能模块示意图"></p>
-<h2 id="Apache-Tomcat"><a href="#Apache-Tomcat" class="headerlink" title="Apache Tomcat"></a>Apache Tomcat</h2><ul>
-<li>Tomcat是Apache软件基金会旗下一款免费的开源的Web应用服务器程序。</li>
+<pre class=" language-BASH"><code class="language-BASH">route add -host 193.168.1.3 gw 172.16.0.1 dev eth0</code></pre>
+<ul>
+<li>目标：192.168.0.0 网关 172.16.0.1</li>
 </ul>
-<p>![Apache Tomcat(2.png)</p>
-<h2 id="J2EE与Tomcat的关系"><a href="#J2EE与Tomcat的关系" class="headerlink" title="J2EE与Tomcat的关系"></a>J2EE与Tomcat的关系</h2><ul>
-<li>J2EE是一组技术规范和指南，具体实现由软件厂商决定；</li>
-<li>Tomcat本质上是J2EE Web(Servlet与JSP)的规范的一种实现；</li>
-<li>J2SE是J2EE运行的基石，运行Tomcat离不开J2SE(JRE&amp;JDK)。</li>
-</ul>
-<h2 id="Servelet"><a href="#Servelet" class="headerlink" title="Servelet"></a>Servelet</h2><ul>
-<li>Servelet(Server Applet)服务器小程序，主要功能用于生成动态Web内容。</li>
-</ul>
-<p><img src="/2020/11/02/servelet/3.png" alt="Tomcat与Servelet的关系"></p>
+<pre class=" language-BASH"><code class="language-BASH">route add -net 192.168.0.0 netmask 255.255.255.0 gw 172.16.0.1 dev eth0
+route add -net 192.168.0.0/24 gw 172.16.0.1 dev etho0</code></pre>
 
             </div>
             <hr/>
@@ -500,7 +502,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://zbw0520.github.io/2020/11/02/servelet/">http://zbw0520.github.io/2020/11/02/servelet/</a>
+                    <a href="http://zbw0520.github.io/2020/11/02/wang-luo-pei-zhi-yu-lu-you-xiang-jie/">http://zbw0520.github.io/2020/11/02/wang-luo-pei-zhi-yu-lu-you-xiang-jie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -538,16 +540,24 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Web%E5%BC%80%E5%8F%91/">
-                                    <span class="chip bg-color">Web开发</span>
-                                </a>
-                            
                                 <a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
                                     <span class="chip bg-color">知识总结</span>
                                 </a>
                             
-                                <a href="/tags/Servelet/">
-                                    <span class="chip bg-color">Servelet</span>
+                                <a href="/tags/%E8%BF%90%E7%BB%B4/">
+                                    <span class="chip bg-color">运维</span>
+                                </a>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="/tags/CentOS/">
+                                    <span class="chip bg-color">CentOS</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">计算机网络</span>
                                 </a>
                             
                         </div>
@@ -616,18 +626,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/11/02/servelet/">
+                <a href="/2020/11/02/servlet/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Servelet特点及其总结">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Servlet特点及其总结">
                         
-                        <span class="card-title">Servelet特点及其总结</span>
+                        <span class="card-title">Servlet特点及其总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -637,9 +646,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-11-02
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-11-02
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -652,7 +661,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -660,12 +668,8 @@
                         <span class="chip bg-color">Web开发</span>
                     </a>
                     
-                    <a href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">
-                        <span class="chip bg-color">知识总结</span>
-                    </a>
-                    
-                    <a href="/tags/Servelet/">
-                        <span class="chip bg-color">Servelet</span>
+                    <a href="/tags/Servlet/">
+                        <span class="chip bg-color">Servlet</span>
                     </a>
                     
                 </div>
@@ -966,7 +970,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">56.5k</span>&nbsp;字
+                class="white-color">59.5k</span>&nbsp;字
             
             
             
