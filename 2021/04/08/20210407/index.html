@@ -438,7 +438,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.4k
                 </div>
                 
 
@@ -477,10 +477,11 @@
 <li>第一个问题，在模拟设计中经常采用PI控制器，但不会有PID控制器，因为D控制器也就是微分控制器对高频噪声是非常敏感的，如果整个环路中存在高频噪声，这个噪声会使过调量远远大于可接受的范围，严重的，可以产生震荡，因此在模拟电路中，只会采用PI的控制。例如在锁相环电路中，存在一个电阻和电容并联的电路，这个电路的拉普拉斯表达式是$R+\frac{1}{sC}$，也就是采用了一个比例控制和一个积分控制的操作$Kp+\frac{Ki}{s}$。但锁相环中从来没有加入过电感，这是因为这个阻容串联电路之前，还存在一个电荷泵，电荷泵是以方波的形式输出电流的，这个电流的带宽很大，里面有很多高频分量。我们说过，微分控制器对高频信号是非常敏感的，会造成输出电压呈现震荡，不能很好地驱动压控振荡器。因此，我们很少在模拟电路中采用微分控制，但是最近也有文献提出要在模拟设计的控制环路中采用微分控制，一旦发现微分控制的情况，就要特别小心，因为这个控制很容易使输出失去控制。</li>
 <li>第二个问题，在根轨迹上面，阻尼系数可以直接通过根的辐角的余弦值来确定，阻尼系数的临界值时1，也就是根刚好落在实轴上的情况，这种情况下，我们可以说系统是阻尼恰当的。阻尼系数决定了系统过冲的量。</li>
 </ul>
-<h2 id="报告2：锁相环原理介绍"><a href="#报告2：锁相环原理介绍" class="headerlink" title="报告2：锁相环原理介绍"></a>报告2：锁相环原理介绍</h2><ul>
+<h2 id="报告2：锁相环原理介绍"><a href="#报告2：锁相环原理介绍" class="headerlink" title="报告2：锁相环原理介绍"></a>报告2：锁相环原理介绍</h2><p>在这次介绍中，我们讨论了差分LC振荡器的结构以及噪声产生和转换机理。介绍了二次谐波谐振法滤除二次谐波提高振荡器的相位噪声性能的原理和振荡器拓扑结构的演进过程。</p>
+<ul>
 <li>第一个问题，信号噪声的分布是在低频下的$\frac{1}{f}$噪声以及在高频下的热噪声（高斯白噪声）。这两个噪声构成了一个如下图所示的频谱。在锁相环中的相位噪声分析中，只关注二次谐波处的热噪声下变频之后对基波频率处的影响，而不关注DC频率上变频产生的影响，这是因为相位噪声只关注是否生成PM信号，而不关注是否生成AM信号，因为我们只关注时钟信号过零时的时刻，而不关注时钟信号的幅度。由DC频率上变频的噪声是一个AM信号，因为正负频率处的信号的相位是相同的。但是二次谐波处两次的噪声的相位是不关联的，因此，会产生相位上的调制，对基波频率处的信号的相位产生影响。</li>
 </ul>
-<p><img src="/2021/04/08/20210407/3.png" alt="噪声频谱图"></p>
+<p><img src="/2021/04/08/20210407/3.png" alt="噪声频谱图"> </p>
 
             </div>
             <hr/>
@@ -642,19 +643,19 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/04/14/20210414/">
+                <a href="/2021/04/14/20210421/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="20210414组会心得">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="20210421组会心得">
                         
-                        <span class="card-title">20210414组会心得</span>
+                        <span class="card-title">20210421组会心得</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文总结了2021年4月7日的进展组会收货与心得
+                            本文总结了2021年4月21日的进展组会收货与心得
                         
                     </div>
                     <div class="publish-info">
@@ -1013,7 +1014,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">61.9k</span>&nbsp;字
+                class="white-color">74.9k</span>&nbsp;字
             
             
             
