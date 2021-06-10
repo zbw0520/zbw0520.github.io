@@ -458,12 +458,12 @@
             <div id="articleContent">
                 <h2 id="时间交织ADC的基本数学原理"><a href="#时间交织ADC的基本数学原理" class="headerlink" title="时间交织ADC的基本数学原理"></a>时间交织ADC的基本数学原理</h2><p>本文总结了时间交织ADC的基本数学原理。</p>
 <h3 id="时间交织ADC的频域分析"><a href="#时间交织ADC的频域分析" class="headerlink" title="时间交织ADC的频域分析"></a>时间交织ADC的频域分析</h3><p>在时间交织ADC中，将原先单通道的，以$f_s$为采样频率的采样工作，被均匀分配给N个通道交替完成。因此，N个通道交替完成采样频率为$f_s$的采样工作，每个通道上的频率变为原先的$\frac{1}{N}$。</p>
-<p><img src="/Time-Interleaved%20ADC%20Fundamentals/1.png" alt="时间交织ADC基本架构及时域频域分析示意图"></p>
+<p><img src="/TimeInterleavedADC/1.png" alt="时间交织ADC基本架构及时域频域分析示意图"></p>
 <p>如图所示该时间交织中一共有4个通道，通道1至通道4分别用紫色、红色、蓝色以及绿色表示。根据时域中的移位对应于频域中的移位</p>
 <p>$$<br>y_1(t)=x(t)\Sigma(\delta (t-kT_{ck}))<br>\<br>y_2(t)=x(t)\Sigma(\delta (t-kT_{ck}+\frac{T_{ck}}{4}))\<br>y_3(t)=x(t)\Sigma(\delta (t-kT_{ck}+\frac{2T_{ck}}{4}))\<br>y_4(t)=x(t)\Sigma(\delta (t-kT_{ck}+\frac{3T_{ck}}{4}))<br>$$</p>
 <p>$$<br>Y_1(f)=\frac{1}{T_{ck}}X(f)*\Sigma(\delta (f-kf_{ck}))<br>\<br>Y_2(f)=\frac{1}{T_{ck}}X(f)*\Sigma(\delta (f-kf_{ck})e^{-j\pi fT_{ck}/2})\<br>Y_3(f)=\frac{1}{T_{ck}}X(f)*\Sigma(\delta (f-kf_{ck})e^{-j\pi fT_{ck}})\<br>Y_4(f)=\frac{1}{T_{ck}}X(f)*\Sigma(\delta (f-kf_{ck})e^{-j3\pi fT_{ck}/2})<br>$$</p>
 <p>根据上式可以发现，每一个通道的频谱都是在通道一的基础之上进行一定的相移；而通道一来自于包络函数的傅里叶变换按照采样频率进行周期为采样频率的周期延拓。</p>
-<p><img src="/Time-Interleaved%20ADC%20Fundamentals/2.png" alt="时间交织ADC基本架构及时域频域分析示意图"></p>
+<p><img src="/TimeInterleavedADC/2.png" alt="时间交织ADC基本架构及时域频域分析示意图"></p>
 <p>考虑离散谱时，即采用离散傅里叶变换（DFT）时，不仅该信号的时域表达式离散化，该信号的频域表达式也离散化，这就会导致该信号的时域表达式周期化，即该信号需要在原有信号基础之上进行若干点的周期延拓。举例来说，如果原信号的离散序列一共有N个值，对该信号做N点DFT，则原信号需要进行以N个样本点为周期的周期延拓。</p>
 <p>$$<br>X(f)=\frac{1}{N}\Sigma x(n)e^{j2\pi nf/N}<br>$$</p>
 <p>上式表述了N点离散傅里叶变化的表达式，注意到，在该表达式中，我们有求累加和之后除以系数N，这是由于傅里叶变换本身的物理意义导致的。傅里叶变换的到的频谱函数$X(f)$得到的频谱表达式的模表示了幅度，而模的平方表示了功率。假如系数$\frac{1}{N}$没有被考虑在表达式中，则会出现一个奇怪的现象，那就是点数越多，离散傅里叶变换得到的表达式的模值就会越大，自然模的平方也就会越大，这和实际的物理意义是相悖的，我们知道，信号的功率不会因为采样点数目的增大而增大。为了解决这个问题，我们在离散傅里叶正变换的等式右边加上一个系数$\frac{1}{N}$，这样就能保证不管采样点数如何改变，得到的信号的功率谱的模值总是不变的。</p>
@@ -473,10 +473,10 @@
 <p>$E(e)^2=E(e^2)=\sigma^2$<br>$E(\frac{e_1}{2}+\frac{e_2}{2})^2=E((\frac{e_1}{2})^2)+E((\frac{e_2}{2})^2)=\frac{1}{2}\sigma^2$</p>
 <p>因此，不难看出，不管是单通道还是双通道还是N通道，只要信号包络保持不变，杂散的总功率是保持不变的，但是在每一个通道上的杂散幅度会变小，具体来说，会下降为原先幅度的$1/\sqrt{2}$，也就是下降3dB，而功率保持不变。</p>
 <h3 id="时间交织ADC的频域分析的MATLAB验证"><a href="#时间交织ADC的频域分析的MATLAB验证" class="headerlink" title="时间交织ADC的频域分析的MATLAB验证"></a>时间交织ADC的频域分析的MATLAB验证</h3><p>为了证明上述结论的正确性，这里我们在MATLAB中给四通道和八通道ADC建立了模型，验证了结果的正确性。我们令失配随机变量是一个服从正态分布的随机变量，将这个失配变量叠加在每一个通道上，之后，测量100次在这个随机变量的影响下，八通道ADC的杂散幅度大小与四通道的杂散幅度大小的比值，测定结束之后将该值存储在数组中。将上述步骤反复执行50次，得到了一份概率分布图，可以看到，该均值大概在$1/\sqrt{2}$附近，也是3dB附近，可以验证我们之前的结论：n通道ADC的杂散幅度是2n通道的ADC杂散幅度的$\sqrt{2}$倍。</p>
-<p><img src="/Time-Interleaved%20ADC%20Fundamentals/3.png" alt="8通道与4通道ADC杂散幅度比值概率分布图"></p>
-<p><img src="/Time-Interleaved%20ADC%20Fundamentals/4.png" alt="8通道与4通道ADC杂散幅度比值概率分布图"></p>
+<p><img src="/TimeInterleavedADC/3.png" alt="8通道与4通道ADC杂散幅度比值概率分布图"></p>
+<p><img src="/TimeInterleavedADC/4.png" alt="8通道与4通道ADC杂散幅度比值概率分布图"></p>
 <p>再来验证是否杂散总功率保持不变，下面给出了按照上文所述流程测量出来的杂散功率比值，我们可以看到，8通道与4通道ADC的杂散功率比值在1.5附近，此比例大概是1.2左右，这里的杂散功率并没有完全相等的原因不甚明确，需要进一步讨论和研究</p>
-<p><img src="/Time-Interleaved%20ADC%20Fundamentals/5.png" alt="8通道与4通道ADC杂散功率比值概率分布图"></p>
+<p><img src="/TimeInterleavedADC/5.png" alt="8通道与4通道ADC杂散功率比值概率分布图"></p>
 <h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>我们可以看到，在时间交织ADC中，在不考虑电路层面的误差仅仅考虑失配的前提下，每增加2倍的通道数量，杂散的幅度就会降低3dB，因此，增加时间交织通道数目可以显著减小杂散的幅度。但是，依据数学计算结果，无论通道数如何增加，杂散的总功率保持不变。</p>
 
             </div>
