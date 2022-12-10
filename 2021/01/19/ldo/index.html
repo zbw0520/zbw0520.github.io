@@ -435,14 +435,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    3.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    11 分
                 </div>
                 
 
@@ -457,7 +457,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="LDO的基本结构与性能指标"><a href="#LDO的基本结构与性能指标" class="headerlink" title="LDO的基本结构与性能指标"></a>LDO的基本结构与性能指标</h2><img src="/2021/01/19/ldo/1.png" class="" title="LDO的基本结构示意图">
+                <h2 id="LDO的基本设计原理"><a href="#LDO的基本设计原理" class="headerlink" title="LDO的基本设计原理"></a>LDO的基本设计原理</h2><img src="/2021/01/19/ldo/1.png" class="" title="LDO的基本结构示意图">
 
 <h3 id="内部组成部分"><a href="#内部组成部分" class="headerlink" title="内部组成部分"></a>内部组成部分</h3><ul>
 <li>误差放大器，Error Amplifier</li>
@@ -485,6 +485,7 @@
 <ul>
 <li>其中，$A_{err}$为误差放大器的增益，$F$为电阻反馈系数，$\frac{\Delta V_{out}}{\Delta V_{in}}$为电压基准源随静态输入电压的变化率。</li>
 <li><strong>结论</strong>：线性调整率主要取决于误差放大器的直流增益，放大器直流增益$A_{err}$越大，则性能越好。此外，如果基准源相对于输入电压的精度也限制了LDO的性能。</li>
+<li><strong>备注</strong>：该特性一般来说不是特别重要。</li>
 </ul>
 <h4 id="负载率调整"><a href="#负载率调整" class="headerlink" title="负载率调整"></a>负载率调整</h4><ul>
 <li><strong>作用</strong>：与线性调整率一样，给定了LDO对于不同静态输入电压以及负载电流条件下的稳压输出能力，表征了LDO的性能。</li>
@@ -495,6 +496,7 @@
 <li>其中，$r_{op}$是指传输管的输出阻抗，$AF$是环路的直流增益<code>Loop Gain</code>。</li>
 <li><strong>结论</strong>：$r_{op}$越小，$AF$越大，则LDO的稳压性能越好。</li>
 <li><u><strong>注意</strong></u>：在这里，负载调整率仅仅代表输出电压随负载电流的<strong>直流</strong>变化，并不能完全表征负载电流瞬时变化时的动态特性。</li>
+<li><strong>备注</strong>：负载调整率关系到输出电压的精度，要特别注意这一特性。</li>
 </ul>
 <h4 id="温度系数"><a href="#温度系数" class="headerlink" title="温度系数"></a>温度系数</h4><ul>
 <li><strong>作用</strong>：表征LDO输出电压随温度的漂移。</li>
@@ -503,6 +505,7 @@
 <p>$$<br>TC=\frac{1}{V_{out}}\cdot\frac{\frac{\Delta V_{ref,Temp}+\Delta V_{os,Temp}}{F}}{\Delta Temp}<br>$$</p>
 <ul>
 <li>其中，$\Delta V_{ref,Temp}$以及$\Delta V_{os,Temp}$分别表示电压基准源以及误差放大器失调电压在$\Delta Temp$范围内的变化量。</li>
+<li><strong>备注</strong>：该特性一般在LDO中不是特别重要，需要在带隙基准源（Bandgap Reference）中特别注意。一般带隙基准源会对温度进行补偿，从而使得输出电压相对于温度来说，基本恒定不变。</li>
 </ul>
 <h4 id="漏失电压"><a href="#漏失电压" class="headerlink" title="漏失电压"></a>漏失电压</h4><ul>
 <li><strong>作用</strong>：表征漏失电压$V_{dsat,pt}$决定了最大输出电流以及最小输入电压的值。</li>
@@ -511,6 +514,7 @@
 <p>$$<br>V_{DO}=I_{L,max}r_{ON}=V_{dsat,pt}<br>$$</p>
 <ul>
 <li>其中，最大负载电流时传输管的$V_{dsat}$即为漏失电压。</li>
+<li><strong>备注</strong>：这里所说的漏失电压就是在管子源漏极之间的电压，LDO（Low Dropout）的名字也是由此而来，LDO表示在源漏之间的电压降很小。这个压降越小，则耗费在LDO上的功率就越小。</li>
 </ul>
 <h3 id="交流特性"><a href="#交流特性" class="headerlink" title="交流特性"></a>交流特性</h3><ul>
 <li>电源抑制比（PSRR）</li>
@@ -520,6 +524,7 @@
 <li><strong>作用</strong>：表征LDO抑制电源线上的高频噪声的能力。</li>
 <li><strong>定义</strong>：与<u>传输管的寄生电容</u>有关，并且与<u>环路增益</u>成反比。</li>
 <li><strong>提高电源抑制比的方法</strong>：误差放大器在提高LDO的PSRR方面起到很重要的作用。</li>
+<li><strong>备注</strong>：电源抑制比（PSRR）代表了LDO作为类似电源滤波器角色的能力。一般的LDO的电源抑制比在40dB左右</li>
 </ul>
 <h4 id="噪声"><a href="#噪声" class="headerlink" title="噪声"></a>噪声</h4><ul>
 <li><p><strong>来源</strong>：电压基准源以及误差放大器的噪声。</p>
@@ -554,33 +559,41 @@
 </ul>
 <p>$$<br>Eff=\frac{输出功率}{输入功率}=\frac{V_{out}I_{L}}{V_{in}(I_{Q}+I_{L})}<br>$$</p>
 <ul>
-<li><strong>补充说明</strong>：当负载电流远大于静态电流时，即$I_{Q}+I_{L}\approx \frac{V_{out}}{V_{in}}=\frac{V_{in}-V_{DO}}{V_{in}}$</li>
+<li><strong>补充说明</strong>：当负载电流远大于静态电流时，即</li>
 </ul>
+<p>$$<br>I_{Q}+I_{L}\approx \frac{V_{out}}{V_{in}}=\frac{V_{in}-V_{DO}}{V_{in}}<br>$$</p>
 <h2 id="LDO电路的设计考虑"><a href="#LDO电路的设计考虑" class="headerlink" title="LDO电路的设计考虑"></a>LDO电路的设计考虑</h2><ul>
 <li>环路稳定性</li>
-<li>噪声</li>
 <li>电源抑制比（PSRR）</li>
+<li>负反馈频率补偿</li>
+<li>其他考虑</li>
 </ul>
 <h3 id="环路稳定性"><a href="#环路稳定性" class="headerlink" title="环路稳定性"></a>环路稳定性</h3><ul>
 <li>分析环路稳定性通常是寻找到环路的开环增益，我们需要把环路打开，这里可以参考拉扎维电子2视频中所讲述的打开环路的正确方法。很显然，作者在这里并没有精确地打开环路，我们可以看到，作者在下图中并没有考虑到负载效应，不过作为近似结果，该结果还是可以接受的。</li>
 </ul>
-<p><img src="%5CLDO/2.png" alt="LDO环路示意图"></p>
+<img src="/2021/01/19/ldo/2.png" class="" title="LDO的原理图">
+
 <ul>
 <li>这个环路的开环传输函数可以表示为：</li>
 </ul>
 <p>$$<br>L(s)=\frac{L(out)}{L(in)}=\frac{g_{m1}r_{o1}g_{mL}r_{oL}(1+sC_{out}r_{esr})}{(1+sr_{o1}C_1)(1+s(r_{oL}+r_{esr})C_{out})}<br>$$</p>
 <ul>
-<li><p><strong>笔记</strong>：这个传输函数我不是很懂，这里的一个零点也很奇怪，需要再仔细研究一下。</p>
-</li>
-<li><p>下面讨论一下该传输函数的两个极点以及一个零点，他们可以表示为如下式子</p>
-</li>
+<li>下面讨论一下该传输函数的两个极点以及一个零点，他们可以表示为如下式子</li>
 </ul>
 <p>$$<br>p_1=\frac{1}{2\pi C_{out}(r_{oL}+r_{esr})}<br>$$</p>
 <p>$$<br>p_2=\frac{1}{2\pi C_1r_{o1}}<br>$$</p>
 <p>$$<br>z_1=\frac{1}{2\pi C_{out}r_{esr}}<br>$$</p>
 <ul>
-<li>其中，$p_1$是存在于LDO输出端的主极点，$p_2$是误差放大器输出端形成的另一个极点。如果设计$z_1$的值非常接近$p_2$的值时，可以认为单位增益带宽内只存在一个主极点。该反馈系统是稳定的。</li>
+<li>其中，$p_1$是存在于LDO输出端的主极点，$p_2$是误差放大器输出端形成的另一个极点。如果设计$z_1$的值非常接近$p_2$的值时，可以认为单位增益带宽内只存在一个主极点。该反馈系统是稳定的。极点大小可以通过单电容极点估算法进行估算，具体方法为采用一个单独的电容之后再测量电容两侧看出去的电阻大小，再将这个电容的容值与从电容两侧看出去的电阻的阻值相乘，最后就可以得到我们需要的极点大小。</li>
+<li>此外，此处由于电容$C_{out}$上方还有一个串联的电阻，当此电阻的阻值和电容的阻抗相等时，这是就会产生一个零点，根据这种说法，可以写出如下式所示的等式，根据这个等式可以计算出这个零点的位置。</li>
 </ul>
+<p>$$<br>\frac{1}{sC_{out}}+r_{esr}=0<br>$$</p>
+<p>$$<br>s=-\frac{1}{C_{out}r_{esr}}<br>$$</p>
+<h3 id="电源抑制比-1"><a href="#电源抑制比-1" class="headerlink" title="电源抑制比"></a>电源抑制比</h3><p>电源抑制比主要描述了在输出看到的从电源来的噪声的抑制情况。一般来讲，理想的LDO的电源抑制比一般在-40dB左右，如果要提升电源抑制比，需要提高环路的增益。但是，提高低频下的电源抑制比是依靠环路增益，但是高频部分的噪声是利用在输出端的去耦电容实现的，该去耦电容一般在$\mu F$级别，这个大电容可以有效抑制高频下从电源来的噪声。</p>
+<h3 id="负反馈频率补偿"><a href="#负反馈频率补偿" class="headerlink" title="负反馈频率补偿"></a>负反馈频率补偿</h3><p>由于考虑电源抑制比情况在输出端口引入的大电容以及输出负载的阻抗变化的特点，输出节点的容值大小一般是会剧烈变化的，考虑到这一点，我们通常设置输出节点为主极点，以保证在不同负载情况下电路的稳定。设置输出节点为主极点后，我们需要利用电路中其他部分的特点，尽量拉开主极点以及其他非主极点之间的距离，以保证足够的相位裕度。实际电路如图3所示，图3是一个经典的LDO的电路原理图，在该原理图中，由于运算放大器OP1的输出阻抗以及M4传输管的输入容值通常比较大，因此，我们需要采用一个操作将左边的运算放大器$OP1$和右侧的传输管$M4$隔离开来。最简单的方式就是在两级放大器中间插入一级放大器，该放大器可以将一个极点分裂为两个不同的极点，但是两个极点的大小要远远小于第一个极点的大小，在Bode图上，表现为非主极点和主极点之间的距离被拉开了。此外，为了二进一步减小在$M1$漏极看到的阻抗，此处引入了一个电阻$Rc$，并联到VDD，这个电阻的目的是减小该节点看到的阻抗，进一步将改点的极点推向更远的地方。</p>
+<img src="/2021/01/19/ldo/3.png" class="" title="LDO的原理图">
+
+<h3 id="其他考虑"><a href="#其他考虑" class="headerlink" title="其他考虑"></a>其他考虑</h3><p>在设计该电路时，可以看到有$OP2$以及$Rd$在电路中还没有进行很好的解释，这里分别解释一下这两个部分起到的作用。在LDO原理图中的上拉电阻Rd的作用是在电路上电的时候给M3、M2、M1组成的支路上提供足够的电流。Cascode类型或者堆叠的管子可能在上电的时候由于不同的管子工作区域转换需要时间，MOS管从反型层形成到进入饱和区的速度比较快，但是MOS管从没有反型层到有反型层这一过程的转换速度比较慢。为了加快MOS管的导通速度，我们通常采用一个小的电流源，给电路提供一个微弱的电流，使管子始终处在导通的状态中，防止管子处在没有反型层的状态。这是一种基于实际使用的调整，在理论设计中，并不需要考虑管子锁死的情况，只有在实际做产品时，为了保证产品的稳定性，才需要考虑这个问题。在LDO原理图中在传输管和第二级放大器之间有一个运算放大器<code>OP2</code>，这个放大器的作用是$V_{ds}$匹配。由于沟道长度调制效应，会造成电流镜复制电流产生误差，有可能出现一边管子进入饱和区，另一边还在线性区的情况。为了消除这个影响，引入一个运算放大器来消除两侧管子的$V_{ds}$的差别，提升电流复制的精确程度。</p>
 
             </div>
             <hr/>
@@ -1089,7 +1102,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">76.6k</span>&nbsp;字
+                class="white-color">91.6k</span>&nbsp;字
             
             
             
