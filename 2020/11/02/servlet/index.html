@@ -461,7 +461,7 @@
 <li>开发BS(Web)应用程序就是J2EE最核心的功能</li>
 <li>J2EE由13个功能模块组成</li>
 </ul>
-<p><img src="/.io//1.png" alt="J2EE功能模块示意图"></p>
+<p><img src="1.png" alt="J2EE功能模块示意图"></p>
 <h2 id="Apache-Tomcat"><a href="#Apache-Tomcat" class="headerlink" title="Apache Tomcat"></a>Apache Tomcat</h2><ul>
 <li>Tomcat是Apache软件基金会旗下一款免费的开源的Web应用服务器程序。</li>
 </ul>
@@ -474,8 +474,8 @@
 <h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><ul>
 <li>Servlet(Server Applet)服务器小程序，主要功能用于生成动态Web内容。</li>
 </ul>
-<p><img src="/.io//3.png" alt="Tomcat与Servlet的关系"></p>
-<h2 id="标准Java-Web工程结构"><a href="#标准Java-Web工程结构" class="headerlink" title="标准Java Web工程结构"></a>标准Java Web工程结构</h2><p><img src="/.io//4.png" alt="标准Java Web工程结构"></p>
+<p><img src="3.png" alt="Tomcat与Servlet的关系"></p>
+<h2 id="标准Java-Web工程结构"><a href="#标准Java-Web工程结构" class="headerlink" title="标准Java Web工程结构"></a>标准Java Web工程结构</h2><p><img src="4.png" alt="标准Java Web工程结构"></p>
 <h2 id="Servlet开发步骤"><a href="#Servlet开发步骤" class="headerlink" title="Servlet开发步骤"></a>Servlet开发步骤</h2><ol>
 <li>创建Servlet类，继承HttpServlet；</li>
 <li>重写service方法，编写程序代码；</li>
@@ -686,41 +686,29 @@ public class AnalysisServlet extends HttpServlet{
     </div>
 
     
-        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
 
-<div class="card gitalk-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    <div class="card" data-aos="fade-up">
+    <div id="utteranc-container" class="card-content">
+		<script src="https://utteranc.es/client.js"
+			repo="zbw0520/BlogComment"
+			issue-term="pathname"
+			label="Comment"
+			theme="github-light"
+			crossorigin="anonymous"
+			async>
+		</script>
     </div>
-    <div id="gitalk-container" class="card-content"></div>
 </div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '557459e94f8028e44090',
-        clientSecret: '7e65ed52757a822f485fe8d2f5ccacd8d9ecf933',
-        repo: 'gitalk',
-        owner: 'zbw0520',
-        admin: ["zbw0520"],
-        id: '2020-11-02T19-41-16',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-
-    
-
-    
-
-    
-
-    
-
-    
 
     
 

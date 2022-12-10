@@ -451,7 +451,7 @@
                 <h2 id="反射的概述"><a href="#反射的概述" class="headerlink" title="反射的概述"></a>反射的概述</h2><h3 id="什么是Java反射机制"><a href="#什么是Java反射机制" class="headerlink" title="什么是Java反射机制"></a>什么是Java反射机制</h3><ul>
 <li>Java反射机制是在<strong>运行状态</strong>中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为Java语言的反射机制。</li>
 </ul>
-<p><img src="/.io//1.png" alt="Java反射机制示意图"></p>
+<p><img src="1.png" alt="Java反射机制示意图"></p>
 <h3 id="Java反射机制的作用"><a href="#Java反射机制的作用" class="headerlink" title="Java反射机制的作用"></a>Java反射机制的作用</h3><ul>
 <li>是用来编写一些通用性较高的代码或者框架的时候使用。</li>
 </ul>
@@ -477,7 +477,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/.io//2.png" alt="Java反射常用对象介绍图解"></p>
+<p><img src="2.png" alt="Java反射常用对象介绍图解"></p>
 <h3 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h3><ul>
 <li>Java中java.lang.Class类用于表示一个类的字节码(.class)文件</li>
 <li>如何得到某个class文件对应的Class对象</li>
@@ -772,41 +772,29 @@ getMethods
     </div>
 
     
-        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
 
-<div class="card gitalk-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    <div class="card" data-aos="fade-up">
+    <div id="utteranc-container" class="card-content">
+		<script src="https://utteranc.es/client.js"
+			repo="zbw0520/BlogComment"
+			issue-term="pathname"
+			label="Comment"
+			theme="github-light"
+			crossorigin="anonymous"
+			async>
+		</script>
     </div>
-    <div id="gitalk-container" class="card-content"></div>
 </div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '557459e94f8028e44090',
-        clientSecret: '7e65ed52757a822f485fe8d2f5ccacd8d9ecf933',
-        repo: 'gitalk',
-        owner: 'zbw0520',
-        admin: ["zbw0520"],
-        id: '2020-10-24T18-54-30',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-
-    
-
-    
-
-    
-
-    
-
-    
 
     
 

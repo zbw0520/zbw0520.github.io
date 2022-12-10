@@ -453,12 +453,12 @@
 <li>利用Java中的异常机制，我们可以更好地提升程序的健壮性；</li>
 <li>在Java中，通过Throwable及其子类描述各种不同的异常类型。</li>
 </ul>
-<p><img src="/.io//1.png" alt="异常类树状图"></p>
+<p><img src="1.png" alt="异常类树状图"></p>
 <h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><ul>
 <li>通过5个关键字来实现：<code>try</code>、<code>catch</code>、<code>finally</code>、<code>throw</code>、<code>throws</code></li>
 </ul>
-<p><img src="/.io//2.png" alt="异常处理的几种方式"></p>
-<p><img src="/.io//3.png" alt="try-catch-finally结构"></p>
+<p><img src="2.png" alt="异常处理的几种方式"></p>
+<p><img src="3.png" alt="try-catch-finally结构"></p>
 <ul>
 <li>实际应用中的经验与总结<ul>
 <li>处理运行时异常时，采用逻辑去合理规避同时辅助try-catch处理；</li>
@@ -568,41 +568,29 @@
     </div>
 
     
-        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
 
-<div class="card gitalk-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    <div class="card" data-aos="fade-up">
+    <div id="utteranc-container" class="card-content">
+		<script src="https://utteranc.es/client.js"
+			repo="zbw0520/BlogComment"
+			issue-term="pathname"
+			label="Comment"
+			theme="github-light"
+			crossorigin="anonymous"
+			async>
+		</script>
     </div>
-    <div id="gitalk-container" class="card-content"></div>
 </div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '557459e94f8028e44090',
-        clientSecret: '7e65ed52757a822f485fe8d2f5ccacd8d9ecf933',
-        repo: 'gitalk',
-        owner: 'zbw0520',
-        admin: ["zbw0520"],
-        id: '2020-10-16T22-21-30',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-
-    
-
-    
-
-    
-
-    
-
-    
 
     
 

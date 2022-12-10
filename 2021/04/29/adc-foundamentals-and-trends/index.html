@@ -472,13 +472,13 @@
 </ul>
 <h2 id="4-2-目前的研究成果"><a href="#4-2-目前的研究成果" class="headerlink" title="4.2 目前的研究成果"></a>4.2 目前的研究成果</h2><p>大多数高速高精度ADC可以被分为三类：</p>
 <ul>
-<li><p>流水线型ADC（Pipeline ADCs）<br><img src="/.io//1.png" alt="Pipline ADC Architecture"></p>
+<li><p>流水线型ADC（Pipeline ADCs）<br><img src="ADC%20Foundamentals%20and%20Trends/1.png" alt="Pipline ADC Architecture"></p>
 </li>
 <li><p>时间交织的逐次比较型ADC（Time Interleaved SAR ADCs）</p>
-<p><img src="/.io//2.png" alt="SAR ADC Architectures"></p>
+<p><img src="ADC%20Foundamentals%20and%20Trends/2.png" alt="SAR ADC Architectures"></p>
 </li>
 <li><p>闪存ADC（Flash ADCs）</p>
-<p><img src="/.io//3.png" alt="Flash ADC Architecture"></p>
+<p><img src="ADC%20Foundamentals%20and%20Trends/3.png" alt="Flash ADC Architecture"></p>
 </li>
 </ul>
 <p>Sigma-Delta因为其对于过采样比（oversampling ratio）的限制，所以不适合高速的应用。</p>
@@ -593,41 +593,29 @@
     </div>
 
     
-        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
 
-<div class="card gitalk-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    <div class="card" data-aos="fade-up">
+    <div id="utteranc-container" class="card-content">
+		<script src="https://utteranc.es/client.js"
+			repo="zbw0520/BlogComment"
+			issue-term="pathname"
+			label="Comment"
+			theme="github-light"
+			crossorigin="anonymous"
+			async>
+		</script>
     </div>
-    <div id="gitalk-container" class="card-content"></div>
 </div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '557459e94f8028e44090',
-        clientSecret: '7e65ed52757a822f485fe8d2f5ccacd8d9ecf933',
-        repo: 'gitalk',
-        owner: 'zbw0520',
-        admin: ["zbw0520"],
-        id: '2021-04-29T09-23-00',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-
-    
-
-    
-
-    
-
-    
-
-    
 
     
 

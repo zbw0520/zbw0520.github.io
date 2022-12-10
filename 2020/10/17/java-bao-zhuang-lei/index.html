@@ -491,7 +491,7 @@
 </tbody></table>
 </li>
 </ul>
-<h2 id="常量池的概念"><a href="#常量池的概念" class="headerlink" title="常量池的概念"></a>常量池的概念</h2><p><img src="/.io//1.png" alt="整型常量池的工作原理图，简单来说就是常量池保存着系统已经创建好的对象，Java之所以要这样设置，是为了进一步优化效率。如果输入的数据命中常量池中已经创建好的对象，那么系统就不需要进行新建对象的操作了，否则，系统就需要新建一个对象。"></p>
+<h2 id="常量池的概念"><a href="#常量池的概念" class="headerlink" title="常量池的概念"></a>常量池的概念</h2><p><img src="1.png" alt="整型常量池的工作原理图，简单来说就是常量池保存着系统已经创建好的对象，Java之所以要这样设置，是为了进一步优化效率。如果输入的数据命中常量池中已经创建好的对象，那么系统就不需要进行新建对象的操作了，否则，系统就需要新建一个对象。"></p>
 <ul>
 <li>除了<code>Float</code>和<code>Double</code>两种包装类，其他的基本数据类型对应的包装类均可以利用数据常量池的概念。</li>
 </ul>
@@ -535,7 +535,7 @@
 <td>Boolean</td>
 </tr>
 </tbody></table>
-<h2 id="包装类的装箱和拆箱"><a href="#包装类的装箱和拆箱" class="headerlink" title="包装类的装箱和拆箱"></a>包装类的装箱和拆箱</h2><p><img src="/.io//2.png" alt="包装类的装箱和拆箱示意图"></p>
+<h2 id="包装类的装箱和拆箱"><a href="#包装类的装箱和拆箱" class="headerlink" title="包装类的装箱和拆箱"></a>包装类的装箱和拆箱</h2><p><img src="2.png" alt="包装类的装箱和拆箱示意图"></p>
 
             </div>
             <hr/>
@@ -634,41 +634,29 @@
     </div>
 
     
-        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
 
-<div class="card gitalk-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    <div class="card" data-aos="fade-up">
+    <div id="utteranc-container" class="card-content">
+		<script src="https://utteranc.es/client.js"
+			repo="zbw0520/BlogComment"
+			issue-term="pathname"
+			label="Comment"
+			theme="github-light"
+			crossorigin="anonymous"
+			async>
+		</script>
     </div>
-    <div id="gitalk-container" class="card-content"></div>
 </div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '557459e94f8028e44090',
-        clientSecret: '7e65ed52757a822f485fe8d2f5ccacd8d9ecf933',
-        repo: 'gitalk',
-        owner: 'zbw0520',
-        admin: ["zbw0520"],
-        id: '2020-10-17T11-31-00',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-
-    
-
-    
-
-    
-
-    
-
-    
 
     
 

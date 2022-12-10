@@ -494,7 +494,7 @@ File file1<span class="token operator">=</span><span class="token keyword">new</
 <li>字节输入流<code>InputStream</code></li>
 <li>字节输出流<code>OutputStream</code></li>
 </ul>
-<h3 id="字节输入流"><a href="#字节输入流" class="headerlink" title="字节输入流"></a>字节输入流</h3><p><img src="/.io//1.png" alt="字节输入流结构示意图"></p>
+<h3 id="字节输入流"><a href="#字节输入流" class="headerlink" title="字节输入流"></a>字节输入流</h3><p><img src="1.png" alt="字节输入流结构示意图"></p>
 <h4 id="文件输入流FileInputStream"><a href="#文件输入流FileInputStream" class="headerlink" title="文件输入流FileInputStream"></a>文件输入流FileInputStream</h4><ul>
 <li>从文件系统中的某一个文件中获得输入字节；</li>
 <li>用于读取诸如图像数据之类的原始字节流</li>
@@ -531,7 +531,7 @@ File file1<span class="token operator">=</span><span class="token keyword">new</
 <li>提高读写速度</li>
 <li>需要与文件输入输出流结合，把输入流的子类当成构造函数参数输入。</li>
 </ul>
-<h3 id="字节输出流"><a href="#字节输出流" class="headerlink" title="字节输出流"></a>字节输出流</h3><p><img src="/.io//2.png" alt="字节输出流结构示意图"></p>
+<h3 id="字节输出流"><a href="#字节输出流" class="headerlink" title="字节输出流"></a>字节输出流</h3><p><img src="2.png" alt="字节输出流结构示意图"></p>
 <h4 id="缓冲输入流BufferedOutputStream"><a href="#缓冲输入流BufferedOutputStream" class="headerlink" title="缓冲输入流BufferedOutputStream"></a>缓冲输入流BufferedOutputStream</h4><ul>
 <li>提高读写速度</li>
 <li>需要与文件输入输出流结合，把输出流的子类当成构造函数参数输入。</li>
@@ -539,8 +539,8 @@ File file1<span class="token operator">=</span><span class="token keyword">new</
 <h2 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a>字符流</h2><ul>
 <li>适用于发送和接收字符的情况使用</li>
 </ul>
-<h3 id="字符输入流"><a href="#字符输入流" class="headerlink" title="字符输入流"></a>字符输入流</h3><p><img src="/.io//3.png" alt="字符输入流结构示意图"></p>
-<h3 id="字符输出流"><a href="#字符输出流" class="headerlink" title="字符输出流"></a>字符输出流</h3><p><img src="/.io//4.png" alt="字符输出流结构示意图"></p>
+<h3 id="字符输入流"><a href="#字符输入流" class="headerlink" title="字符输入流"></a>字符输入流</h3><p><img src="3.png" alt="字符输入流结构示意图"></p>
+<h3 id="字符输出流"><a href="#字符输出流" class="headerlink" title="字符输出流"></a>字符输出流</h3><p><img src="4.png" alt="字符输出流结构示意图"></p>
 <h3 id="字节字符转换流"><a href="#字节字符转换流" class="headerlink" title="字节字符转换流"></a>字节字符转换流</h3><ul>
 <li><code>InputStreamReader()</code></li>
 <li><code>OutputStreamReader()</code></li>
@@ -670,41 +670,29 @@ File file1<span class="token operator">=</span><span class="token keyword">new</
     </div>
 
     
-        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
 
-<div class="card gitalk-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    <div class="card" data-aos="fade-up">
+    <div id="utteranc-container" class="card-content">
+		<script src="https://utteranc.es/client.js"
+			repo="zbw0520/BlogComment"
+			issue-term="pathname"
+			label="Comment"
+			theme="github-light"
+			crossorigin="anonymous"
+			async>
+		</script>
     </div>
-    <div id="gitalk-container" class="card-content"></div>
 </div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '557459e94f8028e44090',
-        clientSecret: '7e65ed52757a822f485fe8d2f5ccacd8d9ecf933',
-        repo: 'gitalk',
-        owner: 'zbw0520',
-        admin: ["zbw0520"],
-        id: '2020-10-19T19-43-30',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-
-    
-
-    
-
-    
-
-    
-
-    
 
     
 

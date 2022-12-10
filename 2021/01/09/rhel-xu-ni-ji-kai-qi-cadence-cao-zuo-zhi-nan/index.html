@@ -466,18 +466,18 @@
 <li>打开VMware，在左上方选择<code>文件</code>，之后选择<code>打开</code>，在弹出的文件寻找框中找到名为<code>Linux6.7-64.vmx</code>的文件。</li>
 <li>等待一会儿，就可以在虚拟机左侧框中找到名为<code>Linux6.7-64</code>的虚拟机，点击打开并运行。</li>
 </ol>
-<p><img src="/.io//1.png"></p>
+<p><img src="image/1.png"></p>
 <ol start="4">
 <li>等待一会儿，可以看到虚拟机开机界面如上，选择用户<code>cdsmgr</code>，输入密码<code>cadence</code>便可以开机。</li>
 <li>进入桌面之后，可以看到桌面上有若干图标和文件夹，根据你设计工艺的需要选择对应的文件夹。这里只提供了两种工艺库<code>smic18</code>和<code>tsmc40</code>。</li>
 </ol>
-<p><img src="/.io//2.png"></p>
+<p><img src="image/2.png"></p>
 <ol start="6">
 <li>点开文件夹，这里以<code>smic18</code>为例，点开<code>smic18</code>文件夹之后，我们可以看到里面有若干文件和文件夹，最关键的配置文件是<code>cshrc_2016</code>，这个文件存储了变量信息，我们需要使变量信息生效。右键空白处，点击<code>open in terminal</code>使用如下命令。</li>
 </ol>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">source</span> cshrc_2016
 </code></pre>
-<p><img src="/.io//3.png"></p>
+<p><img src="image/3.png"></p>
 <ol start="7">
 <li>最后在使用命令<code>&amp; virtuoso</code>便可以打开cadence软件。打开耗时根据你使用的硬盘种类的不同可能会比较久也可能会很快。</li>
 </ol>
@@ -487,7 +487,7 @@
 <li><p>成功的界面如下。</p>
 </li>
 </ul>
-<p><img src="/.io//4.png"></p>
+<p><img src="image/4.png"></p>
 <h2 id="TroubleShooting"><a href="#TroubleShooting" class="headerlink" title="TroubleShooting"></a>TroubleShooting</h2><ul>
 <li><p>如果你的虚拟机出现无法找到<code>xxx</code>文件之类的提示，请检查虚拟机的路径是否包含英文，将虚拟机文件放置在英文路径下。</p>
 </li>
@@ -596,41 +596,29 @@
     </div>
 
     
-        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
-<link rel="stylesheet" href="/css/my-gitalk.css">
 
-<div class="card gitalk-card" data-aos="fade-up">
-    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
-        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
-        <span>评论</span>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    <div class="card" data-aos="fade-up">
+    <div id="utteranc-container" class="card-content">
+		<script src="https://utteranc.es/client.js"
+			repo="zbw0520/BlogComment"
+			issue-term="pathname"
+			label="Comment"
+			theme="github-light"
+			crossorigin="anonymous"
+			async>
+		</script>
     </div>
-    <div id="gitalk-container" class="card-content"></div>
 </div>
-
-<script src="/libs/gitalk/gitalk.min.js"></script>
-<script>
-    let gitalk = new Gitalk({
-        clientID: '557459e94f8028e44090',
-        clientSecret: '7e65ed52757a822f485fe8d2f5ccacd8d9ecf933',
-        repo: 'gitalk',
-        owner: 'zbw0520',
-        admin: ["zbw0520"],
-        id: '2021-01-09T09-51-16',
-        distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-
-    gitalk.render('gitalk-container');
-</script>
-
-    
-
-    
-
-    
-
-    
-
-    
 
     
 
