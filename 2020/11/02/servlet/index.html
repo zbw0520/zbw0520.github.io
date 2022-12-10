@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -457,7 +461,7 @@
 <li>开发BS(Web)应用程序就是J2EE最核心的功能</li>
 <li>J2EE由13个功能模块组成</li>
 </ul>
-<p><img src="/2020/11/02/servlet/1.png" alt="J2EE功能模块示意图"></p>
+<p><img src="/.io//1.png" alt="J2EE功能模块示意图"></p>
 <h2 id="Apache-Tomcat"><a href="#Apache-Tomcat" class="headerlink" title="Apache Tomcat"></a>Apache Tomcat</h2><ul>
 <li>Tomcat是Apache软件基金会旗下一款免费的开源的Web应用服务器程序。</li>
 </ul>
@@ -470,8 +474,8 @@
 <h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><ul>
 <li>Servlet(Server Applet)服务器小程序，主要功能用于生成动态Web内容。</li>
 </ul>
-<p><img src="/2020/11/02/servlet/3.png" alt="Tomcat与Servlet的关系"></p>
-<h2 id="标准Java-Web工程结构"><a href="#标准Java-Web工程结构" class="headerlink" title="标准Java Web工程结构"></a>标准Java Web工程结构</h2><p><img src="/2020/11/02/servlet/4.png" alt="标准Java Web工程结构"></p>
+<p><img src="/.io//3.png" alt="Tomcat与Servlet的关系"></p>
+<h2 id="标准Java-Web工程结构"><a href="#标准Java-Web工程结构" class="headerlink" title="标准Java Web工程结构"></a>标准Java Web工程结构</h2><p><img src="/.io//4.png" alt="标准Java Web工程结构"></p>
 <h2 id="Servlet开发步骤"><a href="#Servlet开发步骤" class="headerlink" title="Servlet开发步骤"></a>Servlet开发步骤</h2><ol>
 <li>创建Servlet类，继承HttpServlet；</li>
 <li>重写service方法，编写程序代码；</li>
@@ -488,7 +492,8 @@
 <li>参数名1=值1&amp;参数名2=值2&amp;参数名n=值n…</li>
 </ul>
 <h2 id="Servlet接收请求参数"><a href="#Servlet接收请求参数" class="headerlink" title="Servlet接收请求参数"></a>Servlet接收请求参数</h2><pre class=" language-JAVA"><code class="language-JAVA">request.getParameter()  //接收单个参数
-request.getParameterValues()  //接收多个同名参数</code></pre>
+request.getParameterValues()  //接收多个同名参数
+</code></pre>
 <h2 id="Get和Post请求方法"><a href="#Get和Post请求方法" class="headerlink" title="Get和Post请求方法"></a>Get和Post请求方法</h2><ul>
 <li><p>Get方法是将数据通过在URL附加数据显性向服务器发送数据</p>
 <ul>
@@ -505,7 +510,8 @@ request.getParameterValues()  //接收多个同名参数</code></pre>
 <pre class=" language-HTML"><code class="language-HTML"><!-- 设置方式 -->
 <form action="/FirstServlet/sample" method="post">
 <!-- 默认不写method情况下使用Get方法 -->
-<form action="/FirstServlet/sample"></code></pre>
+<form action="/FirstServlet/sample">
+</code></pre>
 <h2 id="Get与Post处理方式"><a href="#Get与Post处理方式" class="headerlink" title="Get与Post处理方式"></a>Get与Post处理方式</h2><pre class=" language-JAVA"><code class="language-JAVA">//所有请求，起到了对两种不同处理方式的分发作用
 public void service(){
 
@@ -517,7 +523,8 @@ public void doGet(){
 //Post请求
 public void doPost(){
 
-}</code></pre>
+}
+</code></pre>
 <h2 id="Get和Post应用场景"><a href="#Get和Post应用场景" class="headerlink" title="Get和Post应用场景"></a>Get和Post应用场景</h2><ul>
 <li><p>Get常用于不包含敏感信息的查询功能，百度谷歌查询结果</p>
 <ul>
@@ -555,7 +562,8 @@ public class Annotation extends HttpServlet{
   protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     resp.getWriter().println("I am annotation servlet!");
   }
-}</code></pre>
+}
+</code></pre>
 <h2 id="启动自动加载Servlet"><a href="#启动自动加载Servlet" class="headerlink" title="启动自动加载Servlet"></a>启动自动加载Servlet</h2><ul>
 <li>web.xml使用<code>&lt;load-on-startup&gt;</code>设置启动加载；</li>
 <li><code>&lt;load-on-startup&gt;0~9999&lt;/load-on=startup&gt;</code>，执行的时候会按照标签内部的序号从小到大依次执行；</li>
@@ -568,7 +576,8 @@ public class Annotation extends HttpServlet{
   <servlet-class>com.imooc.servlet.CreateServlet</servlet-class>
   <load-on-startup>0</load-on-startup>
   <!-- 0代表最先被加载 -->
-</servlet></code></pre>
+</servlet>
+</code></pre>
 <pre class=" language-JAVA"><code class="language-JAVA">// 采用注解方式实现启动自动加载，注意，一定要设置url才能生效，loadOnStartup的值是加载顺序
 @WebServlet(urlPatterns="/unused",loadOnStartup=2)
 
@@ -578,7 +587,8 @@ public class AnalysisServlet extends HttpServlet{
   public void init() throws ServletException{
     System.out.println("正在分析结果");
   }
-}</code></pre>
+}
+</code></pre>
 <h2 id="HTTP请求的结构"><a href="#HTTP请求的结构" class="headerlink" title="HTTP请求的结构"></a>HTTP请求的结构</h2><ul>
 <li>HTTP请求包含三部分：请求行、请求头、请求体</li>
 </ul>

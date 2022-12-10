@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -457,7 +461,8 @@ cat /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
 # 设置是否响应广播
 echo 0 > /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
 # 广播ping
-ping -b 255.255.255.255</code></pre>
+ping -b 255.255.255.255
+</code></pre>
 <ul>
 <li>广播ping的ttl值可以用来判断系统类型，128为windows，64为linux</li>
 <li>子网掩码不同不一定代表不能通信</li>
@@ -467,16 +472,19 @@ ping -b 255.255.255.255</code></pre>
 <li>查看：route -n</li>
 <li>添加：route add</li>
 </ul>
-<pre class=" language-BASH"><code class="language-BASH">route add [-net|-host] target [netmask Nm] [gw Gw] [[dev] If]</code></pre>
+<pre class=" language-BASH"><code class="language-BASH">route add [-net|-host] target [netmask Nm] [gw Gw] [[dev] If]
+</code></pre>
 <ul>
 <li>目标：192.168.1.3 网关：172.16.0.1</li>
 </ul>
-<pre class=" language-BASH"><code class="language-BASH">route add -host 193.168.1.3 gw 172.16.0.1 dev eth0</code></pre>
+<pre class=" language-BASH"><code class="language-BASH">route add -host 193.168.1.3 gw 172.16.0.1 dev eth0
+</code></pre>
 <ul>
 <li>目标：192.168.0.0 网关 172.16.0.1</li>
 </ul>
 <pre class=" language-BASH"><code class="language-BASH">route add -net 192.168.0.0 netmask 255.255.255.0 gw 172.16.0.1 dev eth0
-route add -net 192.168.0.0/24 gw 172.16.0.1 dev etho0</code></pre>
+route add -net 192.168.0.0/24 gw 172.16.0.1 dev etho0
+</code></pre>
 
             </div>
             <hr/>

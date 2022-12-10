@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -445,18 +449,18 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="动机分析"><a href="#动机分析" class="headerlink" title="动机分析"></a>动机分析</h2><p>在射频收发机中，如果引入本文所述的复数信号分析技术对收发机的模块进行阐释和分析，将会大大减小分析的难度。在这里，我们先简单介绍一下射频收发机的设计以及在射频收发机设计过程中，需要解决的几个问题。</p>
-<h3 id="双边带调制带宽的浪费"><a href="#双边带调制带宽的浪费" class="headerlink" title="双边带调制带宽的浪费"></a>双边带调制带宽的浪费</h3><p>双边带调制系统将原有信号调制后，会将信号的带宽扩展为原先的两倍。这个现象的机理是，基带信号通常是一个低频信号，信号的带宽假设为$0\sim\omega_0$，则信号从低频调制到中频时，如下图所示，<br><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/1.png" alt="零中频双边带信号频谱示意图"><br>由于负边带的存在，信号整体作移动（调制）时，原先带宽为$\omega_0$的信号，带宽将会被扩展到$2\omega_0$。这里就出现了带宽的浪费，原因是在调制后的带宽为$2\omega_0$的信号中，信号的左半边频谱与右半边是完全相同的，为了节约带宽，我们可以将左半边频谱用某种方法去掉，从而达到了节省带宽的目的。</p>
+<h3 id="双边带调制带宽的浪费"><a href="#双边带调制带宽的浪费" class="headerlink" title="双边带调制带宽的浪费"></a>双边带调制带宽的浪费</h3><p>双边带调制系统将原有信号调制后，会将信号的带宽扩展为原先的两倍。这个现象的机理是，基带信号通常是一个低频信号，信号的带宽假设为$0\sim\omega_0$，则信号从低频调制到中频时，如下图所示，<br><img src="/.io//1.png" alt="零中频双边带信号频谱示意图"><br>由于负边带的存在，信号整体作移动（调制）时，原先带宽为$\omega_0$的信号，带宽将会被扩展到$2\omega_0$。这里就出现了带宽的浪费，原因是在调制后的带宽为$2\omega_0$的信号中，信号的左半边频谱与右半边是完全相同的，为了节约带宽，我们可以将左半边频谱用某种方法去掉，从而达到了节省带宽的目的。</p>
 <h3 id="双边带接收机的设计问题"><a href="#双边带接收机的设计问题" class="headerlink" title="双边带接收机的设计问题"></a>双边带接收机的设计问题</h3><p>双边带接收机接受信号时，如果对信号进行零中频处理，意思就是将载波频率降为0时，信号原先的负频谱的会和信号的正频谱发生混叠，造成信息的丢失，很显然，将接收到的信号直接进行下变频以及检波处理是绝对不可行的。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>基于上述两点原因，我们考虑到是不是可以将原信号，也就是将待调制的低频信号的左半边和右半边频谱取出，这样就直接解决了我们双边带系统的问题了。</p>
 <h2 id="射频发射机概述"><a href="#射频发射机概述" class="headerlink" title="射频发射机概述"></a>射频发射机概述</h2><p>一般来讲，射频发射机由振荡器、调制器、功率放大器、带通滤波器组成。调制的方式一般来说有双边带调制以及单边带调制两种典型的发射机结构。单边带调制相对于双边带调制来说，可以节约一半的频谱资源，是更优的调制设计；但是单边带相较于双边带来说，增加了调制系统的复杂程度。</p>
 <h2 id="射频接收机概述"><a href="#射频接收机概述" class="headerlink" title="射频接收机概述"></a>射频接收机概述</h2><p>射频接收机主要是讲接受到的射频信号下变频到可以处理的信号范围，再由DSP进行解调操作。射频接收机在将射频信号下变频时，同时也会将镜像信号变频到同样的频谱位置，造成信息的丢失。镜像信号在实际应用中，有可能是相邻信道上的干扰信号，或者是别的频段的信号，恰巧与需要下混频的射频信号关于载频对称。</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/2.png" alt="信号下变频时镜像信号干扰原理图"></p>
+<p><img src="/.io//2.png" alt="信号下变频时镜像信号干扰原理图"></p>
 <h2 id="镜像信号的消除"><a href="#镜像信号的消除" class="headerlink" title="镜像信号的消除"></a>镜像信号的消除</h2><p>这里存在的问题就是镜像信号和目标信号同时被变频到同一个频率上，导致我们的目标信号与镜像信号混叠，产生信息的丢失。下面介绍几种常见的抑制镜像信号的方法。</p>
 <h3 id="采用普通LC滤波器进行镜像信号的消除"><a href="#采用普通LC滤波器进行镜像信号的消除" class="headerlink" title="采用普通LC滤波器进行镜像信号的消除"></a>采用普通LC滤波器进行镜像信号的消除</h3><p>假设在GSM系统中，在900MHz频点上，需要实现对相邻信道35dB的抑制比，若采用普通LC滤波器对镜像信号进行滤除，黄色的虚线代表了滤波器的传输函数，如下图所示，</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/3.png" alt="滤波器抑制镜像信号示意图"></p>
+<p><img src="/.io//3.png" alt="滤波器抑制镜像信号示意图"></p>
 <p>如果目标信号比镜像信号的功率小很多的话，就会出现目标信号被镜像信号覆盖的情况吗，为了保证镜像信号幅度小于目标信号，我们需要对镜像信号进行滤波操作，假设滤波器在镜像信号频率处可以将该频点信号抑制35dB；在我们的假设中，镜像信号幅度比目标信号大20dB。这样一来，镜像信号通过滤波器之后，就会比目标信号小15dB，可以满足要求。尽管从理论分析来说，貌似是可行的，但是如果我们从LC电路的可实现性角度来考虑，就不可实现了。</p>
 <h3 id="采用普通LC滤波器的问题"><a href="#采用普通LC滤波器的问题" class="headerlink" title="采用普通LC滤波器的问题"></a>采用普通LC滤波器的问题</h3><p>下面对LC电路的Q值进行分析，首先对滤波器的阻抗进行分析，假设LC滤波器不理想，存在一个等效并联电阻，那么，就会变成一个如下图所示的电路，</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/4.png" alt="LC带通滤波器电路"></p>
+<p><img src="/.io//4.png" alt="LC带通滤波器电路"></p>
 <p>下图中，$R_{epr}$是电感上等效出来的一个并联等效电阻，表示了电感的非理想性，在电路中的$R_s$表示了电压源的内阻。下式表示了$R_{epr}$、$L$、$C$并联组成的阻抗网络的阻抗。</p>
 <p>$$<br>Z_T(s)=\frac{R_{epr}Ls}{R_{epr}LCs^2+Ls+R_{epr}}<br>$$</p>
 <p>从上式中，我们可以取模后平方，得到如下式子，</p>
@@ -467,14 +471,14 @@
 <p>$$<br>Q=\frac{R}{L\omega}=63200<br>$$</p>
 <p>上述这个Q值用普通的LC滤波器一般来将无法实现。</p>
 <h3 id="采用超外差式接收机对镜像信号进行抑制"><a href="#采用超外差式接收机对镜像信号进行抑制" class="headerlink" title="采用超外差式接收机对镜像信号进行抑制"></a>采用超外差式接收机对镜像信号进行抑制</h3><p>这种超外差接收机采用两次变频的方式，提高了中频的频率，实现了对镜像信号的充分抑制，下图是一个超外差接收机的示意图。可以看到，在接收信号时，信号首先进入了一个频带选择滤波器，将多余的频率分量滤除，之后进入一个低噪放中进行放大，再进入镜像抑制滤波器，将镜像信号滤除。这里由于第一次变频的中频频率比较高，所以用于滤除镜像信号的滤波器比较容易实现。</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/5.png" alt="超外差接收机">、</p>
+<p><img src="/.io//5.png" alt="超外差接收机">、</p>
 <p>下面是一个超外差接收机的实例，接收到的信号通过一个881MHz的带通滤波器，将镜像信号滤除，之后转换为一个中频信号，频带宽度为45MHz。由于中频信号的频带宽度大，在这种情形下，LC带通滤波器的制作难度大大降低，但仍需要一个外置的晶体滤波器。之后，用一个44.5MHz的信号瞄准我们的目标信号，进一步降低信号的频率至455kHz，之后采用的滤波器都是陶瓷滤波器。可以看到，这些所谓的陶瓷滤波器、晶体滤波器都是不可以集成的，这就意味着信号要进出芯片多次，每一次进出芯片都要进行阻抗匹配，阻抗匹配的接口一般来说都是$50\Omega$或者$75\Omega$的电阻，这会带来巨大的功率消耗，对于低功耗场景产生不利影响。</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/6.png" alt="超外差接收机实例"></p>
+<p><img src="/.io//6.png" alt="超外差接收机实例"></p>
 <h3 id="采用直接变频接收机对镜像信号进行抑制"><a href="#采用直接变频接收机对镜像信号进行抑制" class="headerlink" title="采用直接变频接收机对镜像信号进行抑制"></a>采用直接变频接收机对镜像信号进行抑制</h3><h4 id="哈特利结构接收机模型"><a href="#哈特利结构接收机模型" class="headerlink" title="哈特利结构接收机模型"></a>哈特利结构接收机模型</h4><p>那么，有没有什么办法可以不使用滤波器，还能将镜像信号抵消呢？当然是可以的。在这里我们存在的问题就是变频之后，镜像信号也会被变频到同一个频率上。只要我们用某种方式，不通过滤波器，通过将变频后的镜像信号构造为相反的两个信号，便可以将镜像信号抵消。如果要使用上述将镜像信号构造为相反的两个信号的方法，就需要两路处理单元，分别对信号进行变频后，形成可以相互抵消的两路信号。之前，我们所采用的结构只有一路，采用了只包含cos或者sin分量的本地晶振，不妨假设我们的本地震荡源为$cos(\omega_{LO}t)$、目标信号为$cos(\omega_{c}t)$、镜像信号为$cos(\omega_{m}t)$，其中，$\omega_m&lt;\omega_c$，那么，变频之后的结果如下，</p>
 <p>$$<br>\frac{1}{4}(e^{j\omega_ct}+e^{-j\omega_ct})(e^{j\omega_{LO} t}+e^{-j\omega_{LO} t})=\frac{1}{2}(cos(\omega_c+\omega_{LO})t+cos(\omega_{c}-\omega_{LO})t)<br>$$</p>
 <p>$$<br>\frac{1}{4}(e^{j\omega_mt}+e^{-j\omega_mt})(e^{j\omega_{LO} t}+e^{-j\omega_{LO} t})=\frac{1}{2}(cos(\omega_m+\omega_{LO})t+cos(\omega_{m}-\omega_{LO})t)<br>$$</p>
 <p>在频谱上可以体现为如下图所示的变化，</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/7.png" alt="cos分量变频后的镜像和目标信号示意图"></p>
+<p><img src="/.io//7.png" alt="cos分量变频后的镜像和目标信号示意图"></p>
 <p>可以看到，在cos分量的载波作用下，信号仅仅是在频谱上发生水平移动，并没有在频谱上体现出180°相位的变化。我们需要使用某种方式，构造出在频谱上体现180°相位变化的信号，不妨先看一下sin分量作为本地振荡源的变频结果，</p>
 <p>$$<br>\frac{1}{4j}(e^{j\omega_ct}+e^{-j\omega_ct})(e^{j\omega_{LO} t}-e^{-j\omega_{LO} t})=\frac{1}{2}(sin(\omega_c+\omega_{LO})t+sin(\omega_{LO}-\omega_{c})t)<br>$$</p>
 <p>$$<br>\frac{1}{4j}(e^{j\omega_mt}+e^{-j\omega_mt})(e^{j\omega_{LO} t}-e^{-j\omega_{LO} t})=\frac{1}{2}(sin(\omega_m+\omega_{LO})t+sin(\omega_{LO}-\omega_{m})t)<br>$$</p>
@@ -482,13 +486,13 @@
 <p>$$<br>\frac{1}{2}((sin(\omega_{LO}+\omega_c)t-\frac{\pi}{2})+sin((\omega_{LO}-\omega_{c})t-\frac{\pi}{2}))=\frac{1}{2}(cos(\omega_{LO}+\omega_c)t+cos(\omega_{IF})t)<br>$$</p>
 <p>$$<br>\frac{1}{2}(sin((\omega_m+\omega_{LO})t-\frac{\pi}{2})+sin((\omega_{LO}-\omega_{m})t-\frac{\pi}{2})<br>)=\frac{1}{2}(cos(\omega_m+\omega_{LO})t-cos(\omega_{IF})t)$$</p>
 <p>可以看到，如果我们将本振信号为cos分量变频后的信号与本振信号为sin分量变频且延迟$\frac{\pi}{2}$相位的信号加起来，则镜像信号就可以完全被抵消。上述采用sin分量作为本振信号，且延时$\frac{\pi}{2}$的过程可以用下图中的频谱变化来表示。</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/8.png" alt="sin分量变频且延时后的镜像和目标信号示意图"></p>
+<p><img src="/.io//8.png" alt="sin分量变频且延时后的镜像和目标信号示意图"></p>
 <p>其中，第二幅图中，采用phasor图描述了一个sin信号，处于正频率的分量可以视为在实轴与虚轴组成的平面上逆时针旋转，处于负频率的分量可以视为在实轴与虚轴组成的平面上顺时针旋转。因此，两个分量的信号都可以被认为是在cos信号的基础之上延迟了$\frac{\pi}{2}$的相位。此外，为了绘图便利，在第三幅图中，表述了sin信号与第一幅图中表示的目标信号和镜像信号的乘积，并没有将图形绘制成三维的模型，读者可以自行想象，将第三幅图与第二幅图联系起来，则幅值在$\frac{j}{2}$方向的信号分量可以看作是沿纸面朝外的信号分量，而幅值在$-\frac{j}{2}$方向上的信号可以视为沿纸面向里的信号分量。第四幅图表示将第三幅图表示的信号延迟了$\frac{pi}{2}$的相位之后得到的信号频谱，其中，正频率部分延迟$\frac{pi}{2}$可以表示为将正频率部分在沿虚轴和实轴组成的平面上顺时针旋转90°，而负频率部分延迟$\frac{pi}{2}$可以表示为将负频率部分的分量在沿虚轴和实轴组成的平面上逆时针旋转90°。上述信号处理的模型可以表示为如下的系统框图，这就是有名的哈特利镜像抑制接受结构。<strong>哈特利结构本质上是</strong>在sin为本振信号的一路将目标信号的相位超前90°，镜像信号的相位滞后90°，再之后，将目标信号和镜像信号的相位都滞后90°，这样一来，镜像信号相位滞后180°，而目标信号的相位没有滞后。再将cos分量作为本振信号的变频后的信号与sin分量作为本振信号且延迟的信号相加，镜像信号就能够被抵消，目标信号叠加之后仍然存在。</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/9.png" alt="哈特利镜像抑制接收结构"></p>
+<p><img src="/.io//9.png" alt="哈特利镜像抑制接收结构"></p>
 <h4 id="Weaver结构接收机模型"><a href="#Weaver结构接收机模型" class="headerlink" title="Weaver结构接收机模型"></a>Weaver结构接收机模型</h4><p>有时候，延时90°的结构在电路中很难实现，于是，Weaver结构的镜像抑制接收机模型被提出。Weaver接收机模型如下图所示，</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/10.png" alt="Weaver镜像抑制接收结构"></p>
+<p><img src="/.io//10.png" alt="Weaver镜像抑制接收结构"></p>
 <p>这个模型采用了两个中频的结构，因此，有两组本振信号，分别为$\omega_1$和$\omega_2$。其中第一组本振信号的角色和哈特利结构中的本振信号角色完全相同，都是将一路信号中的目标信号和镜像信号进行频谱搬移操作；而另一路信号中的目标信号相位超前90°，而镜像信号滞后90°。但是，与哈特利结构的接收机不同的是，Weaver结构采用了新的设计来实现了相位的延迟。Weaver结构瞄准一号中频的左侧对信号继续进行变频，目标信号被继续超前90°；同时，镜像信号也被超前90°。由于目标信号已经被超前90°，镜像信号已经被滞后90°，因此，目标信号最终被超前180°，镜像信号保持不变。为了将目标信号取出，只需将cos路的信号与sin路的信号相减即可得到目标信号，消除镜像信号。</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/11.png" alt="Weaver镜像抑制sin路原理频谱示意图"></p>
+<p><img src="/.io//11.png" alt="Weaver镜像抑制sin路原理频谱示意图"></p>
 <p>综上所述，<strong>Weaver结构的接收机模型的本质是</strong>，先用第一个本振信号瞄准目标信号和镜像信号中间，目标信号在镜像信号的右侧，即目标信号频率大于镜像信号，这一步的结果导致镜像信号被滞后90°，目标信号被超前90°。紧接着，再用第二个本振信号瞄准第一个中频信号的左侧，进一步变频，这一步的结果是，镜像信号和目标信号都被超前90°。最后，由于目标信号被超前90°两次，因此，目标信号最后被超前180°；镜像信号先是被滞后90°，之后又被超前90°，因此，镜像信号维持不变。将cos支路处理后的信号与sin支路处理后的信号相减，即可得到最后的消除镜像信号的目标信号。</p>
 <h2 id="复数信号分析"><a href="#复数信号分析" class="headerlink" title="复数信号分析"></a>复数信号分析</h2><p>尽管直接变频接收机消除了镜像滤波器可制造性的问题，在电路中去除了滤波器结构，但仍然存在问题。这些问题可以被更加优化的结构解决，但需要先介绍复数信号分析这一有用工具，帮助我们可以理解更加复杂的镜像抑制结构。</p>
 <h3 id="复数信号的基本概念"><a href="#复数信号的基本概念" class="headerlink" title="复数信号的基本概念"></a>复数信号的基本概念</h3><ul>
@@ -500,24 +504,24 @@
 <h4 id="一、加（减）法法则"><a href="#一、加（减）法法则" class="headerlink" title="一、加（减）法法则"></a>一、加（减）法法则</h4><p>下式表述了复数信号加法遵循的数学规则，</p>
 <p>$$<br>\begin{cases}<br>  Y_I=X_{1_I}+X_{2_I}\<br>  Y_Q=X_{1_Q}+X_{2_Q}<br>\end{cases}<br>$$</p>
 <p>下图表示了复数信号加法的电路框图结构，</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/12.png" alt="复数信号加法框图"></p>
+<p><img src="/.io//12.png" alt="复数信号加法框图"></p>
 <p>复数信号加法遵循实部相加，虚部相加的规则，只要将虚部和实部分别相加，最后即可得到结果对应的虚部和实部。</p>
 <h4 id="二、乘（除）法法则"><a href="#二、乘（除）法法则" class="headerlink" title="二、乘（除）法法则"></a>二、乘（除）法法则</h4><p>下式表述了复数信号乘法与除法遵循的数学规则，</p>
 <p>$$<br>\begin{cases}<br>  Y_I=X_{1_I}\cdot X_{2_I}-X_{1_Q}\cdot X_{2_Q}\<br>  Y_Q=X_{1_I}\cdot X_{2_Q}+X_{1_Q}\cdot X_{2_I}<br>\end{cases}<br>$$</p>
 <p>上式表明，复数信号乘法与复数乘法类似，都是交叉项相乘之和为虚部，同类项相乘之和为实部。要特别注意，在实部中，两个虚数同类项相乘之和是负的。</p>
 <p>下图表示了复数信号乘法的电路框图结构，</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/13.png" alt="复数信号乘法框图"></p>
+<p><img src="/.io//13.png" alt="复数信号乘法框图"></p>
 <h4 id="三、传输函数不变法则"><a href="#三、传输函数不变法则" class="headerlink" title="三、传输函数不变法则"></a>三、传输函数不变法则</h4><p>假设$I$、$Q$两路的传输函数都为$H(\omega)$，其复数信号传输函数也为$H(\omega)$。这一性质可以由线性系统的叠加性推导得到。下面是该性质的系统示意图，</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/14.png" alt="传输函数不变法则的系统示意图"></p>
+<p><img src="/.io//14.png" alt="传输函数不变法则的系统示意图"></p>
 <h4 id="四、复数信号滤波"><a href="#四、复数信号滤波" class="headerlink" title="四、复数信号滤波"></a>四、复数信号滤波</h4><p>一般来讲，滤波器的传输函数都是关于Y轴对称的，这里，引入一个全新的概念，通过复数信号分析方法设计的滤波器，可以令其传输函数关于任意位置的纵轴对称。</p>
 <p>首先，先引入一个低通滤波器，$H(\omega)$，该滤波器的传输函数如下，</p>
 <p>$$<br>H(\omega)=\frac{1}{j\omega+\omega_b}<br>$$</p>
 <p>该滤波器的3dB带宽为$\omega_b$，可以绘制出如下图所示的传输函数，</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/15.png" alt="低通滤波器传输函数"></p>
+<p><img src="/.io//15.png" alt="低通滤波器传输函数"></p>
 <p>那么，思考下面的一个问题，如何将滤波器的传输函数向右平移呢？方法很简单，只需要在传输函数上做如下的改动，便可以得到一个新的传输函数，$H_{complex}(\omega)$,</p>
 <p>$$<br>H_{complex}(\omega) = \frac{1}{j(\omega-\omega_0)+\omega_b}<br>$$</p>
 <p>那么，如何在电路上实现这一操作呢？我们可以参考如下电路结构，</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/16.png" alt="低通滤波器传输函数"></p>
+<p><img src="/.io//16.png" alt="低通滤波器传输函数"></p>
 <p>先看右边的图，根据之前讨论过的传输函数不变法则，对于虚部和实部共同作用的同一个传输函数，等同于对整体进行作用。我们可以将虚部&amp;实部输入信号看做一个整体$X$，那么，右图结构就是一个反馈环路，根据反馈环路的性质，我们可以写出这个电路结构的闭环传输函数，如下</p>
 <p>$$<br>H_{closedloop}(\omega)=\frac{H(\omega)}{1-jR(\omega)H(\omega)}<br>$$</p>
 <p>将我们之前假设的传输函数代入，再假设$R(\omega)=\omega_0$，有，</p>
@@ -525,7 +529,7 @@
 <p>化简有，</p>
 <p>$$<br>H_{closedloop}(\omega)=\frac{1}{j(\omega-\omega_0)+\omega_b}<br>$$</p>
 <p>上述式子表明，我们获得了一个复数信号滤波器，该滤波器的传输函数不再是关于Y轴中心对称，而是关于$x=\omega_0$中心对称，下图是该滤波器的传输函数，</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/17.png" alt="复数信号低通滤波器传输函数"></p>
+<p><img src="/.io//17.png" alt="复数信号低通滤波器传输函数"></p>
 <p>根据上述分析，我们已经构造出了一个复数信号滤波器，通过这个滤波器，我们可以实现很多种类的复数信号处理。</p>
 <h4 id="五、复数信号混频"><a href="#五、复数信号混频" class="headerlink" title="五、复数信号混频"></a>五、复数信号混频</h4><p>复数信号混频定义为两个复数信号相乘，两个复数信号相乘，可以适用本文之前论述的复数信号乘法法则。复数信号混频可以用下式表示，</p>
 <p>$$<br>Y=X\cdot[cos(\omega_{LO}t)+jsin(\omega_{LO}t)]=(X_I+jX_Q)\cdot e^{j\omega_{LO}t}<br>$$</p>
@@ -539,22 +543,22 @@
 <p>$$<br>X_{Im}=\frac{A+jB}{2j}e^{j\omega t}-\frac{A-jB}{2j}e^{-j\omega t}<br>$$</p>
 <p>可以看到，在上面的式子中，正频率部分的实部相当于虚部乘了一个$j$。因此，这就为我们提取正频率部分实部提供了思路。</p>
 <p>那么如何提取正频率的实部呢？很简单，我们只需要将虚数路也就是$Q$路的信号乘一个90°再与实部信号，也就是$I$路信号，相加；或者除一个90°，再用此信号减去$I$路信号。最后即可得到我们的正频率取实部的信号。这里方案一的框图如下所示，</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/19.png" alt="复数信号取实部方案一"></p>
+<p><img src="/.io//19.png" alt="复数信号取实部方案一"></p>
 <p>其中A代表了$Q$路信号，B代表了$I$路信号。</p>
 <p>方案二的框图如下所示，</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/20.png" alt="复数信号取实部方案二"></p>
+<p><img src="/.io//20.png" alt="复数信号取实部方案二"></p>
 <p>上述两个方案要对正频率取实部，都是要在Q路上进行相位的延迟或者超前。上述操作在频谱上表现为，将负频率部分删去，将正频率部分复制到负频率部分，具体表现为下面图中表示的频谱。</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/21.png" alt="复数信号取实部频谱示意图"></p>
+<p><img src="/.io//21.png" alt="复数信号取实部频谱示意图"></p>
 <h4 id="七、实数信号变复数（保留正半轴）"><a href="#七、实数信号变复数（保留正半轴）" class="headerlink" title="七、实数信号变复数（保留正半轴）"></a>七、实数信号变复数（保留正半轴）</h4><p>对于实数信号变复数（保留正半轴）对应了保留正半轴，将负频率部分删去的操作。要完成上述的目标，只需要将原先的实数信号设定为实部，再构造出虚部即可，由上文所述，实数部分与虚数部分之间的关系可知，只需要除以一个$j$即可由实数部分的到虚数部分。在实际电路中，除以j对应了相位滞后90°。因此，上述方法描述的电路实现框图可以由下图表示，</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/22.png" alt="实数信号变复数（保留正频率部分）电路实现框图"></p>
+<p><img src="/.io//22.png" alt="实数信号变复数（保留正频率部分）电路实现框图"></p>
 <p>上述方法对应的频谱图如下图所示，</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/23.png" alt="实数信号变复数（保留正频率部分）频谱示意图"></p>
+<p><img src="/.io//23.png" alt="实数信号变复数（保留正频率部分）频谱示意图"></p>
 <p>可以看到，原先的正频率部分被保留了下来，删去了负频率的部分。</p>
 <h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>根据上述内容，我们可以再来分析几个案例。</p>
 <h3 id="案例一"><a href="#案例一" class="headerlink" title="案例一"></a>案例一</h3><p>下图是Hartley结构的复数信号接收机，</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/9.png" alt="Hartley结构复数信号接收机"></p>
+<p><img src="/.io//9.png" alt="Hartley结构复数信号接收机"></p>
 <p>该图给出了一个前文描述过原理的哈特利结构接收机模型。如果利用复数信号分析的方法对该系统进行分析，可以看到，系统先是对信号做了复数信号下的混频，将频谱整体向右平移$\omega_{LO}$的距离，如下图所示，</p>
-<p><img src="/2021/06/06/fu-shu-xin-hao-fen-xi/25.png" alt="哈特利接收机复数混频频谱示意图"></p>
+<p><img src="/.io//25.png" alt="哈特利接收机复数混频频谱示意图"></p>
 <p>可以看到，频谱被整体向右搬移了$\omega_{LO}$的距离，这样我们要的频谱就落在中频上了，只需要再使用负频率取实部的操作，便可以实现镜像信号的抑制。那么，负频率取实部的如何操作呢？根据前文描述的正频率取实部的操作可知，负频率取实部，只需要除以$j$虚数单位，然后与正频率取实部不同的是，这时候将$I$路信号和$Q$路信号加起来就可以实现负频率取实部的操作了，对应于电路实现框图就是上面的hartley框图。<strong>注意</strong>，框图中的90°是指相位减去90°的意思而不是相位加上90°。</p>
 
             </div>

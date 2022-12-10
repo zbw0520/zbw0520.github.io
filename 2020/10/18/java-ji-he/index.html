@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -472,7 +476,7 @@
 <li><code>ArrayList</code>、<code>LinkedList</code>、<code>HashSet</code>是三个实现类，实现了三个对应的接口。</li>
 <li><code>Map</code>的主要实现类是<code>HashMap</code>。</li>
 </ul>
-<p><img src="/2020/10/18/java-ji-he/1.png" alt="集合框架的体系结构示意图"></p>
+<p><img src="/.io//1.png" alt="集合框架的体系结构示意图"></p>
 <h2 id="List-列表"><a href="#List-列表" class="headerlink" title="List(列表)"></a><code>List</code>(列表)</h2><ul>
 <li><code>List</code>是元素有序并且可以重复的集合，称为序列；</li>
 <li><code>List</code>可以精确地控制每一个元素的插入位置，或删除某个位置的元素；</li>
@@ -509,7 +513,8 @@
 <pre class=" language-java"><code class="language-java">Iterator it<span class="token operator">=</span> set<span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">while</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token comment" spellcheck="true">//判断是否还有下一个元素</span>
     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>it<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//it.next()代表了下一个元素</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <h2 id="hashCode-与equal-方法的重写"><a href="#hashCode-与equal-方法的重写" class="headerlink" title="hashCode()与equal()方法的重写"></a><code>hashCode()</code>与<code>equal()</code>方法的重写</h2><ul>
 <li>重写这两个方法主要用在<code>Hash</code>相关的集合中，主要定义hash码的产生方式以及如何判定对象是否相等，重写这个方法可以定制Set的判定相等模式。</li>
 <li>以下代码为上述两个方法重写的示例，在IDEAJ中可以通过自动插入方式自动编写这两个方法。</li>
@@ -533,7 +538,8 @@
 <span class="token annotation punctuation">@Override</span>
 <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> Objects<span class="token punctuation">.</span><span class="token function">hash</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> month<span class="token punctuation">,</span> species<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <h2 id="泛型的概念"><a href="#泛型的概念" class="headerlink" title="泛型的概念"></a>泛型的概念</h2><ul>
 <li>JavaSE 5.0之后引入的概念；</li>
 <li>利用对<code>Object</code>类型的引用实现参数类型的任意化，任意化的缺点就是要做显式的类型转换，这对于后期维护代码和修改代码来说带来了比较大的工作量。并且制定类型还会产生运行时错误，这是我们不希望看到的。使用泛型，就可以独立于特定数据类型来一次性定义算法，然后把算法应用于各种数据类型，而不需要做额外的工作。因此Java中定义了泛型的概念。</li>
@@ -541,7 +547,8 @@
 <li>泛型的写法</li>
 </ul>
 <pre class=" language-java"><code class="language-java">Set<span class="token operator">&lt;</span>Cat<span class="token operator">></span> set <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token operator">&lt;</span>Cat<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-Iterator<span class="token operator">&lt;</span>Cat<span class="token operator">></span> it <span class="token operator">=</span> set<span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+Iterator<span class="token operator">&lt;</span>Cat<span class="token operator">></span> it <span class="token operator">=</span> set<span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a><code>Map</code></h2><ul>
 <li><code>Map</code>中的数据是以键值对（key-value）的形式存储的；</li>
 <li>key-value是以<code>Entry</code>类型的对象实例存在的，<code>Entry</code>是接口类；</li>
@@ -561,7 +568,8 @@ Iterator<span class="token operator">&lt;</span>Cat<span class="token operator">
 <pre class=" language-java"><code class="language-java"><span class="token keyword">for</span><span class="token punctuation">(</span>String str<span class="token operator">:</span>set<span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"你好"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"已经找到的对应的字符串"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 
             </div>
             <hr/>

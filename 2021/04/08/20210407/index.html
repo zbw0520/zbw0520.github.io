@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -465,11 +469,11 @@
 <li>第一个问题，使用LDO的目的没有弄清。目前电源的解决方案总共有两种，一种是开关电源型的，另一种是低压差线性稳压器也就是我们所说的LDO。开关电源的主要优势是能量转换效率高，但是劣势是会引入开关噪声。LDO的优势是不但不会引入噪声，还有抑制噪声的能力，劣势是能量转换效率比较差，LDO耗费的能量是输入输出的差值电压乘以流过PMOS传输管的电流。在高性能ADC中，对噪声是非常敏感的，因此，噪声敏感是我们选用LDO的主要原因。</li>
 <li>第二个问题，在PID结构图中，我们可以发现在输出端的补偿电容上方有一个串联等效电阻，该串联等效电阻的作用是增加了一个左半平面的零点，可以优化环路稳定性，这个电阻不是随意加入的，需要特殊考虑这个问题。</li>
 </ul>
-<p><img src="/2021/04/08/20210407/1.png" alt="LDO的基本结构示意图"></p>
+<p><img src="/.io//1.png" alt="LDO的基本结构示意图"></p>
 <ul>
 <li>第三个问题，在LDO原理图中在传输管和第二级放大器之间有一个运算放大器<code>OP2</code>，这个放大器的作用是$V_{ds}$matching。由于沟道长度调制效应，有可能造成电流镜复制电流产生误差，有可能出现一边管子进入饱和区，另一边还在线性区的情况。为了消除这个影响，引入一个运算放大器来消除两侧管子的$V_{ds}$的差别，提升电流复制的精确程度。</li>
 </ul>
-<p><img src="/2021/04/08/20210407/2.png" alt="LDO的原理图"></p>
+<p><img src="/.io//2.png" alt="LDO的原理图"></p>
 <ul>
 <li>第四个问题，PSRR（Power Source Rejection Ratio）电源抑制比大概在40dB就已经足够了，40dB意味着电源噪声可以被抑制100倍，一般在实验室引入的开关噪声的幅度大概就在50mV左右，抑制一百倍意味着可以在输出端只有0.5mV的输出噪声，已经足够满足6-bit SAR ADC的要求。因为6-bit SAR ADC一个档位远远大于1mV，因此，0.5mV的噪声不会对其精度产生大的影响。</li>
 </ul>
@@ -481,7 +485,7 @@
 <ul>
 <li>第一个问题，信号噪声的分布是在低频下的$\frac{1}{f}$噪声以及在高频下的热噪声（高斯白噪声）。这两个噪声构成了一个如下图所示的频谱。在锁相环中的相位噪声分析中，只关注二次谐波处的热噪声下变频之后对基波频率处的影响，而不关注DC频率上变频产生的影响，这是因为相位噪声只关注是否生成PM信号，而不关注是否生成AM信号，因为我们只关注时钟信号过零时的时刻，而不关注时钟信号的幅度。由DC频率上变频的噪声是一个AM信号，因为正负频率处的信号的相位是相同的。但是二次谐波处两次的噪声的相位是不关联的，因此，会产生相位上的调制，对基波频率处的信号的相位产生影响。</li>
 </ul>
-<p><img src="/2021/04/08/20210407/3.png" alt="噪声频谱图"> </p>
+<p><img src="/.io//3.png" alt="噪声频谱图"> </p>
 
             </div>
             <hr/>

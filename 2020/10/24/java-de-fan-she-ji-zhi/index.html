@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -447,7 +451,7 @@
                 <h2 id="反射的概述"><a href="#反射的概述" class="headerlink" title="反射的概述"></a>反射的概述</h2><h3 id="什么是Java反射机制"><a href="#什么是Java反射机制" class="headerlink" title="什么是Java反射机制"></a>什么是Java反射机制</h3><ul>
 <li>Java反射机制是在<strong>运行状态</strong>中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为Java语言的反射机制。</li>
 </ul>
-<p><img src="/2020/10/24/java-de-fan-she-ji-zhi/1.png" alt="Java反射机制示意图"></p>
+<p><img src="/.io//1.png" alt="Java反射机制示意图"></p>
 <h3 id="Java反射机制的作用"><a href="#Java反射机制的作用" class="headerlink" title="Java反射机制的作用"></a>Java反射机制的作用</h3><ul>
 <li>是用来编写一些通用性较高的代码或者框架的时候使用。</li>
 </ul>
@@ -473,7 +477,7 @@
 </ul>
 </li>
 </ul>
-<p><img src="/2020/10/24/java-de-fan-she-ji-zhi/2.png" alt="Java反射常用对象介绍图解"></p>
+<p><img src="/.io//2.png" alt="Java反射常用对象介绍图解"></p>
 <h3 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h3><ul>
 <li>Java中java.lang.Class类用于表示一个类的字节码(.class)文件</li>
 <li>如何得到某个class文件对应的Class对象</li>
@@ -482,7 +486,8 @@
 类名<span class="token punctuation">.</span><span class="token keyword">class</span>
 对象<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//Object类提供</span>
 <span class="token comment" spellcheck="true">//未知类和对象的情况下</span>
-Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"包名.类名"</span><span class="token punctuation">)</span></code></pre>
+Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"包名.类名"</span><span class="token punctuation">)</span>
+</code></pre>
 <ul>
 <li>Class类代表了某个类的字节码，并提供了加载字节码的方法：forName(“包名.类名”)，forName方法用于加载类字节码到内存中，并封装成一个Class对象。如下代码是常用的一种反射示例代码。</li>
 </ul>
@@ -496,22 +501,26 @@ Class <span class="token class-name">class2</span> <span class="token operator">
     Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"io.github.zbw0520.reflect.test.Person"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <h3 id="Constructor类"><a href="#Constructor类" class="headerlink" title="Constructor类"></a>Constructor类</h3><ul>
 <li><p>Constructor类的实例对象代表类的一个构造方法</p>
 </li>
 <li><p>得到某个类所有的构造方法</p>
-<pre class=" language-java"><code class="language-java">Constructor<span class="token punctuation">[</span><span class="token punctuation">]</span> constructors <span class="token operator">=</span> Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"java.lang.String"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getConstructors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class=" language-java"><code class="language-java">Constructor<span class="token punctuation">[</span><span class="token punctuation">]</span> constructors <span class="token operator">=</span> Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"java.lang.String"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getConstructors</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 </li>
 <li><p>得到指定的构造方法并调用</p>
 </li>
 </ul>
 <pre class=" language-java"><code class="language-java">Constructor Constructor <span class="token operator">=</span> Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"java.lang.String"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getConstructor</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-String str <span class="token operator">=</span> <span class="token punctuation">(</span>String<span class="token punctuation">)</span>Constructor<span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+String str <span class="token operator">=</span> <span class="token punctuation">(</span>String<span class="token punctuation">)</span>Constructor<span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token string">"abc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <ul>
 <li>Class类的newInstance()方法用来调用类的默认构造方法</li>
 </ul>
-<pre class=" language-java"><code class="language-java">String obj <span class="token operator">=</span> <span class="token punctuation">(</span>String<span class="token punctuation">)</span>Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"java.lang.String"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class=" language-java"><code class="language-java">String obj <span class="token operator">=</span> <span class="token punctuation">(</span>String<span class="token punctuation">)</span>Class<span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"java.lang.String"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <ul>
 <li>下面为Constructor类使用的具体实例代码</li>
 </ul>
@@ -534,7 +543,8 @@ String str <span class="token operator">=</span> <span class="token punctuation"
     Constructor c <span class="token operator">=</span> class1<span class="token punctuation">.</span><span class="token function">getConstructor</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span>String<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     Person person <span class="token operator">=</span> <span class="token punctuation">(</span>Person<span class="token punctuation">)</span>c<span class="token punctuation">.</span><span class="token function">newInstance</span><span class="token punctuation">(</span><span class="token string">"张三"</span><span class="token punctuation">,</span><span class="token string">"男"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">"  "</span><span class="token operator">+</span>person<span class="token punctuation">.</span><span class="token function">getGender</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <h3 id="Field类"><a href="#Field类" class="headerlink" title="Field类"></a>Field类</h3><ul>
 <li><p>Field类代表了某个类中的一个成员变量，并提供动态的访问权限</p>
 </li>
@@ -542,20 +552,24 @@ String str <span class="token operator">=</span> <span class="token punctuation"
 <ul>
 <li><p>得到所有的成员变量</p>
 <pre class=" language-java"><code class="language-java">Field<span class="token punctuation">[</span><span class="token punctuation">]</span> fields <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">getFields</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//获取所有public属性（包括父类继承）</span>
-Field<span class="token punctuation">[</span><span class="token punctuation">]</span> fields <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">getDeclaredFields</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//取得所有申明的属性</span></code></pre>
+Field<span class="token punctuation">[</span><span class="token punctuation">]</span> fields <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">getDeclaredFields</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//取得所有申明的属性</span>
+</code></pre>
 </li>
 <li><p>得到指定的成员变量</p>
 <pre class=" language-java"><code class="language-java">Field name <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">getField</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">//传入属性名称</span>
-Field name <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">getDeclaredFields</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//经常使用这个函数，无论是私有还是公有都可以通过这个函数访问</span></code></pre>
+Field name <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">getDeclaredFields</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//经常使用这个函数，无论是私有还是公有都可以通过这个函数访问</span>
+</code></pre>
 </li>
 </ul>
 </li>
 <li><p>设置Field变量是否可以访问</p>
-<pre class=" language-java"><code class="language-java">field<span class="token punctuation">.</span><span class="token function">setAccessible</span><span class="token punctuation">(</span><span class="token keyword">boolean</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//设置私有属性的访问权限是否为真</span></code></pre>
+<pre class=" language-java"><code class="language-java">field<span class="token punctuation">.</span><span class="token function">setAccessible</span><span class="token punctuation">(</span><span class="token keyword">boolean</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//设置私有属性的访问权限是否为真</span>
+</code></pre>
 </li>
 <li><p>Field变量值的读取</p>
 <pre class=" language-java"><code class="language-java">field<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//读取数据</span>
-field<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//设置数据</span></code></pre>
+field<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//设置数据</span>
+</code></pre>
 </li>
 <li><p>Field类使用代码示例</p>
 </li>
@@ -589,7 +603,8 @@ field<span class="token punctuation">.</span><span class="token function">set</s
     f<span class="token punctuation">.</span><span class="token function">setAccessible</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     f<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span><span class="token string">"女"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>f<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <h3 id="Method类"><a href="#Method类" class="headerlink" title="Method类"></a>Method类</h3><ul>
 <li><p>Method类代表某个类中的一个成员方法</p>
 </li>
@@ -597,18 +612,21 @@ field<span class="token punctuation">.</span><span class="token function">set</s
 <ul>
 <li><p>获得所有方法</p>
 <pre class=" language-java"><code class="language-java"><span class="token function">getDeclaredMethods</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-getMethods</code></pre>
+getMethods
+</code></pre>
 </li>
 <li><p>获得指定的方法</p>
 <pre class=" language-java"><code class="language-java"><span class="token function">getDeclaredMethod</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>parameterTypes<span class="token punctuation">)</span>
-<span class="token function">getMethod</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>parameterTypes<span class="token punctuation">)</span></code></pre>
+<span class="token function">getMethod</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> Class<span class="token operator">&lt;</span><span class="token operator">?</span><span class="token operator">></span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>parameterTypes<span class="token punctuation">)</span>
+</code></pre>
 </li>
 </ul>
 </li>
 <li><p>通过反射执行方法</p>
 </li>
 </ul>
-<pre class=" language-java"><code class="language-java"><span class="token function">invoke</span><span class="token punctuation">(</span>Object obj<span class="token punctuation">,</span> Object<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>args<span class="token punctuation">)</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token function">invoke</span><span class="token punctuation">(</span>Object obj<span class="token punctuation">,</span> Object<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>args<span class="token punctuation">)</span>
+</code></pre>
 <ul>
 <li>Method类使用代码示例</li>
 </ul>
@@ -654,7 +672,8 @@ getMethods</code></pre>
     mt<span class="token punctuation">.</span><span class="token function">setAccessible</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">//执行方法</span>
     mt<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>p<span class="token punctuation">,</span><span class="token string">"小明"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 
             </div>
             <hr/>

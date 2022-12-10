@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -418,7 +422,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    820
+                    817
                 </div>
                 
 
@@ -466,26 +470,30 @@
 <li>执行如下指令生成一个<code>ssh key</code>。<br><code>ssh-keygen</code></li>
 <li>三次回车之后会产生一个<code>id_rsa.pub</code>文件，文件的内容就是<code>ssh key</code>，使用<code>gedit</code>打开文件，把文件内所有内容复制到剪贴板。</li>
 <li>打开<code>Github</code>，点击右上角头像，选择设置，再选择SSH秘钥选项，再选择添加SSH秘钥，把复制到剪贴板的内容黏贴到文本框中，秘钥名字可以任意选择。  </li>
-<li>添加好之后使用如下命令检查<code>ssh key</code>是否设置成功<br><code>ssh -T git@github.com</code><br>如果出现选择Yes/No时，选择Yes。若出现如下提示即为设置成功。<br><code>Hi dreamgeng! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</code><br>如果设置不成功，可以使用如下命令，手动设置秘钥位置。<br><code>ssh-add path/to/key</code>  <h3 id="5-设置Github个人信息。"><a href="#5-设置Github个人信息。" class="headerlink" title="5. 设置Github个人信息。"></a>5. 设置Github个人信息。</h3></li>
+<li>添加好之后使用如下命令检查<code>ssh key</code>是否设置成功<br><code>ssh -T git@github.com</code><br>如果出现选择Yes/No时，选择Yes。若出现如下提示即为设置成功。<br><code>Hi dreamgeng! You've successfully authenticated, but GitHub does not provide shell access.</code><br>如果设置不成功，可以使用如下命令，手动设置秘钥位置。<br><code>ssh-add path/to/key</code>  <h3 id="5-设置Github个人信息。"><a href="#5-设置Github个人信息。" class="headerlink" title="5. 设置Github个人信息。"></a>5. 设置Github个人信息。</h3></li>
 <li>设置邮箱和个人用户名，这是用来记录每一次commit的用户信息的，如果初次使用<code>Github</code>需要设置。<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> config --global user.name <span class="token string">"github用户名"</span>
-<span class="token function">git</span> config --global user.email <span class="token string">"你注册的邮箱地址"</span></code></pre>
+<span class="token function">git</span> config --global user.email <span class="token string">"你注册的邮箱地址"</span>
+</code></pre>
 </li>
-<li>生成秘钥。<br><code>ssh-keygen -t rsa -C &quot;你注册的邮箱地址&quot;</code><h3 id="6-配置部署信息。"><a href="#6-配置部署信息。" class="headerlink" title="6. 配置部署信息。"></a>6. 配置部署信息。</h3></li>
+<li>生成秘钥。<br><code>ssh-keygen -t rsa -C "你注册的邮箱地址"</code><h3 id="6-配置部署信息。"><a href="#6-配置部署信息。" class="headerlink" title="6. 配置部署信息。"></a>6. 配置部署信息。</h3></li>
 <li>在_config.yml文件中，找到Deployment，然后按照如下修改。注意，在冒号后面需要添加空格。<pre class=" language-bash"><code class="language-bash">deploy:
 type: <span class="token function">git</span>
 repo: git@github.com:zbw0520/zbw0520.github.io.git
-branch: master</code></pre>
+branch: master
+</code></pre>
 注意，<code>zbw0520/zbw0520.github.io</code>可以更改为自己网站仓库的名字，并且记得加上<code>.git</code>。</li>
 <li>执行如下最后的部署编译命令。<pre class=" language-bash"><code class="language-bash">hexo clean
 hexo g
-hexo d</code></pre>
+hexo d
+</code></pre>
 <h3 id="7-大功告成。"><a href="#7-大功告成。" class="headerlink" title="7. 大功告成。"></a>7. 大功告成。</h3></li>
 <li>在浏览器输入你的仓库名称，如<code>zbw0520.github.io</code>，即可观察到网站设置成功。</li>
 <li>注意，如果网站显示404的话，需要等待<code>Github</code>一些时间，大概10分钟左右，便可以观察到结果。如果十分钟后还是不能看到网页，可以输入<code>zbw0520.github.io/index.html</code>查看网页。<h3 id="8-撰写博客。"><a href="#8-撰写博客。" class="headerlink" title="8. 撰写博客。"></a>8. 撰写博客。</h3></li>
 <li>使用如下命令便可以撰写一篇博文了。<pre class=" language-bash"><code class="language-bash">hexo new post <span class="token punctuation">[</span>title<span class="token punctuation">]</span>   //替换<span class="token punctuation">[</span>title<span class="token punctuation">]</span>为你个人博文的名称。
 hexo clean
 hexo g
-hexo d</code></pre>
+hexo d
+</code></pre>
 </li>
 </ul>
 

@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -482,20 +486,24 @@
 <li>登录方法</li>
 </ul>
 <pre class=" language-bash"><code class="language-bash">mysql -uroot -p
-mysql -uroot -p<span class="token punctuation">[</span>密码<span class="token punctuation">]</span></code></pre>
+mysql -uroot -p<span class="token punctuation">[</span>密码<span class="token punctuation">]</span>
+</code></pre>
 <ul>
 <li>退出</li>
 </ul>
 <pre class=" language-mysql"><code class="language-mysql">exit
-quit</code></pre>
+quit
+</code></pre>
 <ul>
 <li>查看版本</li>
 </ul>
-<pre class=" language-bash"><code class="language-bash">mysql -uroot -p --version</code></pre>
+<pre class=" language-bash"><code class="language-bash">mysql -uroot -p --version
+</code></pre>
 <ul>
 <li>登录的同时打开指定数据库</li>
 </ul>
-<pre class=" language-bash"><code class="language-bash">mysql -uroot -p -D <span class="token punctuation">[</span>数据库名称<span class="token punctuation">]</span></code></pre>
+<pre class=" language-bash"><code class="language-bash">mysql -uroot -p -D <span class="token punctuation">[</span>数据库名称<span class="token punctuation">]</span>
+</code></pre>
 <ul>
 <li><p>登录信息中需要掌握的内容</p>
 <ul>
@@ -508,7 +516,8 @@ quit</code></pre>
 <h3 id="常用SQL语句"><a href="#常用SQL语句" class="headerlink" title="常用SQL语句"></a>常用SQL语句</h3><pre class=" language-mysql"><code class="language-mysql">SELECT USER()       #得到登陆的用户
 SELECT VERSION()    #得到MySQL的版本信息
 SELECT NOW()        #得到当前的日期时间
-SELECT DATABASE()   #得到当前打开的数据库</code></pre>
+SELECT DATABASE()   #得到当前打开的数据库
+</code></pre>
 <h3 id="SQL语句语法规范"><a href="#SQL语句语法规范" class="headerlink" title="SQL语句语法规范"></a>SQL语句语法规范</h3><ul>
 <li>常用MySQL的关键字需要大写，库名、表名、字段名称等使用小写</li>
 <li>SQL支持折行操作，拆分的时候不能把完整的单词拆开</li>
@@ -523,7 +532,8 @@ ALTER DATABASE db_name DEFAULT CHARACTER SET [=] charset; #修改指定数据库
 USE db_name; #打开指定数据库
 SELECT (DATABASE|SCHEMA); #得到当前打开的数据库
 DROP DATABASE db_name; #删除数据库
-DROP DATABASE [IF EXISTS] db_name; #如果数据库存在则删除</code></pre>
+DROP DATABASE [IF EXISTS] db_name; #如果数据库存在则删除
+</code></pre>
 <h2 id="数据表相关操作"><a href="#数据表相关操作" class="headerlink" title="数据表相关操作"></a>数据表相关操作</h2><h3 id="数据表"><a href="#数据表" class="headerlink" title="数据表"></a>数据表</h3><ul>
 <li>数据表是数据库最重要的组成部分之一，数据保存在数据表中;</li>
 <li>数据表由行(row)和列(column)来组成;</li>
@@ -542,14 +552,19 @@ DEFAULT #默认值，如果插入记录的时候没有给字段赋值，则使�
 PRIMARY KEY #主键，标志记录的唯一性，即值不能重复，而且一个表只能有一个主键，如果一个字段是主键，则自动禁止为空
 UNIQUE KEY #唯一性，表示不能重复，一个表中可以有多个字段是唯一索引，但是NULL值除外
 AUTO_INCREMENT #自动增长，只能用于数值列，而且配合索引
-FOREIGN KEY # 外键约束</code></pre>
+FOREIGN KEY # 外键约束
+</code></pre>
 <h3 id="查看当前数据库下已有的数据表"><a href="#查看当前数据库下已有的数据表" class="headerlink" title="查看当前数据库下已有的数据表"></a>查看当前数据库下已有的数据表</h3><pre class=" language-mysql"><code class="language-mysql">SHOW TABLES;
-SHOW [FULL] TABLES [{FROM|IN} db_name] [LIKE 'pattern'|WHERE expr];</code></pre>
-<h3 id="查看指定数据表的详细信息"><a href="#查看指定数据表的详细信息" class="headerlink" title="查看指定数据表的详细信息"></a>查看指定数据表的详细信息</h3><pre class=" language-mysql"><code class="language-mysql">SHOW CREATE TABLE tbl_name;</code></pre>
+SHOW [FULL] TABLES [{FROM|IN} db_name] [LIKE 'pattern'|WHERE expr];
+</code></pre>
+<h3 id="查看指定数据表的详细信息"><a href="#查看指定数据表的详细信息" class="headerlink" title="查看指定数据表的详细信息"></a>查看指定数据表的详细信息</h3><pre class=" language-mysql"><code class="language-mysql">SHOW CREATE TABLE tbl_name;
+</code></pre>
 <h3 id="查看表结构"><a href="#查看表结构" class="headerlink" title="查看表结构"></a>查看表结构</h3><pre class=" language-mysql"><code class="language-mysql">DESC tbl_name;
 DESCRIBE tbl_name;
-SHOW COLUMNS FROM tbl_name;</code></pre>
-<h3 id="删除指定的数据表"><a href="#删除指定的数据表" class="headerlink" title="删除指定的数据表"></a>删除指定的数据表</h3><pre class=" language-mysql"><code class="language-mysql">DROP TABLE [IF EXISTS] tbl_name;</code></pre>
+SHOW COLUMNS FROM tbl_name;
+</code></pre>
+<h3 id="删除指定的数据表"><a href="#删除指定的数据表" class="headerlink" title="删除指定的数据表"></a>删除指定的数据表</h3><pre class=" language-mysql"><code class="language-mysql">DROP TABLE [IF EXISTS] tbl_name;
+</code></pre>
 <h3 id="表结构相关操作"><a href="#表结构相关操作" class="headerlink" title="表结构相关操作"></a>表结构相关操作</h3><pre class=" language-mysql"><code class="language-mysql">ALTER TABLE tbl_name ADD 字段名称 字段属性 [完整性约束条件] [FIRST|AFTER 字段名称] --添加字段
 ALTER TABLE tbl_name DROP 字段名称 --删除字段
 
@@ -592,21 +607,22 @@ CHANGE 原字段名称 新字段名称 字段类型 字段属性[FIRST|AFTER 字
 
 -- 修改数据表名称(两种方法)
 ALTER TABLE tbl_name RENAME [TO|AS] new tbl_name;
-RENAME TABLE tbl_name TO new_tbl_name;</code></pre>
+RENAME TABLE tbl_name TO new_tbl_name;
+</code></pre>
 <h2 id="MySQL数据类型"><a href="#MySQL数据类型" class="headerlink" title="MySQL数据类型"></a>MySQL数据类型</h2><h3 id="数值型"><a href="#数值型" class="headerlink" title="数值型"></a>数值型</h3><ul>
 <li>整数型</li>
 <li>浮点数</li>
 <li>定点数</li>
 </ul>
-<p><img src="/2020/10/21/mysql-shu-ju-ku/int.png" alt="整数型数据类型信息示意图"></p>
-<p><img src="/2020/10/21/mysql-shu-ju-ku/float.png" alt="浮点数和定点数数据类型信息示意图"></p>
+<p><img src="/.io//int.png" alt="整数型数据类型信息示意图"></p>
+<p><img src="/.io//float.png" alt="浮点数和定点数数据类型信息示意图"></p>
 <h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><ul>
 <li>CHAR效率高于VARCHAR, CHAR相当于拿空间换时间, VARCHAR拿时间换空间；</li>
 <li>CHAR默认存储数据的时候，后面会用空格填充到指定长度；而在检索的时候会去掉后面的空格；VARCHAR在保存的时候不进行填充，尾部的空格会留下；</li>
 <li>TEXT列不能有默认值，检索的时候不存在大小写转换。</li>
 </ul>
-<p><img src="/2020/10/21/mysql-shu-ju-ku/char.png" alt="字符串数据类型信息示意图"></p>
-<h3 id="日期时间类型"><a href="#日期时间类型" class="headerlink" title="日期时间类型"></a>日期时间类型</h3><p><img src="/2020/10/21/mysql-shu-ju-ku/date.png" alt="日期时间数据类型信息示意图"></p>
+<p><img src="/.io//char.png" alt="字符串数据类型信息示意图"></p>
+<h3 id="日期时间类型"><a href="#日期时间类型" class="headerlink" title="日期时间类型"></a>日期时间类型</h3><p><img src="/.io//date.png" alt="日期时间数据类型信息示意图"></p>
 <h2 id="MySQL存储引擎"><a href="#MySQL存储引擎" class="headerlink" title="MySQL存储引擎"></a>MySQL存储引擎</h2><h3 id="MyISAM存储引擎"><a href="#MyISAM存储引擎" class="headerlink" title="MyISAM存储引擎"></a>MyISAM存储引擎</h3><ul>
 <li><p>在MySQL5.5之前一直使用的默认存储引擎是MyISAM存储引擎；</p>
 </li>
@@ -686,9 +702,11 @@ INSERT tbl_name(字段名称,...) VALUES(值,...)
 INSERT  tbl_name[(字段名称,...)] VALUES(值,...),(值,...);
 
 INSERT tbl_name SET 字段名称=值,...;
-INSERT tbl_name[(字段名称...)] SELECT 字段名称,... FROM tbl_name [WHERE];</code></pre>
+INSERT tbl_name[(字段名称...)] SELECT 字段名称,... FROM tbl_name [WHERE];
+</code></pre>
 <h3 id="修改记录"><a href="#修改记录" class="headerlink" title="修改记录"></a>修改记录</h3><pre class=" language-mysql"><code class="language-mysql">UPDATE tbl_name SET 字段名称=值，字段名称=值 [WHERE 条件]
---如果不加条件，整个表中的记录都会被更新</code></pre>
+--如果不加条件，整个表中的记录都会被更新
+</code></pre>
 <h3 id="删除记录"><a href="#删除记录" class="headerlink" title="删除记录"></a>删除记录</h3><pre class=" language-mysql"><code class="language-mysql">DELETE FROM tbl_name [WHERE 条件]
 -- 如果不添加条件，表中所有记录都会被删除
 -- DELETE清空数据表的时候不会重置AUTO_INCREMENT的值，可以通过ALTER语句将其重置
@@ -697,7 +715,8 @@ ALTER TABLE tbl_name AUTO_INCREMENT=1;
 -- 一步解决上述两个问题
 TRUNCATE [TABLE] tbl_name;
 -- 清空表中所有记录
--- 会重置AUTO_INCREMENT的值</code></pre>
+-- 会重置AUTO_INCREMENT的值
+</code></pre>
 <h3 id="查询记录"><a href="#查询记录" class="headerlink" title="查询记录"></a>查询记录</h3><pre class=" language-mysql"><code class="language-mysql">SELECT select_expr,... FROM tbl_name
 [WHERE 条件]
 [GROUP BY {col_name|position} HAVING 二次筛选]
@@ -770,7 +789,8 @@ ORDER BY age ASC;
 ORDER BY RAND();    #随机显示记录
 -- LIMIT 限制结果集显示条数
 LIMIT 值  #显示结果集的前几条记录
-LIMIT offset, row_count  #从offset开始显示几条记录</code></pre>
+LIMIT offset, row_count  #从offset开始显示几条记录
+</code></pre>
 <h3 id="多表查询"><a href="#多表查询" class="headerlink" title="多表查询"></a>多表查询</h3><p>– 多表联查的上限是3个表，超过三个表的时候，查询的效率是很低的。</p>
 <h4 id="笛卡尔积形式"><a href="#笛卡尔积形式" class="headerlink" title="笛卡尔积形式"></a>笛卡尔积形式</h4><ul>
 <li>全部循环连接一遍</li>
@@ -785,7 +805,8 @@ ON 连接条件
 SELECT emp.id,emp.username,emp.age,dep.depName
 FROM emp
 INNER JOIN dep
-ON emp.depId=dep.id</code></pre>
+ON emp.depId=dep.id
+</code></pre>
 <h4 id="外连接形式"><a href="#外连接形式" class="headerlink" title="外连接形式"></a>外连接形式</h4><ul>
 <li><p>左外连接</p>
 <ul>
@@ -795,7 +816,8 @@ ON emp.depId=dep.id</code></pre>
 </ul>
 <pre class=" language-mysql"><code class="language-mysql">SELECT 字段名称,... FROM tbl_name1
 OUTER LEFT JOIN tbl_name2
-ON 条件</code></pre>
+ON 条件
+</code></pre>
 <ul>
 <li><p>右外连接</p>
 <ul>
@@ -805,7 +827,8 @@ ON 条件</code></pre>
 </ul>
 <pre class=" language-mysql"><code class="language-mysql">SELECT 字段名称,... FROM tbl_name1
 OUTER RIGHT JOIN tbl_name2
-ON 条件</code></pre>
+ON 条件
+</code></pre>
 <h3 id="外键约束"><a href="#外键约束" class="headerlink" title="外键约束"></a>外键约束</h3><ul>
 <li>注意：只有InnoDB的存储引擎支持外键</li>
 </ul>
@@ -828,7 +851,8 @@ ON 条件</code></pre>
 </ul>
 </li>
 </ul>
-<pre class=" language-mysql"><code class="language-mysql">[CONSTRAINT 外键名称] FOREIGN KEY(字段名称) REFERENCES 主表(字段名称)</code></pre>
+<pre class=" language-mysql"><code class="language-mysql">[CONSTRAINT 外键名称] FOREIGN KEY(字段名称) REFERENCES 主表(字段名称)
+</code></pre>
 <ul>
 <li><p>动态添加删除外键</p>
 <ul>
@@ -841,19 +865,24 @@ ALTER TABLE tbl_name
 [CONSTRAINT 外键名称] ADD FOREIGN KEY(外键字段) REFERENCES 主表(主键字段)
 --删除外键
 ALTER TABLE news
-DROP FOREIGN KEY cateId_fk_newsCate;</code></pre>
-<h3 id="特殊形式的查询"><a href="#特殊形式的查询" class="headerlink" title="特殊形式的查询"></a>特殊形式的查询</h3><h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><h5 id="内层语句查询的结果可以作为外层语句查询的条件"><a href="#内层语句查询的结果可以作为外层语句查询的条件" class="headerlink" title="内层语句查询的结果可以作为外层语句查询的条件"></a>内层语句查询的结果可以作为外层语句查询的条件</h5><pre class=" language-mysql"><code class="language-mysql">SELECT 字段名称 FROM tbl_name WHERE col_name=(SELECT col_name FROM tbl_name)</code></pre>
+DROP FOREIGN KEY cateId_fk_newsCate;
+</code></pre>
+<h3 id="特殊形式的查询"><a href="#特殊形式的查询" class="headerlink" title="特殊形式的查询"></a>特殊形式的查询</h3><h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><h5 id="内层语句查询的结果可以作为外层语句查询的条件"><a href="#内层语句查询的结果可以作为外层语句查询的条件" class="headerlink" title="内层语句查询的结果可以作为外层语句查询的条件"></a>内层语句查询的结果可以作为外层语句查询的条件</h5><pre class=" language-mysql"><code class="language-mysql">SELECT 字段名称 FROM tbl_name WHERE col_name=(SELECT col_name FROM tbl_name)
+</code></pre>
 <h5 id="由in引发的子查询"><a href="#由in引发的子查询" class="headerlink" title="由in引发的子查询"></a>由in引发的子查询</h5><pre class=" language-mysql"><code class="language-mysql">SELECT * FROM emp
-WHERE depId IN (SELECT id FROM dep);</code></pre>
+WHERE depId IN (SELECT id FROM dep);
+</code></pre>
 <h5 id="由比较运算符引出的子查询"><a href="#由比较运算符引出的子查询" class="headerlink" title="由比较运算符引出的子查询"></a>由比较运算符引出的子查询</h5><pre class=" language-mysql"><code class="language-mysql">SELECT id,username,score FROM stud
 WHERE score>=(SELECT score FROM level WHERE id=1);
 
 SELECT id,username,score FROM stud
-WHERE score<=(SELECT score FROM level WHERE id=3);</code></pre>
+WHERE score<=(SELECT score FROM level WHERE id=3);
+</code></pre>
 <h5 id="由EXISTS引发的子查询"><a href="#由EXISTS引发的子查询" class="headerlink" title="由EXISTS引发的子查询"></a>由EXISTS引发的子查询</h5><pre class=" language-mysql"><code class="language-mysql">--只有exists后面的语句为真才会执行前面的语句
 SELECT * FROM emp
-WHERE EXISTS(SELECT depName FROM dep WHERE id=10)</code></pre>
-<h5 id="ANY-SOME-ALL子查询"><a href="#ANY-SOME-ALL子查询" class="headerlink" title="ANY SOME ALL子查询"></a>ANY SOME ALL子查询</h5><p><img src="/2020/10/21/mysql-shu-ju-ku/1.png" alt="ANY SOME ALL子查询示意图"></p>
+WHERE EXISTS(SELECT depName FROM dep WHERE id=10)
+</code></pre>
+<h5 id="ANY-SOME-ALL子查询"><a href="#ANY-SOME-ALL子查询" class="headerlink" title="ANY SOME ALL子查询"></a>ANY SOME ALL子查询</h5><p><img src="/.io//1.png" alt="ANY SOME ALL子查询示意图"></p>
 <pre class=" language-mysql"><code class="language-mysql">SELECT * FROM stu
 WHERE score>=ANY(SELECT score FROM level);
 
@@ -861,18 +890,21 @@ SELECT * FROM stu
 WHERE score>=SOME(SELECT score FROM level);
 
 SELECT * FROM stu
-WHERE score>=ALL(SELECT score FROM level);</code></pre>
+WHERE score>=ALL(SELECT score FROM level);
+</code></pre>
 <h5 id="INSERT…SELECT子查询"><a href="#INSERT…SELECT子查询" class="headerlink" title="INSERT…SELECT子查询"></a>INSERT…SELECT子查询</h5><pre class=" language-mysql"><code class="language-mysql">INSERT user1(username)
 SELECT username FROM user;
 
 INSERT user2 SET username=(SELECT username FROM stu WHERE id=9)
 
 -- 去掉字段的重复值
-SELECT DISTINCT(username) FROM user2;</code></pre>
+SELECT DISTINCT(username) FROM user2;
+</code></pre>
 <h5 id="CREATE…SELECT子查询"><a href="#CREATE…SELECT子查询" class="headerlink" title="CREATE…SELECT子查询"></a>CREATE…SELECT子查询</h5><pre class=" language-mysql"><code class="language-mysql">CREATE TABLE user1(
   id INT UNSIGNED AUTO_INCREMENT KEY,
   username VARCHAR(20)
-)SELECT id,username FROM emp;</code></pre>
+)SELECT id,username FROM emp;
+</code></pre>
 <h4 id="联合查询"><a href="#联合查询" class="headerlink" title="联合查询"></a>联合查询</h4><h5 id="UNION"><a href="#UNION" class="headerlink" title="UNION"></a>UNION</h5><ul>
 <li>会去掉两个表中重复的值</li>
 </ul>
@@ -880,7 +912,8 @@ SELECT DISTINCT(username) FROM user2;</code></pre>
 UNION
 SELECT 字段名称,... FROM tbl_name2
 UNION
-...</code></pre>
+...
+</code></pre>
 <h5 id="UNION-ALL"><a href="#UNION-ALL" class="headerlink" title="UNION ALL"></a>UNION ALL</h5><ul>
 <li>进行简单的合并，并不会去掉重复值</li>
 </ul>
@@ -888,15 +921,17 @@ UNION
 UNION ALL
 SELECT 字段名称,... FROM tbl_name2
 UNION ALL
-...</code></pre>
+...
+</code></pre>
 <h4 id="自身连接查询"><a href="#自身连接查询" class="headerlink" title="自身连接查询"></a>自身连接查询</h4><ul>
 <li>无限级分类的实现形式，有点类似于链表，可以以链的形式寻找父分类。</li>
 </ul>
 <pre class=" language-mysql"><code class="language-mysql">SELECT s.id,s.cateName AS sCateName,p.cateName AS pCateName
 FROM cate AS s
 LEFT JOIN cate AS p
-ON s.pId=p.id;</code></pre>
-<h2 id="MySQL常用函数"><a href="#MySQL常用函数" class="headerlink" title="MySQL常用函数"></a>MySQL常用函数</h2><h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><p><img src="/2020/10/21/mysql-shu-ju-ku/%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0.png" alt="数学函数简介"></p>
+ON s.pId=p.id;
+</code></pre>
+<h2 id="MySQL常用函数"><a href="#MySQL常用函数" class="headerlink" title="MySQL常用函数"></a>MySQL常用函数</h2><h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><p><img src="/.io//%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0.png" alt="数学函数简介"></p>
 <h3 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h3><pre class=" language-mysql"><code class="language-mysql">-- CHAR_LENGTH():得到字符串的字符数
 SELECT CHAR_LENGTH('ABC');
 
@@ -934,7 +969,8 @@ SELECT REPLACE('HELLO KING','KING','QUEEN');
 SELECT SUBSTRING('abcdef',1,3);
 
 -- STRCMP(s1,s2):比较字符串的ASCII码值
-SELECT STRCMP('A','C');</code></pre>
+SELECT STRCMP('A','C');
+</code></pre>
 <h3 id="日期时间函数"><a href="#日期时间函数" class="headerlink" title="日期时间函数"></a>日期时间函数</h3><pre class=" language-mysql"><code class="language-mysql">-- 返回当前时间
 SELECT CURTIME(),CURRENT_TIME();
 
@@ -960,8 +996,9 @@ SELECT MINUTE(NOW());
 SELECT SECOND(NOW());
 
 -- 计算两个日期之间相差的天数
-SELECT DATEDIFF('2017-03-01','2017-09-30');</code></pre>
-<p><img src="/2020/10/21/mysql-shu-ju-ku/%E6%98%9F%E6%9C%9F%E5%9B%BE.png" alt="星期与一周内的第几天的对应关系图"></p>
+SELECT DATEDIFF('2017-03-01','2017-09-30');
+</code></pre>
+<p><img src="/.io//%E6%98%9F%E6%9C%9F%E5%9B%BE.png" alt="星期与一周内的第几天的对应关系图"></p>
 <h3 id="其他常用函数"><a href="#其他常用函数" class="headerlink" title="其他常用函数"></a>其他常用函数</h3><pre class=" language-mysql"><code class="language-mysql">-- 得到版本信息、连接数以及数据库名
 SELECT VERSION(),CONNECTION_ID(),DATABASE();
 
@@ -973,7 +1010,8 @@ SELECT LAST_INSERT_ID();
 
 -- 使用加密算法，返回加密字符串
 SELECT MD5('KING');
-SELECT PASSWORD('king'); #默认加密算法</code></pre>
+SELECT PASSWORD('king'); #默认加密算法
+</code></pre>
 
             </div>
             <hr/>

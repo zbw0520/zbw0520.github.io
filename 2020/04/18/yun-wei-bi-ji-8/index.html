@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -405,7 +409,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    839
+                    837
                 </div>
                 
 
@@ -466,7 +470,7 @@
 <h2 id="系统执行命令的过程（按照如下顺序执行）"><a href="#系统执行命令的过程（按照如下顺序执行）" class="headerlink" title="系统执行命令的过程（按照如下顺序执行）"></a>系统执行命令的过程（按照如下顺序执行）</h2><ol>
 <li><p>检查别名<code>alias</code>内部是否有和输入命令相同的命令，有的话使用该命令。否则进行下一步。</p>
 <ul>
-<li><p><code>alias [name]=[&quot;command&quot;]</code>可以用来定义命令的别名<code>alias</code>。使用这种方法定义别名<code>alias</code>仅仅是暂时性的，如果重新登录或者重启系统，该别名会失效，如果想要使别名<code>alias</code>永久有效，需要使用下面的操作。</p>
+<li><p><code>alias [name]=["command"]</code>可以用来定义命令的别名<code>alias</code>。使用这种方法定义别名<code>alias</code>仅仅是暂时性的，如果重新登录或者重启系统，该别名会失效，如果想要使别名<code>alias</code>永久有效，需要使用下面的操作。</p>
 </li>
 <li><p>如果想要使别名<code>alias</code>永久性生效，需要将别名写入<code>/etc/.bashrc</code>文件中，这个会设置所有用户的别名，如果仅仅想要设置特定用户的别名，需要在该用户的家目录下寻找<code>.bashrc</code>文件，将别名写入该文件。</p>
 </li>
@@ -499,7 +503,8 @@
 </ol>
 <h2 id="命令的等待、命令的终止与单行多命令的写法"><a href="#命令的等待、命令的终止与单行多命令的写法" class="headerlink" title="命令的等待、命令的终止与单行多命令的写法"></a>命令的等待、命令的终止与单行多命令的写法</h2><ul>
 <li><p>多命令写在单行内</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token punctuation">[</span>command1<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token punctuation">[</span>command2<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token punctuation">[</span>command3<span class="token punctuation">]</span></code></pre>
+<pre class=" language-bash"><code class="language-bash"><span class="token punctuation">[</span>command1<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token punctuation">[</span>command2<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token punctuation">[</span>command3<span class="token punctuation">]</span>
+</code></pre>
 </li>
 <li><p>命令终止</p>
 <p>  可以使用快捷键<code>ctrl + c</code>或者<code>ctrl + d</code>。</p>

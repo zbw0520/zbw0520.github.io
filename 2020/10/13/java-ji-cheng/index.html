@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -462,7 +466,8 @@ Class <span class="token class-name">Cat</span> <span class="token keyword">exte
 <span class="token comment" spellcheck="true">//父类</span>
 Class <span class="token class-name">Animal</span><span class="token punctuation">{</span>
 
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <ul>
 <li>此时父类的所有属性和方法都会在子类中存在</li>
 </ul>
@@ -505,7 +510,8 @@ Class <span class="token class-name">Animal</span><span class="token punctuation
 
 <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//访问父类成员方法</span>
 <span class="token keyword">super</span><span class="token punctuation">.</span>name<span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//访问父类属性</span>
-<span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//访问父类构造方法</span></code></pre>
+<span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//访问父类构造方法</span>
+</code></pre>
 <ul>
 <li><strong>注意</strong><code>super</code>关键字只能在子类构造方法中使用，且必须位于构造方法的第一行。</li>
 </ul>
@@ -520,7 +526,8 @@ Class <span class="token class-name">Animal</span><span class="token punctuation
 *我是父类的多参构造方法
 *我是子类的构造代码块
 *我是子类的无参构造方法
-**/</span></code></pre>
+**/</span>
+</code></pre>
 <h2 id="this关键字与super关键字的对比"><a href="#this关键字与super关键字的对比" class="headerlink" title="this关键字与super关键字的对比"></a><code>this</code>关键字与<code>super</code>关键字的对比</h2><ul>
 <li><code>this</code>关键字用来调用当前类允许被访问的属性和方法；</li>
 <li><code>super</code>关键字用来调用父类当中允许被访问的属性和方法；</li>
@@ -571,7 +578,8 @@ Class <span class="token class-name">Animal</span><span class="token punctuation
 <li>Java中的每一个类都可以使用<code>Object</code>中定义的方法。</li>
 </ul>
 <pre class=" language-java"><code class="language-java"><span class="token function">equals</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
 <h2 id="final修饰符"><a href="#final修饰符" class="headerlink" title="final修饰符"></a><code>final</code>修饰符</h2><ul>
 <li>修饰类表示不允许被继承；</li>
 <li>修饰方法表示不允许被子类重写；</li>

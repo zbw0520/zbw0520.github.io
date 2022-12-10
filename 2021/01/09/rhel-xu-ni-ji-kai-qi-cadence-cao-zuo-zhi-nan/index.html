@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -462,32 +466,34 @@
 <li>打开VMware，在左上方选择<code>文件</code>，之后选择<code>打开</code>，在弹出的文件寻找框中找到名为<code>Linux6.7-64.vmx</code>的文件。</li>
 <li>等待一会儿，就可以在虚拟机左侧框中找到名为<code>Linux6.7-64</code>的虚拟机，点击打开并运行。</li>
 </ol>
-<p><img src="/2021/01/09/rhel-xu-ni-ji-kai-qi-cadence-cao-zuo-zhi-nan/1.png"></p>
+<p><img src="/.io//1.png"></p>
 <ol start="4">
 <li>等待一会儿，可以看到虚拟机开机界面如上，选择用户<code>cdsmgr</code>，输入密码<code>cadence</code>便可以开机。</li>
 <li>进入桌面之后，可以看到桌面上有若干图标和文件夹，根据你设计工艺的需要选择对应的文件夹。这里只提供了两种工艺库<code>smic18</code>和<code>tsmc40</code>。</li>
 </ol>
-<p><img src="/2021/01/09/rhel-xu-ni-ji-kai-qi-cadence-cao-zuo-zhi-nan/2.png"></p>
+<p><img src="/.io//2.png"></p>
 <ol start="6">
 <li>点开文件夹，这里以<code>smic18</code>为例，点开<code>smic18</code>文件夹之后，我们可以看到里面有若干文件和文件夹，最关键的配置文件是<code>cshrc_2016</code>，这个文件存储了变量信息，我们需要使变量信息生效。右键空白处，点击<code>open in terminal</code>使用如下命令。</li>
 </ol>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">source</span> cshrc_2016</code></pre>
-<p><img src="/2021/01/09/rhel-xu-ni-ji-kai-qi-cadence-cao-zuo-zhi-nan/3.png"></p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">source</span> cshrc_2016
+</code></pre>
+<p><img src="/.io//3.png"></p>
 <ol start="7">
 <li>最后在使用命令<code>&amp; virtuoso</code>便可以打开cadence软件。打开耗时根据你使用的硬盘种类的不同可能会比较久也可能会很快。</li>
 </ol>
 <ul>
-<li><p><input checked disabled type="checkbox">  成功!</p>
+<li><p><input checked="" disabled="" type="checkbox">  成功!</p>
 </li>
 <li><p>成功的界面如下。</p>
 </li>
 </ul>
-<p><img src="/2021/01/09/rhel-xu-ni-ji-kai-qi-cadence-cao-zuo-zhi-nan/4.png"></p>
+<p><img src="/.io//4.png"></p>
 <h2 id="TroubleShooting"><a href="#TroubleShooting" class="headerlink" title="TroubleShooting"></a>TroubleShooting</h2><ul>
 <li><p>如果你的虚拟机出现无法找到<code>xxx</code>文件之类的提示，请检查虚拟机的路径是否包含英文，将虚拟机文件放置在英文路径下。</p>
 </li>
 <li><p>如果你使用<code>source cshrc_2016</code>命令提示无法找到文件，请检查terminal的文件路径是否正确。如果仍无法找到文件，请在使用<code>source cshrc_2016</code>之前使用如下命令</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /home/cdsmgr/Desktop/smic18</code></pre>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /home/cdsmgr/Desktop/smic18
+</code></pre>
 </li>
 <li><p>如果你遇到cadence无法打开的情况，请多等待一会儿，或者尝试重启虚拟机，或者检查你是否跟随此教程执行了所有命令。</p>
 </li>

@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -429,46 +433,57 @@
             <div id="articleContent">
                 <h1 id="运维笔记7"><a href="#运维笔记7" class="headerlink" title="运维笔记7"></a>运维笔记7</h1><h2 id="操作系统与配置信息查看相关命令"><a href="#操作系统与配置信息查看相关命令" class="headerlink" title="操作系统与配置信息查看相关命令"></a>操作系统与配置信息查看相关命令</h2><ul>
 <li><p>查看当前系统版本</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">cat</span> /etc/centos-release</code></pre>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">cat</span> /etc/centos-release
+</code></pre>
 </li>
 <li><p>查看当前系统内核版本命令</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">uname</span> -r</code></pre>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">uname</span> -r
+</code></pre>
 </li>
 <li><p>查看各项电脑硬件信息</p>
 <ol>
 <li><p>查看CPU信息</p>
-<pre class=" language-bash"><code class="language-bash">lscpu</code></pre>
+<pre class=" language-bash"><code class="language-bash">lscpu
+</code></pre>
 </li>
 <li><p>查看内存信息</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">free</span> -h
-<span class="token function">cat</span> /proc/meminfo</code></pre>
+<span class="token function">cat</span> /proc/meminfo
+</code></pre>
 </li>
 <li><p>查看硬盘信息</p>
-<pre class=" language-bash"><code class="language-bash">lsblk</code></pre>
+<pre class=" language-bash"><code class="language-bash">lsblk
+</code></pre>
 </li>
 <li><p>查看网卡信息</p>
-<pre class=" language-bash"><code class="language-bash">mii-tool <span class="token punctuation">[</span>接口名<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">#mii-tool ens33 or mii-tool eth0</span></code></pre>
+<pre class=" language-bash"><code class="language-bash">mii-tool <span class="token punctuation">[</span>接口名<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">#mii-tool ens33 or mii-tool eth0</span>
+</code></pre>
 </li>
 </ol>
 </li>
 <li><p>查看用户信息</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">who</span> <span class="token comment" spellcheck="true">#查看所有用户信息</span>
-<span class="token function">who</span> am i <span class="token comment" spellcheck="true">#查看当前登录的用户信息</span></code></pre>
+<span class="token function">who</span> am i <span class="token comment" spellcheck="true">#查看当前登录的用户信息</span>
+</code></pre>
 </li>
 <li><p>查询当前使用的shell类型</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token keyword">echo</span> <span class="token variable">$SHELL</span></code></pre>
+<pre class=" language-bash"><code class="language-bash"><span class="token keyword">echo</span> <span class="token variable">$SHELL</span>
+</code></pre>
 </li>
 </ul>
 <h2 id="常用系统设置"><a href="#常用系统设置" class="headerlink" title="常用系统设置"></a>常用系统设置</h2><ul>
 <li><p>设置网络开机自动连接</p>
-<pre class=" language-bash"><code class="language-bash">nmcli connection modify ens33 connection.autoconnection <span class="token function">yes</span></code></pre>
+<pre class=" language-bash"><code class="language-bash">nmcli connection modify ens33 connection.autoconnection <span class="token function">yes</span>
+</code></pre>
 </li>
 <li><p>更改并查看ip信息</p>
 <pre class=" language-bash"><code class="language-bash">vim /etc/sysconfig/network-scripts/ifcfg-eth0 <span class="token comment" spellcheck="true">#打开网卡设置文件后更改内部信息即可</span>
-<span class="token function">service</span> network restart <span class="token comment" spellcheck="true">#重启网络服务</span></code></pre>
+<span class="token function">service</span> network restart <span class="token comment" spellcheck="true">#重启网络服务</span>
+</code></pre>
 </li>
 <li><p>设置motd文件，更改登录初始界面</p>
-<pre class=" language-bash"><code class="language-bash">vim /etc/motd</code></pre>
+<pre class=" language-bash"><code class="language-bash">vim /etc/motd
+</code></pre>
 <pre class=" language-bash"><code class="language-bash">                   _ooOoo_
                   o8888888o
                   88<span class="token string">" . "</span>88
@@ -494,30 +509,35 @@
 <pre><code>^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
            佛祖保佑       永不死机
            心外无法       法外无心
-```</code></pre>
+```
+</code></pre>
 <ul>
 <li><p>设置提示符样式和颜色</p>
 <ul>
 <li><p>更改<code>PS1</code>变量内容</p>
-<pre class=" language-bash"><code class="language-bash">PS1<span class="token operator">=</span><span class="token string">"\[\e[1;5;41;33m\][\u@\h \W]\\$\[\e[0m\]"</span></code></pre>
+<pre class=" language-bash"><code class="language-bash">PS1<span class="token operator">=</span><span class="token string">"\[\e[1;5;41;33m\][\u@\h \W]\\$\[\e[0m\]"</span>
+</code></pre>
 </li>
 <li><p><code>PS1</code>变量含义</p>
 <pre class=" language-bash"><code class="language-bash">\e \033            \u 当前用户名
 \h 主机名简称       \H 主机名
 \w 当前工作目录     \W 当前工作目录名
 \t 24小时时间格式   \T 12小时时间格式
-\<span class="token operator">!</span> 命令历史数       \# 开机后的命令历史数</code></pre>
+\<span class="token operator">!</span> 命令历史数       \# 开机后的命令历史数
+</code></pre>
 </li>
 </ul>
 </li>
 <li><p>设置系统开机自动登录功能</p>
 <ol>
 <li><p>打开<code>GDM</code>配置文件</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> gedit /etc/gdm/custom.conf</code></pre>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> gedit /etc/gdm/custom.conf
+</code></pre>
 </li>
 <li><p>增加如下条目</p>
 <pre class=" language-bash"><code class="language-bash">AutomaticLoginEnable<span class="token operator">=</span>true
-AutomaticLogin<span class="token operator">=</span>add_your_username_here</code></pre>
+AutomaticLogin<span class="token operator">=</span>add_your_username_here
+</code></pre>
 </li>
 <li><p>重启系统</p>
 </li>
@@ -527,11 +547,13 @@ AutomaticLogin<span class="token operator">=</span>add_your_username_here</code>
 <ol>
 <li><p>在CentOS7上执行如下命令可以关闭防火墙</p>
 <pre class=" language-bash"><code class="language-bash">systemctl stop firewalld <span class="token comment" spellcheck="true">#关闭服务</span>
-systemctl disable firewalld <span class="token comment" spellcheck="true">#设置开机不启动</span></code></pre>
+systemctl disable firewalld <span class="token comment" spellcheck="true">#设置开机不启动</span>
+</code></pre>
 </li>
 <li><p>在CentOS6上执行如下命令可以关闭防火墙</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">service</span> iptables stop <span class="token comment" spellcheck="true">#关闭服务</span>
-<span class="token function">chkconfig</span> iptables off <span class="token comment" spellcheck="true">#设置开机不启动</span></code></pre>
+<span class="token function">chkconfig</span> iptables off <span class="token comment" spellcheck="true">#设置开机不启动</span>
+</code></pre>
 </li>
 </ol>
 </li>

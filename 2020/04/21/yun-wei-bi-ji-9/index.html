@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -405,7 +409,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    628
+                    624
                 </div>
                 
 
@@ -471,7 +475,8 @@
 <p>  <code>shutdown</code>命令可以在不同的配置下完成重启和关机工作</p>
 <pre><code>- `-r`，表示重新启动
 - `-h`，表示关机
-- `-c`，表示取消</code></pre>
+- `-c`，表示取消
+</code></pre>
 </li>
 </ul>
 <h2 id="用户登录信息查看命令"><a href="#用户登录信息查看命令" class="headerlink" title="用户登录信息查看命令"></a>用户登录信息查看命令</h2><ul>
@@ -513,8 +518,8 @@
 </li>
 <li><p>显示变量</p>
 <ul>
-<li><code>echo &quot;$VAR_NAME&quot;</code>，使用双引号时，变量会替换，弱引用，即变量没有办法被识别</li>
-<li><code>echo &#39;$VAR_NAME&#39;</code>，使用单引号时，变量不会替换，强引用，即变量可以被识别</li>
+<li><code>echo "$VAR_NAME"</code>，使用双引号时，变量会替换，弱引用，即变量没有办法被识别</li>
+<li><code>echo '$VAR_NAME'</code>，使用单引号时，变量不会替换，强引用，即变量可以被识别</li>
 </ul>
 </li>
 </ul>
@@ -525,7 +530,8 @@
 <pre class=" language-bash"><code class="language-bash"><span class="token keyword">echo</span> <span class="token string">"This system's name is <span class="token variable"><span class="token variable">$(</span><span class="token function">hostname</span><span class="token variable">)</span></span>"</span>
 This system's name is server1.example.com
 <span class="token keyword">echo</span> <span class="token string">"i am <span class="token variable"><span class="token variable">`</span><span class="token function">whoami</span><span class="token variable">`</span></span> "</span>
-i am root</code></pre>
+i am root
+</code></pre>
 </li>
 </ul>
 </li>
@@ -536,7 +542,8 @@ i am root</code></pre>
 <span class="token function">rm</span> -f file<span class="token punctuation">{</span>1,3,5<span class="token punctuation">}</span>
 <span class="token keyword">echo</span> <span class="token punctuation">{</span>1<span class="token punctuation">..</span>10<span class="token punctuation">}</span>
 <span class="token keyword">echo</span> <span class="token punctuation">{</span>a<span class="token punctuation">..</span>z<span class="token punctuation">}</span>
-<span class="token keyword">echo</span> <span class="token punctuation">{</span>000<span class="token punctuation">..</span>20<span class="token punctuation">..</span>2<span class="token punctuation">}</span></code></pre>
+<span class="token keyword">echo</span> <span class="token punctuation">{</span>000<span class="token punctuation">..</span>20<span class="token punctuation">..</span>2<span class="token punctuation">}</span>
+</code></pre>
 </li>
 </ul>
 </li>

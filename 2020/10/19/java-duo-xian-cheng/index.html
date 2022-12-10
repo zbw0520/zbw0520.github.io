@@ -29,7 +29,11 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 4.2.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 <body>
@@ -463,7 +467,8 @@
 <li>创建一个实现<code>Runnable</code>接口的类的对象。</li>
 </ul>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">new</span> <span class="token class-name">MyThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//方法一，通过创建Thread子类的对象创建进程</span>
-<span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MyRunnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//方法二，通过Runnable接口类传入Thread类构造函数，构造Thread对象，此方法更为常用，更适合需要继承另一个父类的情况</span></code></pre>
+<span class="token keyword">new</span> <span class="token class-name">Thread</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MyRunnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">//方法二，通过Runnable接口类传入Thread类构造函数，构造Thread对象，此方法更为常用，更适合需要继承另一个父类的情况</span>
+</code></pre>
 <h2 id="Thread类中的常用方法"><a href="#Thread类中的常用方法" class="headerlink" title="Thread类中的常用方法"></a><code>Thread</code>类中的常用方法</h2><table>
 <thead>
 <tr>
@@ -515,7 +520,8 @@
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
                 <span class="token operator">+</span><span class="token string">"线程正在执行！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
 <ul>
 <li>使用<code>Runnable</code>接口实现类的时候需要先实例化接口实现类的对象，再去实例化一个<code>Thread</code>类的对象来运行实现类定义的线程。</li>
 </ul>
@@ -526,11 +532,12 @@
 <li>阻塞（Blocked）</li>
 <li>终止（Dead）</li>
 </ul>
-<h2 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h2><p><img src="/2020/10/19/java-duo-xian-cheng/1.png" alt="线程的生命周期示意图"></p>
+<h2 id="线程的生命周期"><a href="#线程的生命周期" class="headerlink" title="线程的生命周期"></a>线程的生命周期</h2><p><img src="/.io//1.png" alt="线程的生命周期示意图"></p>
 <h2 id="sleep方法应用"><a href="#sleep方法应用" class="headerlink" title="sleep方法应用"></a>sleep方法应用</h2><ul>
 <li><code>Thread</code>类的方法；</li>
 </ul>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token keyword">long</span> millis<span class="token punctuation">)</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token keyword">long</span> millis<span class="token punctuation">)</span>
+</code></pre>
 <ul>
 <li>作用：在指定的毫秒数内让正在执行的线程休眠（暂停执行）；</li>
 <li>参数为休眠的时间，单位是毫秒。</li>
@@ -538,11 +545,13 @@
 <h2 id="join方法应用"><a href="#join方法应用" class="headerlink" title="join方法应用"></a>join方法应用</h2><ul>
 <li><code>Thread</code>类的方法；</li>
 </ul>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
 <ul>
 <li>作用：等待调用该方法的线程结束后才能执行；</li>
 </ul>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">join</span><span class="token punctuation">(</span><span class="token keyword">long</span> millis<span class="token punctuation">)</span></code></pre>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">join</span><span class="token punctuation">(</span><span class="token keyword">long</span> millis<span class="token punctuation">)</span>
+</code></pre>
 <ul>
 <li>作用：等待该线程终止的最长时间为millis毫秒；</li>
 <li>抢占CPU使用权，迫使其他线程放弃CPU使用权。</li>
@@ -605,7 +614,8 @@
 </ul>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">saveAccount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>  <span class="token comment" spellcheck="true">//成员方法</span>
 <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">saveAccount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true">//静态方法</span>
-<span class="token keyword">synchronized</span> <span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>   <span class="token comment" spellcheck="true">//语句块，obj指的是需要被锁定的对象，{...}是指作用语句块，即作用范围</span></code></pre>
+<span class="token keyword">synchronized</span> <span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>   <span class="token comment" spellcheck="true">//语句块，obj指的是需要被锁定的对象，{...}是指作用语句块，即作用范围</span>
+</code></pre>
 <h2 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h2><ul>
 <li>wait()方法：中断方法的执行，使线程等待；</li>
 <li>notify()方法：唤醒处于等待的某个线程，使其结束等待；</li>
