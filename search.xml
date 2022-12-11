@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>使用Github遇到的恶心问题</title>
+      <link href="/2022/12/11/shi-yong-github-yu-dao-de-e-xin-wen-ti/"/>
+      <url>/2022/12/11/shi-yong-github-yu-dao-de-e-xin-wen-ti/</url>
+      
+        <content type="html"><![CDATA[<h2 id="为啥最近突然用上Github了？"><a href="#为啥最近突然用上Github了？" class="headerlink" title="为啥最近突然用上Github了？"></a>为啥最近突然用上Github了？</h2><p>主要是使用Github对我的博客后台系统进行一个管理，目前我的博客系统如下图所示，</p><img src="/2022/12/11/shi-yong-github-yu-dao-de-e-xin-wen-ti/33610ac2732998e0369614d4c5c5e94c5101dfff34fdaa6025dee9c845a60462.png" class="" title="picture 1">  <p>可以看到，如果我需要将博客内容通过Ubuntu部署到Github，我就需要将Windows中编辑好的文件通过虚拟机软件传送至我的虚拟Ubuntu系统中，这一过程需要通过我的记忆对版本进行管理 <span class="github-emoji"><span>😥</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f625.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，然而我的记忆里贼差，很容就会忘记 <span class="github-emoji"><span>❌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，所以这不是一个好的方案，那么怎么选取方案呢？ <span class="github-emoji"><span>🤔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f914.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p><p>其实，可以通过直接在VScode中使用git管理我们的Blog代码就好了 <span class="github-emoji"><span>✔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>!然后把内容Push到我们的Github的私有仓库里面，再在虚拟机里面pull下来就ok了，这样不仅保证了我们可以在<code>.gitignore</code>文件中确保我们不想上传的信息，还可以保证我们的信息是同步的，那么就暂且得到了我还比较满意的一个解决方案 <span class="github-emoji"><span>😆</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p><h2 id="设置过程中踩到的一些雷"><a href="#设置过程中踩到的一些雷" class="headerlink" title="设置过程中踩到的一些雷"></a>设置过程中踩到的一些雷</h2><p>Github最近被墙了，<span class="github-emoji"><span>💢</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a2.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>吐了吐了 <span class="github-emoji"><span>🤮</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f92e.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，大概率是一些蠢蛋 <span class="github-emoji"><span>🖕</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f595.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>在这个美好的网站上搞了一些什么垃圾玩意儿。话说回来，Github被墙了，但我一直以来，一直觉得有危屁恩就问题不大，但是，没想到使用下面的语句验证Github链接情况的时候，遇到了各种各样的错误 <span class="github-emoji"><span>❌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p><pre class=" language-shell"><code class="language-shell">ssh -T git@github.com</code></pre><p>我第一个想法就是我电脑没有办法访问Github，但实际上，我的电脑与Github直接的链接是畅通的 <span class="github-emoji"><span>✔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，出现问题的其实是与Github之间的验证问题。</p><h3 id="Github的ssh-key的设置"><a href="#Github的ssh-key的设置" class="headerlink" title="Github的ssh key的设置"></a>Github的<code>ssh key</code>的设置</h3><p>Github为了安全性，在ssh你的仓库时，需要进行验证操作，以前貌似可以使用用户名和密码进行验证，但是当前这个时间节点下，貌似已经不再可行了… <span class="github-emoji"><span>❌</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/274c.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，更好的方式是采用系统产生一个<code>ssh key</code>，这个key存在Github上，在需要连接的时候，本地提交这个key，Github端再对这个Key进行比对操作，验证登入者的身份 <span class="github-emoji"><span>✔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>。</p><p>在Github上如何设置ssh_key呢？其实很简单，你只需要访问你的账户，点击设置，里面有ssh_key添加的选项，但首先，你需要在本地生成一个ssh_key文件，如果没有这个文件你也是没有办法进行设置的。可以在需要设置的目录下打开命令提示符，一般Windows是<code>C:/Users/[Your_name]/.ssh/</code>、Linux是<code>~/.ssh/</code>这两个文件夹。</p><pre class=" language-shell"><code class="language-shell">ssh_keygen</code></pre><p>生成玩key之后还要配置一个Host文件夹，也是存放在相同的目录下的，具体内容大概是下面这样</p><pre><code>Host github.com    HostName github.com    IdentityFile ~/.ssh/id_rsa</code></pre><p>完成配置之后，再使用下面的语句访问应该就没有问题了。</p><pre class=" language-shell"><code class="language-shell">ssh -T git@github.com</code></pre><p>但是，还是可能会出现问题，理由是Github目前再国内属于被河蟹 <span class="github-emoji"><span>🦀</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f980.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>的状态，因此，如果一个人想要访问Github需要合理地设置帆羟 <span class="github-emoji"><span>🌏</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f30f.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>的操作，可以采用下面的语句对Github的代理进行设置。</p><pre class=" language-shell"><code class="language-shell"># 设置socks的代理(只对Github代理)，192.168.xxx.xxx为你代理的IP地址git config --global http.https://github.com.proxy socks://192.168.xxx.xxx:10808# 设置http的代理(只对Github代理) 通常代理IP地址为主机(Master)的IP地址git config --global http.https://github.com.proxy http://192.168.xxx.xxx:10809# 取消代理git config --global --unset http.proxygit config --global --unset https.proxy# 查看现有代理配置信息git config --global -l</code></pre><p><span class="github-emoji"><span>😆</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span> 根据上面的命令进行代理设置就可以实现对Github的代理了<span class="github-emoji"><span>✔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，是不是非常方便呢 :+1:</p><p>基本上来说，我个人设置Github进行操作的坑在上面了，如果有其它坑我想起来的时候再记录一下吧… <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Github </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Github </tag>
+            
+            <tag> 问题总结 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hexo图片插入问题</title>
       <link href="/2022/12/10/hexo-tu-pian-cha-ru-wen-ti/"/>
       <url>/2022/12/10/hexo-tu-pian-cha-ru-wen-ti/</url>
@@ -91,7 +118,7 @@
       <link href="/2022/12/09/liang-hua-jiao-yi-de-shou-ci-chang-shi/"/>
       <url>/2022/12/09/liang-hua-jiao-yi-de-shou-ci-chang-shi/</url>
       
-        <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>距离上次更新博客已经过了一年多了，这么长时间不更新博客的主要原因是因为自身的懒惰造成的，最近由于突发奇想，又想把博客捡起来了，所以在这里希望更新一下，那么就先从最近开始做的量化交易框架开始做起吧！</p><h3 id="为什么想到做量化交易？"><a href="#为什么想到做量化交易？" class="headerlink" title="为什么想到做量化交易？"></a>为什么想到做量化交易？</h3><p>因为最近股票一直亏钱…而且做长线实在是不够刺激，想寻求一些刺激的事情做做，让每天的生活充满激情，于是乎想到一种合法刺激多巴胺的方式，就是交易哈哈哈，Anyway，想用机器进行量化的交易的想法已经存在很久了，主要一直由于代码能力的限制，一直无法进行实现。最近本人完成了java的爬虫开发项目之后，加上chatGPT（这里手动狗头）的加持，愈发感觉身体内的一股代码的洪荒之力要喷射而出，刚好用在开发量化交易框架上，显得非常合适。</p><h3 id="目前做到哪一步了？"><a href="#目前做到哪一步了？" class="headerlink" title="目前做到哪一步了？"></a>目前做到哪一步了？</h3><p>说来惭愧，若干天的尝试仅仅实现了一个面向过程的MA5策略的回测，我甚至还不清楚回测的过程是否正确。</p><h3 id="未来有哪些计划？"><a href="#未来有哪些计划？" class="headerlink" title="未来有哪些计划？"></a>未来有哪些计划？</h3><p>本人像构建一个属于自己的回测系统，并且通过简单的策略，便可发现合适的买入信号，这一套回测系统能够以面向对象的模式进行开发，并且附加文档，能够在未来进行维护的时候实现一个便捷的维护方式。更进一步，当开发的内容达到一定规模之后，我想将本人这套量化系统开源在github上，吸引更多的开发者共同修改代码，以达到完善代码功能和满足更多需求的目的。</p><h2 id="本人目前的一些关于框架的想法"><a href="#本人目前的一些关于框架的想法" class="headerlink" title="本人目前的一些关于框架的想法"></a>本人目前的一些关于框架的想法</h2><p>因为本人不是计算机科班出身，可能下面有些想法在计算机专业的同学看来比较蠢，但本人认为初步来看还是合理的，未来可能在实现代码的过程中会有一些不一样的想法。</p><h3 id="问题的分解"><a href="#问题的分解" class="headerlink" title="问题的分解"></a>问题的分解</h3><ol><li>获得股票交易的买入和卖出信号;</li><li>通过某个quote的API对一段时间内的股票走势进行询价;</li><li>通过信号和询价数据对利润进行计算，并对买卖价格、手续费、手数、日期进行记录；</li><li>建立数据对象。</li></ol><h3 id="获得股票买卖信号的方法"><a href="#获得股票买卖信号的方法" class="headerlink" title="获得股票买卖信号的方法"></a>获得股票买卖信号的方法</h3><p>买卖信号通常由一个具体的方法产生，这个方法就是我们的策略，目前的想法是通过不改变回测架构，实现修改策略进行回测的操作。这就需要我们的输入参数是固定的，并且函数的出参也是固定的。</p><table><thead><tr><th>名称</th><th>输入参数</th><th>输出参数</th></tr></thead><tbody><tr><td>trace_back_data</td><td></td><td></td></tr></tbody></table>]]></content>
+        <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>i<br>距离上次更新博客已经过了一年多了，这么长时间不更新博客的主要原因是因为自身的懒惰造成的，最近由于突发奇想，又想把博客捡起来了，所以在这里希望更新一下，那么就先从最近开始做的量化交易框架开始做起吧！</p><h3 id="为什么想到做量化交易？"><a href="#为什么想到做量化交易？" class="headerlink" title="为什么想到做量化交易？"></a>为什么想到做量化交易？</h3><p>因为最近股票一直亏钱…而且做长线实在是不够刺激，想寻求一些刺激的事情做做，让每天的生活充满激情，于是乎想到一种合法刺激多巴胺的方式，就是交易哈哈哈，Anyway，想用机器进行量化的交易的想法已经存在很久了，主要一直由于代码能力的限制，一直无法进行实现。最近本人完成了java的爬虫开发项目之后，加上chatGPT（这里手动狗头）的加持，愈发感觉身体内的一股代码的洪荒之力要喷射而出，刚好用在开发量化交易框架上，显得非常合适。</p><h3 id="目前做到哪一步了？"><a href="#目前做到哪一步了？" class="headerlink" title="目前做到哪一步了？"></a>目前做到哪一步了？</h3><p>说来惭愧，若干天的尝试仅仅实现了一个面向过程的MA5策略的回测，我甚至还不清楚回测的过程是否正确。</p><h3 id="未来有哪些计划？"><a href="#未来有哪些计划？" class="headerlink" title="未来有哪些计划？"></a>未来有哪些计划？</h3><p>本人像构建一个属于自己的回测系统，并且通过简单的策略，便可发现合适的买入信号，这一套回测系统能够以面向对象的模式进行开发，并且附加文档，能够在未来进行维护的时候实现一个便捷的维护方式。更进一步，当开发的内容达到一定规模之后，我想将本人这套量化系统开源在github上，吸引更多的开发者共同修改代码，以达到完善代码功能和满足更多需求的目的。</p><h2 id="本人目前的一些关于框架的想法"><a href="#本人目前的一些关于框架的想法" class="headerlink" title="本人目前的一些关于框架的想法"></a>本人目前的一些关于框架的想法</h2><p>因为本人不是计算机科班出身，可能下面有些想法在计算机专业的同学看来比较蠢，但本人认为初步来看还是合理的，未来可能在实现代码的过程中会有一些不一样的想法。</p><h3 id="问题的分解"><a href="#问题的分解" class="headerlink" title="问题的分解"></a>问题的分解</h3><ol><li>获得股票交易的买入和卖出信号;</li><li>通过某个quote的API对一段时间内的股票走势进行询价;</li><li>通过信号和询价数据对利润进行计算，并对买卖价格、手续费、手数、日期进行记录；</li><li>建立数据对象。</li></ol><h3 id="获得股票买卖信号的方法"><a href="#获得股票买卖信号的方法" class="headerlink" title="获得股票买卖信号的方法"></a>获得股票买卖信号的方法</h3><p>买卖信号通常由一个具体的方法产生，这个方法就是我们的策略，目前的想法是通过不改变回测架构，实现修改策略进行回测的操作。这就需要我们的输入参数是固定的，并且函数的出参也是固定的。</p><table><thead><tr><th>名称</th><th>输入参数</th><th>输出参数</th></tr></thead><tbody><tr><td>trace_back_data</td><td></td><td></td></tr></tbody></table>]]></content>
       
       
       <categories>
@@ -106,72 +133,6 @@
             <tag> 量化交易 </tag>
             
             <tag> 生活碎碎念 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>20210707组会心得</title>
-      <link href="/2021/07/07/20210707/"/>
-      <url>/2021/07/07/20210707/</url>
-      
-        <content type="html"><![CDATA[<h2 id="快速寻找无源电路（Passive-Circuit）中的零点和极点的方法"><a href="#快速寻找无源电路（Passive-Circuit）中的零点和极点的方法" class="headerlink" title="快速寻找无源电路（Passive Circuit）中的零点和极点的方法"></a>快速寻找无源电路（Passive Circuit）中的零点和极点的方法</h2><p>在无源电路中快速寻找零点和极点的个数并且对它们进行估计是一个对电路进行快速分析的一种重要技巧，如果掌握了这个技巧，对于电路设计者和电路使用者来说，都能够提升效率，下面主要简述快速寻找无源电路的零点极点的数量和大小的方法。</p><ol><li><p>确定极点的个数</p><p> 极点的个数=<strong>互相独立</strong>的储能元件的个数（C &amp; L），互相独立的意思是，该储能元件可以被随意赋予一个<strong>状态变量</strong>而不会受到其他储能器件的影响，状态变量对于电容来讲是电压，对于电感来讲是电流，换一种说法，极点的个数也可以认为是电路中的自由度。具体来说，可以看下面的这个电路，该电路总共有3个储能元件，如果不考虑各个储能元件之间的独立性，我们可以认为该电路总共有3个极点。但是，$C_1$与$C_2$上的状态变量，即电压，是互相耦合的，所以$C_1$与$C_2$并不是两个互相独立的储能元件；另一方面，$C_3$是独立的储能元件，因此，下面的这个电路总共有两个极点。</p> <img src="/2021/07/07/20210707/%E4%B8%A4%E6%9E%81%E7%82%B9%E4%B8%A4%E9%9B%B6%E7%82%B9%E6%97%A0%E6%BA%90%E7%94%B5%E8%B7%AF.png" class="" title="两极点两零点无源电路"><p> 实际上，从电路的微分方程角度来说，这个自由度或者说是状态变量的个数实际上描述了微分方程的阶数，即，电路的极点的个数。</p><p> $$</p><pre><code> \frac{d^2v_{out}}{dt^2}+k_1\frac{dv_{out}}{dt}+k_2v_{out}=c_1\frac{dv_{in}}{dt}+c_2v_{in}</code></pre><p> $$</p><p> $$</p><pre><code> \frac{V_{out}(s)}{V_{in}(s)}=\frac{c_1s+c_2}{s^2+k_1s+k_2}</code></pre><p> $$</p><p> <strong>注意</strong>：一个电路极点仅仅与电路的拓扑结构有关，而与电路的输入输出的位置没有关系。</p> <img src="/2021/07/07/20210707/RC%E4%BD%8E%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8.png" class="" title="RC低通滤波器"> <img src="/2021/07/07/20210707/RC%E9%AB%98%E9%80%9A%E6%BB%A4%E6%B3%A2%E5%99%A8.png" class="" title="RC高通滤波器"><p> 上述两个电路的拓扑结构是完全相同的，只是输入的位置发生的改变，但是并不影响电路的极点大小和个数，该电路的极点只有一个，大小为$-\frac{1}{RC}$。</p><p> 假如电路中只有一个储能元件，例如只有一个电容$C$，则该极点的大小可以通过下面的方法进行计算：首先，先将输入短路到地，输出开路，将电容视为一个电源，求从电容两端看去的阻抗大小，假设其为$R$，则这个电容这个节点的极点大小为$-\frac{1}{RC}$。</p> <img src="/2021/07/07/20210707/LeadCompensation.png" class="" title="Lead Compensation"></li><li><p>确定零点的个数</p><p> 零点让输出的幅值变成零，有两种方法可以让输出为零，</p><ol><li><p>输出与地之间的支路的阻抗为零；</p> <img src="/2021/07/07/20210707/LagCompensation.png" class="" title="Lag Compensation"></li><li><p>输入与输出之间的支路的阻抗变为无穷大。（另一种说法是，输出与输入之间的连接被切断了，也就意味着输出为零了）</p> <img src="/2021/07/07/20210707/LeadCompensation.png" class="" title="Lead Compensation"></li></ol><p> <strong>注意</strong>：零点取决于我们将输出端口放置在电路中的位置。</p></li><li><p>其他结论：</p><ul><li><p>一般来讲，无源电路中的极点个数是很容易寻找到的，但是电路的极点的大小很难直接进行计算，需要对电路进行分析或者使用一些技巧进行近似；相反，电路的零点的个数很难直接确定，需要对电路进行分析，但是零点的大小却是很容易计算的。</p></li><li><p>此外，需要注意，零点的个数在电路中永远不会超过极点的个数，因为如果零点个数比极点个数多，意味着电路增益会在某个奇异点之后，以20dB每十倍频增加，增益会趋于无穷大，这是不可能的。</p></li><li><p>还有一种估算零点数量的方法，该方法如下，认为电路中的信号的频率趋于无穷大，则电容可视为短路，电感可视为开路，在这种条件下，重新绘制电路结构图，并计算电路此时的输出与输入的关系。假如这时的输出是一个常数的话，则零点的数量和极点的数量是一样的；假如这时的输出是零的话，则认为零点的个数小于极点的个数。</p><img src="/2021/07/07/20210707/%E5%9B%9B%E6%9E%81%E7%82%B9%E5%9B%9B%E9%9B%B6%E7%82%B9%E7%B3%BB%E7%BB%9F.png" class="" title="四极点四零点系统推断零点个数示意图"></li><li><p>由RLC无源电路所构造出的零点和极点都在左半平面。 </p></li></ul></li></ol><h2 id="奈奎斯特稳定性判据"><a href="#奈奎斯特稳定性判据" class="headerlink" title="奈奎斯特稳定性判据"></a>奈奎斯特稳定性判据</h2><p>一般使用波特图进行稳定性判断的方法被称为是巴克豪森判据，但巴克豪森判据对于稳定性判断有一定局限性，下面举了一个例子来说明这个判据的局限性。</p><h3 id="巴克豪森判据的局限性"><a href="#巴克豪森判据的局限性" class="headerlink" title="巴克豪森判据的局限性"></a>巴克豪森判据的局限性</h3><p>下图描述了Delta-Sigma ADC的系统框图，其Delta-Sigma调制器主要由三个积分器组成，为了保证系统的稳定性，该系统还特别加入了两个前向的电路，来增加了两个零点。</p><img src="/2021/07/07/20210707/SigmaDeltaADC.png" class="" title="Sigma-Delta ADC系统框图"><p>根据波特图原理，可以绘制出如下图所示的系统的波特图，该系统的相位裕度小于零，如果利用巴克豪森准则进行判断，该系统就不稳定了。但是，如果读者利用MATLAB对该系统的系统方程进行阶跃响应仿真的话，则可以发现该系统是稳定的，阶跃信号作为输入并不会影响到系统的输出的稳定性。由此可以看出，巴克豪森准则有一些漏洞，在某些情况下，并不能正确地判断出系统的稳定性。如果想要寻求更为准确的系统稳定性判断，则需要利用奈奎斯特稳定性判据对系统的稳定性进行判断。更加准确地来说，如果一个待控制系统（Plant）存在一个右半平面或者虚轴上的极点，或者说待控制系统是一个不稳定的系统，那么你使用Bode图利用巴克豪森准则进行判断时，一般来讲会获得错误的结果。</p><h3 id="使用奈奎斯特稳定性判据的原因"><a href="#使用奈奎斯特稳定性判据的原因" class="headerlink" title="使用奈奎斯特稳定性判据的原因"></a>使用奈奎斯特稳定性判据的原因</h3><p>奈奎斯特稳定性判据可以进一步考察系统，对于复杂的系统，该方法依然可以作为一个准确的判断依据进行使用。该方法主要是描述了传输函数在复平面上的轨迹，在波特图中的两个重要的信息，一个是幅值还有一个是相位都可以在传输函数的轨迹图中获得。此外，该轨迹图的具体形状并不是我们所关注的，我们关注的是在频率为零和频率为正负无穷大时的情况，所以这也是奈奎斯特方法的优势，避免了繁复的计算工作。</p><p>假设我们的系统的开环环路增益为$AH$，则如果该环路闭合之后，系统的传输函数会变为$\frac{A}{1+AH}$。如果开环环路增益中存在右半平面RHS的极点，则环路增益不稳定；如果闭环后的系统传输函数的$1+AH$存在右半平面的零点，则系统趋于不稳定。因此，我们需要寻找闭环传输函数的分母的$1+AH$的零点分布。这个零点如果直接根据开环环路增益的零点进行分析的话，是比较困难的。下面两个零极点图分别代表了$AH$的开环增益的零极点图以及$1+AH$的零极点图，可以看到，这两个图的零点之间的关系貌似没有什么规律，因此，很难找到两个系统传输函数的零点之间的关联。</p><img src="/2021/07/07/20210707/PzmapOfSys.png" class="" title="系统函数为AH的系统的零极点图"><img src="/2021/07/07/20210707/PzmapOfSysPlusOne.png" class="" title="系统函数为1+AH的系统的零极点图"><p>但是，如果考察两个传输函数的Nyquist图的话，就可以看出两个传输函数之间的明显的关联性，给传输函数加上一个常数$C$在奈奎斯特图中相当于将原先的奈奎斯特曲线沿着横轴（实轴）平移$C$个单位。</p><img src="/2021/07/07/20210707/NyquistMapOfSys.png" class="" title="系统函数为1+AH以及AH的系统的零极点图"><p>如果我们可以从这个图上推断出系统的稳定性以及相位裕度等特征，则我们就可以方便地从开环环路增益的传输函数获知闭环系统函数的稳定性了。那么在叙述如何从奈奎斯特图中获知系统函数的稳定性以及相位裕度等特征之前，首先需要了解奈奎斯特图的绘制方法及其原理。</p><h3 id="如何绘制奈奎斯特图"><a href="#如何绘制奈奎斯特图" class="headerlink" title="如何绘制奈奎斯特图"></a>如何绘制奈奎斯特图</h3><p>在了解如何绘制奈奎斯特图之前，我们需要了解一个定理，柯西幅角定理（Cauchy’s Argument Principles）。</p><p>假设我们有一个系统函数，该系统函数可以表示为如下的表达式</p><p>$$<br>H(s)=\frac{s+2}{s+1}<br>$$</p><p>如果我们在复平面上绘制出这个系统函数的极点和零点，则可以得到如下的图，如果考虑在原先的复平面上选取一个点，则该点代入传输函数之后会得到的一个新的复数，将该复数重新绘制在一个叫做$w$的平面上，这个过程被称为映射。根据上述定义，一个封闭的曲线也可以被传输函数映射到一个新的平面上，映射的结果也应该是一个收尾相接的封闭曲线。</p><img src="/2021/07/07/20210707/mapping.png" class="" title="系统函数为1+AH以及AH的系统的零极点图"><p>下面我们举几个例子来说明一下几个重要的结论。</p><ol><li>首先是假设系统有一个极点，如果围绕该极点顺时针方向（CW）绘制一个闭合曲线的话，则将这个曲线通过系统函数映射到新的平面之后，曲线仍然是一个闭合曲线，但是曲线的方向变成了逆时针方向（ACW），且该曲线将零点围绕在内。</li></ol><img src="/2021/07/07/20210707/OnePoleMapping.png" class="" title="一个极点的系统作为映射函数时的围线映射情况"><ol start="2"><li>其次是假设系统有一个零点，如果围绕该零点顺时针方向（CW）绘制一个闭合曲线的话，则将这个曲线通过系统函数映射到新的平面之后，曲线仍然是一个闭合曲线，曲线的方向仍然是顺时针方向（CW），且该曲线将零点围绕在内。</li></ol><img src="/2021/07/07/20210707/OneZeroMapping.png" class="" title="一个极点的系统作为映射函数时的围线映射情况"><ol start="3"><li>再者，如果系统中有$N$个零点或者$N$个极点，如果围绕该若干零点或者极点沿顺时针方向（CW）绘制一个闭合曲线的话，则将这个曲线根据系统函数映射到新的平面上，该曲线会围绕原点顺时针（零点）或者逆时针（极点）绕$N$圈。</li></ol><img src="/2021/07/07/20210707/TwoPoleMapping.png" class="" title="一个极点的系统作为映射函数时的围线映射情况"><ol start="4"><li>最后是如果系统内既有零点也有极点，围绕这些奇异点顺时针方向（CW）绘制一个闭合曲线的话，则将这个曲线根据系统函数映射到新的平面上，改点围绕的圈数为零点与极点的差，如果零点的数量大于极点数量，则围绕方向为顺时针（CW）；如果极点个数大于零点个数，则围绕方向为逆时针（ACW）。简单来说，就是零点对于最后的曲线的围绕原点个数和方向的作用可以和极点对这两个性质的作用相消。</li></ol><img src="/2021/07/07/20210707/TwoPole&amp;TwoZeroMapping.png" class="" title="一个极点的系统作为映射函数时的围线映射情况"><p>那么上述四个结论可以总结为一个统一的结论：如果s的封闭轨迹是顺时针方向，且包围$H(s)$的$P$个或者$N$个零点，则$H(s)$的轨迹图将会以相同的方向围绕原点旋转$Z-P$圈。上述结论就是柯西辐角定理（Cauchy’s Argument Principles）。</p><p>那么在了解了柯西辐角定理之后，如果将该定理应用于我们要解决的问题呢？首先，先回顾一下需要解决的问题是什么，我们需要解决在给定$AH$的表达式之后，判断闭环系统函数$\frac{A}{1+AH}$是否不稳定，即，判断该系统函数存不存在右半平面的零点，换句话说，也就是需要判断该系统函数的分母$1+AH$是否存在一个右半平面的零点。</p><p>那么如何根据柯西辐角定理来做判断呢？我们只需要将复平面的右半边用一个尽可能大的以顺时针方向进行围绕的围线将其围住，那么如果右半平面有任何零点的话，我们可以直接从映射之后的曲线的围绕方向获知。这个尽可能大的以顺时针方向进行围绕的围线被称为是奈奎斯特围线（Nyquist Contour）。</p><img src="/2021/07/07/20210707/NyquistContour.png" class="" title="奈奎斯特围线图"><p>那么接下来，我们利用$1+AH$作为映射函数对原先的奈奎斯特围线进行映射之后，得到的新的曲线（奈奎斯特图）对原点的围绕次数和方向就可以获知$1+AH$中右半平面的零点的个数。</p><p>我们可以通过绘制$AH$的轨迹之后将轨迹右移一个单位之后，再进行对原点包围的次数和方向的观察；但我们也可以绘制$AH$的轨迹之后将坐标轴左移一个单位，或者说观察$AH$在原先坐标轴下围绕$(-1,0)$点的次数和方向。一般来讲，后面这个方法是我们经常使用的方法。</p><p>从上面的分析中，我们可以总结出分析奈奎斯特图的步骤：</p><ol><li>寻找到开环环路增益$AH$的传输函数，绘制$AH$的奈奎斯特图；</li><li>判断奈奎斯特围线包围$(-1,0)$点的次数以及方向；</li><li>根据围线与$(-1,0)$点之间的关系，判断该系统中右半平面极点的个数。</li></ol><p>需要<strong>注意</strong>的是，如果根据上述方法获知右半平面的零点和极点的信息的话，如果我们想要确切地指导右半平面零点的个数的话，我们需要知道右半平面极点的个数作为已知条件。实际上，在实际系统中，环路增益是由开环传输函数和反馈系数相乘得到的，开环传输函数与反馈系数乘积的右半平面的极点个数我们是很容易获知的，一般来讲开环传输函数是稳定的，意味着在右半平面是没有极点的。其次，$1+AH$这个传输函数的极点与$AH$这个传输函数的极点是相同的。由上述两点可知，一般的电路中，我们可以认为$AH$这个传输函数没有右半平面的零点，也就是说，如果映射的曲线围绕$(-1,0)$这个点顺时针绕一圈及以上的，$AH$就存在右半平面的零点，即$\frac{A}{1+AH}$就存在右半平面的极点，系统就不稳定。</p><p>如果需要手动绘制奈奎斯特图，有两种选择，一种是取奈奎斯特围线中的若干个点，再将这若干个点映射到w平面上，之后再将它们连接起来；另一种方法是将奈奎斯特围线分割成四个部分，其中上到下两个部分是完全对称的，因此只需要绘制上半部分或者下半部分的围线映射即可。</p><img src="/2021/07/07/20210707/SplittingNyquistContour.png" class="" title="分割奈奎斯特围线图"><p>对于1曲线和2曲线两个部分，1曲线的映射方法可以将$s=j\omega$代入之后进行绘制，也就是将频率从$0$变到$+\infty$。右侧的曲线2和曲线3由于是离有限的点无限远，因此，尽管它们的奈奎斯特围线是无限长的，但最后会坍缩成一个点。需要<strong>注意</strong>的是：这个结论是有条件的，它要求系统的传输函数（映射函数）必须是一个分母阶数大于等于分子阶数的传输函数，例如下面两个传输函数。</p><p>$$<br>H(s)=\frac{s^2+2s+4}{s^2+1s+2}<br>$$</p><p>$$<br>H(s)=\frac{s+7}{s^2+1s+2}<br>$$</p><p>如果说传输函数是下式所述，则无法适用于上述规则。</p><p>$$<br>H(s)=s+1<br>$$</p><p>实际上，在实际的物理可实现的电路中，传输函数都是极点个数大于等于零点个数的，所以大多时候上述结论都是可以直接利用的。综上所述，在物理可实现的传输函数中，我们只需要画曲线中的段1即可。那么，下面我们可以总结出一套绘制奈奎斯特图的方法：</p><ol><li>将$s=j\omega$代入传输函数</li><li>将$\omega$从$0$扫到$+\infty$</li><li>对绘制好的曲线关于实轴取镜像，就是下半部分奈奎斯特围线对应的奈奎斯特图。</li></ol><p>那么如何将$\omega$从$0$扫到$+\infty$呢？只需要找到一下四个关键点就可以了。</p><ol><li>$\omega=0$的点；</li><li>$\omega=+\infty$的点；</li><li>奈奎斯特图与虚轴的交点；</li><li>奈奎斯特图与实轴的交点。</li></ol><p>下面举例来说明如何使用上述方法绘制一个简单的传输函数的奈奎斯特图，这里我们先定义我们的传输函数为如下所示，</p><p>$$<br>w(s)=\frac{1}{s^2+3s+2}<br>$$</p><p>那么首先，我们先将$s=j\omega$代入上述传输函数，</p><p>$$<br>w(s)=\frac{1}{j\omega^2+3j\omega+2}<br>$$</p><p>再找出$\omega=0$对应的点，$w(0)=0.5$；再找出$\omega=+\infty$对应的点，$w(+\infty)=0$；之后再找出奈奎斯特图分别于实轴和虚轴的交点，找这个交点我们需要将$w(s)$的实部和虚部分开，如下，</p><p>$$<br>w(s)=\frac{(2-\omega^2)-3\omega j}{(2-\omega^2)^2+9\omega^2}<br>$$</p><p>之后，我们分别令实部和虚部为零就可以找到虚轴和实轴对应的截距（奈奎斯特图与坐标轴的交点称为截距（intercepts）），计算过程如下，</p><p>$$<br>real=\frac{2-\omega^2}{(2-\omega^2)^2+9\omega^2}=0\rArr\omega=\sqrt{2}<br>$$</p><p>$$<br>imag=\frac{-3\omega}{(2-\omega^2)^2+9\omega^2}=0\rArr\omega=0/+\infty<br>$$</p><p>将使实部为零的$\omega_{real=0}$代入原传输函数，就可以得到虚轴上的截距；类似地，将使虚部为零的$\omega_{imag=0}$代入原传输函数，就可以得到实轴上的截距，具体计算过程如下，</p><p>$$<br>Intercept_{imag}=w(j\sqrt{2})=\frac{-3\sqrt{2}}{9\cdot2}=-\frac{\sqrt{2}}{6}\approx-0.236<br>$$</p><p>$$<br>Intercept_{real}=0/\frac{1}{2}<br>$$</p><p>将上述四个关键点在w平面上绘制出来，再按照顺序连接起来就可以获得近似的奈奎斯特图，如下图所示，</p><img src="/2021/07/07/20210707/NyquistPlotMethod.png" class="" title="手动奈奎斯特图"><p>可以看出，由于该奈奎斯特图没有包含点$(-1,0)$，所以该系统是稳定的。为了验证上述图的正确性，在MATLAB中绘制了相同的图，如下图所示。</p><img src="/2021/07/07/20210707/NyquistPlotByMATLAB.png" class="" title="MATLAB绘制的奈奎斯特图"><p>可以看到两个图在形态上是类似的，并且表述的信息基本相同。接下来举两个例子来说明奈奎斯特图的绘制方法，以及一些特殊情况下的注意事项。首先先来绘制传输函数如下式所示的奈奎斯特图。</p><p>$$<br>H(s)=\frac{1}{s}<br>$$</p><p>该极点位于虚轴上，如果用原先的奈奎斯特围线进行手工分析的话，就显得比较困难，考虑将奈奎斯特围线以非常近的距离绕过极点，这样就有办法进行手工分析了，具体操作如下图所示，</p><img src="/2021/07/07/20210707/NyquistContourForOriginPole.png" class="" title="MATLAB绘制的奈奎斯特图"><p>可以看到，如果从$s=(1,0)$开始顺时针(CW)旋转，对应的奈奎斯特图是从右侧的无穷大点处开始向左侧旋绕。该奈奎斯特图没有包括点$(-1,0)$，表明该系统是稳定的，根据下式分析也可以得出该系统是稳定的，证明了这种方法在分析极点在原点的情况时是可以被使用的。</p><p>$$<br>1+H(s)=1+\frac{1}{s}=\frac{s+1}{s}<br>$$</p><p>$$<br>\frac{H(s)}{1+H(s)}=\frac{1/s}{(s+1)/s}=\frac{1}{s+1}<br>$$</p><h3 id="负反馈放大器的系统框图"><a href="#负反馈放大器的系统框图" class="headerlink" title="负反馈放大器的系统框图"></a>负反馈放大器的系统框图</h3><p>下图展示了一个反向放大器的基本电路，该电路主要又一个接成负反馈的运放和反馈电阻网络组成，如果草率地认为电压直接接入之后，再经过$\frac{R_1}{R_1+R_2}$反馈回输入的话，该电路框图就会画错。</p><img src="/2021/07/07/20210707/InvertAmplifier.png" class="" title="MATLAB绘制的奈奎斯特图"><p>正确的做法是，电路在输入的部分，由于$R_1$以及$R_2$的存在，会在放大器的输入端有一个衰减，衰减的系数为$\frac{R_2}{R_1+R_2}$，要特别注意这个衰减，很容易被忽略。此外，还有一个容易被忽略的部分是放大器的正向增益为负。该系统的系统框图可以表示为下图所示电路。</p><img src="/2021/07/07/20210707/InverterAmplifierSystemDiagram.png" class="" title="MATLAB绘制的奈奎斯特图"><p>根据下面的表达式可以推导出该电路的传输函数。</p><p>$$<br>\frac{V_{out}}{V_{in}}=\frac{R_2}{R_1+R_2}\frac{-A}{1+\frac{AR_1}{R_1+R_2}}=\frac{-R_2A}{R_1+R_2+AR_1}<br>$$</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 组会心得 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 模拟集成电路设计 </tag>
-            
-            <tag> 信号与系统 </tag>
-            
-            <tag> 自动控制原理 </tag>
-            
-            <tag> 环路稳定性 </tag>
-            
-            <tag> 频率补偿 </tag>
-            
-            <tag> 零点极点分析 </tag>
-            
-            <tag> 负反馈放大器 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>20210616组会总结</title>
-      <link href="/2021/06/18/20210616/"/>
-      <url>/2021/06/18/20210616/</url>
-      
-        <content type="html"><![CDATA[<h2 id="DNL与INL"><a href="#DNL与INL" class="headerlink" title="DNL与INL"></a>DNL与INL</h2><p>下图描述了一个典型的ADC的量化曲线。</p><img src="/2021/06/18/20210616/1.png" class="" title="Quantization Curve"><ol><li><p>DNL定义</p><p>$$<br>DNL(i)=\frac{x_i-x_{i-1}}{LSB}-1<br>$$</p><ul><li>DNL为零是最好的情况；</li><li>DNL最小为-1；</li><li>DNL主要反映了比较器失调引入的误差以及随机失配引入的误差；</li><li>由于DNL反映了在小输入范围内的量化精度，因此，在测量仪器设备中使用的ADC，对DNL要求比较高。 </li></ul></li></ol><img src="/2021/06/18/20210616/2.png" class="" title="DNL"><ol start="2"><li><p>INL定义</p><p>$$<br>INL(i)=\frac{x_i}{LSB}-i=\Sigma^i_1DNL(k)<br>$$</p><ul><li>INL为零是最好的情况；</li><li>INL是DNL积分得来的；</li><li>INL反映了系统性的偏差、buffer的误差、跟随保持电路的误差、以及实际芯片当中的边界效应导致的失配的误差；</li><li>大的INL会在频谱中产生其他频率上的谐波、落入其他的频率，恶化系统的无杂散动态范围(SFDR)，对多信道通信非常有害。</li></ul></li></ol><img src="/2021/06/18/20210616/3.png" class="" title="INL"><ol start="3"><li><p>INL与DNL之间的联系</p><ul><li>由INL与DNL的定义可以知道，INL与DNL是互相耦合的，换句话说，INL与DNL是等价的，可以互相导出。那么同时需要两个指标的原因，主要是因为DNL反映了局部的非线性特性，INL反映了整体的非线性特性。</li></ul></li><li><p>测量INL&amp;DNL的方法</p><ul><li>方法一：扫描$Vin\in [-FS/2,FS/2]$<ul><li>存在的问题1：扫描的速度要非常慢</li><li>存在的问题2：扫描出来的信号不一定准确，因为实际信号有带宽，不可视为缓变的信号，此时由低速信号测量的INL与DNL不能反映输入信号频率很大时的特性。</li></ul></li><li>方法二：输入一个随机的信号，该随机信号在概率上服从$[-FS/2,FS/2]$的均匀分布。假如说系统的DNL与INL都是理想的话，输出的数字码也应该是均匀分布的；但是，由于系统的非理想因素，DNL与INL不为零，在输出数字码的概率分布上，体现为不同数字码的概率分布不同。体现为下图所示的概率分布，可以看到，原先的均匀分布被打乱为如下的分布。那么，根据这个分布，我们可以先得到DNL，首先需要算出每一个数字码的出现的概率，设为$P_{digital}(i)$（对应理想DNL曲线中的每一级的实际长度），那么，这个概率减去理想的概率$P(i)$（对应实际DNL曲线中的LSB长度）就是每一级长度的误差，最后再除以理想的概率$P(i)$就可以得到我们最后的DNL了，如下式所示。</li></ul><p>$$<br> DNL(i)=\frac{P_{digital}(i)-P(i)}{P(i)}=\frac{H(i)}{\Sigma H(i)\cdot P(i)}-1<br>$$</p><p>根据前文所述，INL与DNL是可以互相导出的，我们可以根据DNL算出我们需要的INL。</p><img src="/2021/06/18/20210616/4.png" class="" title="Output Distribution"><p>一般来讲，使用满量程的正弦波作为输入，再来测量输出数字码的概率分布。要注意的是，满量程的正弦波的概率分布是左右两边大，中间小，这和我们实际信号的概率分布是完全相反的。根据中心极限定理（Central Limit Theorem），独立同分布的样本，他们的均值会趋向于正态分布，也就是说，会出现中间大，两头小的情况。</p></li></ol><h2 id="频域特性与测量"><a href="#频域特性与测量" class="headerlink" title="频域特性与测量"></a>频域特性与测量</h2><p>  对于一个单音测试来说，由于采样的原因，所有的大于奈奎斯特带宽的信号都被折会奈奎斯特带宽内，一般来讲，可以在软件层面找到这些谐波，并标识出来。</p>  <img src="/2021/06/18/20210616/5.png" class="" title="Single Tone Test Spectrum"><p>  单音测试可以获得四个指标，分别是SNDR（Signal to Noise and Distortion Ratio，信号与噪声谐波失真比）、SFDR（Spurs Free Dynamic Range，无杂散动态范围）、THD（Total Harmonic Distortion，总谐波失真比）、SNR（Signal to Noise Ratio，信噪比）。这四项参数可以通过信号频谱获得。</p><ol><li><p>SNDR<br>计算这个参数需要将信号功率与所有谐波分量和噪声分量的功率相比，即与去除信号频点的所有其他频点的功率相比，如果要获取dB值，则需要取对数，如下式所示。<br> $$<br> SNDR=\frac{|H_1|^2}{\Sigma_{k\neq m}^{N/2}|X(k)|^2}<br> $$</p></li><li><p>SFDR<br>计算此参数需要将信号功率与最大的杂散分量的功率相比，如下式所示。</p><p> $$<br> SFDR=\frac{|H_1|^2}{max|X(k)|^2_{k\neq m}}<br> $$</p></li><li><p>THD<br>计算此参数需要将所有谐波分量的功率之和与信号功率相比，如下式所示，要注意的是，一般来说，计算的时候不需要将所有的谐波都计算进去，只需计算到第15个谐波分量即可。</p><p> $$<br> THD=\frac{\Sigma^{I}_{2}|H_i|^2}{|H_1|^2}, I=15<br> $$</p></li><li><p>SNR<br>计算此参数需要将信号的功率与去除谐波分量的所有其他频点的噪声功率之和相比，如下式所示。</p><p> $$<br> SNR=\frac{|H_1|^2}{\Sigma^{N/2}_1|X(k)|^2-\Sigma^I_2|H_i|^2}<br> $$ </p><p>对于多音测试来说，由于使用了FFT对ADC的一些频域特性进行测量，要注意的是，目标频率必须要落在FFT的每一个频点上，这就意味着输入信号的拍频必须是采样窗口倒数的整数倍，如下式所示，</p><p>$$<br>f_{in1}-f_{in2}=m\frac{1}{T_w}=mf_{bin}<br>$$</p></li></ol><h2 id="ERBW（Effective-Resolution-Bandwidth-有效精度带宽）"><a href="#ERBW（Effective-Resolution-Bandwidth-有效精度带宽）" class="headerlink" title="ERBW（Effective Resolution Bandwidth, 有效精度带宽）"></a>ERBW（Effective Resolution Bandwidth, 有效精度带宽）</h2><p>  这里引入了一个新的指标，ERBW，有效精度带宽，这个指标衡量了ADC处理高速信号的能力。由于器件带宽的限制，ADC的精度会受到输入信号频率的影响。对于被称作奈奎斯特ADC的器件来说，它的有效位数在整个奈奎斯特带宽内不能下降超过半位。过去对ADC的精度要求很高，通常来说，在DC处的有效位数不能相差半位，而现今的有效位数在奈奎斯特频率处可以相差2位或者3位，这是由于现今的大多数ADC都是采用了过采样的操作，进一步降低了量化噪声的大小以提升PG（Processing Gain，处理增益），提升PG可以降低NF（Noise Figure，噪声系数），提升SNDR。另一方面，在有线传输中，通常采用基带信号进行通信，因此，低频信号在信号带宽中占主导。因此，高频处的有效位数下降就不那么重要了。下图是一个SNDR随频率变化的曲线，</p>  <img src="/2021/06/18/20210616/6.png" class="" title="ERBW vs. Frequency curve"><p>  可以看出，超过ERBW之后，SNDR会发生陡降，该陡降有一个最好的情况，那就是不考虑其他非理想性，只考虑时钟抖动的的带来的相位噪声时，每十倍频下降20dB。时钟抖动在不同频率处的功率可以表示为如下式，</p><p>  $$<br>  P_{jitter}(f)=\frac{\omega^2}{\omega_s^2}Vin^2(\omega)\Delta^2\phi(\omega)<br>  $$</p><p>  可以看出时钟抖动带来的噪声的功率随着输入信号的频率的升高，功率是变大的，直观上来讲，频率变大，相同抖动时间$\Delta t$，由于信号变化速率变快，斜率变陡。导致误差变大，体现在噪声功率上，就是时钟抖动造成的信号噪声功率变大。SNDR随着频率上升，下降速度大于20dB/decade的原因有，随着频率上升，自举开关用作自举的电容容性特征会越来越不明显，导致栅极电压不能跟随漏极电压，进一步导致自举开关的自举特性消失，从而开关的线性度也会变差，影响SNDR。</p><h2 id="NSD（Noise-Spectral-Density，噪声谱密度）以及NF（Noise-Figure，噪声系数）"><a href="#NSD（Noise-Spectral-Density，噪声谱密度）以及NF（Noise-Figure，噪声系数）" class="headerlink" title="NSD（Noise Spectral Density，噪声谱密度）以及NF（Noise Figure，噪声系数）"></a>NSD（Noise Spectral Density，噪声谱密度）以及NF（Noise Figure，噪声系数）</h2><p>  噪声谱密度的定义是，奈奎斯特带内噪声总功率（具体为去掉15个谐波之后的带内噪声），除以总的奈奎斯特带宽，单位是$dBm/Hz$。可以表示为下式，<strong>注意</strong>，等式最右为与1mW相比之后取对数的dBm值。</p><p>  $$<br>  NSD\triangleq \frac{P_{n,total}}{F_s/2}=P_{FS}-SNR-10log(F_s/2)[dBm/Hz]<br>  $$</p><p>  为了获得我们关心的信号带宽内的总噪声功率，我们需要将上式中表示的噪声谱密度乘以一个信号带宽$BW$，如下式所示</p><p>  $$<br>  P_n\triangleq NSD\cdot BW=P_{FS}-SNR-10log(F_s/2BW)[dBm]<br>  $$</p><p>  注意到，上式中的项$10log(F_s/2BW)$的式子还没有能够很好地说明其意义，我们定义这个表达式为PG（Processing Gain，处理增益），如下式所示，</p><p>  $$<br>  PG\triangleq 10log(F_s/2BW)<br>  $$</p><p>  $$<br>  OSR\triangleq F_s/2BW<br>  $$</p><p>  上述表达式中，还定义了一个新的指标，OSR（Over Sampling Ratio，过采样比），这个表达式表明了采样率比信号带宽的大小，描述了系统过采样的程度。随着采样率的上升，系统的奈奎斯特带宽也会变大，由于量化噪声恒定不变，噪声谱密度就会下降，那么落在信号频带内的噪声功率就会变小。上述机制表明了，提高采样率可以提高SNDR，也就是提高精度。</p><p>  最后，需要给出一个噪声系数的定义，噪声系数定义为输出信噪比与输入信噪比的比值再取对数，如下式所示，</p><p>  $$<br>  NF=(\frac{S_i}{N_i})<em>{dB}-(\frac{S_o}{N_o})</em>{dB}<br>  $$</p><p>  在这里，假设输入与输出信号的功率相同，那么噪声系数可以定义为如下，</p><p>  $$<br>  NF=(\frac{N_o}{N_i})_{dB}<br>  $$</p><p>  也就是输出的噪声功率，比上输入的噪声功率。那么输入的噪声功率是多少呢？假设输入是一个没有噪声的的满摆幅正弦波，那么由于在射频中需要做阻抗匹配以减少反射，一般是做$50\Omega$的阻抗比配，在信号源处有一个$50\Omega$的电阻，在传输线上输入和输出分别有$50\Omega$的电阻，在低噪放上也有一个$50\Omega$的电阻，因此，是四份$50\Omega$分担了电压4</p><p>  一般来讲，一个典型的LNA的噪声系数是3dB，也就是说，信噪比恶化一倍，输出SNR比输入SNR高3dB。假设输入信号的功率为4dBm，经过一个10位的采样率为1GHz的ADC量化后，噪声系数可以由下式计算得到，</p><p>  $$<br>  NF=NSD+174dB=P_{FS}-SNR-10log(F_s/2)=4-62-10log(1G/2)+174=29dB<br>  $$</p><p>  这里可以看到，ADC的噪声系数很大，如果这么大的噪声系数，在射频通信中，一定是没有办法使用的器件。在实际电路中，一般ADC还有一个前置的放大器，这个放大器可以放大噪声。</p>  <img src="/2021/06/18/20210616/7.png" class=""><h2 id="NPR（Noise-Power-Ratio，噪声功率比）"><a href="#NPR（Noise-Power-Ratio，噪声功率比）" class="headerlink" title="NPR（Noise Power Ratio，噪声功率比）"></a>NPR（Noise Power Ratio，噪声功率比）</h2><p>  这里给出一个全新的概念，噪声功率比，这个指标衡量了正常使用信道的信号功率和没有被使用的信道的噪声功率的比值。一般来讲，当所有其他信道都关闭时的噪声水平和所有其他信道都有信号时的噪声水平是不一样的。由于有非线性和失真的影响，导致信道的噪声水平上升。实际上，对于正弦波来说，信号与噪声失真比就是这里的噪声功率比。这个指标在实际中，说明了每个用户可以用到的动态范围。</p>  <img src="/2021/06/18/20210616/8.png" class=""><p>  这里还需要引入一个新的概念，就是PAPR（Peak to Average Power Ratio，峰值功率与平均功率比）。对于正弦波来说，PAPR是3dB，因此，对于正弦波来说，PAPR-3dB为零。注意下图中的曲线，随着信号功率不断增大，超过了FS可容忍的范围，信号就发生了clipping（限幅）效应，引入了大量其他频率的噪声，这时候NPR就会下降。</p>  <img src="/2021/06/18/20210616/9.png" class=""><p>  $$<br>  SNDR=C/N+U/D+PAPR-3+CA-PG=NPR+PAPR-3dB<br>  $$</p><p>  $$<br>  C = Blog_2(1+\frac{P}{N_0B})[bps]<br>  $$</p><p>  上述公式中，有一个载波与噪声比，这个比例是由需要的信号传输速率决定的，通过香农信道容量公式，可以由数据传输速率推得信号噪声比。</p><h2 id="SFDR（Spurs-Free-Dynamic-Range，无杂散动态范围）"><a href="#SFDR（Spurs-Free-Dynamic-Range，无杂散动态范围）" class="headerlink" title="SFDR（Spurs Free Dynamic Range，无杂散动态范围）"></a>SFDR（Spurs Free Dynamic Range，无杂散动态范围）</h2><p>  在无线通信中，常常会在某个信道中产生一个很强的干扰信号（blockers or jammers），这种干扰信号常常会是一种功率很大的载波，如果这种载波被输入到ADC中，会引起一些失真现象，将干扰信号的一部分功率调制到别的信道上，这就可能会使一些信道中的功率比较小的有用信号淹没在噪声中。因此，在无线接收机中，SFDR决定了无线接收机的能接受的最小信号，因为一些干扰信号会产生比较大的噪声，这种噪声通常会比不同的量化噪声和热噪声要大。在这种情形下，我们需要将无杂散动态范围变得足够大，以适应一些大的信号变化，从而一些大的信号也不会产生杂散。在基站应用中，需要将高阶的一些量化杂散抑制掉，前面的组会讲过，高阶量化噪声的杂散会随着输入信号的幅度的减弱而增大，因此，需要特别注意衰减这一部分的杂散。信号小时，量化误差噪声占据主导；信号大时，采样保持电路部分的噪声占据了主导地位。这些杂散可以通过一个dither，将功率分散到别的频带上，这样，毛刺形态的杂散的杂散水平就会下降。在实际电路中，不需要额外的dither来实现这件事，可以通过热噪声直接将杂散扩频，从而杂散水平就下降了，达到了提高SFDR的目的。如果要实现这件事，就需要使热噪声在噪声中占据主导地位，而量化噪声比较小，这时，我们可以通过提高ADC的精度，来降低量化噪声，使得热噪声占据主导地位。</p>  <img src="/2021/06/18/20210616/10.png" class=""><h2 id="FoM（Figure-of-Merit，品质因数）"><a href="#FoM（Figure-of-Merit，品质因数）" class="headerlink" title="FoM（Figure of Merit，品质因数）"></a>FoM（Figure of Merit，品质因数）</h2><p>  有许多不同的FoM，可以衡量不同种类的ADC的性能，下面列举了两个FoM。</p><p>  $$<br>  Walden \quad FoM_w=\frac{P}{2^{ENOB}f_s}<br>  $$</p><p>  $$<br>  Schreier\quad FoM_s=\frac{2^{2ENOB}f_{nyq}}{P}=SNDR+10log(fs/2P)<br>  $$</p><p>  第一个FoM可以用来衡量低精度full-flash ADC的性能，有效位数决定了总的比较器数量和总功率。因为N为Flash ADC有$2^N$个阈值电压，所以需要$2^N$个比较器，因此每增加一位的精度，就需要两倍的比较器，即两倍的功率。</p><p>  第二个FoM可以用来衡量高精度，基于开关电容ADC，在开关电容中，有效位数决定了最大容许的热噪声$\frac{kT}{C}$的大小，这个最大容许的热噪声决定了C的最小大小，由这个C的大小，又决定了ADC每一次量化的功率。这里注意功率要同时考虑消耗在开关上的功率和电容上存储的功率。</p><p>  $$<br>  P=V_{FS}^2Cf_s<br>  $$</p><p>  这里要把C用已知的变量替代，认为热噪声水平与量化噪声相当</p><p>  $$<br>  \frac{kT}{C}=\frac{LSB^2}{12}<br>  $$</p><p>  将上式中的C代入有，</p><p>  $$<br>  P=V_{FS}^2kT\cdot12/LSB^2=2^{ENOB\cdot2}12kTf_s<br>  $$ </p><p>  下图是shreier FoM随频率变化的图，可以看到，在某个频率之后，曲线开始以10dB/decade的速度开始滚降。这是由于如下几个原因，第一，采样保持电路在奈奎斯特频率处的失真压缩了ADC的满量程范围，为了消除这部分失真噪声，需要额外的功率；第二，时钟的生成和缓冲器的电路元件的尺寸要变大以减少在高频处的时钟抖动引起的误差；第三，流水线和时间交织结构会消耗额外的功率。如果需要将包络进一步推向更好的情形，就需要更先进的工艺和更先进的信号处理技术的引入。</p>  <img src="/2021/06/18/20210616/11.png" class="" title="Schreier FoM vs. Fs"><h2 id="ADC亚稳态测试"><a href="#ADC亚稳态测试" class="headerlink" title="ADC亚稳态测试"></a>ADC亚稳态测试</h2><p>  ADC亚稳态可以通过一个缓慢变化的信号加在输入上进行测量，具体来说，只需在某一个确定的时间段内测量缓变信号作为输入时，输出的毛刺数量，便可以确定亚稳态发生的概率。如果想要估计ADC的亚稳态概率，可以通过测量锁存器再生成波形来估计亚稳态发生的概率。当然，比较器的再生成时间常数也可以通过测量亚稳态发生的概率反过来进行估计。</p>  <img src="/2021/06/18/20210616/12.png" class="" title="Meta-Stability Test">]]></content>
-      
-      
-      <categories>
-          
-          <category> 学术交流心得 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> ADC指标 </tag>
-            
-            <tag> ADC性能测量 </tag>
-            
-            <tag> 混合信号集成电路设计 </tag>
             
         </tags>
       
@@ -227,157 +188,15 @@
             
             <tag> 模拟集成电路设计 </tag>
             
-            <tag> 信号与系统 </tag>
-            
             <tag> Time-Interleaved ADC </tag>
             
             <tag> 数字信号处理 </tag>
             
+            <tag> 信号与系统 </tag>
+            
             <tag> Data Converters </tag>
             
             <tag> 离散时间傅里叶变换 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Wide Band ADC Foundamentals and Trends</title>
-      <link href="/2021/04/29/adc-foundamentals-and-trends/"/>
-      <url>/2021/04/29/adc-foundamentals-and-trends/</url>
-      
-        <content type="html"><![CDATA[<h2 id="4-1-简介"><a href="#4-1-简介" class="headerlink" title="4.1 简介"></a>4.1 简介</h2><p>近年，对宽带信号直接采样的接收器成为了大家关注的热点。这种接收器与常规的窄带接收器不同，射频信号是直接被一个高精度高速的ADC直接采样和量化，这种架构中，ADC直接将目标信号带宽内的信号全部取出，所有的下变频和解调操作都是在数字域中进行。与常规的窄带接收器相比，这种全带宽获取的能力带来了许多优势，其中有</p><ul><li>大带宽</li><li>高数据速率</li><li>高灵敏度</li><li>可以同时获取若干信道的信号</li><li>快速信道切换</li><li>低系统复杂度</li><li>低成本<br>最近几年，GS/s的高精度ADC使得应用在线缆、卫星以及通信网络中的GHz的全带宽获取变成了现实。如果进一步降低ADC的功耗，则可以让它进入一个全新的应用领域。这篇文章提出建立一个全带宽捕获能力的ADC，为了获取功率速度的更好平衡，这种ADC没有放大器，纯粹依靠比较器进行工作。</li></ul><h2 id="4-2-目前的研究成果"><a href="#4-2-目前的研究成果" class="headerlink" title="4.2 目前的研究成果"></a>4.2 目前的研究成果</h2><p>大多数高速高精度ADC可以被分为三类：</p><ul><li><p>流水线型ADC（Pipeline ADCs）<br><img src="ADC%20Foundamentals%20and%20Trends/1.png" alt="Pipline ADC Architecture"></p></li><li><p>时间交织的逐次比较型ADC（Time Interleaved SAR ADCs）</p><p><img src="ADC%20Foundamentals%20and%20Trends/2.png" alt="SAR ADC Architectures"></p></li><li><p>闪存ADC（Flash ADCs）</p><p><img src="ADC%20Foundamentals%20and%20Trends/3.png" alt="Flash ADC Architecture"></p></li></ul><p>Sigma-Delta因为其对于过采样比（oversampling ratio）的限制，所以不适合高速的应用。</p><p>Pipeline ADCs是一种比较受欢迎的高速高精度ADC架构，因为它非常易于配置，并且数据输出速率很大。Pipeline设备最大的功耗来自于提供精准增益来放大余量电压的线性放大器。这个精准的增益通常由一个高增益、大带宽、具有反馈网络的一个运算放大器构成。为了补偿Pipeline ADC的放大器引入的模拟误差，引入了一系列的数字校准技术，通过这一技术，可以实现速度更快、放大器功率更小的Pipeline ADC。有文献将运算放大器的非线性误差确定下来，再根据这个非线性误差计算一个补偿传输函数来校正这一误差。有文献建立了</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 阅读心得 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Wide Band ADCs </tag>
-            
-            <tag> Mixed Signal Design </tag>
-            
-            <tag> Signals and Systems </tag>
-            
-            <tag> ADC Structures </tag>
-            
-            <tag> Time Interleaved Structure </tag>
-            
-            <tag> Top Plate Sampling and Bottom Plate Sampling </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>20210414组会心得</title>
-      <link href="/2021/04/14/20210414/"/>
-      <url>/2021/04/14/20210414/</url>
-      
-        <content type="html"><![CDATA[<h2 id="LDO的基本结构与性能指标"><a href="#LDO的基本结构与性能指标" class="headerlink" title="LDO的基本结构与性能指标"></a>LDO的基本结构与性能指标</h2><p><img src="20210407/1.png" alt="LDO的基本结构示意图"></p><h3 id="内部组成部分"><a href="#内部组成部分" class="headerlink" title="内部组成部分"></a>内部组成部分</h3><ul><li>误差放大器，Error Amplifier</li><li>调整管，文章中又称传输管</li><li>电阻分压网络</li></ul><p>上述几个部分组成了一个负反馈，使得输出节点可以严格跟随$V_{ref}$进行变化。这个$V_{ref}$由带隙基准源组成，这个基准源可以生成一个与$PVT$弱相关的一个电流，使得电流流过一个电阻，便可以生成一个电压。$C_{out}$的作用是把高频噪声短路到地上，而$r_{esr}$的的作用是等效$C_{out}$的等效串联电阻，这个值需要调节以保证LDO环路的稳定性。</p><h2 id="LDO的性能指标"><a href="#LDO的性能指标" class="headerlink" title="LDO的性能指标"></a>LDO的性能指标</h2><ul><li>直流特性</li><li>交流特性</li><li>瞬态特性</li><li>效率</li></ul><h3 id="直流特性"><a href="#直流特性" class="headerlink" title="直流特性"></a>直流特性</h3><ul><li>线性调整率，linear regulation</li><li>负载调整率，load regulation</li><li>温度系数，temperature coefficient</li><li>漏失电压</li></ul><h4 id="线性调整率"><a href="#线性调整率" class="headerlink" title="线性调整率"></a>线性调整率</h4><ul><li><strong>作用</strong>：给定LDO对应于不同静态输入电压以及负载电流条件下的稳压输出能力，表征了LDO的性能。</li><li><strong>定义</strong>：LDO静态输出电压变化随静态输入电压变化之比，具体表示为如下:</li></ul><p>$$<br>\frac{\Delta V_{out}}{\Delta V_{in}}=\frac{1}{A_{err}F}+\frac{1}{F}\frac{\Delta V_{ref}}{\Delta V_{in}}<br>$$</p><ul><li>其中，$A_{err}$为误差放大器的增益，$F$为电阻反馈系数，$\frac{\Delta V_{out}}{\Delta V_{in}}$为电压基准源随静态输入电压的变化率。</li><li><strong>结论</strong>：线性调整率主要取决于误差放大器的直流增益，放大器直流增益$A_{err}$越大，则性能越好。此外，如果基准源相对于输入电压的精度也限制了LDO的性能。</li></ul><h4 id="负载率调整"><a href="#负载率调整" class="headerlink" title="负载率调整"></a>负载率调整</h4><ul><li><strong>作用</strong>：与线性调整率一样，给定了LDO对于不同静态输入电压以及负载电流条件下的稳压输出能力，表征了LDO的性能。</li><li><strong>定义</strong>：负载调整率是指LDO静态输出电压变化随负载电流变化之比，它可以表示为：</li></ul><p>$$<br>\frac{\Delta V_{out}}{\Delta I_{L}}=\frac{r_{op}}{1+AF}<br>$$</p><ul><li>其中，$r_{op}$是指传输管的输出阻抗，$AF$是环路的直流增益<code>Loop Gain</code>。</li><li><strong>结论</strong>：$r_{op}$越小，$AF$越大，则LDO的稳压性能越好。</li><li><u><strong>注意</strong></u>：在这里，负载调整率仅仅代表输出电压随负载电流的<strong>直流</strong>变化，并不能完全表征负载电流瞬时变化时的动态特性。</li></ul><h4 id="温度系数"><a href="#温度系数" class="headerlink" title="温度系数"></a>温度系数</h4><ul><li><strong>作用</strong>：表征LDO输出电压随温度的漂移。</li><li><strong>定义</strong>：该参数主要受到电压基准源以及误差放大器的失调电压的温度漂移的影响，可以表示为：</li></ul><p>$$<br>TC=\frac{1}{V_{out}}\cdot\frac{\frac{\Delta V_{ref,Temp}+\Delta V_{os,Temp}}{F}}{\Delta Temp}<br>$$</p><ul><li>其中，$\Delta V_{ref,Temp}$以及$\Delta V_{os,Temp}$分别表示电压基准源以及误差放大器失调电压在$\Delta Temp$范围内的变化量。</li></ul><h4 id="漏失电压"><a href="#漏失电压" class="headerlink" title="漏失电压"></a>漏失电压</h4><ul><li><strong>作用</strong>：表征漏失电压$V_{dsat,pt}$决定了最大输出电流以及最小输入电压的值。</li><li><strong>定义</strong>：<strong>漏失电压</strong>、<strong>最大输出电流</strong>以及<strong>最小输入电压</strong>这三个量都取决于调整管的参数。在实际设计中，通常会根据最大输出电流以及漏失电压的要求来确定传输管的尺寸，从而使得在最大输出电流的情况下，</li></ul><p>$$<br>V_{DO}=I_{L,max}r_{ON}=V_{dsat,pt}<br>$$</p><ul><li>其中，最大负载电流时传输管的$V_{dsat}$即为漏失电压。</li></ul><h3 id="交流特性"><a href="#交流特性" class="headerlink" title="交流特性"></a>交流特性</h3><ul><li>电源抑制比（PSRR）</li><li>噪声</li></ul><h4 id="电源抑制比"><a href="#电源抑制比" class="headerlink" title="电源抑制比"></a>电源抑制比</h4><ul><li><strong>作用</strong>：表征LDO抑制电源线上的高频噪声的能力。</li><li><strong>定义</strong>：与<u>传输管的寄生电容</u>有关，并且与<u>环路增益</u>成反比。</li><li><strong>提高电源抑制比的方法</strong>：误差放大器在提高LDO的PSRR方面起到很重要的作用。</li></ul><h4 id="噪声"><a href="#噪声" class="headerlink" title="噪声"></a>噪声</h4><ul><li><p><strong>来源</strong>：电压基准源以及误差放大器的噪声。</p></li><li><p><strong>减小噪声的方法</strong>：</p><ul><li>电压基准源产生的噪声<br>可以通过加入RC低通滤波器有效滤除一部分。</li><li>误差放大器产生的噪声<br>可以通过增加静态电流以及加大输入管尺寸等改善。</li></ul></li></ul><h3 id="瞬态特性"><a href="#瞬态特性" class="headerlink" title="瞬态特性"></a>瞬态特性</h3><h4 id="LDO瞬态特性"><a href="#LDO瞬态特性" class="headerlink" title="LDO瞬态特性"></a>LDO瞬态特性</h4><ul><li><strong>作用</strong>：表征其对负载电流以及输入电压的瞬态变化进行稳压的能力。</li><li><strong>定义</strong>：LDO的瞬态特性取决于在大信号下的电路性能，例如，<u>对传输管的栅极寄生电容进行快速充放电的能力</u>以及<u>寄生电容的馈通</u>等。</li></ul><h4 id="负载瞬态变化特性"><a href="#负载瞬态变化特性" class="headerlink" title="负载瞬态变化特性"></a>负载瞬态变化特性</h4><ul><li><strong>作用</strong>：LDO对于快速负载瞬态变化进行稳压的能力。</li><li><strong>定义</strong>：可以用负载电流从0变为最大时，输出端的电压变化幅度。LDO在大负载电流变化下的稳压能力与其闭环单位增益带宽、输出电流变化幅度以及输出电容的大小的因素有关，可以表示为：</li></ul><p>$$<br>\Delta V_{out}=\frac{I_{L,max}\cdot\Delta t}{C_{out}}<br>$$</p><ul><li>其中$\Delta t$表示LDO的响应时间，它与环路的单位增益带宽成反比。</li><li><strong>提高该特性的方法</strong>：提高LDO环路的带宽；提高传输管（调整管）前一级的压摆率（slew rate），即，提高前一级电路对传输管寄生电容的充放电能力。</li></ul><h4 id="纹波抑制比"><a href="#纹波抑制比" class="headerlink" title="纹波抑制比"></a>纹波抑制比</h4><ul><li><strong>作用</strong>：表征LDO对于大幅度输入电压波纹的抑制能力。</li><li><strong>定义</strong>：LDO的输出电压波纹与输入1电压波纹之比。</li><li><strong>补充说明</strong>：在<strong>输入电压比较小</strong>的情况下，这一指标与PSRR（电源抑制比）是近似相等的；当<strong>输入电压变化比较大</strong>的情况下，电路的一些大信号特性会使得纹波抑制比偏离PSRR所预测的值。</li></ul><h3 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h3><ul><li><strong>定义</strong>：主要有三个量决定：静态电流、负载电流以及传输管的漏失电压，它可以表示为：</li></ul><p>$$<br>Eff=\frac{输出功率}{输入功率}=\frac{V_{out}I_{L}}{V_{in}(I_{Q}+I_{L})}<br>$$</p><ul><li><strong>补充说明</strong>：当负载电流远大于静态电流时，即$I_{Q}+I_{L}\approx \frac{V_{out}}{V_{in}}=\frac{V_{in}-V_{DO}}{V_{in}}$</li></ul><h2 id="LDO电路的设计考虑"><a href="#LDO电路的设计考虑" class="headerlink" title="LDO电路的设计考虑"></a>LDO电路的设计考虑</h2><ul><li>环路稳定性</li><li>噪声</li><li>电源抑制比（PSRR）</li></ul><h3 id="环路稳定性"><a href="#环路稳定性" class="headerlink" title="环路稳定性"></a>环路稳定性</h3><ul><li>分析环路稳定性通常是寻找到环路的开环增益，我们需要把环路打开，这里可以参考拉扎维电子2视频中所讲述的打开环路的正确方法。很显然，作者在这里并没有精确地打开环路，我们可以看到，作者在下图中并没有考虑到负载效应，不过作为近似结果，该结果还是可以接受的。</li></ul><p><img src="20210407/2.png" alt="LDO的原理图"></p><ul><li>这个环路的开环传输函数可以表示为：</li></ul><p>$$<br>L(s)=\frac{L(out)}{L(in)}=\frac{g_{m1}r_{o1}g_{mL}r_{oL}(1+sC_{out}r_{esr})}{(1+sr_{o1}C_1)(1+s(r_{oL}+r_{esr})C_{out})}<br>$$</p><ul><li><p><strong>笔记</strong>：这个传输函数我不是很懂，这里的一个零点也很奇怪，需要再仔细研究一下。</p></li><li><p>下面讨论一下该传输函数的两个极点以及一个零点，他们可以表示为如下式子</p></li></ul><p>$$<br>p_1=\frac{1}{2\pi C_{out}(r_{oL}+r_{esr})}<br>$$</p><p>$$<br>p_2=\frac{1}{2\pi C_1r_{o1}}<br>$$</p><p>$$<br>z_1=\frac{1}{2\pi C_{out}r_{esr}}<br>$$</p><ul><li>其中，$p_1$是存在于LDO输出端的主极点，$p_2$是误差放大器输出端形成的另一个极点。如果设计$z_1$的值非常接近$p_2$的值时，可以认为单位增益带宽内只存在一个主极点。该反馈系统是稳定的。</li></ul><h3 id="LDO与补偿环路问题总结"><a href="#LDO与补偿环路问题总结" class="headerlink" title="LDO与补偿环路问题总结"></a>LDO与补偿环路问题总结</h3><ul><li>第一个问题，芯片的供电模式是一个扇出式的结构。假设电池是一个输出3V标称电压的非理想电压源，如果要在输出获得一个良好的稳压器，则需要先将电池的电压引出，经过开关电源降压之后，再接入LDO进行稳压，这样既利用了开关电源高转换能效的特性，也利用了LDO对噪声的抑制能力良好的特性，属于最佳的设计方案。</li><li>第二个问题，在环路设计中，假设待控制设备的传输函数类似于$\frac{\omega}{s^2}$，则可以将plant设计为一个传输函数为$\frac{\omega}{s}$的设备，之后再利用一个PI控制器，例如$\frac{c}{s}+1=\frac{c+s}{s}$，来实现一个PD控制器。这就意味着在电路中，从不同的角度来看，电路可以看作是PD补偿，也可以看做是PI补偿。用这样不同的视角分析电路，可以获得对电路更深刻的理解。</li><li>第三个问题，在有反馈回路的电路设计中，要特别注意反馈回路的正负极性，如果搞错会有灾难性的后果。</li><li>第四个问题，在LDO的频率补偿方法有两种，一种是采用Miller电容的补偿方法，这种方法是将放大器中间某一个节点设置为主极点，这种方法的优势是不牺牲环路带宽，但是如果输出是一个大的容性负载，就相对来说难以补偿。另一种常用的方式是在输出采用一个较大的电容，进而将输出极点设置为主极点，将主极点向原点推，这种方式的缺点是会牺牲一部分的带宽。</li><li>第五个问题，在LDO原理图中的上拉电阻Rd的作用是在电路上电的时候给M3、M2、M1组成的支路上提供足够的电流。Cascode类型或者堆叠的管子可能在上电的时候由于不同的管子工作区域转换需要时间，这个时间有可能造成MOS管锁死，最后导致整个系统的失效。为了防止这种情况的发生，我们通常采用一个小的电流源，给电路提供一个微弱的电流，使管子始终处在导通的状态中，防止管子锁死。这是一种基于实际使用的调整，在理论设计中，并不需要考虑管子锁死的情况，只有在实际做产品时，为了保证产品的稳定性，才需要考虑这个问题。</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 组会心得 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> LDO </tag>
-            
-            <tag> 模拟集成电路设计 </tag>
-            
-            <tag> 信号与系统 </tag>
-            
-            <tag> PID控制器 </tag>
-            
-            <tag> 自动控制原理 </tag>
-            
-            <tag> 环路稳定性 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>20210421组会心得</title>
-      <link href="/2021/04/14/20210421/"/>
-      <url>/2021/04/14/20210421/</url>
-      
-        <content type="html"><![CDATA[<h2 id="LDO的基本结构与性能指标"><a href="#LDO的基本结构与性能指标" class="headerlink" title="LDO的基本结构与性能指标"></a>LDO的基本结构与性能指标</h2><p><img src="20210407/1.png" alt="LDO的基本结构示意图"></p><h3 id="内部组成部分"><a href="#内部组成部分" class="headerlink" title="内部组成部分"></a>内部组成部分</h3><ul><li>误差放大器，Error Amplifier</li><li>调整管，文章中又称传输管</li><li>电阻分压网络</li></ul><p>上述几个部分组成了一个负反馈，使得输出节点可以严格跟随$V_{ref}$进行变化。这个$V_{ref}$由带隙基准源组成，这个基准源可以生成一个与$PVT$弱相关的一个电流，使得电流流过一个电阻，便可以生成一个电压。$C_{out}$的作用是把高频噪声短路到地上，而$r_{esr}$的的作用是等效$C_{out}$的等效串联电阻，这个值需要调节以保证LDO环路的稳定性。</p><h2 id="LDO的性能指标"><a href="#LDO的性能指标" class="headerlink" title="LDO的性能指标"></a>LDO的性能指标</h2><ul><li>直流特性</li><li>交流特性</li><li>瞬态特性</li><li>效率</li></ul><h3 id="直流特性"><a href="#直流特性" class="headerlink" title="直流特性"></a>直流特性</h3><ul><li>线性调整率，linear regulation</li><li>负载调整率，load regulation</li><li>温度系数，temperature coefficient</li><li>漏失电压</li></ul><h4 id="线性调整率"><a href="#线性调整率" class="headerlink" title="线性调整率"></a>线性调整率</h4><ul><li><strong>作用</strong>：给定LDO对应于不同静态输入电压以及负载电流条件下的稳压输出能力，表征了LDO的性能。</li><li><strong>定义</strong>：LDO静态输出电压变化随静态输入电压变化之比，具体表示为如下:</li></ul><p>$$<br>\frac{\Delta V_{out}}{\Delta V_{in}}=\frac{1}{A_{err}F}+\frac{1}{F}\frac{\Delta V_{ref}}{\Delta V_{in}}<br>$$</p><ul><li>其中，$A_{err}$为误差放大器的增益，$F$为电阻反馈系数，$\frac{\Delta V_{out}}{\Delta V_{in}}$为电压基准源随静态输入电压的变化率。</li><li><strong>结论</strong>：线性调整率主要取决于误差放大器的直流增益，放大器直流增益$A_{err}$越大，则性能越好。此外，如果基准源相对于输入电压的精度也限制了LDO的性能。</li><li><strong>备注</strong>：该特性一般来说不是特别重要。</li></ul><h4 id="负载率调整"><a href="#负载率调整" class="headerlink" title="负载率调整"></a>负载率调整</h4><ul><li><strong>作用</strong>：与线性调整率一样，给定了LDO对于不同静态输入电压以及负载电流条件下的稳压输出能力，表征了LDO的性能。</li><li><strong>定义</strong>：负载调整率是指LDO静态输出电压变化随负载电流变化之比，它可以表示为：</li></ul><p>$$<br>\frac{\Delta V_{out}}{\Delta I_{L}}=\frac{r_{op}}{1+AF}<br>$$</p><ul><li>其中，$r_{op}$是指传输管的输出阻抗，$AF$是环路的直流增益<code>Loop Gain</code>。</li><li><strong>结论</strong>：$r_{op}$越小，$AF$越大，则LDO的稳压性能越好。</li><li><u><strong>注意</strong></u>：在这里，负载调整率仅仅代表输出电压随负载电流的<strong>直流</strong>变化，并不能完全表征负载电流瞬时变化时的动态特性。</li><li><strong>备注</strong>：负载调整率关系到输出电压的精度，要特别注意这一特性。</li></ul><h4 id="温度系数"><a href="#温度系数" class="headerlink" title="温度系数"></a>温度系数</h4><ul><li><strong>作用</strong>：表征LDO输出电压随温度的漂移。</li><li><strong>定义</strong>：该参数主要受到电压基准源以及误差放大器的失调电压的温度漂移的影响，可以表示为：</li></ul><p>$$<br>TC=\frac{1}{V_{out}}\cdot\frac{\frac{\Delta V_{ref,Temp}+\Delta V_{os,Temp}}{F}}{\Delta Temp}<br>$$</p><ul><li>其中，$\Delta V_{ref,Temp}$以及$\Delta V_{os,Temp}$分别表示电压基准源以及误差放大器失调电压在$\Delta Temp$范围内的变化量。</li><li><strong>备注</strong>：该特性一般在LDO中不是特别重要，需要在带隙基准源（Bandgap Reference）中特别注意。一般带隙基准源会对温度进行补偿，从而使得输出电压相对于温度来说，基本恒定不变。</li></ul><h4 id="漏失电压"><a href="#漏失电压" class="headerlink" title="漏失电压"></a>漏失电压</h4><ul><li><strong>作用</strong>：表征漏失电压$V_{dsat,pt}$决定了最大输出电流以及最小输入电压的值。</li><li><strong>定义</strong>：<strong>漏失电压</strong>、<strong>最大输出电流</strong>以及<strong>最小输入电压</strong>这三个量都取决于调整管的参数。在实际设计中，通常会根据最大输出电流以及漏失电压的要求来确定传输管的尺寸，从而使得在最大输出电流的情况下，</li></ul><p>$$<br>V_{DO}=I_{L,max}r_{ON}=V_{dsat,pt}<br>$$</p><ul><li>其中，最大负载电流时传输管的$V_{dsat}$即为漏失电压。</li><li><strong>备注</strong>：这里所说的漏失电压就是在管子源漏极之间的电压，LDO（Low Dropout）的名字也是由此而来，LDO表示在源漏之间的电压降很小。这个压降越小，则耗费在LDO上的功率就越小。</li></ul><h3 id="交流特性"><a href="#交流特性" class="headerlink" title="交流特性"></a>交流特性</h3><ul><li>电源抑制比（PSRR）</li><li>噪声</li></ul><h4 id="电源抑制比"><a href="#电源抑制比" class="headerlink" title="电源抑制比"></a>电源抑制比</h4><ul><li><strong>作用</strong>：表征LDO抑制电源线上的高频噪声的能力。</li><li><strong>定义</strong>：与<u>传输管的寄生电容</u>有关，并且与<u>环路增益</u>成反比。</li><li><strong>提高电源抑制比的方法</strong>：误差放大器在提高LDO的PSRR方面起到很重要的作用。</li><li><strong>备注</strong>：电源抑制比（PSRR）代表了LDO作为类似电源滤波器角色的能力。一般的LDO的电源抑制比在40dB左右</li></ul><h4 id="噪声"><a href="#噪声" class="headerlink" title="噪声"></a>噪声</h4><ul><li><p><strong>来源</strong>：电压基准源以及误差放大器的噪声。</p></li><li><p><strong>减小噪声的方法</strong>：</p><ul><li>电压基准源产生的噪声<br>可以通过加入RC低通滤波器有效滤除一部分。</li><li>误差放大器产生的噪声<br>可以通过增加静态电流以及加大输入管尺寸等改善。</li></ul></li></ul><h3 id="瞬态特性"><a href="#瞬态特性" class="headerlink" title="瞬态特性"></a>瞬态特性</h3><h4 id="LDO瞬态特性"><a href="#LDO瞬态特性" class="headerlink" title="LDO瞬态特性"></a>LDO瞬态特性</h4><ul><li><strong>作用</strong>：表征其对负载电流以及输入电压的瞬态变化进行稳压的能力。</li><li><strong>定义</strong>：LDO的瞬态特性取决于在大信号下的电路性能，例如，<u>对传输管的栅极寄生电容进行快速充放电的能力</u>以及<u>寄生电容的馈通</u>等。</li></ul><h4 id="负载瞬态变化特性"><a href="#负载瞬态变化特性" class="headerlink" title="负载瞬态变化特性"></a>负载瞬态变化特性</h4><ul><li><strong>作用</strong>：LDO对于快速负载瞬态变化进行稳压的能力。</li><li><strong>定义</strong>：可以用负载电流从0变为最大时，输出端的电压变化幅度。LDO在大负载电流变化下的稳压能力与其闭环单位增益带宽、输出电流变化幅度以及输出电容的大小的因素有关，可以表示为：</li></ul><p>$$<br>\Delta V_{out}=\frac{I_{L,max}\cdot\Delta t}{C_{out}}<br>$$</p><ul><li>其中$\Delta t$表示LDO的响应时间，它与环路的单位增益带宽成反比。</li><li><strong>提高该特性的方法</strong>：提高LDO环路的带宽；提高传输管（调整管）前一级的压摆率（slew rate），即，提高前一级电路对传输管寄生电容的充放电能力。</li></ul><h4 id="纹波抑制比"><a href="#纹波抑制比" class="headerlink" title="纹波抑制比"></a>纹波抑制比</h4><ul><li><strong>作用</strong>：表征LDO对于大幅度输入电压波纹的抑制能力。</li><li><strong>定义</strong>：LDO的输出电压波纹与输入1电压波纹之比。</li><li><strong>补充说明</strong>：在<strong>输入电压比较小</strong>的情况下，这一指标与PSRR（电源抑制比）是近似相等的；当<strong>输入电压变化比较大</strong>的情况下，电路的一些大信号特性会使得纹波抑制比偏离PSRR所预测的值。</li></ul><h3 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h3><ul><li><strong>定义</strong>：主要有三个量决定：静态电流、负载电流以及传输管的漏失电压，它可以表示为：</li></ul><p>$$<br>Eff=\frac{输出功率}{输入功率}=\frac{V_{out}I_{L}}{V_{in}(I_{Q}+I_{L})}<br>$$</p><ul><li><strong>补充说明</strong>：当负载电流远大于静态电流时，即</li></ul><p>$$<br>I_{Q}+I_{L}\approx \frac{V_{out}}{V_{in}}=\frac{V_{in}-V_{DO}}{V_{in}}<br>$$</p><h2 id="LDO电路的设计考虑"><a href="#LDO电路的设计考虑" class="headerlink" title="LDO电路的设计考虑"></a>LDO电路的设计考虑</h2><ul><li>环路稳定性</li><li>噪声</li><li>电源抑制比（PSRR）</li></ul><h3 id="环路稳定性"><a href="#环路稳定性" class="headerlink" title="环路稳定性"></a>环路稳定性</h3><ul><li>分析环路稳定性通常是寻找到环路的开环增益，我们需要把环路打开，这里可以参考拉扎维电子2视频中所讲述的打开环路的正确方法。很显然，作者在这里并没有精确地打开环路，我们可以看到，作者在下图中并没有考虑到负载效应，不过作为近似结果，该结果还是可以接受的。</li></ul><p><img src="20210407/2.png" alt="LDO的原理图"></p><ul><li>这个环路的开环传输函数可以表示为：</li></ul><p>$$<br>L(s)=\frac{L(out)}{L(in)}=\frac{g_{m1}r_{o1}g_{mL}r_{oL}(1+sC_{out}r_{esr})}{(1+sr_{o1}C_1)(1+s(r_{oL}+r_{esr})C_{out})}<br>$$</p><ul><li><strong>笔记</strong>：这个传输函数我不是很懂，这里的一个零点也很奇怪，需要再仔细研究一下。</li><li>下面讨论一下该传输函数的两个极点以及一个零点，他们可以表示为如下式子</li></ul><p>$$<br>p_1=\frac{1}{2\pi C_{out}(r_{oL}+r_{esr})}<br>$$</p><p>$$<br>p_2=\frac{1}{2\pi C_1r_{o1}}<br>$$</p><p>$$<br>z_1=\frac{1}{2\pi C_{out}r_{esr}}<br>$$</p><ul><li>其中，$p_1$是存在于LDO输出端的主极点，$p_2$是误差放大器输出端形成的另一个极点。如果设计$z_1$的值非常接近$p_2$的值时，可以认为单位增益带宽内只存在一个主极点。该反馈系统是稳定的。</li></ul><h3 id="LDO与补偿环路问题总结"><a href="#LDO与补偿环路问题总结" class="headerlink" title="LDO与补偿环路问题总结"></a>LDO与补偿环路问题总结</h3><ol><li>芯片的供电模式是一个扇出式的结构。假设电池是一个输出3V标称电压的非理想电压源，如果要在输出获得一个良好的稳压器，则需要先将电池的电压引出，经过开关电源降压之后，再接入LDO进行稳压，这样既利用了开关电源高转换能效的特性，也利用了LDO对噪声的抑制能力良好的特性，属于最佳的设计方案。</li><li>在环路设计中，假设待控制设备的传输函数类似于$\frac{\omega}{s^2}$，则可以将plant设计为一个传输函数为$\frac{\omega}{s}$的设备，之后再利用一个PI控制器，例如$\frac{c}{s}+1=\frac{c+s}{s}$，来实现一个PD控制器。这就意味着在电路中，从不同的角度来看，电路可以看作是PD补偿，也可以看做是PI补偿。用这样不同的视角分析电路，可以获得对电路更深刻的理解。</li><li>在有反馈回路的电路设计中，要特别注意反馈回路的正负极性，如果搞错会有灾难性的后果。</li><li>在LDO的频率补偿方法有两种，一种是采用Miller电容的补偿方法，这种方法是将放大器中间某一个节点设置为主极点，这种方法的优势是不牺牲环路带宽，但是如果输出是一个大的容性负载，就相对来说难以补偿。另一种常用的方式是在输出采用一个较大的电容，进而将输出极点设置为主极点，将主极点向原点推，这种方式的缺点是会牺牲一部分的带宽。</li><li>在LDO原理图中的上拉电阻Rd的作用是在电路上电的时候给M3、M2、M1组成的支路上提供足够的电流。Cascode类型或者堆叠的管子可能在上电的时候由于不同的管子工作区域转换需要时间，MOS管从反型层形成到进入饱和区的速度比较快，但是MOS管从没有反型层到有反型层这一过程的转换速度比较慢。为了加快MOS管的导通速度，我们通常采用一个小的电流源，给电路提供一个微弱的电流，使管子始终处在导通的状态中，防止管子处在没有反型层的状态。这是一种基于实际使用的调整，在理论设计中，并不需要考虑管子锁死的情况，只有在实际做产品时，为了保证产品的稳定性，才需要考虑这个问题。</li><li>在PID结构图中，我们可以发现在输出端的补偿电容上方有一个串联等效电阻，该串联等效电阻的作用是增加了一个左半平面的零点，可以优化环路稳定性，这个电阻不是随意加入的，需要特殊考虑这个问题。</li><li>在LDO原理图中在传输管和第二级放大器之间有一个运算放大器<code>OP2</code>，这个放大器的作用是$V_{ds}$matching。由于沟道长度调制效应，有可能造成电流镜复制电流产生误差，有可能出现一边管子进入饱和区，另一边还在线性区的情况。为了消除这个影响，引入一个运算放大器来消除两侧管子的$V_{ds}$的差别，提升电流复制的精确程度。</li><li>PSRR（Power Source Rejection Ratio）电源抑制比大概在40dB就已经足够了，40dB意味着电源噪声可以被抑制100倍，一般在实验室引入的开关噪声的幅度大概就在50mV左右，抑制一百倍意味着可以在输出端只有0.5mV的输出噪声，已经足够满足6-bit SAR ADC的要求。因为6-bit SAR ADC一个档位远远大于1mV，因此，0.5mV的噪声不会对其精度产生大的影响。</li></ol><p><img src="20210407/2.png" alt="LDO的原理图"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 组会心得 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> LDO </tag>
-            
-            <tag> 模拟集成电路设计 </tag>
-            
-            <tag> 信号与系统 </tag>
-            
-            <tag> PID控制器 </tag>
-            
-            <tag> 自动控制原理 </tag>
-            
-            <tag> 环路稳定性 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>20210407组会心得</title>
-      <link href="/2021/04/08/20210407/"/>
-      <url>/2021/04/08/20210407/</url>
-      
-        <content type="html"><![CDATA[<h2 id="报告1：LDO仿真总结、PID控制器介绍"><a href="#报告1：LDO仿真总结、PID控制器介绍" class="headerlink" title="报告1：LDO仿真总结、PID控制器介绍"></a>报告1：LDO仿真总结、PID控制器介绍</h2><p>这次报告是由本人汇报的，内容分为两个部分。</p><h3 id="LDO仿真总结"><a href="#LDO仿真总结" class="headerlink" title="LDO仿真总结"></a>LDO仿真总结</h3><ul><li>第一个问题，使用LDO的目的没有弄清。目前电源的解决方案总共有两种，一种是开关电源型的，另一种是低压差线性稳压器也就是我们所说的LDO。开关电源的主要优势是能量转换效率高，但是劣势是会引入开关噪声。LDO的优势是不但不会引入噪声，还有抑制噪声的能力，劣势是能量转换效率比较差，LDO耗费的能量是输入输出的差值电压乘以流过PMOS传输管的电流。在高性能ADC中，对噪声是非常敏感的，因此，噪声敏感是我们选用LDO的主要原因。</li><li>第二个问题，在PID结构图中，我们可以发现在输出端的补偿电容上方有一个串联等效电阻，该串联等效电阻的作用是增加了一个左半平面的零点，可以优化环路稳定性，这个电阻不是随意加入的，需要特殊考虑这个问题。</li></ul><img src="/2021/04/08/20210407/1.png" class="" title="LDO的基本结构示意图"><ul><li>第三个问题，在LDO原理图中在传输管和第二级放大器之间有一个运算放大器<code>OP2</code>，这个放大器的作用是$V_{ds}$matching。由于沟道长度调制效应，有可能造成电流镜复制电流产生误差，有可能出现一边管子进入饱和区，另一边还在线性区的情况。为了消除这个影响，引入一个运算放大器来消除两侧管子的$V_{ds}$的差别，提升电流复制的精确程度。</li></ul><img src="/2021/04/08/20210407/2.png" class="" title="LDO的原理图"><ul><li>第四个问题，PSRR（Power Source Rejection Ratio）电源抑制比大概在40dB就已经足够了，40dB意味着电源噪声可以被抑制100倍，一般在实验室引入的开关噪声的幅度大概就在50mV左右，抑制一百倍意味着可以在输出端只有0.5mV的输出噪声，已经足够满足6-bit SAR ADC的要求。因为6-bit SAR ADC一个档位远远大于1mV，因此，0.5mV的噪声不会对其精度产生大的影响。</li></ul><h3 id="PID控制器介绍"><a href="#PID控制器介绍" class="headerlink" title="PID控制器介绍"></a>PID控制器介绍</h3><ul><li>第一个问题，在模拟设计中经常采用PI控制器，但不会有PID控制器，因为D控制器也就是微分控制器对高频噪声是非常敏感的，如果整个环路中存在高频噪声，这个噪声会使过调量远远大于可接受的范围，严重的，可以产生震荡，因此在模拟电路中，只会采用PI的控制。例如在锁相环电路中，存在一个电阻和电容并联的电路，这个电路的拉普拉斯表达式是$R+\frac{1}{sC}$，也就是采用了一个比例控制和一个积分控制的操作$Kp+\frac{Ki}{s}$。但锁相环中从来没有加入过电感，这是因为这个阻容串联电路之前，还存在一个电荷泵，电荷泵是以方波的形式输出电流的，这个电流的带宽很大，里面有很多高频分量。我们说过，微分控制器对高频信号是非常敏感的，会造成输出电压呈现震荡，不能很好地驱动压控振荡器。因此，我们很少在模拟电路中采用微分控制，但是最近也有文献提出要在模拟设计的控制环路中采用微分控制，一旦发现微分控制的情况，就要特别小心，因为这个控制很容易使输出失去控制。</li><li>第二个问题，在根轨迹上面，阻尼系数可以直接通过根的辐角的余弦值来确定，阻尼系数的临界值时1，也就是根刚好落在实轴上的情况，这种情况下，我们可以说系统是阻尼恰当的。阻尼系数决定了系统过冲的量。</li></ul><h2 id="报告2：锁相环原理介绍"><a href="#报告2：锁相环原理介绍" class="headerlink" title="报告2：锁相环原理介绍"></a>报告2：锁相环原理介绍</h2><p>在这次介绍中，我们讨论了差分LC振荡器的结构以及噪声产生和转换机理。介绍了二次谐波谐振法滤除二次谐波提高振荡器的相位噪声性能的原理和振荡器拓扑结构的演进过程。</p><ul><li>第一个问题，信号噪声的分布是在低频下的$\frac{1}{f}$噪声以及在高频下的热噪声（高斯白噪声）。这两个噪声构成了一个如下图所示的频谱。在锁相环中的相位噪声分析中，只关注二次谐波处的热噪声下变频之后对基波频率处的影响，而不关注DC频率上变频产生的影响，这是因为相位噪声只关注是否生成PM信号，而不关注是否生成AM信号，因为我们只关注时钟信号过零时的时刻，而不关注时钟信号的幅度。由DC频率上变频的噪声是一个AM信号，因为正负频率处的信号的相位是相同的。但是二次谐波处两次的噪声的相位是不关联的，因此，会产生相位上的调制，对基波频率处的信号的相位产生影响。</li></ul><img src="/2021/04/08/20210407/3.png" class="" title="噪声频谱图"> ]]></content>
-      
-      
-      <categories>
-          
-          <category> 组会心得 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> LDO </tag>
-            
-            <tag> 模拟集成电路设计 </tag>
-            
-            <tag> 锁相环 </tag>
-            
-            <tag> 信号与系统 </tag>
-            
-            <tag> PID控制器 </tag>
-            
-            <tag> 自动控制原理 </tag>
-            
-            <tag> 根轨迹 </tag>
             
         </tags>
       
