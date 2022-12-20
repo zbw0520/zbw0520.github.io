@@ -516,7 +516,7 @@
 <h3 id="计算闭环传输函数-amp-阻尼系数等参数"><a href="#计算闭环传输函数-amp-阻尼系数等参数" class="headerlink" title="计算闭环传输函数&amp;阻尼系数等参数"></a>计算闭环传输函数&amp;阻尼系数等参数</h3><p>电路的反馈系数为1，我们可以马上写出电路由$\phi_R$到$\phi_V$的传输函数，如下所示，</p>
 <p>$$\frac{\phi_V}{\phi_R}=N\frac{H_{ol}(s)}{1+H_{ol}(s)}=N\frac{\alpha f_Rs+\rho f_R^2}{s^2+\alpha f_Rs+\rho f_R^2}$$</p>
 <p>可以看出该系统是一个两极点，一零点系统，根据自动控制原理，我们可以按照二阶系统的基本模型进行自然频率，阻尼系数等的设计。</p>
-<p>$$<br>  \begin{cases}<br>      \alpha f_R=2\zeta\omega_n\<br>      \rho f_R^2=\omega_n^2<br>  \end{cases}<br>$$</p>
+<p>$$\alpha f_R=2\zeta\omega_n$$<br>$$\rho f_R^2=\omega_n^2$$</p>
 <p>由上述表达式可以解出自然频率$\omega_n$以及阻尼系数$\zeta$的表达式，并且可以看出，由于传输函数是二极点系统，所以这是一个Type II的PLL。</p>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>那么，这篇文章到这里就结束了，本篇文章主要内容参考了一篇TCAS II文章：“Phase-Domain All-Digital Phase-Locked Loop”，由Bogdan写的，内容对设计非常有帮助，感兴趣的读者可以阅读一下。</p>
 <p>在之后的文章里，我想写一写关于各种通信标准的来源以及推导的，这将会帮助我们更好地理解PLL、ADC等器件的指标参数等。</p>
