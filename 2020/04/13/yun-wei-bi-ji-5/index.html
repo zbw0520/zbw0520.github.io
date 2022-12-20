@@ -465,31 +465,32 @@
 <ol>
 <li><p>非永久性更改主机名</p>
 <ul>
-<li><p>使用hostname命令来更改主机名（hostname），但是重新启动电脑之后会失效，命令如下。</p>
+<li>使用hostname命令来更改主机名（hostname），但是重新启动电脑之后会失效，命令如下。</li>
+</ul>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">hostname</span> <span class="token punctuation">[</span>主机名<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">#hostname CentOS7</span>
 </code></pre>
 </li>
-</ul>
-</li>
 <li><p>永久性更改主机名</p>
 <ul>
-<li><p>在CentOS6和CentOS7中使用的方法是不同的。在CentOS6中，我们使用如下命令找到配置文件<code>network</code>，并用vim打开。</p>
+<li>在CentOS6和CentOS7中使用的方法是不同的。在CentOS6中，我们使用如下命令找到配置文件<code>network</code>，并用vim打开。</li>
+</ul>
 <pre class=" language-bash"><code class="language-bash">vim /etc/sysconfig/network
 </code></pre>
-</li>
-<li><p>打开文件之后，添加如下条目到文件中,即可永久性设置CentOS6主机名。</p>
+<ul>
+<li>打开文件之后，添加如下条目到文件中,即可永久性设置CentOS6主机名。</li>
+</ul>
 <pre class=" language-bash"><code class="language-bash">HOSTNAME<span class="token operator">=</span><span class="token punctuation">[</span>hostname<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">#HOSTNAME=centos6.localdomain</span>
 </code></pre>
-</li>
-<li><p>在CentOS7中我们可以使用如下命令打开主机名设置文件。</p>
+<ul>
+<li>在CentOS7中我们可以使用如下命令打开主机名设置文件。</li>
+</ul>
 <pre class=" language-bash"><code class="language-bash">vim /etc/hostname
 </code></pre>
-</li>
-<li><p>在内部添加如下条目即可永久性设置CentOS7主机名。</p>
+<ul>
+<li>在内部添加如下条目即可永久性设置CentOS7主机名。</li>
+</ul>
 <pre class=" language-bash"><code class="language-bash">HOSTNAME<span class="token operator">=</span><span class="token punctuation">[</span>hostname<span class="token punctuation">]</span> <span class="token comment" spellcheck="true">#HOSTNAME=centos7.localdomain</span>
 </code></pre>
-</li>
-</ul>
 </li>
 </ol>
 </li>

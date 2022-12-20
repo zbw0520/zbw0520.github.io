@@ -467,25 +467,29 @@
 </li>
 <li><p><strong>重要公式：</strong></p>
 <ol>
-<li><p>上下三角矩阵的值是主对角线元素的乘积。</p>
-<p>$$\begin{vmatrix}<br>   a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1n}\\<br>   &amp;a_{22}&amp;\cdots&amp;a_{2n}\\<br>   &amp;&amp;\ddots&amp;\vdots\\<br>   &amp;&amp;&amp;a_{nn}<br>\end{vmatrix}=<br>\begin{vmatrix}<br>   a_{11}\\<br>   a_{21}&amp;a_{22}\\<br>   \vdots&amp;\vdots&amp;\ddots\\<br>   a_{n1}&amp;a_{n2}&amp;\cdots&amp;a_{nn}<br>\end{vmatrix}=<br>a_{11}a_{22}\cdots a_{nn}$$</p>
-</li>
-<li><p>上下反三角矩阵的值是副对角线元素的乘积加上或不加符号。</p>
-<p>$$\begin{vmatrix}<br>   a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1n}\\<br>   a_{21}&amp;\cdots&amp;a_{2(n-1)}\\<br>   \vdots&amp;\cdot\\<br>   a_{n1}<br>\end{vmatrix}=<br>\begin{vmatrix}<br>   &amp;&amp;&amp;a_{1n}\\<br>   &amp;&amp;a_{2(n-1)}&amp;a_{2n}\\<br>   &amp;\cdot&amp;\vdots&amp;\vdots\\<br>   a_{n1}&amp;a_{n2}&amp;\cdots&amp;a_{nn}<br>\end{vmatrix}=<br>(-1)^{\frac{n(n-1)}{2}}a_{11}a_{22}\cdots a_{nn}$$</p>
-</li>
-<li><p>拉普拉斯公式三角（有零在角上时可以使用该公式）</p>
-<p>$$\begin{vmatrix}<br>   A&amp;0\\<br>   \ast&amp;B<br>\end{vmatrix}=<br>\begin{vmatrix}<br>   A&amp;\ast\\<br>   0&amp;B<br>\end{vmatrix}=<br>\begin{vmatrix}<br>   A<br>\end{vmatrix}<br>\begin{vmatrix}<br>   B<br>\end{vmatrix}$$</p>
-</li>
-<li><p>拉普拉斯公式反三角（其中m为A方阵阶数，n为B方阵阶数）</p>
-<p>$$\begin{vmatrix}<br>   0&amp;A\\<br>   B&amp;\ast<br>\end{vmatrix}=<br>\begin{vmatrix}<br>   \ast&amp;A\\<br>   B&amp;0<br>\end{vmatrix}=(-1)^{mn}<br>\begin{vmatrix}<br>   A<br>\end{vmatrix}<br>\begin{vmatrix}<br>   B<br>\end{vmatrix}$$</p>
-</li>
-<li><p>范德蒙矩阵</p>
-<p>$$\begin{vmatrix}<br>   1&amp;1&amp;\cdots&amp;1\\<br>   x_1&amp;x_2&amp;\cdots&amp;x_n\\<br>   x_1^2&amp;x_2^2&amp;\cdots&amp;x_n^2\\<br>   \vdots&amp;\vdots&amp;\vdots&amp;\vdots\\<br>   x_1^{n-1}&amp;x_2^{n-1}&amp;\cdots&amp;x_n^{n-1}<br>\end{vmatrix}=<br>\prod_{1\le j&lt;i\le n}(x_i-x_j)\\<br>所有大的数减小的数的差的乘积。$$</p>
-</li>
-<li><p>爪型行列式</p>
-<p>$$形如，<br>\begin{vmatrix}<br>   x&amp;x&amp;x&amp;x\\<br>   x&amp;x&amp;0&amp;0\\<br>   x&amp;0&amp;x&amp;0\\<br>   x&amp;0&amp;0&amp;x<br>\end{vmatrix}\\<br>的行列式为爪型行列式。$$</p>
-</li>
+<li>上下三角矩阵的值是主对角线元素的乘积。</li>
 </ol>
+<p>  $$\begin{vmatrix}<br>      a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1n}\\<br>      &amp;a_{22}&amp;\cdots&amp;a_{2n}\\<br>      &amp;&amp;\ddots&amp;\vdots\\<br>      &amp;&amp;&amp;a_{nn}<br>  \end{vmatrix}=<br>  \begin{vmatrix}<br>      a_{11}\\<br>      a_{21}&amp;a_{22}\\<br>      \vdots&amp;\vdots&amp;\ddots\\<br>      a_{n1}&amp;a_{n2}&amp;\cdots&amp;a_{nn}<br>  \end{vmatrix}=<br>  a_{11}a_{22}\cdots a_{nn}$$</p>
+<ol start="2">
+<li>上下反三角矩阵的值是副对角线元素的乘积加上或不加符号。</li>
+</ol>
+<p>  $$\begin{vmatrix}<br>      a_{11}&amp;a_{12}&amp;\cdots&amp;a_{1n}\\<br>      a_{21}&amp;\cdots&amp;a_{2(n-1)}\\<br>      \vdots&amp;\cdot\\<br>      a_{n1}<br>  \end{vmatrix}=<br>  \begin{vmatrix}<br>      &amp;&amp;&amp;a_{1n}\\<br>      &amp;&amp;a_{2(n-1)}&amp;a_{2n}\\<br>      &amp;\cdot&amp;\vdots&amp;\vdots\\<br>      a_{n1}&amp;a_{n2}&amp;\cdots&amp;a_{nn}<br>  \end{vmatrix}=<br>  (-1)^{\frac{n(n-1)}{2}}a_{11}a_{22}\cdots a_{nn}$$</p>
+<ol start="3">
+<li>拉普拉斯公式三角（有零在角上时可以使用该公式）</li>
+</ol>
+<p>  $$\begin{vmatrix}<br>      A&amp;0\\<br>      \ast&amp;B<br>  \end{vmatrix}=<br>  \begin{vmatrix}<br>      A&amp;\ast\\<br>      0&amp;B<br>  \end{vmatrix}=<br>  \begin{vmatrix}<br>      A<br>  \end{vmatrix}<br>  \begin{vmatrix}<br>      B<br>  \end{vmatrix}$$</p>
+<ol start="4">
+<li>拉普拉斯公式反三角（其中m为A方阵阶数，n为B方阵阶数）</li>
+</ol>
+<p>  $$\begin{vmatrix}<br>      0&amp;A\\<br>      B&amp;\ast<br>  \end{vmatrix}=<br>  \begin{vmatrix}<br>      \ast&amp;A\\<br>      B&amp;0<br>  \end{vmatrix}=(-1)^{mn}<br>  \begin{vmatrix}<br>      A<br>  \end{vmatrix}<br>  \begin{vmatrix}<br>      B<br>  \end{vmatrix}$$</p>
+<ol start="5">
+<li>范德蒙矩阵</li>
+</ol>
+<p>  $$\begin{vmatrix}<br>      1&amp;1&amp;\cdots&amp;1\\<br>      x_1&amp;x_2&amp;\cdots&amp;x_n\\<br>      x_1^2&amp;x_2^2&amp;\cdots&amp;x_n^2\\<br>      \vdots&amp;\vdots&amp;\vdots&amp;\vdots\\<br>      x_1^{n-1}&amp;x_2^{n-1}&amp;\cdots&amp;x_n^{n-1}<br>  \end{vmatrix}=<br>  \prod_{1\le j&lt;i\le n}(x_i-x_j)\\<br>  所有大的数减小的数的差的乘积。$$</p>
+<ol start="6">
+<li>爪型行列式</li>
+</ol>
+<p>  $$形如，<br>  \begin{vmatrix}<br>      x&amp;x&amp;x&amp;x\\<br>      x&amp;x&amp;0&amp;0\\<br>      x&amp;0&amp;x&amp;0\\<br>      x&amp;0&amp;0&amp;x<br>  \end{vmatrix}\\<br>  的行列式为爪型行列式。$$</p>
 <ul>
 <li>运算方法为，将第一行（列）的所有元素消去，利用上（下）三角法则运算。</li>
 </ul>
@@ -879,7 +883,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 </main>
 
 
-<script src="https://cdn.bootcdn.net/ajax/libs/mathjax/3.2.2/es5/a11y/assistive-mml.js"></script>
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script>
     MathJax.Hub.Config({
         tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}

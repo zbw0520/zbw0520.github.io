@@ -483,7 +483,7 @@
 <h2 id="MySQL相关操作"><a href="#MySQL相关操作" class="headerlink" title="MySQL相关操作"></a>MySQL相关操作</h2><h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><ul>
 <li>my.cnf是配置文件，在Windows上时my.ini</li>
 </ul>
-<h3 id="登录-退出MySQL"><a href="#登录-退出MySQL" class="headerlink" title="登录/退出MySQL"></a>登录/退出MySQL</h3><ul>
+<h3 id="登录-x2F-退出MySQL"><a href="#登录-x2F-退出MySQL" class="headerlink" title="登录/退出MySQL"></a>登录/退出MySQL</h3><ul>
 <li>登录方法</li>
 </ul>
 <pre class=" language-bash"><code class="language-bash">mysql -uroot -p
@@ -615,15 +615,15 @@ RENAME TABLE tbl_name TO new_tbl_name;
 <li>浮点数</li>
 <li>定点数</li>
 </ul>
-<p><img src="int.png" alt="整数型数据类型信息示意图"></p>
-<p><img src="float.png" alt="浮点数和定点数数据类型信息示意图"></p>
+<p><img src="/int.png" alt="整数型数据类型信息示意图"></p>
+<p><img src="/float.png" alt="浮点数和定点数数据类型信息示意图"></p>
 <h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><ul>
 <li>CHAR效率高于VARCHAR, CHAR相当于拿空间换时间, VARCHAR拿时间换空间；</li>
 <li>CHAR默认存储数据的时候，后面会用空格填充到指定长度；而在检索的时候会去掉后面的空格；VARCHAR在保存的时候不进行填充，尾部的空格会留下；</li>
 <li>TEXT列不能有默认值，检索的时候不存在大小写转换。</li>
 </ul>
-<p><img src="char.png" alt="字符串数据类型信息示意图"></p>
-<h3 id="日期时间类型"><a href="#日期时间类型" class="headerlink" title="日期时间类型"></a>日期时间类型</h3><p><img src="date.png" alt="日期时间数据类型信息示意图"></p>
+<p><img src="/char.png" alt="字符串数据类型信息示意图"></p>
+<h3 id="日期时间类型"><a href="#日期时间类型" class="headerlink" title="日期时间类型"></a>日期时间类型</h3><p><img src="/date.png" alt="日期时间数据类型信息示意图"></p>
 <h2 id="MySQL存储引擎"><a href="#MySQL存储引擎" class="headerlink" title="MySQL存储引擎"></a>MySQL存储引擎</h2><h3 id="MyISAM存储引擎"><a href="#MyISAM存储引擎" class="headerlink" title="MyISAM存储引擎"></a>MyISAM存储引擎</h3><ul>
 <li><p>在MySQL5.5之前一直使用的默认存储引擎是MyISAM存储引擎；</p>
 </li>
@@ -883,7 +883,7 @@ WHERE score<=(SELECT score FROM level WHERE id=3);
 SELECT * FROM emp
 WHERE EXISTS(SELECT depName FROM dep WHERE id=10)
 </code></pre>
-<h5 id="ANY-SOME-ALL子查询"><a href="#ANY-SOME-ALL子查询" class="headerlink" title="ANY SOME ALL子查询"></a>ANY SOME ALL子查询</h5><p><img src="1.png" alt="ANY SOME ALL子查询示意图"></p>
+<h5 id="ANY-SOME-ALL子查询"><a href="#ANY-SOME-ALL子查询" class="headerlink" title="ANY SOME ALL子查询"></a>ANY SOME ALL子查询</h5><p><img src="/1.png" alt="ANY SOME ALL子查询示意图"></p>
 <pre class=" language-mysql"><code class="language-mysql">SELECT * FROM stu
 WHERE score>=ANY(SELECT score FROM level);
 
@@ -932,7 +932,7 @@ FROM cate AS s
 LEFT JOIN cate AS p
 ON s.pId=p.id;
 </code></pre>
-<h2 id="MySQL常用函数"><a href="#MySQL常用函数" class="headerlink" title="MySQL常用函数"></a>MySQL常用函数</h2><h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><p><img src="%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0.png" alt="数学函数简介"></p>
+<h2 id="MySQL常用函数"><a href="#MySQL常用函数" class="headerlink" title="MySQL常用函数"></a>MySQL常用函数</h2><h3 id="数学函数"><a href="#数学函数" class="headerlink" title="数学函数"></a>数学函数</h3><p><img src="/%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0.png" alt="数学函数简介"></p>
 <h3 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h3><pre class=" language-mysql"><code class="language-mysql">-- CHAR_LENGTH():得到字符串的字符数
 SELECT CHAR_LENGTH('ABC');
 
@@ -999,7 +999,7 @@ SELECT SECOND(NOW());
 -- 计算两个日期之间相差的天数
 SELECT DATEDIFF('2017-03-01','2017-09-30');
 </code></pre>
-<p><img src="%E6%98%9F%E6%9C%9F%E5%9B%BE.png" alt="星期与一周内的第几天的对应关系图"></p>
+<p><img src="/%E6%98%9F%E6%9C%9F%E5%9B%BE.png" alt="星期与一周内的第几天的对应关系图"></p>
 <h3 id="其他常用函数"><a href="#其他常用函数" class="headerlink" title="其他常用函数"></a>其他常用函数</h3><pre class=" language-mysql"><code class="language-mysql">-- 得到版本信息、连接数以及数据库名
 SELECT VERSION(),CONNECTION_ID(),DATABASE();
 

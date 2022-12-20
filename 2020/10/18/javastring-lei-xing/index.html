@@ -517,7 +517,7 @@
 <td>将该字符串转换为byte数组</td>
 </tr>
 </tbody></table>
-<h2 id="利用String创建新对象时，常量池的作用"><a href="#利用String创建新对象时，常量池的作用" class="headerlink" title="利用String创建新对象时，常量池的作用"></a>利用String创建新对象时，常量池的作用</h2><p><img src="1.png" alt="创建对象时常量池、堆、栈的不同的作用示意图"></p>
+<h2 id="利用String创建新对象时，常量池的作用"><a href="#利用String创建新对象时，常量池的作用" class="headerlink" title="利用String创建新对象时，常量池的作用"></a>利用String创建新对象时，常量池的作用</h2><p><img src="/1.png" alt="创建对象时常量池、堆、栈的不同的作用示意图"></p>
 <ul>
 <li>内存中，对象的引用是存在栈中，对象存储在常量池和堆中，常量池中的对象和堆中的对象的地址空间是完全不一样的。</li>
 </ul>
@@ -535,7 +535,7 @@
 <li><strong>注意</strong>，在做字符串连接处理得时候并没有改变引用的方向，只是在指向引用的时候改变了引用指向的对象；</li>
 <li>以上操作都是在常量池中完成的。</li>
 </ul>
-<p><img src="2.png" alt="修改String类型常量池对象时，内存中发生的操作示意图"></p>
+<p><img src="/2.png" alt="修改String类型常量池对象时，内存中发生的操作示意图"></p>
 <h2 id="字符串StringBuilder"><a href="#字符串StringBuilder" class="headerlink" title="字符串StringBuilder"></a>字符串<code>StringBuilder</code></h2><ul>
 <li><strong><code>String</code>和<code>StringBuilder</code>的区别</strong>：String具有不可变性，而<code>StringBuilder</code>不具备；</li>
 <li><strong>建议</strong>：当频繁操作字符串时，使用<code>StringBuilder</code>。使用<code>String</code>类，频繁操作字符串时，会产生很多的中间变量与常量池垃圾，因此要采用<code>StringBuilder</code>类；</li>
