@@ -512,7 +512,8 @@
 <p>值得注意的是，这里的积分器有一个有限的增益为$f_R$，所以在后面会存在特殊的增益项$f_R$。</p>
 <h3 id="计算开环传输函数"><a href="#计算开环传输函数" class="headerlink" title="计算开环传输函数"></a>计算开环传输函数</h3><p>实际上，电路的开环传输函数已经非常显然了<span class="github-emoji"><span>😃</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f603.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，其中需要特别注意的是，在计算电路的开环传输函数的时候，我们不能把$N$这个增益项算在里面，因为反馈回路并没有把$N$包纳在里面。这里我们可以陈述一个结论，反馈系统的计算从反馈结束点开始到反馈开始点结束，这里的反馈结束点就是Phase Detector中的加法器，称为反馈结束点的原因是因为反馈回路在此点结束，汇入开环路径；这里的反馈开始点就是输出，称为反馈开始点的原因是因为反馈回路从输出位置开始和开环路径分离，开始形成了一个单独的回路。</p>
 <p>那么，电路的开环传输函数由下式表示，</p>
-<p>$$H_{ol}(s)=\frac{1}{2\pi}\cdot(\alpha+\frac{\rho f_R}{s})\cdot(\frac{f_R}{\hat{K}<em>{DCO}}\frac{K</em>{DCO}2\pi}{s})=\frac{\alpha f_Rs+\rho f_R^2}{s^2}$$</p>
+<p>$$H_{ol}(s)=\frac{1}{2\pi}\cdot(\alpha+\frac{\rho f_R}{s})\cdot\frac{f_RK_{DCO}2\pi}{\hat{K}_{DCO}s}$$</p>
+<p>$$=\frac{\alpha f_Rs+\rho f_R^2}{s^2}$$</p>
 <h3 id="计算闭环传输函数-amp-阻尼系数等参数"><a href="#计算闭环传输函数-amp-阻尼系数等参数" class="headerlink" title="计算闭环传输函数&amp;阻尼系数等参数"></a>计算闭环传输函数&amp;阻尼系数等参数</h3><p>电路的反馈系数为1，我们可以马上写出电路由$\phi_R$到$\phi_V$的传输函数，如下所示，</p>
 <p>$$\frac{\phi_V}{\phi_R}=N\frac{H_{ol}(s)}{1+H_{ol}(s)}=N\frac{\alpha f_Rs+\rho f_R^2}{s^2+\alpha f_Rs+\rho f_R^2}$$</p>
 <p>可以看出该系统是一个两极点，一零点系统，根据自动控制原理，我们可以按照二阶系统的基本模型进行自然频率，阻尼系数等的设计。</p>
