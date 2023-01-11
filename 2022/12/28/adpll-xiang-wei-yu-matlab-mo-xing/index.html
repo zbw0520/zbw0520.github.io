@@ -507,7 +507,7 @@
 <p>通过计算可知，$t_{res}=1.108ps$</p>
 <p>此外，读者还需要关注TDC量化噪声到输出的传输函数，因为TDC量化噪声作用在鉴相器的位置，所以可以认为是输入，其传输函数就是整体的闭环传输函数，如下所示，</p>
 <p>$$<br>CLTF=\frac{OLTF}{1+OLTF}=\frac{\alpha f_Rs+\rho f_R^2}{s^2+\alpha f_Rs+\rho f_R^2}<br>$$</p>
-<p>在相位裕度为$PM=60\degree$时，其BODE图如下所示，</p>
+<p>在相位裕度为$PM=60$</p><div>&amp;#176</div>时，其BODE图如下所示，<p></p>
 <img src="/2022/12/28/adpll-xiang-wei-yu-matlab-mo-xing/a5ac739e42a8b1b520490d55e5fa3504eff7978e602abe89459b3f3ee4e99b55.png" class="" title="picture 2">  
 
 <p>可以看到在带宽处有3dB左右的突起，这部分有可能会影响到最后的积分大小，需要仔细考虑，这一部分我还没有进行考虑，不过就目前的结果来看，对于jitter的影响不大，如果就这个理想的传输函数来说，也就增加了$3fs$的均方根抖动。</p>
