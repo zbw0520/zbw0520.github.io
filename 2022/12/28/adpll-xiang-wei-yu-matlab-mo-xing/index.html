@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.1k
+                    5.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    19 分
+                    21 分
                 </div>
                 
 
@@ -564,7 +564,7 @@
 <img src="/2022/12/28/adpll-xiang-wei-yu-matlab-mo-xing/d11924281ff6bd4da640c3b7ff22206619ca71b7d8726c11a6e2ffa30c504e54.png" class="" title="DCO内部框图">  
 
 <h3 id="获取Signal数据并做傅里叶变换生成我们的相位噪声谱密度，并计算RMS抖动"><a href="#获取Signal数据并做傅里叶变换生成我们的相位噪声谱密度，并计算RMS抖动" class="headerlink" title="获取Signal数据并做傅里叶变换生成我们的相位噪声谱密度，并计算RMS抖动"></a>获取Signal数据并做傅里叶变换生成我们的相位噪声谱密度，并计算RMS抖动</h3><p>这一部分功能主要是通过FFTspectrum的函数实现的，其代码如下</p>
-<pre><code>function [SpectrumSSB] = FFTSpectrum(Signal,Fs)
+<pre class=" language-MATLAB"><code class="language-MATLAB">function [SpectrumSSB] = FFTSpectrum(Signal,Fs)
     Signal_window = length(Signal)*1/Fs;
     Spectrum_Resolution = 1/Signal_window;
     Spectrum_Complex = fft(Signal);
@@ -586,6 +586,42 @@ end
 <p>可以看到的是，代码里fft的功能是使用matlab自带的函数实现的，这个产生了一个双边的复数谱，我们只对幅度和功率感兴趣，所以使用abs做了转换，产生了双边幅度谱，之后使用一个循环遍历我们的双边谱数列，将数据进行镜像翻转并叠加，产生我们的单边幅度谱，这里需要特别注意 <span class="github-emoji"><span>❗</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，我在这里犯了错误，花费了几个星期才找到，在幅度谱做叠加的时候，我们始终要记得频谱是功率叠加，所以幅度谱相加之后，要除以$\sqrt(2)$。之后我们也要注意在转换功率谱的时候直接做平方即可，但是在产生功率谱密度的时候，要除以频率分辨率的带宽，这是因为在做fft时，算法将频率分辨率内所有的功率叠加用一根谱线表示，这时候如果要知道密度，需要除以这一段的带宽，也就是我们的频谱分辨率，之后再进行对数显示即可。</p>
 <p>在计算RMSjitter的时候，我们需要使用我们的功率谱，这里的设计时FFTspectrum函数将幅度谱作为参数传递出去，在函数外进行RMSjitter的计算，所以我们还需要做平方的操作才能转换为功率谱，这里由于计算总功率，直接将所有的谱线的功率进行叠加即可，最后使用下面的数学关系导出RMSjitter即可，要注意的是我们使用的全部都是单边谱，这一点不要搞错。</p>
 <p>$$<br>jitter_{rms}=\sqrt{\frac{\sigma^2_{L}}{(2\pi f_V)^2}}<br>$$</p>
+<h3 id="最终结果"><a href="#最终结果" class="headerlink" title="最终结果"></a>最终结果</h3><p>我们做了DCO量化噪声的仿真，确定了DCO量化噪声对输出相位噪声的影响，下图为DCO量化噪声产生的相位噪声的单边功率谱密度，蓝线为实际噪声源的结果，红线为理想噪声源的结果。</p>
+<img src="/2022/12/28/adpll-xiang-wei-yu-matlab-mo-xing/23dd2a76a551264b82d5a44d88a4bf99a83df6e7e0127c3ec21f3c5c51ff04bf.png" class="" title="Phase Noise From DCO Quantization Noise">  
+
+<p>该频谱积分获得的RMSjitter和设计的jitter如下表格所示，</p>
+<table>
+<thead>
+<tr>
+<th>Nominal Jitter RMS</th>
+<th>Output Jitter RMS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$36fs$</td>
+<td>$33.6fs$</td>
+</tr>
+</tbody></table>
+<p>可以看到结果还是符合得很好的，注意，此时的DCO带内噪声根据评估后发现为$30fs$左右，总的$Jitter_{rms}$为$44fs$左右，意味着带内的噪声水平也不可忽略，可能考虑通过DSM实现将低频噪声抖到高频去。此外，还有一个值得思考的事情是，DCO的量化噪声我故意设置的和TDC的量化噪声以及DCO的热噪声相当，这时的频率精度为$127.59KHz$，可以看到，如果我们想要进一步压低我们的DCO带外量化噪声，使得DCO带外量化噪声的$Jitter_{rms}$的功率比DCO的热噪声的功率小一个数量级的化，根据我们的精度和噪声功率的公式，</p>
+<p>$$<br>\sigma_{DCO}^2=\frac{f_{res}^2}{12}<br>$$</p>
+<p>我们可以发现精度至少要提升$\sqrt{10}\approx3$倍左右，也就是说精度要提升到$40KHz$这个量级。这个数量级对于我们后期的设计来说也是具有指导性意义的。</p>
+<p>我们还做了TDC量化噪声的仿真，先使用之前的程序计算出需要的TDC的量化噪声功率谱密度水平，再代入我们的Band limited White Noise模块中，就可以得到最终的单边谱密度了，如下所示，蓝线为实际噪声源的结果，黄线为理想噪声源的结果。</p>
+<img src="/2022/12/28/adpll-xiang-wei-yu-matlab-mo-xing/f6a0f9ffa739098f611c3b30e3c2bb0de6466aaf996849d51a302acfbbe2b570.png" class="" title="Phase Noise From TDC Quantization Noise">  
+
+<p>该频谱积分获得的RMSjitter和设计的jitter大小如下表格所示，</p>
+<table>
+<thead>
+<tr>
+<th>Nominal Jitter RMS</th>
+<th>Output Jitter RMS</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$50fs$</td>
+<td>$50.454fs$</td>
+</tr>
+</tbody></table>
+<p>可以看到模型和理论计算符合得还是很好的，值得注意的是，在带外部分得TDC得量化噪声与我们的DCO的热噪声水平相当了，这是我们不希望看到的，我们希望至少带外要由DCO的热噪声和量化噪声主导，所以我们这里可能需要采用高阶IIR环路滤波器才可以满足我们的需求，否则我们就需要进一步提升我们的TDC的精度，这对于我们来说是比较困难的，所以后面可以采取2阶环路滤波器的设计，来降低我们的带外TDC噪声。</p>
 
             </div>
             <hr/>
@@ -1068,7 +1104,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">86.4k</span>&nbsp;字
+                class="white-color">87.1k</span>&nbsp;字
             
             
             
