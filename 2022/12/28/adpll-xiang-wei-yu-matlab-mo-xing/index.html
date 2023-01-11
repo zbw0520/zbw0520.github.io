@@ -484,7 +484,7 @@
 <p>接下去需要根据两个条件解出$\alpha$和$\rho$的值，两个条件分别是</p>
 <ol>
 <li>BW处增益为$0dB$</li>
-<li>BW处相位为$60\degree$</li>
+<li>BW处相位为$60$</li>
 </ol>
 <p>由于BW的值在先前的模块中已经求解出来了，为$611kHz$，所以两个条件一定可以解出两个未知数，如下式所示</p>
 <p>$$<br>\begin{cases}<br>(\alpha f_RBW2\pi)^2+\rho^2f_R^4=(BW2\pi)^4 \<br>\frac{\alpha BW2\pi}{\rho f_R}=tan(\frac{PM\pi}{180})<br>\end{cases}<br>$$</p>
@@ -507,7 +507,7 @@
 <p>通过计算可知，$t_{res}=1.108ps$</p>
 <p>此外，读者还需要关注TDC量化噪声到输出的传输函数，因为TDC量化噪声作用在鉴相器的位置，所以可以认为是输入，其传输函数就是整体的闭环传输函数，如下所示，</p>
 <p>$$<br>CLTF=\frac{OLTF}{1+OLTF}=\frac{\alpha f_Rs+\rho f_R^2}{s^2+\alpha f_Rs+\rho f_R^2}<br>$$</p>
-<p>在相位裕度为$PM=60$</p><div>&amp;#176</div>时，其BODE图如下所示，<p></p>
+<p>在相位裕度为$PM=60$时，其BODE图如下所示，</p>
 <img src="/2022/12/28/adpll-xiang-wei-yu-matlab-mo-xing/a5ac739e42a8b1b520490d55e5fa3504eff7978e602abe89459b3f3ee4e99b55.png" class="" title="picture 2">  
 
 <p>可以看到在带宽处有3dB左右的突起，这部分有可能会影响到最后的积分大小，需要仔细考虑，这一部分我还没有进行考虑，不过就目前的结果来看，对于jitter的影响不大，如果就这个理想的传输函数来说，也就增加了$3fs$的均方根抖动。</p>
@@ -539,15 +539,15 @@
 <p>欧拉公式的复$e$指数函数的傅里叶变换对应的就是$\delta$函数，所以可以认为我们傅里叶变换里的building block在频域上是$\delta$函数而在时域上就是我们的复$e$指数，如下</p>
 <p>$$<br>e^{j\omega_0 t}=2\pi\delta(\omega-\omega_0)<br>$$</p>
 <p>在图形上可以认为是右半边频谱的一根单独的谱线，我们可以想象，左侧时域中的相位为$\omega_0t$，所以一种常用的方法就是想象我们的频谱是一个三维坐标，三个维度的信息分别是$\omega$频率、$Re$实数轴、$Im$复数轴，实数轴与复数轴共同决定了我们的相位信息（$arctan\frac{Im}{Re}$）以及幅度信息（$\sqrt{Im^2+Re^2}$）。</p>
-<p>所以我们可以使用Phasor Diagram（三维坐标）来理解我们的信号。我们只需要记住一个结论，就是$sin$函数比$cos$函数要滞后$90\degree$，体现在频谱上就是sin的起始Phasor向量是$1\angle0\degree$，而cos的起始Phasor向量是$1\angle-90\degree$。这样我们又多了一种全新的方法来理解我们的欧拉公式，想要获得位于右半轴的$e^{j\omega t}$的频谱，我们只需要将$sin$函数提前$90\degree$即可，在复数域中，表示这一操作只需要乘以$1\angle 90 \degree=j$即可，可以看到和我们的欧拉公式是完全符合的。</p>
+<p>所以我们可以使用Phasor Diagram（三维坐标）来理解我们的信号。我们只需要记住一个结论，就是$sin$函数比$cos$函数要滞后$90$，体现在频谱上就是sin的起始Phasor向量是$1\angle0$，而cos的起始Phasor向量是$1\angle-90$。这样我们又多了一种全新的方法来理解我们的欧拉公式，想要获得位于右半轴的$e^{j\omega t}$的频谱，我们只需要将$sin$函数提前$90$即可，在复数域中，表示这一操作只需要乘以$1\angle 90 =j$即可，可以看到和我们的欧拉公式是完全符合的。</p>
 <p>$$<br>e^{j\omega t}=cos(\omega t)+jsin(\omega t)<br>$$</p>
 <p>假如我们现在在有用信号上叠加了一个$\phi(t)$，如下所示</p>
 <p>$$<br>Signal=sin(2\pi f_Vt+\phi(t))<br>$$</p>
 <p>利用和差化积公式，可以进行分解，得到下面的表达式，</p>
 <p>$$<br>Signal=sin(2\pi f_Vt)cos(\phi(t))+cos(2\pi f_Vt)sin(\phi(t))<br>$$</p>
 <p>如果我们的$\phi(t)$足够小，在我们的这个情况中是符合的，因为</p>
-<p>$$<br>3\sigma_\phi=2\pi f_Vjitter_{rms}=3\cdot2\pi(30\times10^9)(50\times10^{-15})\approx9.42\times10^{-3}\times3\approx\frac{9\pi}{1000}\rightarrow1.62\degree<br>$$</p>
-<p>上述式子表明$99.7%$的jitter变化都会在$1.62\degree$以内，我们再来分析一下这个误差大概是多少，</p>
+<p>$$<br>3\sigma_\phi=2\pi f_Vjitter_{rms}=3\cdot2\pi(30\times10^9)(50\times10^{-15})\approx9.42\times10^{-3}\times3\approx\frac{9\pi}{1000}\rightarrow1.62<br>$$</p>
+<p>上述式子表明$99.7%$的jitter变化都会在$1.62$以内，我们再来分析一下这个误差大概是多少，</p>
 <p>$$<br>sin(\frac{9\pi}{1000})-\frac{9\pi}{1000}=-3.7671\times 10^{-6}<br>cos(\frac{9\pi}{1000})-1=-3.9969\times 10^{-4}<br>$$</p>
 <p>假如上述的误差在应用中可以接受，那么可以转换为下面的表达式</p>
 <p>$$<br>Signal=sin(\omega_0 t)+cos(\omega_0 t)\phi(t)<br>$$</p>
