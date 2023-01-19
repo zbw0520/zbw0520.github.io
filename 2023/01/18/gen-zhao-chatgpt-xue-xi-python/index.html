@@ -506,14 +506,14 @@
 <li>You can use <code>pd.to_csv()</code> method to save the dataframe in a csv format.</li>
 </ol>
 <h2 id="逐条分析"><a href="#逐条分析" class="headerlink" title="逐条分析"></a>逐条分析</h2><p>可以看出chatGPT总共给出了8条修改意见<span class="github-emoji"><span>😲</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f632.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，我都震惊了，仔细看来，每一条基本上都有一定的道理，感觉就像是一个非常懂行的老Python工程师在帮我修改代码一样，我感觉到如果不断用这种方式对代码进行学习，我的Python代码能力一定能够得到非常大的增长<span class="github-emoji"><span>😆</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f606.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span><span class="github-emoji"><span>✔</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/2714.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>。</p>
-<h3 id="使用glob库对目录中的文件进行读取，并且加入check是否文件是csv格式的功能"><a href="#使用glob库对目录中的文件进行读取，并且加入check是否文件是csv格式的功能" class="headerlink" title="使用glob库对目录中的文件进行读取，并且加入check是否文件是csv格式的功能"></a>使用<code>glob</code>库对目录中的文件进行读取，并且加入check是否文件是csv格式的功能</h3><p>这里，chatGPT给出的建议是使用<code>glob</code>中的函数对文件进行读取，使用这个的好处是，可以根据文件名进行筛选，可以不用在后面的代码中对读取到的字符串进行筛选。这里给出我写的和chatGPT给出的代码片段。</p>
+<h3 id="使用glob库对目录中的文件进行读取，并且加入check是否文件是csv格式的功能"><a href="#使用glob库对目录中的文件进行读取，并且加入check是否文件是csv格式的功能" class="headerlink" title="使用glob库对目录中的文件进行读取，并且加入check是否文件是csv格式的功能"></a>使用<code>glob</code>库对目录中的文件进行读取，并且加入check是否文件是csv格式的功能</h3><p>这里，chatGPT给出的建议是使用<code>glob</code>中的方法对文件进行读取，使用这个的好处是，可以根据文件名进行筛选，可以不用在后面的代码中对读取到的字符串进行筛选。这里给出我写的和chatGPT给出的代码片段。</p>
 <pre class=" language-Python"><code class="language-Python"># 我写的
 files = os.listdir(file_root)
 
 # chatGPT写的
 files = glob.glob(file_root + "/*.csv")
 </code></pre>
-<p>可以看到，这里的<code>glob</code>函数直接对读取文件的形式进行了筛选，我在代码后面还使用了if分支用于判断文件名字符串是不是我想要的文件名，因为一般Python Package中一般会有一个额外的文件叫做<code>__init__.py</code>，这个文件是起到什么作用的呢？</p>
+<p>可以看到，这里的<code>glob</code>方法直接对读取文件的形式进行了筛选，我在代码后面还使用了if分支用于判断文件名字符串是不是我想要的文件名，因为一般Python Package中一般会有一个额外的文件叫做<code>__init__.py</code>，这个文件是起到什么作用的呢？</p>
 <img src="/2023/01/18/gen-zhao-chatgpt-xue-xi-python/80998c9c5f379496231cfd251555bf62b02aae3edf230e2e75eace61caad3531.png" class="" title="__init__.py文件的作用">  
 
 <p>从图中我们可以看到，chatGPT说这个文件有三个作用：</p>
@@ -522,11 +522,11 @@ files = glob.glob(file_root + "/*.csv")
 <li>用来定义包的初始化代码，这种初始化代码将会在包第一次被引入的时候执行。在你想要给定一些全局变量或者进行一些初始化操作的时候非常有用。</li>
 <li>同时这个文件也可以用来定义包的全局API。这个我暂时还不太懂，可以之后再看看。<span class="github-emoji"><span>😢</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f622.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></li>
 </ol>
-<p>说完了这个文件，我们再说回我们的代码，可以看到这里chatGPT给出了一个函数，帮助我们一步解决读取数据、筛选文件的操作，提升了效率，至于这个包读取文件的速度是不是更快，还需要进一步验证，这里我们可以问问chatGPT。</p>
+<p>说完了这个文件，我们再说回我们的代码，可以看到这里chatGPT给出了一个方法，帮助我们一步解决读取数据、筛选文件的操作，提升了效率，至于这个包读取文件的速度是不是更快，还需要进一步验证，这里我们可以问问chatGPT。</p>
 <img src="/2023/01/18/gen-zhao-chatgpt-xue-xi-python/77ac7b8d89154e1f55c709fb5d09c6160df50fea18c685278c7e2a203dc46455.png" class="" title="chatGPT给出的os.listdir()与glob.glob()的区别">
 
 <p>总结下来呢就是，在性能上，如果没有筛选要求的，使用<code>os.listdir(file_root)</code>是最好的，因为这个更快一些，但是如果你有筛选需求的话，<code>glob.glob(file_root + "/*.csv")</code>是更好的选择。</p>
-<p>所以，这里，我们学到了一个筛选文件名获取文件的更好方式，就是使用<code>glob.glob()</code>函数，其内部参数使用字符串的形式，内部加入通配符来进行匹配。</p>
+<p>所以，这里，我们学到了一个筛选文件名获取文件的更好方式，就是使用<code>glob.glob()</code>方法，其内部参数使用字符串的形式，内部加入通配符来进行匹配。</p>
 <h3 id="使用try-except模块来防止出现异常情况"><a href="#使用try-except模块来防止出现异常情况" class="headerlink" title="使用try-except模块来防止出现异常情况"></a>使用try-except模块来防止出现异常情况</h3><p>这里chatGPT推荐我们使用try-except模块来对异常进行处理，具体的代码区别如下所示。</p>
 <pre class=" language-Python"><code class="language-Python"># 我写的
 if file[0] != "_":
@@ -546,7 +546,7 @@ except Exception as e:
 <img src="/2023/01/18/gen-zhao-chatgpt-xue-xi-python/ce072fefca11b1c79f44e44573356fd75c7f1acf32c6579f74b96b4d2c5f67ef.png" class="" title="chatGPT解释为什么要使用try-except模块">  
 
 <p>总结下来呢，就是两点，一个是使用抛出异常的操作可以方便你deBug的时候迅速定位错误的位置，方便你deBug。这一点我深有体会，我在deBug代码的时候，因为我自己设计的代码没有try-except操作，所以我通常会定位错位置。另一个重要原因是这会帮助你防止程序出错之后立马就停止运行了，帮助程序把错误的代码分离出来。总的来说呢，使用try-except模块是一个非常好的代码习惯。</p>
-<h3 id="使用isin-函数防止出现重复的stock-code问题"><a href="#使用isin-函数防止出现重复的stock-code问题" class="headerlink" title="使用isin()函数防止出现重复的stock_code问题"></a>使用isin()函数防止出现重复的stock_code问题</h3><p>这里chatGPT推荐我们加入额外的判断语句，来判断我们要添加进stock_list的数据是不是会与已有数据产生重复，如果不重复，则执行在stock_list尾部添加股票代码的操作，这里贴出代码。</p>
+<h3 id="使用isin-方法防止出现重复的stock-code问题"><a href="#使用isin-方法防止出现重复的stock-code问题" class="headerlink" title="使用isin()方法防止出现重复的stock_code问题"></a>使用isin()方法防止出现重复的stock_code问题</h3><p>这里chatGPT推荐我们加入额外的判断语句，来判断我们要添加进stock_list的数据是不是会与已有数据产生重复，如果不重复，则执行在stock_list尾部添加股票代码的操作，这里贴出代码。</p>
 <pre class=" language-Python"><code class="language-Python"># 我写的
 stock_list = pd.concat([stock_list, pd.DataFrame([code_baostock], columns=[column_name])],
                                    ignore_index=True)
@@ -558,7 +558,7 @@ if not stock_list.isin([code_baostock]).any().stock_code:
 <p>可以看出，chatGPT加入了额外的分支，这是用于检查我们的code_baostock的code是否在我们的stock_list里的，具体可以看下面chatGPT给出的说明。</p>
 <img src="/2023/01/18/gen-zhao-chatgpt-xue-xi-python/1eb272b7b87a66bf7156526d04e1674d08d0f8220f4b5fdbe958e3cb84db62ac.png" class="" title="chatGPT说明any()以及isin()方法的作用">  
 
-<p>总的来说呢，就是stock_list.isin([code_baostock])这个其实是生成了一个<code>dataFrame</code>。我以前一直以为这个语句是产生一个值…<span class="github-emoji"><span>😓</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f613.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，这里我也是看了好半天才看明白的。所以这个<code>dataFrame</code>没有办法直接进行判断的，因为我们的逻辑是只要有一个符合，我们就不执行下面的操作，所以这里使用了<code>any()</code>函数，是为了提取<code>dataFrame</code>中的<code>boolean</code>信息，进行逻辑判断，最后再选取对应的列<code>.stock_code</code>，产生最终的布尔值。</p>
+<p>总的来说呢，就是stock_list.isin([code_baostock])这个其实是生成了一个<code>dataFrame</code>。我以前一直以为这个语句是产生一个值…<span class="github-emoji"><span>😓</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f613.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span>，这里我也是看了好半天才看明白的。所以这个<code>dataFrame</code>没有办法直接进行判断的，因为我们的逻辑是只要有一个符合，我们就不执行下面的操作，所以这里使用了<code>any()</code>方法，是为了提取<code>dataFrame</code>中的<code>boolean</code>信息，进行逻辑判断，最后再选取对应的列<code>.stock_code</code>，产生最终的布尔值。</p>
 <h3 id="使用-loc-方法进行DataFrame数据的添加"><a href="#使用-loc-方法进行DataFrame数据的添加" class="headerlink" title="使用.loc()方法进行DataFrame数据的添加"></a>使用<code>.loc()</code>方法进行DataFrame数据的添加</h3><p>这里chatGPT推荐我们使用<code>.loc()</code>对DataFrame数据进行追加，下面是代码片段。</p>
 <pre class=" language-Python"><code class="language-Python"># 我写的
 stock_list = pd.concat([stock_list, pd.DataFrame([code_baostock], columns=[column_name])],
