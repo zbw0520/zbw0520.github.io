@@ -459,9 +459,9 @@
 <p>上述表达式描述了环路的噪声传递函数，根据$z$变换与$\omega$变换的等价变换,</p>
 <p>$z=e^{sT_s}=e^{j\omega T_s}$</p>
 <p>其中，$T_s$为采样周期，根据上式有如下表达式，</p>
-<p>$H_E(\omega)=1-e^{-j\omega T_s}=1-cos(-\omega T_s)-sin(-\omega T_s)$</p>
+<p>$H_E(\omega)=1-e^{-j\omega T_s}=1-cos(-\omega T_s)-jsin(-\omega T_s)$</p>
 <p>进一步化简有，</p>
-<p>$H_E(\omega)=1-cos(\omega T_s)+sin(\omega T_s)$</p>
+<p>$H_E(\omega)=1-cos(\omega T_s)+jsin(\omega T_s)$</p>
 <p>由于我们需要求解函数的噪声功率的传递函数，所以我们对上式进行取模平方操作，有，</p>
 <p>$|H_E(\omega)|^2=(1-cos(\omega T_s))^2+sin^2(\omega T_s)=2-2cos(\omega T_s)$</p>
 <p>根据倍角公式，$sin^2\alpha=\frac{1-cos2\alpha}{2}$，有，</p>
