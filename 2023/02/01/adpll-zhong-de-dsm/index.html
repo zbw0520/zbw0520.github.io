@@ -455,17 +455,17 @@
 
 <p>左图中的数字DSM的硬件实现图中，有两个器件组成：1. 全加器。2. 延时单元（寄存器）。这两个器件共同构成了DSM的硬件实现。我个人从DSM的本质可以解释一下这个硬件实现，DSM的本质是算出与目标值的差，再将本次的差留存到下一次累加到结果中，根据这种描述，这个差实际上就是全加器的结果$-E(n)$，经过一个触发器给到下一次的运算。至于这里的负号的原因是因为为了和右侧的线性模型中的符号对应，在右侧的线性模型中，$Y(z)=E(z)(1-z^{-1})+X(z)$，左侧对应的表达式就是 $Y(n)+(-E(n))=X(n)+(-E(n-1))$。读者仔细分析一下就可以明白其中的道理了，上述说法也自然说明了左右两个模型是完全等价的。</p>
 <h2 id="一阶数字DSM的噪声频域特性"><a href="#一阶数字DSM的噪声频域特性" class="headerlink" title="一阶数字DSM的噪声频域特性"></a>一阶数字DSM的噪声频域特性</h2><p>在一阶数字DSM中，噪声的来源主要是$E(z)$，该噪声经过环路整形$1-z^{-1}$之后，会获得一个新的噪声曲线，现在分析环路的噪声频率特性。</p>
-<p>$H_E(z)=1-z^{-1}$</p>
+<p>$$<br>H_E(z)=1-z^{-1}<br>$$</p>
 <p>上述表达式描述了环路的噪声传递函数，根据$z$变换与$\omega$变换的等价变换,</p>
-<p>$z=e^{sT_s}=e^{j\omega T_s}$</p>
+<p>$$<br>z=e^{sT_s}=e^{j\omega T_s}<br>$$</p>
 <p>其中，$T_s$为采样周期，根据上式有如下表达式，</p>
-<p>$H_E(\omega)=1-e^{-j\omega T_s}=1-cos(-\omega T_s)-jsin(-\omega T_s)$</p>
+<p>$$<br>H_E(\omega)=1-e^{-j\omega T_s}=1-cos(-\omega T_s)-jsin(-\omega T_s)$$</p>
 <p>进一步化简有，</p>
-<p>$H_E(\omega)=1-cos(\omega T_s)+jsin(\omega T_s)$</p>
+<p>$$<br>H_E(\omega)=1-cos(\omega T_s)+jsin(\omega T_s)<br>$$</p>
 <p>由于我们需要求解函数的噪声功率的传递函数，所以我们对上式进行取模平方操作，有，</p>
-<p>$|H_E(\omega)|^2=(1-cos(\omega T_s))^2+sin^2(\omega T_s)=2-2cos(\omega T_s)$</p>
+<p>$$<br>|H_E(\omega)|^2=(1-cos(\omega T_s))^2+sin^2(\omega T_s)=2-2cos(\omega T_s)<br>$$</p>
 <p>根据倍角公式，$sin^2\alpha=\frac{1-cos2\alpha}{2}$，有，</p>
-<p>$|H_E(\omega)|^2=2-2cos(\omega T_s)=4sin^2(\frac{\omega T_s}{2})$</p>
+<p>$$<br>|H_E(\omega)|^2=2-2cos(\omega T_s)=4sin^2(\frac{\omega T_s}{2})<br>$$</p>
 <p>所以读者可以看到一阶的DSM的噪声传递函数是一个二次sin函数的1/4，低频处增益低，高频处增益高。</p>
 
             </div>
