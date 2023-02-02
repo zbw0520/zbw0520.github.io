@@ -427,14 +427,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    671
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    4 分
                 </div>
                 
 
@@ -450,11 +450,27 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>为什么要了解DSM（Delta-Sigma Modulator）呢？因为在我们的ADPLL里，存在DCO的量化噪声，这个量化噪声按照最低可实现的最小频率LSB计算，也不能满足我们的应用需求，（见”ADPLL相位域MATLAB模型”这篇文章）这时候，我们考虑采用DSM将带内量化误差水平降低，达到降低抖动的目的。</p>
+<h2 id="了解DSM的前世今生"><a href="#了解DSM的前世今生" class="headerlink" title="了解DSM的前世今生"></a>了解DSM的前世今生</h2><p>此部分内容源自于下面的文献</p>
+<p>B. Razavi, “The Delta-Sigma Modulator [A Circuit for All Seasons],” in IEEE Solid-State Circuits Magazine, vol. 8, no. 2, pp. 10-15, Spring 2016, doi: 10.1109/MSSC.2016.2543061.</p>
+<p>DSM的前一代产物是DM，全程为Delta Modulator，如下图所示，</p>
+<img src="/2023/02/01/adpll-zhong-de-dsm/0df55351e1ee5ebc4cbe061d99c4971be9d51753a8e60873043b6edee9b6e2e4.png" class="" title="Delta Modulator">  
+
+<p>假设我们的量化器只提供量化噪声，那么整体环路的传输函数主要由积分器决定，假设积分器有增益$A$，那么积分器的线性模型如下所示，</p>
+<p>$$<br>H_{sum}=\frac{A}{s}<br>$$</p>
+<p>那么环路的输入-输出的传输函数为，</p>
+<p>$$<br>H_{CL}=\frac{1}{1+H_{sum}}=\frac{s}{s+A}<br>$$</p>
+<p>从上述传输函数中可以看到，在$\omega&lt;A$的带宽内，环路对输入是存在一定的衰减的，这就意味着我们的环路对输入信号有低通滤波的特性。</p>
+<p>为了消除这种滤波的特性（差分特性），Inose在1962年将积分器由反馈路径移动至前馈路径上，就产生了我们希望的DSM，即Delta-Sigma Modulator，如下图所示，</p>
+<img src="/2023/02/01/adpll-zhong-de-dsm/80c12b47d747f157804d425f6dfb6efab42d324759ffaabbfd5e8f78e3b868a4.png" class="" title="Delta-Sigma Modulator">  
+
+<p>其输入传输函数如下所示，</p>
+<p>$$<br>H_{CL}=\frac{H_{sum}}{1+H_{sum}}=\frac{A}{s+A}<br>$$</p>
+<p>可以看到，在低频处，系统的输入基本没有衰减，在$\omega&gt;A$的带宽处，开始以$20dB/dec$的速度进行衰减，所以，只要我们的输入信号是一定的低频信号，我们就不会破坏输入信号。</p>
 <h2 id="一阶数字DSM"><a href="#一阶数字DSM" class="headerlink" title="一阶数字DSM"></a>一阶数字DSM</h2><p>如下图所示，下面的两张图中的左图表示了数字DSM的硬件实现图，右图表示了数字DSM的z域系统框图。</p>
 <img src="/2023/02/01/adpll-zhong-de-dsm/10e5913b9a0c85a2eb0b9b280e2710fd9e2efe60cf9b740f3246286b9cbea332.png" class="" title="一阶数字DSM的硬件图以及系统框图">  
 
 <p>左图中的数字DSM的硬件实现图中，有两个器件组成：1. 全加器。2. 延时单元（寄存器）。这两个器件共同构成了DSM的硬件实现。我个人从DSM的本质可以解释一下这个硬件实现，DSM的本质是算出与目标值的差，再将本次的差留存到下一次累加到结果中，根据这种描述，这个差实际上就是全加器的结果$-E(n)$，经过一个触发器给到下一次的运算。至于这里的负号的原因是因为为了和右侧的线性模型中的符号对应，在右侧的线性模型中，$Y(z)=E(z)(1-z^{-1})+X(z)$，左侧对应的表达式就是 $Y(n)+(-E(n))=X(n)+(-E(n-1))$。读者仔细分析一下就可以明白其中的道理了，上述说法也自然说明了左右两个模型是完全等价的。</p>
-<h2 id="一阶数字DSM的噪声频域特性"><a href="#一阶数字DSM的噪声频域特性" class="headerlink" title="一阶数字DSM的噪声频域特性"></a>一阶数字DSM的噪声频域特性</h2><p>在一阶数字DSM中，噪声的来源主要是$E(z)$，该噪声经过环路整形$1-z^{-1}$之后，会获得一个新的噪声曲线，现在分析环路的噪声频率特性。</p>
+<h3 id="一阶数字DSM的噪声频域特性"><a href="#一阶数字DSM的噪声频域特性" class="headerlink" title="一阶数字DSM的噪声频域特性"></a>一阶数字DSM的噪声频域特性</h3><p>在一阶数字DSM中，噪声的来源主要是$E(z)$，该噪声经过环路整形$1-z^{-1}$之后，会获得一个新的噪声曲线，现在分析环路的噪声频率特性。</p>
 <p>$$<br>H_E(z)=1-z^{-1}<br>$$</p>
 <p>上述表达式描述了环路的噪声传递函数，根据$z$变换与$\omega$变换的等价变换,</p>
 <p>$$<br>z=e^{sT_s}=e^{j\omega T_s}<br>$$</p>
@@ -466,7 +482,17 @@
 <p>$$<br>|H_E(\omega)|^2=(1-cos(\omega T_s))^2+sin^2(\omega T_s)=2-2cos(\omega T_s)<br>$$</p>
 <p>根据倍角公式，$sin^2\alpha=\frac{1-cos2\alpha}{2}$，有，</p>
 <p>$$<br>|H_E(\omega)|^2=2-2cos(\omega T_s)=4sin^2(\frac{\omega T_s}{2})<br>$$</p>
-<p>所以读者可以看到一阶的DSM的噪声传递函数是一个二次sin函数的1/4，低频处增益低，高频处增益高。</p>
+<p>所以读者可以看到一阶的DSM的噪声传递函数是一个二次sin函数的1/4，低频处增益低，高频处增益高。下图将$4sin(\frac{2\pi x}{20})$绘制了出来</p>
+<img src="/2023/02/01/adpll-zhong-de-dsm/ad929be430786b179db54e889a739fc05de2aba6a2bb9c3f5b183118d3055071.png" class="" title="Noise Shaping Effect">  
+
+<p>从上图中可以看出明显的NoiseShaping效应，这里的Nyquist频率为$\frac{f_s}{2}=5$，假设$f_B$为信号频率，过采样率定义为如下，</p>
+<p>$$<br>OSR=\frac{f_s/2}{f_B}<br>$$</p>
+<p>曲线下方的面积与$M^3$成正比。</p>
+<h2 id="DSM的杂音问题"><a href="#DSM的杂音问题" class="headerlink" title="DSM的杂音问题"></a>DSM的杂音问题</h2><p>假设$Vin=0.001V_{ref}$，那么$D_{out}$的输出就为1个1和999个0，这样循环周期重复，假如有足够的样本，就会有杂音落在我们的信号带内，导致出现额外的杂散，可以采取dithering打散这种周期性，将这些杂音变到我们的噪底上。</p>
+<h2 id="高阶DSM"><a href="#高阶DSM" class="headerlink" title="高阶DSM"></a>高阶DSM</h2><p>高阶DSM的框图如下所示，</p>
+<img src="/2023/02/01/adpll-zhong-de-dsm/15b4ba971fb64e251023e42f9dea4f1adfa11f6098ed55067a1cd5fbd886573b.png" class="" title="二阶DSM的系统框图">  
+
+<p>高阶DSM对于输入来说是没有影响的，但是每增大一个DSM的阶数，就会在噪声上乘以一个$(1-z^{-1})$的系数，对噪声进行整形。</p>
 
             </div>
             <hr/>
@@ -957,7 +983,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">91.3k</span>&nbsp;字
+                class="white-color">91.9k</span>&nbsp;字
             
             
             
