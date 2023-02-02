@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>MOS简易电路分析</title>
+      <link href="/2023/02/02/mos-jian-yi-dian-lu-fen-xi/"/>
+      <url>/2023/02/02/mos-jian-yi-dian-lu-fen-xi/</url>
+      
+        <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>本文来源于</p><p>“A. Sheikholeslami, “Looking into a Node [Circuit Intuitions],” in IEEE Solid-State Circuits Magazine, vol. 6, no. 2, pp. 8-10, Spring 2014, doi: 10.1109/MSSC.2014.2315062.”</p><h2 id="本文利用基本的MOS模型"><a href="#本文利用基本的MOS模型" class="headerlink" title="本文利用基本的MOS模型"></a>本文利用基本的MOS模型</h2><p>本文利用的MOS基本模型如下图所示，</p><img src="/2023/02/02/mos-jian-yi-dian-lu-fen-xi/ee845d74a1b2e3b1bcf15e7a5c73109ff3e2c78e0eb2e443133869acd324f690.png" class="" title="MOS基本模型">  <p>可以看到作者还考虑了体效应带来的JFET的跨导电流源的作用$g_{mb}$。</p><p>作者还提到了这种方法的动机，常用的暴力法使用KCL/KVL进行求解的方式会存在两个缺点：1、经常会出错，计算过于复杂；2、对于电路的工作原理不能提供直观的解释。</p><p>本文通过几种基本元素（building block的概念）的建立帮助读者快速分析电路。</p><h2 id="8种基本模型"><a href="#8种基本模型" class="headerlink" title="8种基本模型"></a>8种基本模型</h2><p>本文给出了8种常用的模型，来计算从端子看入的阻抗，8种模型如下图所示，</p><img src="/2023/02/02/mos-jian-yi-dian-lu-fen-xi/b581203bd56c9c0cf87b05cfb6cf559d4f8bbb07c2783d854584c03a38d4e149.png" class="" title="8种常用的模型">  <h3 id="模型一"><a href="#模型一" class="headerlink" title="模型一"></a>模型一</h3><p>模型一是一个简单的PMOS，它的源和漏都接地，这时，从栅极看进去的等效电路是一个无穷大的电阻。</p><img src="/2023/02/02/mos-jian-yi-dian-lu-fen-xi/c9dc6c3064ec0ebad7ef0cc52c24adec7d2765bc4ec57c2959bb42bf207d09f9.png" class="" title="模型一的电路图">  <p>即使源和漏不是接地，从栅极看进去的电阻也是无穷大的。</p><h3 id="模型二"><a href="#模型二" class="headerlink" title="模型二"></a>模型二</h3><p>NMOS栅极和源极均接地，从漏极看进去，只能看到一个$r_o$，如下图所示，</p><img src="/2023/02/02/mos-jian-yi-dian-lu-fen-xi/1cd57cf28e124d6abf8b7d8159d8a3490803fb7ebf6e8264227e1ff4be7e5aae.png" class="" title="模型二的电路图">  <p>可以从MOS管的等效模型，如下图所示，分析出，如果G与S均接地，那么跨到受控源的电流就为零，相当于该器件不存在，所以也就只能看到一个$r_o$了</p><img src="/2023/02/02/mos-jian-yi-dian-lu-fen-xi/ee845d74a1b2e3b1bcf15e7a5c73109ff3e2c78e0eb2e443133869acd324f690.png" class="" title="MOS基本模型">  <h3 id="模型三"><a href="#模型三" class="headerlink" title="模型三"></a>模型三</h3><p>该电路的MOS管的D与G均小信号接地，这时从S看入的电路为</p><p>$$<br>r_o||1/(g_{m}+g_{mb})<br>$$</p><img src="/2023/02/02/mos-jian-yi-dian-lu-fen-xi/cd52a47a7bd1d6f2a1df1a701db2f40e654fd0eeb002973388d413772ae5452b.png" class="" title="模型三的电路图">  <h3 id="模型四"><a href="#模型四" class="headerlink" title="模型四"></a>模型四</h3><p>这种情况下从漏看入的阻抗为</p><p>$$<br>r_o||1/(g_m)<br>$$</p><p>需要注意的是，由于体和漏都接地，所以体效应的跨导就被忽略了。</p><img src="/2023/02/02/mos-jian-yi-dian-lu-fen-xi/9bc4dd586311e50cd5c7807077a6399a4a3bec62f1546d6e271b15ee4bd507f6.png" class="" title="模型四的电路图">  <h3 id="模型五"><a href="#模型五" class="headerlink" title="模型五"></a>模型五</h3><p>此模型类似Cascode结构，这种结构作者没有进行推导过，我在这里用我想出的一种非常简单的方法推导一下。</p><img src="/2023/02/02/mos-jian-yi-dian-lu-fen-xi/95d664f1931fb634777ab47661c4434ba5cfac20b703e770c4c9f9db3a7f6241.png" class="" title="模型五的电路图">  <p>我的导师曾经说过，要摒弃从电压的角度分析和观看电路，要学会从电流的角度分析和观看电路，这里也不例外，我们先从电流的角度来看看这个电路</p><img src="/2023/02/02/mos-jian-yi-dian-lu-fen-xi/3b767e1e1319d50143930f32d1e34000091ee3cb42907561838c851a7760b031.png" class="" title="Cascode电路分析模型">  <p>上面一张图是我分析电路经常会画的一张图，将MOS的$r_o$绘制在原先的图上，接下去在输出施加一个向里的电流，观看在输出端产生的电压变化。</p><p>接下去读者想象自己是那个电流，一开始，MOS管的S是没有电压的，所以$V_{GS}=0$，电流不可能从MOS管的跨导电流源上走，只能走$r_o$。</p><p>这里教授读者一个小技巧，那就是我这些图里的MOS管符号都是指只有受控电流源的MOS管，非理想的代表沟道长度调制效应的$r_o$已经分离出去了。从这个层面将，读者完全可以把MOS的符号看作是一个理想的受控电流源。</p><p>接着上面的电流继续说，假如我是$i_x$，那么我一定会走$r_o$，直接的结果就是在$r_o$两端产生大小为$i_1r_o$的电压差。</p><p>接下去作为电流，我会有两个方向行走，一个是往上走，进入MOS的源，一个是往下走，进入电阻。当然，我作为电流没办法在进入电路之前就知道该往哪边走，不过有一个原则那就是我肯定往电阻小的支路行走，这样产生的电压最小。从直观上来讲，当然是往MOS的源走的电阻比较小，因为一般认为$1/g_m$是比较小的，但是从定量计算的角度来说，我们还是需要进一步定量算一下。</p><p>这里的精髓在于无论往上走还是往下走，产生总的电位是一样的，也就是说往下走的电流经过R产生一个电压，这个电压反过来通过MOS的跨导电流源产生一个向上的电流，这个机制会进行相互牵制相互调节，直到最后达到一个平衡。</p><p>用数学的语言表达上述的关系就是，</p><p>$$<br>(i_1-i_2)Rg_m=i_2<br>$$</p><p>上面的式子中，$(i_1-i_2)$表示了流入R的电流，作用在$R$上，产生一个电压，通过$g_m$生成向上的电流$i_2$。我们一下子就得到了如下的$i_1$和$i_2$的关系，如下所示，</p><p>$$<br>\frac{i_1}{1+g_mR}=\frac{i_2}{g_mR}<br>$$</p><p>所以可以发现我们可以把$i_1$均分$(1+g_mR)$、把$i_2$均分$(g_mR)$份之后，所得到的element是一样的。这个所谓的element就是我们的$i_x$。</p><p>聪明的读者应该马上可以直接写出我们的$v_x$，如下所示，</p><p>$$<br>v_x=i_x(1+g_mR)r_o+i_xR<br>$$</p><p>我们为了清晰，这里再解释一下上述式子，由于我们把所有的电流都分解为了$i_x$的倍数，如下所示</p><p>$$<br>i_1=(1+g_mR)i_x\<br>i_2=g_mRi_x<br>$$</p><p>所以输出电流为$i_1$作用在$r_o$上的电压降加上$i_1-i_2=i_x$作用在$R$上产生的压降，也就是上面的式子了，稍微归纳一下，我们可以得到输出电阻为，</p><p>$$<br>r_{out}=\frac{v_x}{i_x}=(1+g_mR)r_o+R<br>$$</p><h3 id="模型六"><a href="#模型六" class="headerlink" title="模型六"></a>模型六</h3><p>可以看到模型六的电路图中为在MOS的D上加上电阻$R_D$，栅极接地，要求从源看入的阻抗。</p><img src="/2023/02/02/mos-jian-yi-dian-lu-fen-xi/0bfc5283ce426dd5f8a191663a243cf86d3d4b153c1117abd5b68b77a194d098.png" class="" title="模型六的电路图">  <p>这里给读者一个思考的空间，利用上面模型五的方法可以一模一样地求解出上图所示地输出阻抗，请读者自行尝试求解，之后再往下看我给地解决方案。</p><p>首先先绘制出我想要的可以使用电流观点进行分析的电路草图，如下所示，</p><img src="/2023/02/02/mos-jian-yi-dian-lu-fen-xi/e296b719a7a9389eacb3cca70af69aacdb5db678e586000f2109c3536253e7fe.png" class="" title="模型六的电流法分析草图">  <p>像上图标识的那样，我们先要在想要测试的端口施加一个电流$i_x$，然后读者假想自己是$i_x$，想要钻进阻碍小（电阻小）的通路。我的导师曾经教导过我们，MOS管的源总是最敏感的，所谓最敏感，就是这个地方阻抗最小，很小的电压变化就可以产生巨大的电流变化。所以电流一定先流入的是MOS的源，我们称这个电流为$i_2$，接下去电流会有两个方向，一个是流向$R$，一个是流向$r_o$，我们认为流入$R$以及$r_o$的两路电流最终会达到一个平衡，在这个时候，在输出产生的电压差通过跨导电流源$g_m$产生的电流刚好为$i_2$，上述关系可以使用下面的数学表达式进行表达，</p><p>$$<br>((i_2-i_1)R-i_1r_o)g_m=i_2<br>$$</p><p>简单整理之后我们可以获得下面的表达式，</p><p>$$<br>\frac{i_2}{g_mR+g_mr_o}=\frac{i_1}{g_mR-1}=i_0<br>$$</p><p>上式将$i_2$以及$i_1$分解为$i_0$的倍数，所以我们可以用$i_0$表达出$i_x$和$v_x$</p><p>$$<br>i_x=i_2-i_1=(1+g_mr_o)i_o\<br>v_x=\frac{i_2}{g_m}=\frac{(g_mR+g_mr_o)i_0}{g_m}<br>$$</p><p>马上我们可以得到输出阻抗为，</p><p>$$<br>r_{out}=\frac{v_x}{i_x}=\frac{R+r_o}{1+g_mr_o}<br>$$</p><h3 id="模型七和模型八"><a href="#模型七和模型八" class="headerlink" title="模型七和模型八"></a>模型七和模型八</h3><p>我个人觉得这篇文章接下去的内容在实际中作用不大，可能是本人目前的水平不到，待之后水平上升之后再看看，说不定能有新的体会。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> ISSC Magazine阅读笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 电路分析 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>FVF跟随器的电路分析</title>
+      <link href="/2023/02/02/fvf-gen-sui-qi-de-dian-lu-fen-xi/"/>
+      <url>/2023/02/02/fvf-gen-sui-qi-de-dian-lu-fen-xi/</url>
+      
+        <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>本文内容来源于</p><p>“A. Sheikholeslami, “Voltage Follower, Part II [Circuit Intuitions],” in IEEE Solid-State Circuits Magazine, vol. 15, no. 1, pp. 17-19, winter 2023, doi: 10.1109/MSSC.2022.3218083.”</p><h2 id="FVF名称的来源"><a href="#FVF名称的来源" class="headerlink" title="FVF名称的来源"></a>FVF名称的来源</h2><p>下图(a)表示了简单电压跟随器SVF，(b)表示了反转电压跟随器FVF两种电压跟随器。</p><img src="/2023/02/02/fvf-gen-sui-qi-de-dian-lu-fen-xi/8bc3bd30a1296133f77525eb9c61c6995b6b4fa577cc93b9919d027432a9ece2.png" class="" title="跟随器示意图"> <p>其中第一种跟随器大部分人都学过，是三种MOS基本组态的其中一种，常称为源跟随器；第二种跟随器如果没有做过Buffer的人基本不太会了解到，是第一种跟随器的改良方案。</p><p>之所以称为翻转Flipped，作者的原话是：” In fact, moving the current source from the source to the drain of M1 is referred to as flipping, and hence the name FVF”。翻译过来就是原先电流源接在M1的源上；之后电流源接在M1的漏上，电流源的位置发生了翻转，这就是名字的由来。</p><h2 id="FVF的输出跨导"><a href="#FVF的输出跨导" class="headerlink" title="FVF的输出跨导"></a>FVF的输出跨导</h2><p>这里作者使用了一种我从来没有见过的方法求解了跨导，作者实际上求解了短路跨导，先将输出接地，再将电流源置零，之后求解变换之后的电路的输入电压到输出电流的传输函数，如下图所示，</p><img src="/2023/02/02/fvf-gen-sui-qi-de-dian-lu-fen-xi/c5657d450c52ca6e21605b193839dc396ecb0227eca8a570563e88e34dcd5b16.png" class="" title="FVF短路跨导分析">  <p>上图中（b）的Gm表达式很容易能分析出来，如下所示，</p><p>$$<br>G_m=\frac{i_{sc}}{v_{in}}=g_{m1}r_{o1}g_{m2}<br>$$</p><p>此篇文章是主要描述电路直觉的，所以作者在给出公式的基础之上，给出了电路基于公式的工作原理，原文如下，</p><img src="/2023/02/02/fvf-gen-sui-qi-de-dian-lu-fen-xi/2a50ad43473043a6709e3069f7fe893a1289597a38b7a32cc2b7cd254a089290.png" class="" title="FVF基于公式的直觉分析">  <p>简单翻译一下，就是电路的跨导增加了$g_mr_o$倍，作者在这里说，这个倍数的来源是M1管。紧接着，作者给出了一个非常有意思的结论，在FVF电路里面，电流是依靠M2提供的，而不是M1提供的。以前我从没有这样想过，所以我每次看FVF电路的时候都感觉到100分的别扭。接着，作者又说M1的作用仅仅是将输入信号放大了一个倍数之后，将输出给到了M2的栅极，并由M2的跨导进行一个转换。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> ISSC Magazine阅读笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Source Follower </tag>
+            
+            <tag> FVF </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ADPLL中的DSM</title>
       <link href="/2023/02/01/adpll-zhong-de-dsm/"/>
       <url>/2023/02/01/adpll-zhong-de-dsm/</url>
