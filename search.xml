@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>时域抖动测量的谱分析</title>
+      <link href="/2023/02/03/shi-yu-dou-dong-ce-liang-de-pu-fen-xi/"/>
+      <url>/2023/02/03/shi-yu-dou-dong-ce-liang-de-pu-fen-xi/</url>
+      
+        <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>本文的内容来自于</p><p>“Un-Ku Moon, K. Mayaram and J. T. Stonick, “Spectral analysis of time-domain phase jitter measurements,” in IEEE Transactions on Circuits and Systems II: Analog and Digital Signal Processing, vol. 49, no. 5, pp. 321-327, May 2002, doi: 10.1109/TCSII.2002.802343.”</p><p>我阅读这篇文章的主要目的在于弄清楚各种抖动的定义到底是什么，它们之间到底有什么关系。</p><h2 id="jitter的种类"><a href="#jitter的种类" class="headerlink" title="jitter的种类"></a>jitter的种类</h2><p>作者说通常用来描述jitter的量有，”period jitter”、”edge-to-edge jitter”、”cycle-to-cycle jitter”、”absolute jitter”、”tracking jitter”等等。</p><p>本文的目的就是总结这些量，并且弄清它们之间的关系。</p><h2 id="抖动-amp-相位噪声"><a href="#抖动-amp-相位噪声" class="headerlink" title="抖动&amp;相位噪声"></a>抖动&amp;相位噪声</h2><p>假设一个理想的无抖动的信号为$s(t)$，带有抖动的信号为$s_j(t)=s(t+j(t))$，我们直接对上述两个信号做傅里叶展开，理想的信号如下，</p><p>$$<br>s(t)=c_1cos(\omega_ot)+c_2cos(2\omega_ot)+c_3cos(3\omega_ot)+···<br>$$</p><p>带有抖动的信号如下，</p><p>$$<br>s_j(t)=c_1cos(\omega_ot+\omega_oj(t))+c_2cos(2\omega_ot+2\omega_oj(t))+···\<br>=c_1cos(\omega_ot+\phi(t))+c_2cos(2\omega_ot+2\phi(t))+···\<br>$$</p><p>在有抖动的信号的傅里叶展开式里，有两种抖动的表达形式，一个是$\omega_oj(t)=\phi(t)$，我们马上可以看到这里有单位的转换了，$j(t)$的单位为$[s]$，$\phi(t)$的单位为$[rad]$。</p><p>我们把单位为$[s]$的$j(t)$称为时间抖动，Jitter；把单位为$[rad]$的$\phi(t)$称为相位噪声，Phase Noise。</p><p>所以这里我们搞清楚了相位噪声和抖动的关联与区别。</p><h2 id="rad-2-x2F-Hz-还是-dBc-x2F-Hz"><a href="#rad-2-x2F-Hz-还是-dBc-x2F-Hz" class="headerlink" title="$rad^2/Hz$还是$dBc/Hz$"></a>$rad^2/Hz$还是$dBc/Hz$</h2><p>这里我在看Bogdan的文章”Event-Driven Simulation and Modeling of Phase Noise of an RF Oscillator”也存在疑问，他原文是这样描述的，</p><img src="/2023/02/03/shi-yu-dou-dong-ce-liang-de-pu-fen-xi/9736fbeb59e7d3b005162168b65e0ce74856377c68326fab9a33ca31554c52cc.png" class="" title="单边谱到双边谱的转换">  <p>这里的谱的单位为$[rad^2/s]$，可是我一直以为是$[dBc/Hz]$，这两个到底有什么关联呢？作者马上给出了答案。</p><h3 id="Narrow-Band-FM-Approximation"><a href="#Narrow-Band-FM-Approximation" class="headerlink" title="Narrow-Band FM Approximation"></a>Narrow-Band FM Approximation</h3><p>这里使用到了其实在”ADPLL相位域MATLAB模型”中我就推导过的一个近似方法。说起来也是挺有趣的，当时在做ADPLL的相位域模型，在测量输出信号的相位噪声的时候，我直接对几十GHz的信号做了采样操作，并且想要得到频谱分辨率为10kHz级别的相位噪声谱密度。（真是一个天真的想法）</p><p>上述操作是不行的，闫老师当时就指出了问题，我一直没有找到对应的理论，后来我在2023年初的春节假期里进行了推导，发现确实是那么回事，没想到推导的结论就是我们的窄带FM近似… <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></p><p>这里就不做推导了，需要的话可以去我那篇文章里看看，这里就把结论直接写出来，</p><p>$$<br>a(t)=cos(\omega_ot+\phi(t))\approx cos(\omega_ot)-sin(\omega_ot)\phi(t)<br>$$</p><p>上述式子成立的条件就是$\phi(t)\rightarrow0$或者是$\phi(t)&lt;&lt;2\pi$。</p><p>如果是符合窄带FM特征的抖动，就可以直接将相位抖动$\phi(t)$的频谱放在基频$\omega_o$处。当然这样做需要换一下单位，由原先的[dBc/Hz]换成[rad^2/Hz]。</p><p>可以看到，这两个单位如果符合窄带FM近似的条件的话，是可以自由转换的，当然前提是必须要满足窄带FM近似的条件。</p><p>作者在这里还非常严谨地补充了，如果抖动不符合窄带FM近似地条件，那么相位噪声谱密度的形状是怎么样的，是一型Bessel函数的形状，我上网搜了一下，大概长下面这个样子，</p><img src="/2023/02/03/shi-yu-dou-dong-ce-liang-de-pu-fen-xi/ec18feafc1fcc585b6c20d2d544c52dd712206a5ef4f68e553eff609c62cf570.png" class="" title="一型Bessel函数">  <p>真的非常的诡异，作者为了防止我们进一步掉入钻研Bessel函数的陷阱，告诉了我们，”In the analysis of oscillator/PLL systems and applications, the narrow-band assumption is typically accurate”，也就是说在振荡器和PLL系统里面，一般窄带FM近似就足够准确了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 论文阅读笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Jitter </tag>
+            
+            <tag> 相位噪声 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>事件驱动型的仿真中的DCO相位噪声建模</title>
+      <link href="/2023/02/03/shi-jian-qu-dong-xing-de-fang-zhen-zhong-de-dco-xiang-wei-zao-sheng-jian-mo/"/>
+      <url>/2023/02/03/shi-jian-qu-dong-xing-de-fang-zhen-zhong-de-dco-xiang-wei-zao-sheng-jian-mo/</url>
+      
+        <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>本文内容来自于</p><p>“R. B. Staszewski, C. Fernando and P. T. Balsara, “Event-driven Simulation and modeling of phase noise of an RF oscillator,” in IEEE Transactions on Circuits and Systems I: Regular Papers, vol. 52, no. 4, pp. 723-733, April 2005, doi: 10.1109/TCSI.2005.844236.”</p><p>我本人在做ADPLL的仿真时，在对jitter进行建模时，不清楚jitter的作用机制是怎么样的，并且也不清楚按照简单的正太随机数叠加在频率上，到底对最终的相位噪声又怎么样的影响。所以，希望通过这篇文章理清这其中的逻辑和机制，之后在面对抖动建模问题时，至少有一个思考的方向和思路。</p><h2 id="DCO的一些噪声来源"><a href="#DCO的一些噪声来源" class="headerlink" title="DCO的一些噪声来源"></a>DCO的一些噪声来源</h2><img src="/2023/02/03/shi-jian-qu-dong-xing-de-fang-zhen-zhong-de-dco-xiang-wei-zao-sheng-jian-mo/5e478434c08cd28e2dda29db2883323794a0d5e0122caf46ed351c9b39f8240b.png" class="" title="DCO噪声来源"> <h2 id="为什么使用VHDL而不是使用Verilog？"><a href="#为什么使用VHDL而不是使用Verilog？" class="headerlink" title="为什么使用VHDL而不是使用Verilog？"></a>为什么使用VHDL而不是使用Verilog？</h2><p>作者给出的解释时VHDL支持实数（浮点数）类型的信号，由于通信里面信号有些是在幅值上是连续的，所以使用VHDL能够对这类型号做更好的建模。</p><img src="/2023/02/03/shi-jian-qu-dong-xing-de-fang-zhen-zhong-de-dco-xiang-wei-zao-sheng-jian-mo/597c330f4447b47228c928520e6558ed904c4f410ff40198575bfb3f099ad493.png" class="" title="使用VHDL而不是Verilog的好处">  <p>所以作者选择了VHDL对整个模型进行仿真，原因如下，</p><ul><li>VHDL相比于SPICE或者analog mixed-signal VHDL(VHDL-AMS)更加快速</li><li>VHDL相比C、MATLAB等环境能够与硬件形成比较好的关联和匹配，而不是像C、MATLAB一样是一种高层次的行为模型，与硬件完全割裂开来。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> ADPLL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ADPLL </tag>
+            
+            <tag> 仿真建模 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MOS简易电路分析</title>
       <link href="/2023/02/02/mos-jian-yi-dian-lu-fen-xi/"/>
       <url>/2023/02/02/mos-jian-yi-dian-lu-fen-xi/</url>
