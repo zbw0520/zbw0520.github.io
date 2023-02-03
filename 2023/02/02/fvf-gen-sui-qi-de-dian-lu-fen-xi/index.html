@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    552
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    5 分
                 </div>
                 
 
@@ -461,6 +461,26 @@
 <img src="/2023/02/02/fvf-gen-sui-qi-de-dian-lu-fen-xi/2a50ad43473043a6709e3069f7fe893a1289597a38b7a32cc2b7cd254a089290.png" class="" title="FVF基于公式的直觉分析">  
 
 <p>简单翻译一下，就是电路的跨导增加了$g_mr_o$倍，作者在这里说，这个倍数的来源是M1管。紧接着，作者给出了一个非常有意思的结论，在FVF电路里面，电流是依靠M2提供的，而不是M1提供的。以前我从没有这样想过，所以我每次看FVF电路的时候都感觉到100分的别扭。接着，作者又说M1的作用仅仅是将输入信号放大了一个倍数之后，将输出给到了M2的栅极，并由M2的跨导进行一个转换。</p>
+<p>这里作者利用之前的一篇文章的结论进行了FVF输出阻抗的推导，具体请看下图，</p>
+<img src="/2023/02/02/fvf-gen-sui-qi-de-dian-lu-fen-xi/65c1cc952a764d4a0d50d594f021578d570e2c77ae699731287774ca6e2c2c39.png" class="" title="FVF输出阻抗推导"> 
+
+<p>作者先在输出施加了一个大小为$v_x$的信号源，如果可以测量出流入的电流$i_x$，那么就可以获知输出阻抗。</p>
+<p>这里作者先是将M1以及M2剥离开来，认为流入M1的电流为$i_1$，流入M2的电流为$i_2$，由于M1的漏是开路的，所以$i_1=0$。</p>
+<p>接下去单独取出M1分析其漏极和栅极短路到地的时候，$v_x$作用在源的时候，产生的短路电流$i_{sc}$，需要用到前一篇文章的结论，在<a href="https://zbw0520.github.io/2023/02/02/mos-jian-yi-dian-lu-fen-xi/">https://zbw0520.github.io/2023/02/02/mos-jian-yi-dian-lu-fen-xi/</a>这篇文章里给出了具体的解释，这里直接使用这篇文章的结论，</p>
+<p>$$<br>i_{sc}=v_x(g_{me}+\frac{1}{r_o})<br>$$</p>
+<p>上式是给出了短路电流，也就是Norton’s Current Source的电流大小，接下去根据Norton到Thevenin的转换可知，开路电压为Norton电流乘以输出阻抗，也就是下面的式子表达，</p>
+<p>$$<br>v_oc=v_d=i_{sc}r_o=v_x(1+g_{me}r_o)<br>$$</p>
+<p>所以可以看到最终的M1的漏极电压为源极电压的$(1+g_mr_o)$倍，那么M2上产生的电流就用下面的表达式表达，</p>
+<p>$$<br>i_2=v_x(1+g_{me}r_o)g_m+\frac{v_x}{r_o}<br>$$</p>
+<p>如果假设$g_mr_o&gt;&gt;1$，可以得到下面的结论，</p>
+<p>$$<br>i_2=g_{me}r_og_mv_x\<br>r_{out}=\frac{v_x}{i_2}=\frac{1}{g_{me}r_og_m}<br>$$</p>
+<h2 id="FVF的输出增益"><a href="#FVF的输出增益" class="headerlink" title="FVF的输出增益"></a>FVF的输出增益</h2><p>FVF的输出增益大小可以使用$G_mR_{out}$的算法进行计算，计算的结果如下所示，</p>
+<p>$$<br>\frac{V_{out}}{V_{in}}\approx g_mr_og_m\frac{1}{g_{me}r_og_m}=\frac{g_m}{g_{me}}<br>$$</p>
+<p>根据作者的这个系列的前一篇文章，作者说这个增益与SVF也就是普通的Source Follower的增益是一样的。<strong>FVF通过相比SVF更大的跨导和更低的输出阻抗获得了和SVF一样的输出增益。</strong></p>
+<h2 id="FVF的极点分布"><a href="#FVF的极点分布" class="headerlink" title="FVF的极点分布"></a>FVF的极点分布</h2><p>对于SVF的极点分布作者是这样说的，”the signal path from the input to output of the SVF has a single pole, corresponding to the output node”，翻译过来就是SVF仅仅在输出有一个极点。</p>
+<p>对于FVF的极点分布作者是这样说的，”the signal path of the FVF has two poles: one at the output node and one at the gate of M2.”，也就是说FVF在输出和M2的栅上各有一个极点。</p>
+<h2 id="这篇文章的心得"><a href="#这篇文章的心得" class="headerlink" title="这篇文章的心得"></a>这篇文章的心得</h2><p>这篇文章给了我一个全新的视角来审视我做的FVF电路，我以前仅仅是考虑输出阻抗，但是从来没有考虑过输入到输出的传输函数。这里作者使用了将问题进行分解，先求电路的短路电导纳，具体方法是将输出短接到地，在输入施加一个源，测量输出吐出的电流大小，则电路的短路跨导就是$G_m=\frac{i_{sc}}{v_{in}}$。因为我不做信号的放大，所以以前从来没有这么考虑过这个问题。使用这个方法还可以很方便地计算我们的极点。</p>
+<p>并且这篇文章利用戴维南和诺顿等效来计算输出阻抗，也是我以前从来没有接触过的方法，我感觉这个方法应该会极大地简化我们的计算过程。</p>
 
             </div>
             <hr/>
@@ -933,7 +953,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">94.3k</span>&nbsp;字
+                class="white-color">95.2k</span>&nbsp;字
             
             
             
