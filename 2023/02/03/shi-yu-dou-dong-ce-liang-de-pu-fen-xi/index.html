@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    970
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -472,6 +472,36 @@
 <img src="/2023/02/03/shi-yu-dou-dong-ce-liang-de-pu-fen-xi/ec18feafc1fcc585b6c20d2d544c52dd712206a5ef4f68e553eff609c62cf570.png" class="" title="一型Bessel函数">  
 
 <p>真的非常的诡异，作者为了防止我们进一步掉入钻研Bessel函数的陷阱，告诉了我们，”In the analysis of oscillator/PLL systems and applications, the narrow-band assumption is typically accurate”，也就是说在振荡器和PLL系统里面，一般窄带FM近似就足够准确了。</p>
+<h2 id="Two-Most-Commonly-Used-Jitter-Types"><a href="#Two-Most-Commonly-Used-Jitter-Types" class="headerlink" title="Two Most Commonly Used Jitter Types"></a>Two Most Commonly Used Jitter Types</h2><p>作者说这里采用的描述和拉扎维的一篇论文”A study of oscillator jitter due to supply and substrate noise”比较类似，作者简单介绍了两种Jitter的类型，Period Jitter以及Absolute Jitter</p>
+<h3 id="Period-Jitter"><a href="#Period-Jitter" class="headerlink" title="Period Jitter"></a>Period Jitter</h3><img src="/2023/02/03/shi-yu-dou-dong-ce-liang-de-pu-fen-xi/3113c573728942340ac467210cf03e4381b7f2f246cc6571bda3f91155927ac3.png" class="" title="Period Jitter示意图">  
+
+<p>实际测量的变化是周期长度的变化，周期的定义为一个上升沿到下一个上升沿。因为测量的周期的变化，有些人称这种Jitter为edge-to-edge jitter、cycle jitter、cycle-to-cycle jitter。作者在这边还贴心地提示了，cycle-to-cycle jitter这一说法是有歧义地，如下所示，</p>
+<img src="/2023/02/03/shi-yu-dou-dong-ce-liang-de-pu-fen-xi/22594e82edf4299e6b833344c20ff2f713717b4bfcb3c1b5f38ea79ea13d4c33.png" class="" title="Cycle-to-cycle不同的定义">  
+
+<p>作者说这种period jitter的描述一般在数字应用（例如微处理器）中经常采用，因为数字电路中比较关心时钟边沿之间的数据锁存情况。</p>
+<h3 id="Absolute-Jitter"><a href="#Absolute-Jitter" class="headerlink" title="Absolute Jitter"></a>Absolute Jitter</h3><p>Absolute jitter，绝对抖动也是常用的一种抖动衡量办法，有的时候tracking jitter是这种抖动的另一个名字。作者说相对于tracking jitter，absolute jitter这个名字更加有用，所以作者采用absolute jitter来指代这种与理想源之间的绝对时间偏差。</p>
+<img src="/2023/02/03/shi-yu-dou-dong-ce-liang-de-pu-fen-xi/3c6a901d969cd9200e0a1812dd7d148f28ef2e28f861dea2792f08eaee060af8.png" class="" title="Absolute Jitter示意图">  
+
+<h3 id="其他的名字"><a href="#其他的名字" class="headerlink" title="其他的名字"></a>其他的名字</h3><table>
+<thead>
+<tr>
+<th>文章作者</th>
+<th>period jitter的别名</th>
+<th>absolute jitter的别名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Maneatis</td>
+<td>cycle-to-cycle jitter</td>
+<td>tracking jitter</td>
+</tr>
+<tr>
+<td>Herzel &amp; Razavi</td>
+<td>cycle jitter</td>
+<td>long term jitter</td>
+</tr>
+</tbody></table>
+<p> 本文在使用名称的同时还会给出具体的表达式，以防止出现误解。</p>
 
             </div>
             <hr/>
@@ -946,7 +976,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">96.5k</span>&nbsp;字
+                class="white-color">99.1k</span>&nbsp;字
             
             
             
