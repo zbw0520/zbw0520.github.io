@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.6k
+                    3.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    12 分
                 </div>
                 
 
@@ -545,6 +545,13 @@
 <p>E. J. Baghdady, R. N. Lincoln and B. D. Nelin, “Short-term frequency stability: Characterization, theory, and measurement,” in Proceedings of the IEEE, vol. 53, no. 7, pp. 704-722, July 1965, doi: 10.1109/PROC.1965.3995.</p>
 <p>该文献给出了频谱与timing jitter之间的关系。</p>
 <p>仍需要注意的是，这里的抖动指的是短期抖动，并不是长期抖动，与我们的所认知的长期抖动是不符合的。（这是我自己的认知，不知道是否正确）</p>
+<h3 id="wander的例子"><a href="#wander的例子" class="headerlink" title="wander的例子"></a>wander的例子</h3><p>在我们的应用中，中心频率为$f_o=30GHz$，周期为$T_o=33.3ps$，在频偏@$\Delta f=610.87kHz$，相位噪声功率谱密度为$\mathcal{L{\Delta f}}=10^{-101.38/10}=7.27\cdot10^{-11}rad^2/Hz$，最后计算出来的$\sigma_{\Delta t}\approx1fs$</p>
+<h2 id="如何根据时间戳给出相位噪声功率谱密度？"><a href="#如何根据时间戳给出相位噪声功率谱密度？" class="headerlink" title="如何根据时间戳给出相位噪声功率谱密度？"></a>如何根据时间戳给出相位噪声功率谱密度？</h2><p>我先暂时略去了作者关于$1/f$噪声建模的描述、以及作者对振荡器VHDL代码的描述。目前还没有考虑到这一步。作者对于测绘振荡器时间戳的相位噪声功率谱密度相关的内容是非常有意义的。时间戳的绝对值的偏移是我们用来计算的量，为了避免混淆，在这里给出数学表达式，这个量的数学表达式如下所示，</p>
+<p>$$<br>TDEV[i]=t[i]-i\cdot T_0<br>$$</p>
+<p>作者这边说，”Relationship between $TDEV$ and phase noise $\phi$ is straightforward: $\phi[i]=2\pi(TDEV[i]/T_0)$.”。实际上这个关系就是我们常用的如下的数学关系，直观上理解就是横坐标变化量$\Delta t$乘以斜率$2\pi f_0$等于纵坐标变化量$\Delta\phi$。</p>
+<p>$$<br>\Delta\phi=2\pi f_0\Delta t<br>$$</p>
+<p>直接对上述转换后的数据进行$FFT$操作就可以得到我们的幅度谱频谱了，平方后得到功率谱，再除以我们的频谱分辨率$f_{res}$就可以得到我们的噪声功率谱密度了。</p>
+<p>至此，我认为作者已经完整描述了如何使用VHDL进行建模并且如何进行结果分析的流程，接下去就等着我进行复现和实践了！！</p>
 
             </div>
             <hr/>
@@ -1013,7 +1020,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">99.6k</span>&nbsp;字
+                class="white-color">100k</span>&nbsp;字
             
             
             
