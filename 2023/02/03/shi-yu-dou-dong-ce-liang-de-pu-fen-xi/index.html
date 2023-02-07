@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 
@@ -507,7 +507,17 @@
  <img src="/2023/02/03/shi-yu-dou-dong-ce-liang-de-pu-fen-xi/31644a73b827a381f1a60af100a66f035ce5667a9c7490615c2f5c33d0203316.png" class="" title="绝对抖动示意图">  
 
 <p>并且给出了一般的振荡器的相位噪声模型，$|X(\omega)^2|\propto1/\omega^2$，这是在只考虑白噪声的前提下的。</p>
-<p>接着作者给出了周期偏移的定义：$p_1(n)=x(n)-x(n-1)$</p>
+<p>接着作者给出了周期偏移的定义：$p_1(n)=x(n)-x(n-1)$，假如两次时间戳偏移的大小和方向完全一样，那么周期偏移完全为零。接下去，作者又做了推广，如下，</p>
+<p>$$<br>p_N(n)=x(n)-x(n-N)<br>$$</p>
+<p>对于$\sigma_N^2$的大小，作者专门做了推导，过程比较复杂，最终的结果如下所示，</p>
+<img src="/2023/02/03/shi-yu-dou-dong-ce-liang-de-pu-fen-xi/eb620f9b9239894149664c5247d3b9a3e396d6517b511386c33694b479c9caa4.png" class="" title="$P_N的噪声功率谱密度$">  
+
+
+<p>读者可以看到，随着$N$不断增大，起到的滤波作用就越小，当$N=1$时，低通滤波的效果是最强的，作者还绘制了图片来描述这一问题，如下所示，</p>
+<img src="/2023/02/03/shi-yu-dou-dong-ce-liang-de-pu-fen-xi/1f4633351d0676774e7686ff3c693e9033f73a991b20a0939ab8e67bd300abb4.png" class="" title="N">  
+
+<h3 id="重要结论"><a href="#重要结论" class="headerlink" title="重要结论"></a>重要结论</h3><p>所以这里我给出结论，在Bogdan的VHDL模型中，采用的是$N=1$的噪声功率谱密度情形，也就是Period Jitter；而在一般测量PLL的$Jitter_{rms}$时，我们采用的是$N=length(Data)$的方式进行测算的，所以Period Jitter由于自身携带了滤波效应，所以计算出的$Jitter_{rms}$自然就会小；而$N=length(Data)$的方式测算出的噪声功率谱密度曲线与绝对抖动的情形最为接近，滤波效应小，所以计算出的$Jitter_{rms}$比较大。</p>
+<p>读者可以记住的结论是：$p_N(n)=x(n)-x(n-N)$一式中的N越大，其抖动越趋近于绝对抖动。N越小，低通滤波效应越强，抖动大小越小。</p>
 
             </div>
             <hr/>
@@ -982,7 +992,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">99.3k</span>&nbsp;字
+                class="white-color">99.6k</span>&nbsp;字
             
             
             
