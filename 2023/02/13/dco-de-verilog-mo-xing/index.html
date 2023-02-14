@@ -423,7 +423,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.1k
                 </div>
                 
 
@@ -508,6 +508,14 @@ module DCO_test #(
 endmodule
 </code></pre>
 <p>上面给出了详细的Verilog建模的代码，在代码中给出标称周期以及Period Jitter的均方根值，我们就可以得到最终的数据，采用<code>$fdisplay()</code>函数将数据从Modelsim中转换到csv文件格式，并最终在MATLAB中进行数值分析。</p>
+<h3 id="杂散的来源"><a href="#杂散的来源" class="headerlink" title="杂散的来源"></a>杂散的来源</h3><p>如果读者将scale设置为10，并且在<code>$fdisplay</code>中的参数设置为<code>$time</code>之后，读者就会发现在10GHz处会产生一个Spur，如下图所示，</p>
+<img src="/2023/02/13/dco-de-verilog-mo-xing/69bc60ddf95f7e7f2bc35b998d864a93f8da8a97bf90da382480a9ff19104c3d.png" class="" title="带有杂散的DCO输出相位噪声功率谱密度">  
+
+<p>这大概是由于取整操作造成的，类似于DeltaSigma中的杂散。</p>
+<p>如果读者将<code>$fdisplay</code>中的参数设置为<code>$realtime</code>之后，产生的相位噪声功率谱密度如下所示，</p>
+<img src="/2023/02/13/dco-de-verilog-mo-xing/9e1619b3c1e15caf695de3b3030e3bdcd331abdd96b400a750fca1a3ca669a12.png" class="" title="不带有杂散的DCO输出相位噪声功率谱密度">  
+
+<p>因此这个问题大概率是因为时间戳的时间精度不够造成的。（此处是我猜测的结论，没有确定的被验证）</p>
 <h2 id="MATLAB数据分析模块"><a href="#MATLAB数据分析模块" class="headerlink" title="MATLAB数据分析模块"></a>MATLAB数据分析模块</h2><pre class=" language-MATLAB"><code class="language-MATLAB">clc;
 clear;
 filename = 'zero_crossing.csv';
@@ -1035,7 +1043,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">101.6k</span>&nbsp;字
+                class="white-color">101.7k</span>&nbsp;字
             
             
             
