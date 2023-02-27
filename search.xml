@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>Cadence版图小技巧</title>
+      <link href="/2023/02/27/cadence-ban-tu-xiao-ji-qiao/"/>
+      <url>/2023/02/27/cadence-ban-tu-xiao-ji-qiao/</url>
+      
+        <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>版图是一个非常吃经验的工作，如果一段时间不画版图，那么这个人的版图能力也会退化，并且由于先前绘制版图时那些不太好的回忆，会导致这个人对版图产生惧怕心理，不敢再涉足版图的工作，这里我就将我的一些经验的东西写在这里，供以后的我参考。</p><h2 id="版图设计的小技巧"><a href="#版图设计的小技巧" class="headerlink" title="版图设计的小技巧"></a>版图设计的小技巧</h2><h3 id="自动去除线头"><a href="#自动去除线头" class="headerlink" title="自动去除线头"></a>自动去除线头</h3><p>这个功能我以前曾经再eetop上看到过，有人用skill脚本实现过，skill脚本通常来说会有一定的bug。但是我最近在画图的过程中，发现不用skill脚本也可以实现这一功能的办法，这里记录下来，以备之后绘制版图的过程中予以参考。</p><p>具体方法：</p><ul><li>先使用<code>s</code>快捷键进入拉伸模式</li><li>再使用<code>鼠标左键</code>进行批量选择</li><li>最后使用<code>鼠标左键</code>进行拉伸即可去除线头。</li></ul><h3 id="仅选中Selectability中生效的层的Via"><a href="#仅选中Selectability中生效的层的Via" class="headerlink" title="仅选中Selectability中生效的层的Via"></a>仅选中Selectability中生效的层的Via</h3><p>这里问题主要存在Cadence中的一个可选项不可视的问题，这个问题我搜索了一下，最后找到了一篇对应的Cadence的帖子，链接如下，</p><p><a href="https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/36593/selection-of-non-visible-object" target="_blank" rel="noopener">https://community.cadence.com/cadence_technology_forums/f/custom-ic-design/36593/selection-of-non-visible-object</a></p><p>其中，作者将问题描述为如下所示，</p><img src="/2023/02/27/cadence-ban-tu-xiao-ji-qiao/ca8d763c051e25a0d5b3daea7856d262f55a13ba8717c11753975d9b4eec1e6a.png" class="" title="Selection of non-visible object">  <p>最终支持人员给出的解决方案如下，</p><img src="/2023/02/27/cadence-ban-tu-xiao-ji-qiao/d4d89a8de96ac916af21aa44f46b2d38043dfb3ea9aff2e0c7805aea49e49a58.png" class="" title="picture 2">  <p>简单来说，如果要实现我们想要的那个不选择看不见或者没选中的器件，需要使用下面的语句，</p><pre><code>envSetVal("layout" "viaSelectionMode" 'cyclic "useCutLayers")</code></pre><p>经过我实验过后，发现是可行的，只不过退出Cadence环境后，都需要重新进行输入操作，这样有些麻烦，应该可以在cadence中进行预先设置。本人修改了位于home下的文件<code>.cdsenv</code>，在其中加入了如下的条目</p><pre><code>layout  viaSelectionMode    cyclic  useCutLayers</code></pre><p>这样一来每次打开virtuoso的时候，就会自动将该环境变量进行赋值，就不需要每次都进行更改了。</p><h3 id="自动添加pin与label"><a href="#自动添加pin与label" class="headerlink" title="自动添加pin与label"></a>自动添加pin与label</h3><p>每次手动添加label与pin非常费力费时，这时可以考虑将这一部分操作进行自动化。</p><p>具体方法：</p><ul><li>点选<code>Create</code>栏目；</li><li>点击<code>Pin</code>；</li><li>选择<code>Auto</code>；</li><li>在<code>Pin Layer/Purpose</code>一栏中，选择<code>Use same layer as shape, select purpose</code>中的复选框，将Purpose设置为<code>pin</code>；</li><li>选择Create Label，将复选框选为<code>auto</code>；</li><li>点选<code>Option</code>进行Label属性的设置；</li><li>设置Height &amp; Font为你想要的大小；</li><li>在<code>Text Options</code>栏目中，选择<code>Create As Label</code>；</li><li>在<code>Layer Name</code>栏目中，选择<code>Same As Pin</code>;</li><li>在<code>Layer Purpose</code>栏目中，选择<code>Same As Pin</code></li></ul><p>设置完以上之后，每次点击<code>Create</code>-&gt;<code>Pin</code>之后，再点击想要设置的线网形状即可，非常方便。</p><h3 id="自动打过孔Via"><a href="#自动打过孔Via" class="headerlink" title="自动打过孔Via"></a>自动打过孔Via</h3><p>这个功能在铺设地网和Power网的时候非常好用，基本上就是直接使用即可，一般来说我们在设计过程中一定会需要打过孔的情况，这时如果采用手动打过孔的方式，那么就会非常复杂和麻烦，这时候可以采用借助工具的方法。在这里不禁感叹一句，”懒惰就是发明工具的第一源动力”。Anyway，我在这里采用<code>o</code>快捷键进行过孔的添加。</p><p>具体方法：</p><ul><li>点击快捷键<code>o</code>后，点击<code>Auto</code>，进入过孔自动编辑页面；</li><li>在<code>Cut Class</code>中，设置你想要的过孔形状，在Options中最好也设置成对应的；</li><li>点选<code>Prevent DRC Violations With Neighbors</code>;</li><li>点选<code>Prevent Via Larger Than Overlap</code>；</li><li>在你确定线网名称后，可以使用<code>Connect Shapes On The Same Net</code>选项，并输入你的网表名称，这样可以只打一种过孔。在铺设地网和Power网的时候非常好用，并且在后期打过孔时也非常好用。</li></ul><p>以上过孔方法可以配合自动去线头的方法一起使用，效果极佳。</p><h3 id="检查Marker报错的原因"><a href="#检查Marker报错的原因" class="headerlink" title="检查Marker报错的原因"></a>检查Marker报错的原因</h3><p>有的时候，Marker会报错，这是由于ADEXL内部自动带的检查规则导致的，这时，你可能不知道怎么去看Marker报错的原因。你可以使用如下方法检查Marker报错的原因。</p><p>具体方法：</p><ul><li><code>Verify</code> -&gt; <code>Marker</code> -&gt; <code>Explain</code></li></ul><p>即可查看Marker报错的原因了，非常简单方便。</p><h3 id="仅仅选择指定类型的对象"><a href="#仅仅选择指定类型的对象" class="headerlink" title="仅仅选择指定类型的对象"></a>仅仅选择指定类型的对象</h3><p>在Cadence中进行选择的时候，我们常常会发现选中的内容中包含了<code>instances</code>，往往这是我们不希望使用的，可以在<code>Pallete</code>中的<code>Objects</code>窗口中选择<code>Objects</code>。其中有不同对象的<code>Visibility</code>以及<code>Selectability</code>，读者可以通过这些设置进行选择对象的Filtering，如下所示</p><img src="/2023/02/27/cadence-ban-tu-xiao-ji-qiao/69d4f2fe62d79c70c7a67970ab70de7b780294b3abbb2ac52d1962e39a92e9f5.jpeg" class="" title="picture 3"><h3 id="绘制地网-amp-Power网"><a href="#绘制地网-amp-Power网" class="headerlink" title="绘制地网&amp;Power网"></a>绘制地网&amp;Power网</h3><p>一块一块绘制的方法肯定是不可行的，非常浪费时间，我们这里采用<code>Create</code> -&gt; <code>Wiring</code> -&gt; <code>Stranded Wire</code>的方法，便可以快速绘图了。</p><img src="/2023/02/27/cadence-ban-tu-xiao-ji-qiao/31d2da4f0e8b61fafcc8752db3eec62c9d50b118b6a21b2a2d79cdcdf51a027a.jpeg" class="" title="Stranded Wire绘制方法">  ]]></content>
+      
+      
+      <categories>
+          
+          <category> 版图设计 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 版图小技巧 </tag>
+            
+            <tag> Cadence </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>LVS错误总结</title>
+      <link href="/2023/02/27/lvs-cuo-wu-zong-jie/"/>
+      <url>/2023/02/27/lvs-cuo-wu-zong-jie/</url>
+      
+        <content type="html"><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>通常来说，Calibre的LVS错误会比较难排查，基本原因是因为Calibre的错误提示做得太差，这里点名批评Siemens公司。一般我们会采用Connectivity以及CAS工具辅助我们排查错误，但是这些工具可能会误报错误或者说检查不出Front End的错误，这是我们需要注意的。综上所述，没有一个很好的工具帮助我们发现错误，所以，我们需要通过大量的时间检查出错误，发现错误，并且总结这些报错的原因。这就是我写这篇博客的意义，帮助我在LVS错误上不要掉进一个坑两次。</p><h2 id="错误总结板块"><a href="#错误总结板块" class="headerlink" title="错误总结板块"></a>错误总结板块</h2><p>在这个版块会罗列出错误的名称和解决方案，方便之后排查。</p><h3 id="Incorrect-Instances"><a href="#Incorrect-Instances" class="headerlink" title="Incorrect Instances"></a>Incorrect Instances</h3><h4 id="Discrepancy"><a href="#Discrepancy" class="headerlink" title="Discrepancy"></a>Discrepancy</h4><h5 id="SOURCE-NAME-missing-instance"><a href="#SOURCE-NAME-missing-instance" class="headerlink" title="SOURCE NAME ** missing instance **"></a>SOURCE NAME ** missing instance **</h5><img src="/2023/02/27/lvs-cuo-wu-zong-jie/fc7a8650beaefe9a0854259bcf066f5db509506b42de05f7f352b89ef1c52397.jpeg" class="" title="picture 1">  <p>出现这个错误一般是版图中有MOS与原理图对应不上，或者是多出了器件，常见于用户自行绘制PO形状之后，LVS将该形状识别成了器件；或者说用户将MOS管的源和漏短路了，（P.S. 这种错误其实可以使用Connectivity工具马上定位出来）。</p><p>需要注意的是，一般LVS可能不会将器件识别准确，所以你点开提示的器件不一定就是你绘制错误的器件，这里的case就是这样，我在其他地方绘制了多余的PO形状之后，Calibre没有识别到我的那个多余的器件，反而找了一个随机的正确的器件。</p><h5 id="LAYOUT-NAME-bad-component-subtype"><a href="#LAYOUT-NAME-bad-component-subtype" class="headerlink" title="LAYOUT NAME bad component subtype"></a>LAYOUT NAME bad component subtype</h5><p>出现这个错误一般是NMOS出现，我还没有看到过PMOS出现过这个错误，一般来说是电路里面缺少<code>LVS Dummy layer</code>导致的，这个层次一般来说是一个绿色虚线的层次，如下所示，</p><img src="/2023/02/27/lvs-cuo-wu-zong-jie/15452d585ac6d945cbe2bb181f5785af535819330d1c062721c61aa82f5aae90.jpeg" class="" title="picture 2">  <p>一般需要将这个层次打开即可。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 版图设计 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LVS </tag>
+            
+            <tag> 错误总结分类 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>做FFT时的频谱零值插值问题</title>
       <link href="/2023/02/20/zuo-fft-shi-de-pin-pu-ling-zhi-cha-zhi-wen-ti/"/>
       <url>/2023/02/20/zuo-fft-shi-de-pin-pu-ling-zhi-cha-zhi-wen-ti/</url>
@@ -660,11 +714,11 @@
       
         <tags>
             
+            <tag> Cadence </tag>
+            
             <tag> LDO </tag>
             
             <tag> 模拟集成电路设计 </tag>
-            
-            <tag> Cadence </tag>
             
             <tag> 电源技术 </tag>
             
