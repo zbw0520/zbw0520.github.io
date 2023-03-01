@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -503,10 +503,36 @@
 <img src="/2023/02/27/cadence-ban-tu-xiao-ji-qiao/69d4f2fe62d79c70c7a67970ab70de7b780294b3abbb2ac52d1962e39a92e9f5.jpeg" class="" title="picture 3">
 
 <h3 id="绘制地网-amp-Power网"><a href="#绘制地网-amp-Power网" class="headerlink" title="绘制地网&amp;Power网"></a>绘制地网&amp;Power网</h3><p>一块一块绘制的方法肯定是不可行的，非常浪费时间，我们这里采用<code>Create</code> -&gt; <code>Wiring</code> -&gt; <code>Stranded Wire</code>的方法，便可以快速绘图了。</p>
-<img src="/2023/02/27/cadence-ban-tu-xiao-ji-qiao/31d2da4f0e8b61fafcc8752db3eec62c9d50b118b6a21b2a2d79cdcdf51a027a.jpeg" class="" title="Stranded Wire绘制方法">  
+<img src="/2023/02/27/cadence-ban-tu-xiao-ji-qiao/31d2da4f0e8b61fafcc8752db3eec62c9d50b118b6a21b2a2d79cdcdf51a027a.jpeg" class="" title="Stranded Wire绘制方法">
 
-
-
+<p>以下表格给出了具体的线宽和线间距设置，按照此规定设置可以保证最终结果满足要求，并且在打过孔的时候不会出现问题。</p>
+<table>
+<thead>
+<tr>
+<th>Layer Name</th>
+<th>线宽</th>
+<th>线间距</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>M9</td>
+<td>0.468</td>
+<td>1.188</td>
+</tr>
+<tr>
+<td>M10</td>
+<td>1.8</td>
+<td>3.6</td>
+</tr>
+</tbody></table>
+<h3 id="拉伸到指定位置"><a href="#拉伸到指定位置" class="headerlink" title="拉伸到指定位置"></a>拉伸到指定位置</h3><p>我们在做拉伸的时候，经常会发现拉伸到指定位置比较困难，因为你要去对准某一个特定的位置，这时候需要放大仔细对准，这是非常不方便的。我们可以使用标尺先测量距离，再进行精确拉伸即可达到目的。</p>
+<p>具体方法：</p>
+<ul>
+<li>使用<code>s</code>进入拉伸操作；</li>
+<li>使用<code>k</code>进行距离测量；</li>
+<li>使用<code>TAB</code>切换到dx或dy输入框；</li>
+<li>输入测量得到的距离，按回车之后即可；</li>
+</ul>
 
             </div>
             <hr/>
@@ -981,7 +1007,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">104.3k</span>&nbsp;字
+                class="white-color">104.5k</span>&nbsp;字
             
             
             
