@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 
@@ -476,7 +476,7 @@
 <p>$$<br>H(s)=\frac{a_0+\alpha_1^1C_1s}{1+\beta_1^1C_1s}<br>$$</p>
 <p>$b_1$是我们的时间常数，$\tau=C_1R_1^0$。这里要说明一下我们的命名方式，这里除了下标，还会有上标，上标表示值为无穷的器件，也就是频率为无穷大时，器件的阻抗，这时，电容为短路，电感为开路，另外，如果上标为零，那么表示所有器件均为零值，也就是频率为零，DC时的情况，这时，电容为开路，电感为短路。根据这个描述，我\们可以把上面的表达式写成如下形式，</p>
 <p>$$<br>H(s)=\frac{H^0+H^1R_1^0C_1s}{1+R_1^0C_1s}=\frac{H^0+H^1\tau s}{1+\tau s}<br>$$</p>
-<h3 id="几个例子"><a href="#几个例子" class="headerlink" title="几个例子"></a>几个例子</h3><img src="/2023/03/10/ttc-fang-fa-zong-jie/314dd384f61fd6f5909f97e76ca130299a910ccdaf277735ea0450b2f6a2746f.png" class="" title="picture 2">  
+<h3 id="几个例子"><a href="#几个例子" class="headerlink" title="几个例子"></a>几个例子</h3><h4 id="例子一"><a href="#例子一" class="headerlink" title="例子一"></a>例子一</h4><img src="/2023/03/10/ttc-fang-fa-zong-jie/314dd384f61fd6f5909f97e76ca130299a910ccdaf277735ea0450b2f6a2746f.png" class="" title="picture 2">  
 
 <p>先计算$H^0$，也就是所有Reactive Elements的值为零的传输函数，换句话说，也就是所有电容开路，所有电感短路时的电路的传输函数。这时，输入直接传递到输出，没有衰减和增益，所以，</p>
 <p>$$<br>H^0=1<br>$$</p>
@@ -486,6 +486,25 @@
 <p>$$<br>H^1=0<br>$$</p>
 <p>综上所述，我们利用一开始的ZVT公式，可以得到如下的电路传输函数，</p>
 <p>$$<br>H(s)=\frac{1}{1+RC_1s}<br>$$</p>
+<p>到这里我们就推导了一阶RC低通滤波器的传输函数。</p>
+<h4 id="例子二"><a href="#例子二" class="headerlink" title="例子二"></a>例子二</h4><p>接下去我们看第二个例子</p>
+<img src="/2023/03/10/ttc-fang-fa-zong-jie/f7cbc444b7c9b91fb40fcdd6aeb1297afb07ef6278e8768e2822d5f0d130d3a9.png" class="" title="picture 3">  
+
+<p>我们可以先计算一下该电路的DC增益：</p>
+<p>$$<br>H^0=\frac{R_b}{R_a+R_b}<br>$$</p>
+<p>接下去我们去计算我们的时间常数$\tau_1$，计算该时间常数的办法是，</p>
+<ol>
+<li>将所有的源归零；</li>
+<li>将其他的电抗器件的值变为零；</li>
+<li>计算$C_1$两侧看入的电阻$R$，并与$C_1$相乘得到时间常数$RC_1$</li>
+</ol>
+<p>$$<br>\tau_1=(R_a||R_b)C_1<br>$$</p>
+<p>接下去我们计算$H^1$，计算$H^1$的办法就是将$C_1$的值变为无穷大，其他的电抗器件的值变为0，然后测算从输入到输出的增益。</p>
+<p>这里，我们将$C_1$短路，获得的$H_1$如下所示，</p>
+<p>$$<br>H_1=1<br>$$</p>
+<p>所以，根据先前的公式，有，</p>
+<p>$$<br>H_(s)=\frac{H^0+H^1\tau_1s}{1+\tau_1s}=\frac{\frac{R_b}{R_a+R_b}+(R_a||R_b)C_1s}{1+(R_a||R_b)C_1s}<br>$$</p>
+<p>从上述表达式中，我们可以发现增益从低频的$\frac{R_b}{R_a+R_b}$移动到高频的$1$，也就是从$H^0$变为$H^1$。</p>
 
             </div>
             <hr/>
@@ -960,7 +979,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">105.9k</span>&nbsp;字
+                class="white-color">106.1k</span>&nbsp;字
             
             
             
