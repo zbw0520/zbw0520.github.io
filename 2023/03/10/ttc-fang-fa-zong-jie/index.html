@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    2.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    10 分
                 </div>
                 
 
@@ -505,6 +505,50 @@
 <p>所以，根据先前的公式，有，</p>
 <p>$$<br>H_(s)=\frac{H^0+H^1\tau_1s}{1+\tau_1s}=\frac{\frac{R_b}{R_a+R_b}+(R_a||R_b)C_1s}{1+(R_a||R_b)C_1s}<br>$$</p>
 <p>从上述表达式中，我们可以发现增益从低频的$\frac{R_b}{R_a+R_b}$移动到高频的$1$，也就是从$H^0$变为$H^1$。</p>
+<h4 id="例子三"><a href="#例子三" class="headerlink" title="例子三"></a>例子三</h4><img src="/2023/03/10/ttc-fang-fa-zong-jie/219af40a7422879883437e41477e9409923ad86289deb063404dccbd271d55f8.png" class="" title="picture 4">  
+
+<p>该例子中出现了电感器件，为了说明电感器件如何应用该理论，这里特别放置了这样的一个例子。首先说明，该电路为一阶RL高通滤波器。</p>
+<p>我们先计算DC增益$H^0$，也就是所有的器件的值全部为零的情形，在该情形下，电感为短路，$sL=s\cdot 0=0$，电容为开路，$\frac{1}{sC}=\frac{1}{s\cdot 0}=\infty$。在这里，电感为短路，所以输出为零，即，$H^0=0$。接下去计算时间常数$\tau_1$，计算电感的时间常数和电容不同，电感的时间常数为$\frac{L}{R}$，所以有，</p>
+<p>$$<br>\tau_1=\frac{L_1}{R}<br>$$</p>
+<p>接下去我们继续计算$H^1$，即$L_1$器件的值为$\infty$时，电路的增益，这时电感为开路，输出增益为1，所以，</p>
+<p>$$<br>H^1=1<br>$$</p>
+<p>将上述表达式代入TTC公式中，可以得到如下的表达式，</p>
+<p>$$<br>H(s)=\frac{\frac{L_1}{R}s}{1+\frac{L_1}{R}s}<br>$$</p>
+<p>可以看到的是，该电路的传输函数是一个高通滤波器。</p>
+<h4 id="例子四"><a href="#例子四" class="headerlink" title="例子四"></a>例子四</h4><p>在案例四中，我们加入了受控源结构，即MOS管，使得问题与实际问题更加贴切，让我们来看看在MOS管中如何利用TTC理论。</p>
+<img src="/2023/03/10/ttc-fang-fa-zong-jie/9cf3803268831d8b1e5c282a8aff513e05191ba8074157b3210aea59a0448f70.png" class="" title="picture 5">  
+
+<p>上图中的MOS管电路是一个共源放大器，我们可以先计算一下DC增益$H^0$，该增益由下式描述，</p>
+<p>$$<br>H^0=-g_mR_2<br>$$</p>
+<p>再来计算由$C_\pi$贡献的时间常数$\tau_\pi^0$，</p>
+<p>$$<br>\tau_\pi^0=R_1C_\pi<br>$$</p>
+<p>当我们想要计算$H_\pi$时，会发现当$C_\pi$短路时，该电路的增益为零，因为输入被短接到地了，所以有，</p>
+<p>$$<br>H^\pi=0<br>$$</p>
+<p>综上所述，我们可以得到总体的传输函数表达式，</p>
+<p>$$<br>H(s)=\frac{-g_mR_2}{1+R_1C_\pi s}<br>$$</p>
+<p>从这个例子中我们可以得到结论，如果短路电容或者开路电感，输出有且不为零，那么就存在一个零点；如果前后传输函数的极性被翻转了，那么就存在一个右半平面的零点，反之，如果传输函数的极性没有被翻转，那么就存在一个左半平面的零点。</p>
+<h3 id="一阶TTC在MOS管中的应用"><a href="#一阶TTC在MOS管中的应用" class="headerlink" title="一阶TTC在MOS管中的应用"></a>一阶TTC在MOS管中的应用</h3><img src="/2023/03/10/ttc-fang-fa-zong-jie/defc605b3d12ad27149d7037afa168a69b86904251dabbd96f62bf512808c400.png" class="" title="picture 6">  
+
+<p>上述电路结构是一个典型的MOS管的寄生结构，该结构是一个通用的寄生模型，该模型在计算时间常数时，如果采用通常的小信号方法进行硬解，比较复杂麻烦，这里，给出了几个结论，并且给出了这几个结论的推导过程。</p>
+<h4 id="C-mu-的计算方法"><a href="#C-mu-的计算方法" class="headerlink" title="$C\mu$的计算方法"></a>$C\mu$的计算方法</h4><p>先给出结论，</p>
+<p>$$<br>\tau_\mu^0=R_\mu C_\mu=(R_{left}+R_{right}+G_mR_{left}R_{right})C_\mu<br>$$</p>
+<p>这里的$G_m$为等效跨导，该由于MOS管的源通常会接电阻，所以MOS管的跨导会发生退化，也就是源退化电阻导致的MOS管的跨导的减小。</p>
+<p>下面对上面的结论进行推导，我们先给出了如下的电路图，</p>
+<img src="/2023/03/10/ttc-fang-fa-zong-jie/bf95b43810b1fba7ed2ebfe90f0281a3e7285c517d73719690b573776da82647.png" class="" title="picture 7">  
+
+<p>我们要测量$C_\mu$两端看去的阻抗，可以将$C_\mu$替换为电流源，电流为$i_x$，如上图所示，这样，这个电流会在栅上产生一个恒定的电压$v_g=i_xR_1$。</p>
+<p>我们令流过管子的电流为$i_d$，这样，源上的电压为$v_s=i_dR_2$，我们接下去可以利用管子的跨导将栅源电压差和漏电流的关系表示出来，如下所示，</p>
+<p>$$<br>(i_xR_1-i_dR_2)g_m=i_d<br>$$</p>
+<p>化简之后，可以获得$i_d$与$i_x$之间的关系，如下所示，</p>
+<p>$$<br>i_d=\frac{i_xg_mR_1}{1+g_mR_2}<br>$$</p>
+<p>我们可以先观察一下上面的表达式，很明显有一个负反馈的意思在其中，这里的环路增益是$g_mR_2$。环路也比较明晰，栅电压升高$v_g$，产生更大的漏电流$v_gg_m$，进一步在源上产生电压$v_gg_mR_2$，通过$v_{gs}$反馈到输入上，具体的反馈图如下图所示，</p>
+<img src="/2023/03/10/ttc-fang-fa-zong-jie/13f414b8a349f1570c867addf80611496aa23fc82f340f21b7d73f2ea65c365d.png" class="" title="picture 8">  
+
+<p>我们可以利用这个电流关系进一步计算$v_d$的表达式，如下所示，</p>
+<p>$$<br>v_d=-idR_3-ixR_3=-\frac{i_xg_mR_1R_3}{1+g_mR_2}-ixR_3<br>$$</p>
+<p>进一步我们可以得到最终的$v_x$电压，该电压的大小由下式表达，</p>
+<p>$$<br>v_x=v_g-v_d=i_xR_1+\frac{i_xg_mR_3R_1}{1+g_mR_2}+i_xR_3=i_x(R_1+R_3+G_mR_1R_3)<br>$$</p>
+<p>其中真正的跨导被源退化电阻缩小$g_mR_2$倍，所以为等效跨导。至此我们推导了$R_\mu$的大小。</p>
 
             </div>
             <hr/>
@@ -979,7 +1023,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">106.1k</span>&nbsp;字
+                class="white-color">107.2k</span>&nbsp;字
             
             
             
