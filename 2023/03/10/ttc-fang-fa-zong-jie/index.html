@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    3.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    13 分
                 </div>
                 
 
@@ -530,7 +530,7 @@
 <h3 id="一阶TTC在MOS管中的应用"><a href="#一阶TTC在MOS管中的应用" class="headerlink" title="一阶TTC在MOS管中的应用"></a>一阶TTC在MOS管中的应用</h3><img src="/2023/03/10/ttc-fang-fa-zong-jie/defc605b3d12ad27149d7037afa168a69b86904251dabbd96f62bf512808c400.png" class="" title="picture 6">  
 
 <p>上述电路结构是一个典型的MOS管的寄生结构，该结构是一个通用的寄生模型，该模型在计算时间常数时，如果采用通常的小信号方法进行硬解，比较复杂麻烦，这里，给出了几个结论，并且给出了这几个结论的推导过程。</p>
-<h4 id="C-mu-的计算方法"><a href="#C-mu-的计算方法" class="headerlink" title="$C\mu$的计算方法"></a>$C\mu$的计算方法</h4><p>先给出结论，</p>
+<h4 id="R-mu-的计算方法"><a href="#R-mu-的计算方法" class="headerlink" title="$R\mu$的计算方法"></a>$R\mu$的计算方法</h4><p>先给出结论，</p>
 <p>$$<br>\tau_\mu^0=R_\mu C_\mu=(R_{left}+R_{right}+G_mR_{left}R_{right})C_\mu<br>$$</p>
 <p>这里的$G_m$为等效跨导，该由于MOS管的源通常会接电阻，所以MOS管的跨导会发生退化，也就是源退化电阻导致的MOS管的跨导的减小。</p>
 <p>下面对上面的结论进行推导，我们先给出了如下的电路图，</p>
@@ -549,6 +549,36 @@
 <p>进一步我们可以得到最终的$v_x$电压，该电压的大小由下式表达，</p>
 <p>$$<br>v_x=v_g-v_d=i_xR_1+\frac{i_xg_mR_3R_1}{1+g_mR_2}+i_xR_3=i_x(R_1+R_3+G_mR_1R_3)<br>$$</p>
 <p>其中真正的跨导被源退化电阻缩小$g_mR_2$倍，所以为等效跨导。至此我们推导了$R_\mu$的大小。</p>
+<h4 id="R-pi-的计算方法"><a href="#R-pi-的计算方法" class="headerlink" title="$R\pi$的计算方法"></a>$R\pi$的计算方法</h4><p>先给出结论，$R_\pi$的计算方法如下，</p>
+<p>$$<br>R_\pi=\frac{R_1+R_2}{1+g_mR_2}<br>$$</p>
+<p>下面我们对该阻抗的计算方法进行一个推导，本质上就是计算如下图所示的端口看入的阻抗。</p>
+<img src="/2023/03/10/ttc-fang-fa-zong-jie/ab667c29a72f52b8b0158d3e67b93453fdcee55af44e3bba5faf4daa62878176.png" class="" title="picture 9">  
+
+<p>我们先解出$i_d$和$i_x$的关系，如下所示，</p>
+<p>$$<br>(i_xR_1-i_dR_2+i_xR_2)g_m=i_d<br>$$</p>
+<p>简单化简一下，我们可以得到下面的关系，</p>
+<p>$$<br>i_d=\frac{g_m(R_1+R_2)}{1+g_mR_2}i_x<br>$$</p>
+<p>接下去我们就可以解出$v_x$的大小，$v_x=v_{gs}$，如下，</p>
+<p>$$<br>v_x=i_x(R_1+R_2)-\frac{g_m(R_1R_2+R_2^2)}{1+g_mR_2}<br>$$</p>
+<p>化简有如下表达式，</p>
+<p>$$<br>v_x=\frac{R_1+R_2}{1+g_mR_2}<br>$$</p>
+<h4 id="R-B-的计算办法"><a href="#R-B-的计算办法" class="headerlink" title="$R_B$的计算办法"></a>$R_B$的计算办法</h4><p>$R_B$的计算方法与结果与$R_\pi$基本一致，表达式如下所示，这里就不做推导了。</p>
+<p>$$<br>R_B=\frac{R_2+R_3}{1+g_mR_2}<br>$$</p>
+<h4 id="MOS管从源看入的阻抗表达式中的零点问题"><a href="#MOS管从源看入的阻抗表达式中的零点问题" class="headerlink" title="MOS管从源看入的阻抗表达式中的零点问题"></a>MOS管从源看入的阻抗表达式中的零点问题</h4><p>如下图所示，我们可以看到一个典型的MOS管配置在源跟随器状态下的电路图，这时，MOS管存在寄生电容$C_\pi$，会产生一个阻抗的零点，下面对这个零点的来源进行一个推导。</p>
+<img src="/2023/03/10/ttc-fang-fa-zong-jie/330baf3e0cfe9b679734b08b8288c444299cef28a948393ba58671c0c5b958ee.png" class="" title="picture 10">  
+
+<p>我们要计算输出阻抗，所以激励一定是电流，我们在源上施加一个流入的电流$i_x$。</p>
+<p>我们先计算DC阻抗$Z^0$，这时，所有的电容的值均为零，也就是电容的阻抗为无穷大，即所有电容开路，这时的DC阻抗就是$1/g_m$，即，</p>
+<p>$$<br>Z^0=1/g_m<br>$$</p>
+<p>我们再去计算$Z^\pi$，即当$C_\pi$的值为无穷大时，这时看入的阻抗。这时，由于MOS管的栅和源之间被短路了，所以MOS管的源不能流入和流出电流，电流只可以流向$R_1$，所以，最终看入的阻抗为$R_1$，即，</p>
+<p>$$<br>Z^\pi=R_1<br>$$</p>
+<p>接下去我们需要计算时间常数$\tau_\pi^0$，计算这个时间常数主要是需要计算从$C_\pi$两侧看入的阻抗$R_\pi^0$，该阻抗在$R_1$以及$R_2$均为有限值时，由下式表达，</p>
+<p>$$<br>R_\pi^0=\frac{R_1+R_2}{1+g_mR_2}<br>$$</p>
+<p>但在本电路中，由于MOS管的源是开路的，所以，$R_2\rightarrow\infty$，所以，</p>
+<p>$$<br>R_\pi^0=\frac{1}{g_m}<br>$$</p>
+<p>根据上面的信息，我们已经可以写出s域下的阻抗表达式了，如下所示，</p>
+<p>$$<br>Z(s)=\frac{Z^0+Z^\pi\tau_\pi^0s}{1+\tau_\pi^0s}=\frac{1/g_m+R_1C_\pi1/g_ms}{1+C_\pi1/g_ms}=\frac{1+R_1C_\pi s}{g_m+C_\pi s}<br>$$</p>
+<p>从上面的阻抗表达式中，我们可以发现阻抗在低频的位置处，为$1/g_m$，到了高频处，为$R_1$。在一些对高频输出阻抗敏感的应用中，我们需要对电路的栅电阻尤为注意，要在此处加足够的Decap，否则，将会出现输出阻抗peaking的问题。</p>
 
             </div>
             <hr/>
@@ -1023,7 +1053,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">107.2k</span>&nbsp;字
+                class="white-color">108k</span>&nbsp;字
             
             
             
