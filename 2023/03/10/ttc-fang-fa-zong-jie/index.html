@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4k
+                    4.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    17 分
                 </div>
                 
 
@@ -579,7 +579,7 @@
 <p>根据上面的信息，我们已经可以写出s域下的阻抗表达式了，如下所示，</p>
 <p>$$<br>Z(s)=\frac{Z^0+Z^\pi\tau_\pi^0s}{1+\tau_\pi^0s}=\frac{1/g_m+R_1C_\pi1/g_ms}{1+C_\pi1/g_ms}=\frac{1+R_1C_\pi s}{g_m+C_\pi s}<br>$$</p>
 <p>从上面的阻抗表达式中，我们可以发现阻抗在低频的位置处，为$1/g_m$，到了高频处，为$R_1$。在一些对高频输出阻抗敏感的应用中，我们需要对电路的栅电阻尤为注意，要在此处加足够的Decap，否则，将会出现输出阻抗peaking的问题。</p>
-<h3 id="米勒电容问题"><a href="#米勒电容问题" class="headerlink" title="米勒电容问题"></a>米勒电容问题</h3><p>如下图所示，是一个米勒电容的模型，该电容跨接在电容的源和漏之间，形成了一个极点加上一个右半平面的零点。下面利用TTC推导上述结论，并且对零点和极点位置进行定量分析。</p>
+<h4 id="米勒电容问题"><a href="#米勒电容问题" class="headerlink" title="米勒电容问题"></a>米勒电容问题</h4><p>如下图所示，是一个米勒电容的模型，该电容跨接在电容的源和漏之间，形成了一个极点加上一个右半平面的零点。下面利用TTC推导上述结论，并且对零点和极点位置进行定量分析。</p>
 <img src="/2023/03/10/ttc-fang-fa-zong-jie/97862a5c8467ea6548bd65da855aa55244ff23879ae907692c816c274b89b755.png" class="" title="picture 11">  
 
 <p>首先，先分析DC增益，DC增益为电容开路时，电路的增益，那么就是一个共源放大器的增益，如下所示，</p>
@@ -590,7 +590,48 @@
 <p>所以电路的传输函数可以表示为如下所示，</p>
 <p>$$<br>H(s)=\frac{H^0+H^1C_\mu R_\mu^0s}{1+C_\mu R_\mu^0s}=\frac{-g_mR_2+R_2C_\mu s}{1+R_\mu C_\mu s}=-g_mR_2\frac{1-C_\mu/g_m s}{1+R_\mu C_\mu s}<br>$$</p>
 <p>从上面的表达式中，可以看到该电路中的极点为$-\frac{1}{R_\mu C_\mu^0}$，电路的零点为$\frac{g_m}{C_\mu}$。值得注意的是，这里的零点为右半平面零点，右半平面一方面会让增益以$+20dB/dec$的速度滚升，另一方面还会将相位降低$90\degree$。直观来说，对相位裕度有十分恶劣的影响，因为我们希望增益在到达$-180\degree$前滚降到0dB。我们来大概估计一下这个零点的位置，假设MOS管本身的寄生为$C_\mu$，那么最终的零点位置其实是比$f_T$要远的，这就意味着，一般情形下，零点位于GBW外。因此，在不额外增加电容的前提下，我们不需要关注这个零点对电路造成的影响。</p>
-<h3 id="零点"><a href="#零点" class="headerlink" title="零点"></a>零点</h3>
+<h3 id="零点的位置估计"><a href="#零点的位置估计" class="headerlink" title="零点的位置估计"></a>零点的位置估计</h3><p>从上面的内容中，我们不难发现，零点的计算方法如下，</p>
+<p>$$<br>Z=\frac{H^0}{H^1}P<br>$$</p>
+<p>仔细观察一下上面的式子，读者就会发现，零点实际上是极点位置经过修正后的结果。所以，只要知道修正系数的大小，我们就可以马上推算出零点的位置了。</p>
+<p>下面我们给出一个相关的表格，来分析一下各种情况：</p>
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>$\frac{H^0}{H^1}&lt;1$</th>
+<th>$\frac{H^0}{H^1}&gt;1$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>$\frac{H^0}{H^1}&gt;0$</td>
+<td>零点极点位于同一平面<br> $|Z|&lt;|P|$</td>
+<td>零点极点位于同一平面<br> $|Z|&gt;|P|$</td>
+</tr>
+<tr>
+<td>$\frac{H^0}{H^1}&lt;0$</td>
+<td>零点极点位于不同平面<br> $|Z|&lt;|P|$</td>
+<td>零点极点位于不同平面<br> $|Z|&lt;|P|$</td>
+</tr>
+</tbody></table>
+<p> 下图总结了上面不同的零点和极点关系对应的不同的频率响应。</p>
+ <img src="/2023/03/10/ttc-fang-fa-zong-jie/dc9777201460f0a04442fae26933e53205c38387bd0d58c967be2350ca3c41f1.png" class="" title="picture 12">  
+
+<p>对于上面的一个极点一个零点的系统，我们可以对其进行分解，得到对应的时域响应表达式，如下所示，</p>
+<p>$$<br>H(s)=\frac{H^0+H^1\tau s}{1+\tau s}=H^0\frac{1}{1+\tau s}+H^1\frac{\tau s}{1+\tau s}<br>$$</p>
+<p>上式对应的时域表达式如下所示，</p>
+<p>$$<br>h(t)=H^0(1-e^{-t/\tau})u(t)+H^1e^{-t/\tau}u(t)<br>$$</p>
+<p>上述表达式的时域波形可以分解为如下图所示的图像，</p>
+<img src="/2023/03/10/ttc-fang-fa-zong-jie/3b9d5df897826574cd0f8756097c7f3b33fdde3bdb404b2eccf85299b9917904.png" class="" title="picture 14">  
+
+
+<p>可以看到的是，左半平面零点对应的时域响应是上述两个相应的和，将这两个响应相加，会发现如果$H^1$比较大，那么相应会有过冲的现象，如下图所示，</p>
+<img src="/2023/03/10/ttc-fang-fa-zong-jie/3cef3ee231f93668778fdfabc71567aeb0ac88a699547f8c2ea6ae7de1da94bd.png" class="" title="picture 15">  
+
+<p>因此，需要注意的是，当读者看到阶跃响应出现过冲时，不仅仅会在二阶系统中出现，也有可能在一阶系统中出现。</p>
+<p>另一方面，如果电路中存在右半平面零点，那么该电路会有undershoot现象，如下所示，</p>
+<img src="/2023/03/10/ttc-fang-fa-zong-jie/0bd940d8eb67783409b54cda23ba345c30120fc9b63b08d9217dfaaf5d861182.png" class="" title="picture 16">  
+
+
             </div>
             <hr/>
 
@@ -1064,7 +1105,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">108.5k</span>&nbsp;字
+                class="white-color">109k</span>&nbsp;字
             
             
             
