@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Leeson-Cutler Phase Noise Model里森相噪模型</title>
+      <link href="/2023/06/14/leeson-cutlerphasenoisemodel-li-sen-xiang-zao-mo-xing/"/>
+      <url>/2023/06/14/leeson-cutlerphasenoisemodel-li-sen-xiang-zao-mo-xing/</url>
+      
+        <content type="html"><![CDATA[<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>先直接给出Leeson-Cutler相位噪声模型的表达式，如下所示，</p><p>$$<br>L(\Delta \omega)=10\cdot log{\frac{2FkT}{P_s}\cdot[1+(\frac{\omega_0}{2Q_L\Delta\omega})^2]\cdot(1+\frac{\Delta\omega_{1/f^3}}{|\Delta\omega|})}<br>$$</p><p>其中</p><ul><li>$F$是一个经验参数（device excess noise number），AI给出的这个参数的大致范围是0.5~2.0；</li><li>$k$是玻尔兹曼常数（1.38e-23）；</li><li>$T$是绝对温度；</li><li>$P_s$是在tank里的电阻部分消耗的平均功率；</li><li>$\omega_0$是震荡频率；</li><li>$Q_L$是tank的有效品质因数，之所以称之为有效因为这时所有的负载全部加在这个上面，AI告诉我这个值大概是10~100；</li><li>$\Delta\omega$代表了频率偏移主频的值；</li><li>$\Delta\omega^3_{1/f}$代表了$1/f^3$区域与$1/f^2$区域的交界区域，如下图所示；</li></ul><img src="/2023/06/14/leeson-cutlerphasenoisemodel-li-sen-xiang-zao-mo-xing/6f6f84cd03c727a60437e5a44c57e16f304bfe1adb8bc8433fea4f2a53e1f4a1.png" class="" title="picture 1">  <h4 id="1-x2F-f-2-区域的噪声"><a href="#1-x2F-f-2-区域的噪声" class="headerlink" title="$1/f^2$区域的噪声"></a>$1/f^2$区域的噪声</h4><p>该区域的噪声可以通过下面的模型进行建模，先考虑一个RLC并联电路的输入阻抗，</p><img src="/2023/06/14/leeson-cutlerphasenoisemodel-li-sen-xiang-zao-mo-xing/0eab80f179513f55a2d002fe0307474c19eb56b734b862bc273947bd3cc1df9b.png" class="" title="picture 1">  <p>上述电路的阻抗$Z(s)$由下面的表达式表达，</p><p>$$<br>Z(s)=\frac{1}{1/R+1/sL+sC}<br>$$</p><p>通分化简后得到下面的表达式，</p><p>$$<br>Z(s)=\frac{sLR}{sL+R+s^2LCR}<br>$$</p><p>因为我们考虑的频率是$s=j(\omega_0+\Delta \omega)$，并且中心频率为$\omega_0=1/\sqrt{LC}$，将上述两个关系代入到我们的阻抗表达式中进行化简，</p><p>$$<br>Z(s=\omega_0+\Delta\omega)=\frac{j(\omega_0+\Delta \omega)LR}{j(\omega_0+\Delta\omega)L+R-\omega_0^2LCR-2\omega_0\Delta\omega LCR-\Delta\omega^2LCR}<br>$$</p><p>考虑到$\Delta\omega&lt;&lt;\omega_0$，所以，$\Delta\omega^2LCR$的一项可以被忽略；另一方面，由于$\omega_0^2=1/LC$，所以$-\omega_0^2LCR=-R$与前面的一项$R$抵消；并且，$-2\omega_0\Delta\omega LCR=2\Delta\omega R/\omega_0$。经过上述三步的化简，得到下面的表达式，</p><p>$$<br>Z(\omega_0+\Delta\omega)\approx\frac{j(\omega_0+\Delta \omega)LR}{j(\omega_0+\Delta \omega)L-2\Delta\omega R/\omega_0}<br>$$</p><p>将上述分式上下同时乘以$-j$，并且同时除以$(\omega_0+\Delta\omega)L$之后，得到下面的表达式，</p><p>$$<br>Z(\omega_0+\Delta\omega)\approx\frac{R}{1+j\frac{2\Delta\omega R/\omega_0}{(\omega_0+\Delta\omega)L}}<br>$$</p><p>其中我们定义$Q=\frac{R}{\omega L}$为品质因数，在我们的这个问题中，品质因数定义为$Q_L=\frac{R}{(\omega_0+\Delta\omega)L}$，因此，根据这一个等式，上面的阻抗表达式可以进一步表示为，</p><p>$$<br>Z(\omega_0+\Delta\omega)\approx\frac{R}{1+j2Q_L\Delta\omega/\omega_0}<br>$$</p><p>需要注意的是，上述表达式仅仅在$\omega_0$振荡频率附近（$\Delta\omega&lt;&lt;\omega_0$）才成立。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 相位噪声 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 相位噪声 </tag>
+            
+            <tag> VCO </tag>
+            
+            <tag> 物理数学模型 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>AI小助手合集</title>
       <link href="/2023/06/14/ai-xiao-zhu-shou-he-ji/"/>
       <url>/2023/06/14/ai-xiao-zhu-shou-he-ji/</url>
@@ -13,16 +42,16 @@
       
       <categories>
           
-          <category> cat_1 </category>
+          <category> AI工具 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> tag_1 </tag>
+            <tag> AI工具 </tag>
             
-            <tag> tag_2 </tag>
+            <tag> 奇技淫巧 </tag>
             
         </tags>
       
@@ -240,9 +269,9 @@
       
         <tags>
             
-            <tag> Jitter </tag>
-            
             <tag> 相位噪声 </tag>
+            
+            <tag> Jitter </tag>
             
         </tags>
       
