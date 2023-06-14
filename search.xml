@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>AI小助手合集</title>
+      <link href="/2023/06/14/ai-xiao-zhu-shou-he-ji/"/>
+      <url>/2023/06/14/ai-xiao-zhu-shou-he-ji/</url>
+      
+        <content type="html"><![CDATA[<h3 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h3><p>最近在B站和Youtube上看到了许多与AI有关的内容，自从OPENAI的ChatGPT模型问世之后，各种AI的应用层出不穷，最常用的就是使用ChatGPT进行对话，这个应用让我感到十分震惊。当然你可能需要使用AI进行一系列的应用，例如自动制作视频，自动分析视频内容，自动分析文档内容等等。我本人现在还处在学生阶段，因此，对于我来说最有帮助的应该是科研相关的AI应用技术，这里，将这些应用程序或者网站收集起来，并存储在这个网页中，供以后参考。</p><h3 id="应用程序列表（Paper相关）"><a href="#应用程序列表（Paper相关）" class="headerlink" title="应用程序列表（Paper相关）"></a>应用程序列表（Paper相关）</h3><ul><li><a href="https://researchrabbitapp.com/home" target="_blank" rel="noopener">Research Rabbit</a> 这个网站主要是帮助读者从一篇文章中找寻到其他相关的文章，帮助读者发现与当前文章相关的文章，并且根据文章内容和索引给出相关的文章。</li><li><a href="https://www.chatpdf.com/" target="_blank" rel="noopener">chatPDF</a> 这个网站主要是帮助读者进行阅读PDF的，因为有些Paper的内容可能比较复杂难懂，这里就可以以对话的形式进行Paper内容的分析，非常有帮助。</li><li><a href="https://typeset.io/" target="_blank" rel="noopener">SCISPACE</a> 这个网站主要是帮助读者从PDF中获取有效信息，可能和chatPDF类似，也是帮助你来阅读Paper的，非常有效。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> cat_1 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> tag_1 </tag>
+            
+            <tag> tag_2 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>低压带隙基准</title>
       <link href="/2023/05/26/di-ya-dai-xi-ji-zhun/"/>
       <url>/2023/05/26/di-ya-dai-xi-ji-zhun/</url>
