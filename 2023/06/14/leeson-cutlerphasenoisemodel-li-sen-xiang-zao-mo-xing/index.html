@@ -427,14 +427,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    628
+                    731
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -480,6 +480,11 @@
 <p>其中我们定义$Q=\frac{R}{\omega L}$为品质因数，在我们的这个问题中，品质因数定义为$Q_L=\frac{R}{(\omega_0+\Delta\omega)L}$，因此，根据这一个等式，上面的阻抗表达式可以进一步表示为，</p>
 <p>$$<br>Z(\omega_0+\Delta\omega)\approx\frac{R}{1+j2Q_L\Delta\omega/\omega_0}<br>$$</p>
 <p>需要注意的是，上述表达式仅仅在$\omega_0$振荡频率附近（$\Delta\omega&lt;&lt;\omega_0$）才成立。</p>
+<p>一般是计算等效输入噪声，噪声源作用在整个电路的输入上，振荡电路一般是一个正反馈环路，也就是如下图所示的电路框图结构，</p>
+<img src="/2023/06/14/leeson-cutlerphasenoisemodel-li-sen-xiang-zao-mo-xing/4acb4a74227d76008a15eb9418fe87477f7ee163f4381af9adebd66f730afa4e.png" class="" title="picture 2">  
+
+<p>上面的噪声电流源相当于作用在这个正反馈环路上，因此传输函数可以用下面的表达式进行表达，</p>
+<p>$$<br>H(\Delta\omega)=\frac{v_{out}}{i_{in}}<br>$$</p>
 
             </div>
             <hr/>
@@ -609,18 +614,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/06/14/leeson-cutlerphasenoisemodel-li-sen-xiang-zao-mo-xing/">
+                <a href="/2023/07/12/chuan-shu-xian-li-lun/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Leeson-Cutler Phase Noise Model里森相噪模型">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="传输线理论">
                         
-                        <span class="card-title">Leeson-Cutler Phase Noise Model里森相噪模型</span>
+                        <span class="card-title">传输线理论</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -630,35 +634,34 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-14
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-12
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%9B%B8%E4%BD%8D%E5%99%AA%E5%A3%B0/" class="post-category">
-                                    相位噪声
+                            <a href="/categories/%E6%A8%A1%E6%8B%9FIC%E8%AE%BE%E8%AE%A1/" class="post-category">
+                                    模拟IC设计
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%9B%B8%E4%BD%8D%E5%99%AA%E5%A3%B0/">
-                        <span class="chip bg-color">相位噪声</span>
+                    <a href="/tags/%E6%A8%A1%E6%8B%9FIC%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">模拟IC设计</span>
                     </a>
                     
-                    <a href="/tags/VCO/">
-                        <span class="chip bg-color">VCO</span>
+                    <a href="/tags/%E4%BC%A0%E8%BE%93%E7%BA%BF%E7%90%86%E8%AE%BA/">
+                        <span class="chip bg-color">传输线理论</span>
                     </a>
                     
-                    <a href="/tags/%E7%89%A9%E7%90%86%E6%95%B0%E5%AD%A6%E6%A8%A1%E5%9E%8B/">
-                        <span class="chip bg-color">物理数学模型</span>
+                    <a href="/tags/%E5%BE%AE%E6%B3%A2%E5%B7%A5%E7%A8%8B/">
+                        <span class="chip bg-color">微波工程</span>
                     </a>
                     
                 </div>
@@ -962,7 +965,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">111.8k</span>&nbsp;字
+                class="white-color">113.6k</span>&nbsp;字
             
             
             
