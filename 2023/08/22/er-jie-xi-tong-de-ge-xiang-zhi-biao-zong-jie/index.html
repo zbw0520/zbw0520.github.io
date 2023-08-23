@@ -427,14 +427,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    7 分
                 </div>
                 
 
@@ -491,6 +491,30 @@
 <img src="/2023/08/22/er-jie-xi-tong-de-ge-xiang-zhi-biao-zong-jie/f3e1e5eaa19d0d1fce61ea5765e7c87fd4268976b28c820533b732a32c70c5b5.png" class="" title="picture 0">  
 
 <p>观察图片可以发现，当阻尼系数为零时，过冲最大，当阻尼系数为1时，没有过冲。</p>
+<h2 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h2><p>分析一个闭环放大器，该放大器的开环响应存在主极点@10kHz，非主极点@2MHz，该放大器的开环增益为40dB，反馈系数为1，分析该二阶系统的各项参数。</p>
+<p>先给出该放大器的s域开环系统传递函数：</p>
+<p>$$<br>A_{OL}=\frac{100}{(s/1e4+1)(s/2e6+1)}=\frac{100}{s^2/2e10+s/1e4+1}<br>$$</p>
+<p>再计算闭环系统的传递函数：</p>
+<p>$$<br>A_{CL}=\frac{100}{s^2/2e10+s/1e4+100}=\frac{2e12}{s^2+2e6s+2e12}<br>$$</p>
+<p>接下去可以求解出该表达式的自然频率$\omega_n$，如下所示，</p>
+<p>$$<br>\omega_n=\sqrt{2e12}\approx1.414MHz<br>$$</p>
+<p>接下去求解系统的阻尼系数$\zeta$，如下所示，</p>
+<p>$$<br>2\zeta\omega_n=2e6<br>$$</p>
+<p>$$<br>\zeta=\frac{2e6}{2\omega_n}=\frac{1}{\sqrt{2}}<br>$$</p>
+<p>这里还需要说明，当阻尼系数为0.707时，该传输函数称为一种特殊的滤波器：Butterworth Filter。这里简单介绍一下Butterworth滤波器，这种滤波器在带内完全平坦，这里需要说明的是，这里说的平坦是指滤波器频率响应，而不是瞬态响应，要记住，Butterworth滤波器的瞬态响应根据先前的计算，是存在一定的过冲的。Butterworth滤波器的频率响应具有一下的特点：</p>
+<ul>
+<li>在通带内的幅度响应的平坦的；</li>
+<li>频率响应从通带到禁带的变化是单调的，即不存在任何的上下波动；</li>
+<li>禁带内的滚降是平滑的，并且随着滤波器阶数的上升而上升。</li>
+</ul>
+<p>值得注意的是，Butterworth由于其通带内平坦的特性而被广泛应用，但是其从通带到禁带的过渡部分不像切比雪夫滤波器和椭圆滤波器那样迅速滚降，即滚降速率比较慢。</p>
+<p>计算品质因素Q的值，根据之前的表达式$Q=\frac{1}{2\zeta}$，Q的表达式由下式表达，</p>
+<p>$$<br>Q=\frac{1}{2\zeta}=\frac{1}{\sqrt{2}}=0.707<br>$$</p>
+<p>有了Q之后，我们就可以计算修正后的Q，这个值代表了幅频响应中的Peaking高度$P_r$</p>
+<p>$P_r=\frac{Q}{\sqrt{1-\zeta^2}}=\frac{1/\sqrt{2}}{1/\sqrt{2}}=1$</p>
+<p>这也论证了我们之前说这是一个Butterworth滤波器的结论。接下去再计算时域中的过冲$M_p$，由下式表达</p>
+<p>$$<br>M_p=e^{\frac{-\pi\zeta}{\sqrt{1-\zeta^2}}}=e^{-\pi}\approx0.04<br>$$</p>
+<p>可以看到瞬态响应中是由一定的过冲的，过冲的比例$%OS$为$4%$基本可以忽略不计。</p>
 
             </div>
             <hr/>
@@ -973,7 +997,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">116.8k</span>&nbsp;字
+                class="white-color">117.4k</span>&nbsp;字
             
             
             
