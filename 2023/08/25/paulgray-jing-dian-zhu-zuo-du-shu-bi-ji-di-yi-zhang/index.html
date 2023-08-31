@@ -385,12 +385,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%A8%A1%E6%8B%9FIC%E8%AE%BE%E8%AE%A1/">
-                                <span class="chip bg-color">模拟IC设计</span>
-                            </a>
-                        
                             <a href="/tags/Paul-Gray/">
                                 <span class="chip bg-color">Paul Gray</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%A8%A1%E6%8B%9FIC%E8%AE%BE%E8%AE%A1/">
+                                <span class="chip bg-color">模拟IC设计</span>
                             </a>
                         
                     </div>
@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.9k
+                    7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    17 分
+                    25 分
                 </div>
                 
 
@@ -571,13 +571,13 @@
 <li>击穿电压上限；</li>
 <li>二阶效应（电流增益随着集电极电流 &amp; Early电压变化）</li>
 </ul>
-<h3 id="Forward-Active-Region"><a href="#Forward-Active-Region" class="headerlink" title="Forward Active Region"></a>Forward Active Region</h3><p>典型的三极管的结构如下所示，</p>
+<h3 id="Large-Signal-Models-in-Forward-Active-Region"><a href="#Large-Signal-Models-in-Forward-Active-Region" class="headerlink" title="Large Signal Models in Forward Active Region"></a>Large Signal Models in Forward Active Region</h3><p>典型的三极管的结构如下所示，</p>
 <img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/ab14460213dcb72225dc66d53f5403c484608bfcdf43538f3b5c2e4e97b011ed.png" class="" title="picture 3">  
 
 <p>要注意到，这种结构的三极管的掺杂浓度往往不是一个常量，而是一个有梯度的量，我们先从均匀掺杂浓度的管子开始分析，而后这里得到的结论有一些也可以在非均匀的管子里面应用。下面的图片就表示了一个均匀掺杂的三极管的示意图。</p>
 <img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/c2482f20c48ba9210190b663b18fd8384cbd76842c0f648caec88116360e0265.png" class="" title="picture 4">  
 
-<p>如上图所示，在AA’的横截面上取出一个掺杂浓度的样本，可以得到如下所示的载流子浓度示意图。</p>
+<h4 id="基区中的载流子浓度计算"><a href="#基区中的载流子浓度计算" class="headerlink" title="基区中的载流子浓度计算"></a>基区中的载流子浓度计算</h4><p>如上图所示，在AA’的横截面上取出一个掺杂浓度的样本，可以得到如下所示的载流子浓度示意图。</p>
 <img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/14971d53a1fc8968338a4d4fcfdbbc7a4055a8ebae22aad540e882bda4aeb488.png" class="" title="picture 5">  
 
 <p>空穴浓度用p表示，电子浓度用n表示，其中，下标的n和p表示所处的半导体的类型；E和C的下标分别代表发射极和集电极。上图中表示的载流子浓度是在管子偏置在Forward Active Region中的载流子浓度分布，在这种情况下，Base和Emitter的PN结正向导通，而Base和Collector的PN结是反向偏置的。</p>
@@ -601,7 +601,7 @@
 <p>对于基区来说，耗尽区外的部分仍然为电中性，所以，需要保证多出来的一份自由电子必须要有一份多出来的空穴，本身的自由空穴与一开始的掺杂浓度是一样的，所以要有下面的式子成立，</p>
 <p>$$<br>N_A+n_p(x)=p_p(x)<br>$$</p>
 <p>由于之前假设了基区掺杂浓度处处相等，所以，这边也可以认为基区的空穴浓度$p_p(x)$也是一个在x（位置）上线性的量。</p>
-<p>接下去来探讨通过扩散作用的电子到了BC的界面上该如何运动的问题，想象下面的一个直观的粒子，在夏日的海滩上，海里有很多人，沙滩的一边代表基极，人源源不断地从沙滩进入到大海，代表着基极的扩散运动，这时，大海里的人少，沙滩上的人多，形成了一个梯度，这时，大海里突然产生了离岸流，将在海里的人拉到了深海里，这就像是基极和集电极之间的电场作用，将人（电子）拉到海洋里（集电极），形成了电流。作者使用了扫进集电极的术语，说明了人（电子）在对抗离岸流（电场）时，力量很小，只要被卷入了海洋（集电极），就很难再回来了。</p>
+<h4 id="集电极电流"><a href="#集电极电流" class="headerlink" title="集电极电流"></a>集电极电流</h4><p>接下去来探讨通过扩散作用的电子到了BC的界面上该如何运动的问题，想象下面的一个直观的粒子，在夏日的海滩上，海里有很多人，沙滩的一边代表基极，人源源不断地从沙滩进入到大海，代表着基极的扩散运动，这时，大海里的人少，沙滩上的人多，形成了一个梯度，这时，大海里突然产生了离岸流，将在海里的人拉到了深海里，这就像是基极和集电极之间的电场作用，将人（电子）拉到海洋里（集电极），形成了电流。作者使用了扫进集电极的术语，说明了人（电子）在对抗离岸流（电场）时，力量很小，只要被卷入了海洋（集电极），就很难再回来了。</p>
 <p>同样地，在晶体管里面，也是一样的概念，电子由于基极的浓度差，形成了一个梯度，导致电子往低浓度的方向扩散，当电子移动到BC的界面的时候，电场非常强，一下子把扩散到这个地方的电子吸入了集电极，产生了很强的电流。</p>
 <p>我们接下去用数学的方式来描述一下这个过程，如下所示，</p>
 <p>$$<br>J_n=qD_n\frac{dn_p(x)}{dx}<br>$$</p>
@@ -612,20 +612,57 @@
 <p>将BE界面的少子浓度$n_p(0)$代入到上面的表达式后，得到如下的表达式，</p>
 <p>$$<br>I_C=\frac{qAD_nn_{po}}{W_B}exp\frac{V_{BE}}{V_T}=I_Sexp\frac{V_{BE}}{V_T}<br>$$</p>
 <p>其中，$I_S=\frac{qAD_nn_{po}}{W_B}$，一般这个数值的量级为$10^{-14}$ ~ $10^{-16}A$之间，属于$fA$量级，相当小。</p>
-<p>基极电流也是一个非常重要的量，作者给出了基极电流的两个分量，一个是空穴和电子的重新结合（Recombination），和我们前文说的水渠的案例可以结合起来看，这个水渠中的流水代表了电子的流动，水渠中间挖去一些洞，水流会流走一些，就代表了空穴和电子的重新结合（Recombination），可以由此来直观地理解这个机制。</p>
+<h4 id="基极电流"><a href="#基极电流" class="headerlink" title="基极电流"></a>基极电流</h4><p>基极电流也是一个非常重要的量，作者给出了基极电流的两个分量，一个是空穴和电子的重新结合（Recombination），和我们前文说的水渠的案例可以结合起来看，这个水渠中的流水代表了电子的流动，水渠中间挖去一些洞，水流会流走一些，就代表了空穴和电子的重新结合（Recombination），可以由此来直观地理解这个机制。</p>
 <p>下面使用数学来描述这个过程，定义$I_{B1}$为重新结合的电子和空穴形成的电流，该电流与基区的少子电子$Q_e$成正比，该量表示如下，</p>
 <p>$$<br>Q_e=q\int_{0}^{W_B}n_p(x)Adx=\frac{1}{2}qAW_Bn_p(0)<br>$$</p>
 <p>定义$\tau_b$为基区少子的平均生存时间，那么，该时间内，基区所有少子都会被重新结合，所以，该电流表示如下，</p>
 <p>$$<br>I_{B1}=\frac{Q_e}{\tau_b}=\frac{1}{2}\frac{qAW_Bn_p(0)}{\tau_b}<br>$$</p>
-<p>另一个主要部分的电流主要来自于空穴的扩散，造成了空穴总基极注入到了发射极，如下所示，</p>
+<p>另一个主要部分的电流主要来自于空穴的扩散，造成了空穴总基极注入到了发射极，如下所示，注意，这一部分电流主导了基区电流。</p>
 <p>$$<br>I_{B2}=\frac{qAD_p}{L_p}p_{nE}(0)<br>$$</p>
 <p>注意，该扩散运动的电子运动速率与单位长度上的浓度差$p_{nE}(0)/L_p$成正比。一般管子不希望有这一部分电流，因为这一部分电流过大会影响管子的性能和效率，管子一般不希望基极电流过大，这样，其电流放大倍数可以很大；另一方面，由于发射极重掺杂，所以，发射极一般是一个好的电子的发射端，而不是空穴的接收端。因此，从两个层面讲，该电流都不会太大。</p>
-<p>将上面表达的两个电流组合起来，得到了总的晶体管的电流如下所示，</p>
+<h4 id="beta-的定义"><a href="#beta-的定义" class="headerlink" title="$\beta$的定义"></a>$\beta$的定义</h4><p>将上面表达的两个电流组合起来，得到了总的晶体管的电流如下所示，</p>
 <p>$$<br>I_B=(\frac{1}{2}\frac{qAW_Bn_{po}}{\tau_b}+\frac{qAD_pp_{nEo}}{L_p})exp\frac{V_{BE}}{V_T}<br>$$</p>
 <p>上述表达式对于不均匀基区掺杂的器件仍然适用，但基区电流存在二阶项，这对于低电流应用来说非常重要，将会在之后进行考虑。</p>
 <p>利用集电极电流和基极电流的比例我们就可以得到电流系数$\beta$了，如下所示，</p>
 <p>$$<br>\frac{I_C}{I_B}=\beta<br>$$</p>
-<p>$\beta$被称作Forward Current Gain，前向电流增益，一般这个值在集成电路中NPN管大概在50<del>500之间，而PNP管略低，大概在10</del>100之间</p>
+<p>$\beta$被称作Forward Current Gain，前向电流增益，一般这个值在集成电路中NPN管大概在50-500之间，而PNP管略低，大概在10-100之间。</p>
+<h4 id="发射极电流-amp-alpha-的定义"><a href="#发射极电流-amp-alpha-的定义" class="headerlink" title="发射极电流 &amp; $\alpha$的定义"></a>发射极电流 &amp; $\alpha$的定义</h4><p>由于基极电流和集电极电流都是流向基极的，所以，发射极电流为基极电流和集电极电流之和，如下所示，</p>
+<p>$$<br>I_E=I_C+I_B=\frac{I_C}{\alpha}<br>$$</p>
+<p>其中，</p>
+<p>$$<br>\alpha=\frac{\beta}{1+\beta}<br>$$</p>
+<p>$\alpha$的表达式也可以用下面的式子进行表达，</p>
+<p>$$<br>\alpha=\alpha_T\gamma<br>$$</p>
+<p>$$<br>\alpha_T=\frac{1}{1+\frac{W_B^2}{2\tau_bD_n}}<br>$$</p>
+<p>$$<br>\gamma=\frac{1}{1+\frac{D_p}{D_n}\frac{W_B}{L_p}\frac{N_A}{N_D}}<br>$$</p>
+<p>其中，$\gamma$称为发射极注入效率，该量为由发射极注入基极的电子电流与穿过BE界面的电子电流和空穴电流的总和，理想状况下，$\gamma=1$，通过使得发射极的掺杂浓度（$N_D$）远远大于基极的掺杂浓度（$N_A$），并且基极的宽度（$W_B$）非常小，在这样两个条件下，电流几乎都是正向从发射极注入到基极的电子电流，而反向的空穴电流非常小。</p>
+<p>还有一个参数$\alpha_T$称为基极传输因数，主要描述的是基极到集电极载流子到达的比例，也就是衡量了有多少载流子从基极被注入到集电极。如果把$W_B$设计得足够小，那么我们就可以获得一个接近1的$\alpha_T$。</p>
+<p>很显然，如果将基极做得足够薄，也就是说$W_B$足够小，再将发射极掺杂浓度做得足够高，以至于发射极和基极得掺杂比例足够大，那么，我们就可以设计出一个$\beta$很大的管子。以前初次上模电课时，老师曾经说过，基极非常薄，发射极重掺杂，这些概念当时也只是听听就过了，现在，终于明白这些改进是为了提高$\beta$的大小。</p>
+<p>下面给出了NPN三极管的大信号模型</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/deae1ad0bc31a22d5ff8061fbba07d00ef919dd83c4741cfa4abae5dd36062b0.png" class="" title="picture 6"> 
+
+<p>注意到左图中的电路很好解释，但是右图中，产生了一个新的变量$V_{BEon}$，这个变量的大小常在0.6-0.7V之间，这和我们的三极管的指数特性是对应上的，即电压的微小变化就会造成巨大的电流变化，所以这里电压基本不怎么变化。值得注意的是，这个量是一个与温度有关的量，与温度成反比，大概的变化为$-2mV/K$。</p>
+<h4 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h4><p>我认为Forward Active Region下的大信号行为可以用海滩上的人来进行直观地说明。海滩上的人相当于基区中的少数载流子，在海岸上的人永远是最多的，这对应了BE界面上的少数载流子浓度是最大的，在BC界面上，由于集电极和基极电压反偏，造成了浓度为零。这两个界面之间的浓度分布是关于位置线性变小的，由于扩散运动，少子在高浓度区域BE界面上，要往低浓度区域BC界面扩散，如果这个过程中的电子空穴结合可以忽略，那么，电流就仅仅会因为扩散运动而产生，这个电流的大小取决于BE界面到BC界面的浓度变化速率，也就是单位长度上的浓度差值，由于BC界面上的浓度值近似为零，所以仅仅由BE界面上的浓度决定，这个浓度与VBE正偏电压成指数关系，这也就是指数关系的由来。到了BC界面上的少子在强电场的作用下（用人被离岸流卷走来理解），穿过BC界面到达了集电极，形成了集电极电流。沙滩上的人肯定都是从沙滩外的马路来的，如果沙滩外马路上的人足够多（发射极重掺杂），那么进入沙滩的人的数量也会足够多，从沙滩返回公路的人就会非常少。如果沙滩的宽度足够窄（基区宽度小，薄基区），那么由于沙滩上容纳的人数有限（没有空穴与电子的结合），在浓度差的作用下，全部都更快地进入了大海（更大的电流），被离岸流吸走，最终进入海洋。</p>
+<p>因此，可以看到，指数特性的来源在于BE界面上的正偏电压造成了少数载流子的数量上升剧烈，从而通过扩散运动形成与浓度相关的电流。读大学第一次学模拟课程是在大二，到现在研三了，才弄懂三极管指数特性的来源，真是惭愧。</p>
+<h3 id="集电极电压对Forward-Active-Region中的大信号模型产生的影响"><a href="#集电极电压对Forward-Active-Region中的大信号模型产生的影响" class="headerlink" title="集电极电压对Forward Active Region中的大信号模型产生的影响"></a>集电极电压对Forward Active Region中的大信号模型产生的影响</h3><p>我们一只认为集电极电压并不会对集电极电流大小，因为根据我们之前推导的过程，集电极电流相当于在海里被离岸流带走的人，其量只取决于从沙滩到海的人的梯度，即从BE界面到BC界面的少数载流子的浓度变化率，即单位长度上的浓度差，因此，基区做得越薄，其产生的集电极电流就越大。下面来讨论集电极电压对集电极电流产生影响的一些情形。</p>
+<p>除了Forward Active Region之外，还有Saturation Region（$V_{CE}$接近0）和Breakdown Region（$V_{CE}$很大）这两个区域，如果三极管工作在这两个区域，那么，集电极电压对集电极电流有非常大的影响；如果在这两个区域中间，集电极电流会随着$V_{CE}$的上升而缓慢上升。</p>
+<p>看一下下面的图马上读者就可以定性地直观地理解了，$V_{CE}$变大，那么，$V_{BC}$反偏电压就会反偏得更多，BC界面上的耗尽区就会因为反偏电压增大而增大，挤压了基区的空间，造成了基区宽度较小，根据我们先前的分析，基区宽度变小，直接导致基区的浓度场的梯度变大，直接导致集电极电流增大。</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/e6f819c37a75435fa68742190d6e16c20be88496b703c4b1e6e530f3aa9b8a51.png" class="" title="picture 9">  
+
+<p>接下来需要定量分析一下，根据先前的集电极电流表达式，如下，</p>
+<p>$$<br>I_C=\frac{qAD_nn_{po}}{W_B}exp\frac{V_{BE}}{V_T}<br>$$</p>
+<p>对宽度$W_B$求导有如下表达式，</p>
+<p>$$<br>\frac{\partial I_C}{\partial V_{CE}}=-\frac{qAD_nn_{po}}{W_B^2}exp\frac{V_{BE}}{V_T}\frac{\partial W_B}{\partial V_{CE}}=-\frac{I_C}{W_B}\frac{\partial W_B}{\partial V_{CE}}<br>$$</p>
+<p>因为基区宽度随着$V_{CE}$的增大而减小，所以，上式的偏导为正，即，集电极电压增大，集电极电流也增大，与我们定性的分析一样。通过先前的耗尽区宽度与反偏电压关系的一节中的式子，可以进一步计算其斜率，其斜率是$V_{CE}$的函数，意味着他们之间存在一定的非线性，但这种非线性很弱，一般视作是一个恒定斜率的线性关系。</p>
+<p>再来看上面表达式中的系数项，这一系数表明，$I_C$越大，$I_C$关于$V_{CE}$曲线的斜率越大，同时，由于IC中，基区的宽度都很薄，所以造成了$I_C$的作用被放大了。因此，可以得到如下的$V_{CE}-I_C$特性曲线，可以看到，相同$V_{CE}$的条件下，$I_C$越大，曲线的斜率越大。</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/8e1120adf836d04343cfb65b42e892436cf4c2e25475cad4c64f8271a6262742.png" class="" title="picture 10">  
+
+<p>注意到，将曲线反向延长到横轴，会产生一个交点$V_A$，$V_A$的大小根据截距的定义，由下式表达，</p>
+<p>$$<br>V_A=\frac{Y}{k}=\frac{I_C}{\frac{\partial I_C}{\partial V_{CE}}}=-W_B\frac{dV_{CE}}{dW_B}<br>$$</p>
+<p>上述集电极电流跟随集电极电压发生变化的现象叫做Early Effect，$V_A$的典型值在15-100V之间。</p>
+<p>在计算的时候，手算DC工作点的时候，一般不考虑Early效应，但是在小信号模型中，一般是考虑的。</p>
+<h3 id="Saturationi-and-Inverse-Active-Regions"><a href="#Saturationi-and-Inverse-Active-Regions" class="headerlink" title="Saturationi and Inverse-Active Regions"></a>Saturationi and Inverse-Active Regions</h3><p>通常在模拟电路中，器件一般不希望工作在Saturation Region，因为在这个区域里，管子的增益非常差，一般只会在数字中使用。</p>
+<p>在Saturation的状态下，BE和BC的结都是正向导通的，在这种情形下，$V_{CE}$大概在0.05-0.3V之间，在$W_B$位置上的少子浓度如下所示，</p>
+<p>$$<br>n_p(W_B)=n_{po}exp\frac{V_{BC}}{V_T}<br>$$</p>
 
             </div>
             <hr/>
@@ -689,12 +726,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%A8%A1%E6%8B%9FIC%E8%AE%BE%E8%AE%A1/">
-                                    <span class="chip bg-color">模拟IC设计</span>
-                                </a>
-                            
                                 <a href="/tags/Paul-Gray/">
                                     <span class="chip bg-color">Paul Gray</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%A8%A1%E6%8B%9FIC%E8%AE%BE%E8%AE%A1/">
+                                    <span class="chip bg-color">模拟IC设计</span>
                                 </a>
                             
                         </div>
@@ -791,12 +828,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%A8%A1%E6%8B%9FIC%E8%AE%BE%E8%AE%A1/">
-                        <span class="chip bg-color">模拟IC设计</span>
-                    </a>
-                    
                     <a href="/tags/Paul-Gray/">
                         <span class="chip bg-color">Paul Gray</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A8%A1%E6%8B%9FIC%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">模拟IC设计</span>
                     </a>
                     
                 </div>
@@ -1104,7 +1141,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">122.3k</span>&nbsp;字
+                class="white-color">124.4k</span>&nbsp;字
             
             
             
