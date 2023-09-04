@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7k
+                    9.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    25 分
+                    35 分
                 </div>
                 
 
@@ -660,9 +660,85 @@
 <p>$$<br>V_A=\frac{Y}{k}=\frac{I_C}{\frac{\partial I_C}{\partial V_{CE}}}=-W_B\frac{dV_{CE}}{dW_B}<br>$$</p>
 <p>上述集电极电流跟随集电极电压发生变化的现象叫做Early Effect，$V_A$的典型值在15-100V之间。</p>
 <p>在计算的时候，手算DC工作点的时候，一般不考虑Early效应，但是在小信号模型中，一般是考虑的。</p>
-<h3 id="Saturationi-and-Inverse-Active-Regions"><a href="#Saturationi-and-Inverse-Active-Regions" class="headerlink" title="Saturationi and Inverse-Active Regions"></a>Saturationi and Inverse-Active Regions</h3><p>通常在模拟电路中，器件一般不希望工作在Saturation Region，因为在这个区域里，管子的增益非常差，一般只会在数字中使用。</p>
+<h3 id="Saturation-and-Inverse-Active-Regions"><a href="#Saturation-and-Inverse-Active-Regions" class="headerlink" title="Saturation and Inverse-Active Regions"></a>Saturation and Inverse-Active Regions</h3><p>通常在模拟电路中，器件一般不希望工作在Saturation Region，因为在这个区域里，管子的增益非常差，一般只会在数字中使用。</p>
 <p>在Saturation的状态下，BE和BC的结都是正向导通的，在这种情形下，$V_{CE}$大概在0.05-0.3V之间，在$W_B$位置上的少子浓度如下所示，</p>
 <p>$$<br>n_p(W_B)=n_{po}exp\frac{V_{BC}}{V_T}<br>$$</p>
+<p>由于$V_{BC}$的值远大于零，这时，$n_p(W_B)$的值（$W_B$处的少子浓度）就不可以被忽略了。根据先前的分析，集电极电流与基极的少子浓度斜率有关，自然与$[n_p(0)-n_p(W_B)]$成正比，换句话说，$n_p(W_B)$这一量直接影响到了集电极电流的大小，由于$V_C$电压直接影响到了$n_p(W_B)$的大小，因此，集电极节点呈现为一个低阻抗节点，即，微小的电压变化会产生巨大的电流变化。假设$V_{BE}$恒定不变，随着$V_{CE}$的减小，BC结界面上的结越来越正偏，$W_B$处的少子浓度越来越高，于是，产生了如下的器件特性，</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/bb60fc027282e56c01c27a231345291eaf2245337cca4648f4a6093b13e32d1b.png" class="" title="picture 11">
+
+<p>这时的电阻主要取决于集电极上的寄生电阻，通常在$20-500\Omega$之间。这时，处于饱和区三极管的器件模型由下面的模型描述，</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/4fe1932d3d8986c2c809374546b9b80c6cf3a903f15d02f61a7676581e9bfe55.png" class="" title="picture 14">  
+
+<p>当双极型晶体管处于饱和区的时候，基区的电荷浓度显著高于Forward-Active Region，这时，由于电子空穴重新结合而产生的基极电流$I_B$会更大；另一方面，基极产生了新的电流分量，因为BC结的正向导通，$I_B$产生了BC结正向导通的电流的分量。这两个因素导致了双极型晶体管在同一集电极电流$I_C$的条件下，在Saturation Region状态下的基极电流会显著大于在Forward-Active Region状态下的基极电流。根据定义，对应的电流系数$\beta$也会显著低于处于Forward-Active Region状态下的晶体管。</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/de23fba6c250aa9b0d8d26fa8a486c48229b4f3d6f0b623285a1d4c30b52d307.png" class="" title="picture 15">  
+
+<p>如上图所示，少子浓度可以看作是两条虚线浓度的叠加产生的，这样看待这个问题的条件是，基区电子和空穴的重结合（Recombination）非常小，这个条件前文我们说过如何直观地看待它。那么，由于$n_{p1}(x)$导致的发射极电流由下式表达，</p>
+<p>$$<br>I_{EF}=-I_{ES}(exp(\frac{V_{BE}}{V_T})-1)<br>$$</p>
+<p>$n_{p2}(x)$导致的集电极电流使用如下表达式进行表达，</p>
+<p>$$<br>I_{CR}=-I_{CS}(exp\frac{V_{BC}}{V_T}-1)<br>$$</p>
+<p>注意，根据之前的分析，只有一部分的发射极电流最终到达了集电极，比例为$\alpha_F$。因此，集电极电流由下面的式子表达，</p>
+<p>$$<br>I_C=\alpha_FI_{EF}+I_{CR}<br>$$</p>
+<p>通常来说，$\alpha_F$非常趋近于1，发射极电流由下式表达，</p>
+<p>$$<br>I_E=-I_{EF}-\alpha_RI_{CR}<br>$$</p>
+<p>通常来说，$\alpha_R$的值的大致范围为$[0.5, 0.8]$，这个值为管子反过来接时工作的发射极到集电极电流比例。我们可以写出这个时候的电流放大倍数$\beta_R$，如下所示，</p>
+<p>$$<br>\beta_R=\frac{\alpha_R}{1-\alpha_R}<br>$$</p>
+<p>这个值通常在1-5之间，可以看到相比之前的100的电流放大系数，把管子反过用，即原先的E当作C，原先的C当作E，会造成双极型晶体管的电流增益大大降低，其原因在于，双极型晶体管在设计的时候，EC就是不对称的，其目的是为了增大电流放大系数$\beta_F$。把管子反过来接，这个状态被称为Inverse Active Region。</p>
+<p>这两个表达式被称为Ebers-Moll等式，之前我就在论文上看到过这个表达式，当时，对这个表达式完全不懂，现在终于明白了其中的来龙去脉。这个表达式可以描述在三个区域中的双极型晶体管的工作情况：</p>
+<ul>
+<li>Saturation Region</li>
+<li>Forward-Active Region</li>
+<li>Inverse-Active Region</li>
+</ul>
+<p>$$<br>I_C=\alpha_FI_{EF}+I_{CR}<br>$$</p>
+<p>$$<br>I_E=-I_{EF}-\alpha_RI_{CR}<br>$$</p>
+<p>使用下面的表达式，</p>
+<p>$$<br>\alpha_FI_{ES}=\alpha_RI_{CS}=I_S<br>$$</p>
+<p>可以得到一个Ebers-Moll等式的通式，如下所示，</p>
+<p>$$<br>I_C=I_S(exp\frac{V_{BE}}{V_T}-1)-\frac{I_S}{\alpha_R}(exp\frac{V_{BC}}{V_T}-1)<br>$$</p>
+<p>$$<br>I_E=-\frac{I_S}{\alpha_F}(exp\frac{V_{BE}}{V_T}-1)-I_S(exp\frac{V_{BC}}{V_T}-1)<br>$$</p>
+<p>上面这个表达式通常用于计算机计算管子的大信号行为中。</p>
+<h4 id="I-CO-集电极-基极漏电流"><a href="#I-CO-集电极-基极漏电流" class="headerlink" title="$I_{CO}集电极-基极漏电流$"></a>$I_{CO}集电极-基极漏电流$</h4><p>集电极基极漏电流由下式表达，</p>
+<p>$$<br>I_{CO}=I_{CS}(1-\alpha_R\alpha_F)<br>$$</p>
+<p>其定义为，当发射极开路时，从集电极漏到基极的电流，通常来说，当BC结处于反偏状态时，这个漏电流的典型值为，25C下，$1pA-100pA$，这个漏电流的大小会随着温度上升而增大，趋势大约为每上升8C，电流增大一倍。所以，这个电流在高温情况下，可能会相当大，大到不可以被忽视的程度。</p>
+<p>基极电流表示成集电极电流和集电极漏电流的形式的表达式如下所示，</p>
+<p>$$<br>I_B=\frac{I_C}{\beta_F}-\frac{I_{CO}}{\alpha_F}<br>$$</p>
+<p>注意到两者是反号的，所以温度上升，集电极漏电流增大，会直接导致基极电流变小。</p>
+<h3 id="晶体管击穿电压"><a href="#晶体管击穿电压" class="headerlink" title="晶体管击穿电压"></a>晶体管击穿电压</h3><p>这部分内容目前应该没有需求，以后再看。</p>
+<h3 id="晶体管电流增益-beta-F-随工作区域的变化情况"><a href="#晶体管电流增益-beta-F-随工作区域的变化情况" class="headerlink" title="晶体管电流增益$\beta_F$随工作区域的变化情况"></a>晶体管电流增益$\beta_F$随工作区域的变化情况</h3><p>大多数一阶分析都做了$\beta_F$是一个常量的假设，但实际上，$\beta_F$是温度和工作区域的函数，如下给出了$\beta_F$的曲线。</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/0f9d80f99d7be456893760514f774be08c75095da5e54d5564649663101f649e.png" class="" title="picture 16">  
+
+<p>很显然，随着温度的上升，电流增益$\beta_F$逐渐增大，典型的$\beta_F$的温度系数为7000ppm/C。基本原理是，随着温度上升，相同掺杂浓度的射极的电子和空穴发生重新结合的概率更低，增强了发射极电子到达基极的概率，即，提高了发射极注入效率$\gamma$，更多的电流从发射极到达了基极，最终提升了$\beta_F$。</p>
+<p>上图还给出了$\beta_F$与集电极电流$I_C$之间的关系，在I区域中，电流很小，$\beta_F$与电流成正比；在II区域中，电流中等，在这个区域中，$\beta$基本保持恒定；在III区域中，电流很大，在这个区域中，电流增大，电流增益$\beta_F$降低。</p>
+<p>接下去是一个很有意思的图标，作者通过电流的对数图，说明了$\beta_F$与集电极电流的关系的原因，如下图所示，因为我们感兴趣的量是两个变量的比值，所以通过对数图，可以直接在图上看到比值的变化情况，就是两个曲线之间的距离，这是今后在分析电路图表的时候可以使用的一个方法。</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/012b2839272dcefe554a69411cc6cbd8895e2865d5743b455dfaa2b9d8eaf67a.png" class="" title="picture 17">  
+
+<p>对于基极电流来说，有两个部分，一个是由于BE结上的浓度差导致的空穴移动造成的电流，还有一部分是由于基极在向集电极运输载流子的过程中，空穴和电子发生重新结合造成的电流分量。第一部分的电流由下式表达，</p>
+<p>$$<br>I_B=\frac{I_S}{\beta_{FM}}exp\frac{V_{BE}}{V_T}<br>$$</p>
+<p>第二部分的电流由下面的式子表达，</p>
+<p>$$<br>I_{BX}=I_{SX}exp\frac{V_{BE}}{2V_T}<br>$$</p>
+<p>当集电极电流比较低时，基极电流主要由第二部分主导；当集电极电流比较高时，基极电流主要由第一部分主导。</p>
+<p>另一方面，当电流比较大的时候，集电极电流在集电极产生拥塞现象，由于high-level injection以及kirk effect造成集电极电流下降的现象。</p>
+<h4 id="总结一下-1"><a href="#总结一下-1" class="headerlink" title="总结一下"></a>总结一下</h4><ul>
+<li>晶体管的电流放大倍数$\beta_F$在管子Forward Active状态下是最大的，在管子Inverse Active状态下会大幅下降</li>
+<li>晶体管的电流放大倍数$\beta_F$与温度成正比，温度系数大约为7000ppm/C</li>
+<li>晶体管的电流放大倍数$\beta_F$在中等电流时最大，当电流很小或者是电流很大时，都会下降，因此，要控制好三极管的电流大小，保证足够的电流放大倍数。</li>
+</ul>
+<h2 id="双极型晶体管的小信号模型"><a href="#双极型晶体管的小信号模型" class="headerlink" title="双极型晶体管的小信号模型"></a>双极型晶体管的小信号模型</h2><p>模拟电路设计中，信号的量通常与偏置相比非常小，比如反馈电路，在这种电路中，可以采用小信号模型来更加方便地对电路进行手算，当然有更加复杂的模型可以用于计算电路，但是作为模拟设计来说，一个重要的技能就是知道在特定的电路中，模型当中的哪些东西可以在手算过程中予以忽略。</p>
+<p>考虑下图中的电路，</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/030224d3e17e8fa72ebad40677e494be7c90a1496d0d8b71eed9da880853512d.png" class="" title="picture 18">  
+
+<p>图中，管子处于Forward Active Region，并且将输入施加在基极上，产生了对应的基极电流$I_b=I_B+i_b$，以及对应的集电极电流$I_c=I_C+i_c$，其对应的载流子浓度分布如下图所示，</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/e2a74615c41cb1f53b2fd647c113b26598110f92640399468c7eede7a8e688b3.png" class="" title="picture 19">  
+
+<p>当只有偏置DC电压的时候，载流子浓度的分布如图中实线所示，当基极电压发生小信号波动时，其BE界面上的少子浓度发生变化，导致集电极电流发生变化，接下去推导小信号模型中的参数。</p>
+<h3 id="跨导"><a href="#跨导" class="headerlink" title="跨导"></a>跨导</h3><p>跨导可以由下面的表达式进行推导，</p>
+<p>$$<br>g_m=\frac{d}{dV_{BE}}I_Sexp\frac{V_{BE}}{V_T}=\frac{I_S}{V_T}exp\frac{V_{BE}}{V_T}=\frac{I_C}{V_T}<br>$$</p>
+<p>可以看到，跨导只与偏置集电极电流有关，并且在25C下，$1mA$的集电极电流条件下，为$38mS$，对应的阻抗为$26\Omega$。有意思的是，这个值对于任意管子，不论是NPN管还是PNP管，不论是什么尺寸，还是什么材料的管子（Si, Ge, GaAs），其跨导都为$38mS/1mA@25C$。</p>
+<h4 id="小信号模型的局限性"><a href="#小信号模型的局限性" class="headerlink" title="小信号模型的局限性"></a>小信号模型的局限性</h4><p>将大信号模型的表达式如下所示，</p>
+<p>$$<br>I_c=I_Cexp\frac{v_i}{V_T}<br>$$</p>
+<p>进行泰勒展开后有，</p>
+<p>$$<br>I_c=I_C[1+\frac{v_i}{V_T}+\frac{1}{2}(\frac{v_i}{V_T})^2+\frac{1}{6}(\frac{v_i}{V_T})^3+\cdots]<br>$$</p>
+<p>如果输入信号远小于阈值电压，即，$v_i&lt;&lt;V_T$，那么，小信号模型就可以直接使用。总结一下就是，当$v_i=\Delta V_{BE}&lt;&lt;26mV@25C$时，小信号就可以用了。从数量上来看，如果$v_i&lt;10mV$，那么对应的小信号分析的误差就可以控制在10%以内，这是一个比较直观的认知。</p>
 
             </div>
             <hr/>
@@ -1141,7 +1217,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">124.4k</span>&nbsp;字
+                class="white-color">127k</span>&nbsp;字
             
             
             
