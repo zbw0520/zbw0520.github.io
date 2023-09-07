@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.6k
+                    10.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    35 分
+                    38 分
                 </div>
                 
 
@@ -739,6 +739,27 @@
 <p>进行泰勒展开后有，</p>
 <p>$$<br>I_c=I_C[1+\frac{v_i}{V_T}+\frac{1}{2}(\frac{v_i}{V_T})^2+\frac{1}{6}(\frac{v_i}{V_T})^3+\cdots]<br>$$</p>
 <p>如果输入信号远小于阈值电压，即，$v_i&lt;&lt;V_T$，那么，小信号模型就可以直接使用。总结一下就是，当$v_i=\Delta V_{BE}&lt;&lt;26mV@25C$时，小信号就可以用了。从数量上来看，如果$v_i&lt;10mV$，那么对应的小信号分析的误差就可以控制在10%以内，这是一个比较直观的认知。</p>
+<h3 id="基区充电电容"><a href="#基区充电电容" class="headerlink" title="基区充电电容"></a>基区充电电容</h3><p>之前的$V_{BE}$变化的MOS管的少子浓度分布图表明，输入信号，也就是$V_{BE}$的变化会导致基区的少子电荷量的变化，$\Delta Q=q_e$。根据电荷守恒原理，基区的多子的数量也会同样增加或减少这么多$\Delta Q_h=q_h$。又因为多子是由基区的信号源提供的，施加$v_i$的信号在基区上就需要提供对应的$q_h$的电荷，这属于电容的特性，因此，基区呈现出如下的电容，</p>
+<p>$$<br>C_b=\frac{q_h}{v_i}<br>$$</p>
+<p>经过一系列推导之后（这一部分推导感觉没有太多学习的意义，因此，不在这里说了），得到了如下的电容值，</p>
+<p>$$<br>C_b=\tau_F\frac{qI_C}{kT}<br>$$</p>
+<p>这里可以得到结论，小信号电容与双极型晶体管的DC集电极电流$I_C$成正比。式子中的$\tau_F$的意义是载流子穿过基极的平均时间，在集成电路中通常是$10ps-500ps$。如果你把管子反过来用，也就是把原先的发射极当作集电极，那么，对应的$\tau_R$会显著变大，对应的基极电容也就变大了，管子就变慢了，这是由于管子两侧掺杂是不对称导致的。处于饱和区的管子的基极电容可以通过$Ebers-Moll$模型来预测，即，将Forward-Active和Inverse-Active的情形做叠加。所以在$SPICE$之类的软件中，常常会有$\tau_R$的参数出现。</p>
+<h3 id="输入电阻"><a href="#输入电阻" class="headerlink" title="输入电阻"></a>输入电阻</h3><p>双极型晶体管的输入在基极上时，由于基极会有电流流入，所以，会存在一个小信号电阻$r_\pi$，其值由下式给定，</p>
+<p>$$<br>r_\pi=\frac{v_i}{i_b}<br>$$</p>
+<p>又因为$i_c=\beta i_b$，所以得到下面的表达式，</p>
+<p>$$<br>r_\pi=\frac{v_i}{i_c}\beta<br>$$</p>
+<p>接着，又因为$v_ig_m=i_c$，所以有下面的式子成立，</p>
+<p>$$<br>r_\pi=\frac{\beta}{g_m}<br>$$</p>
+<p>这里给出结论，双极型晶体管的小信号输入Shunt Resistance的大小与电流增益成正比，与集电极电流成反比。这里之所以说是Shunt，是因为Shunt在英文中代表了一种低阻支路的含义，这里的双极型晶体管的输入电阻给信号另一条低阻支路，使得管子被Bypass了。</p>
+<h3 id="输出电阻"><a href="#输出电阻" class="headerlink" title="输出电阻"></a>输出电阻</h3><p>在先前的内容中，描述了在大信号中，$V_{CE}$的变化是如何影响双极型晶体管的大信号特性的，之前说过，当$V_{CE}$产生变化时，会对管子的集电极电流产生影响，由下式表达，</p>
+<p>$$<br>\Delta I_C=\frac{\partial I_C}{\partial V_{CE}}\Delta V_{CE}<br>$$</p>
+<p>根据之前的Early电压的内容，可以知道下面的表达式，</p>
+<p>$$<br>\frac{\Delta V_{CE}}{\Delta I_C}=\frac{V_A}{I_C}=r_o<br>$$</p>
+<p>在这个式子中，$V_A$是Early电压，通常来说这个值在$50V-100V$之间，假设管子的集电极电流为$1mA$，那么对应的输出电阻就在$50k\Omega-100k\Omega$之间。注意到管子的小信号输出阻抗是和集电极电流成反比的，$g_m$是和集电极电流成正比的，因此，$r_o$和$g_m$之间可以互相转换，存在一定的关系，这个关系读者稍微推导一下就可以得到，如下，</p>
+<p>$$<br>r_o=\frac{1}{\eta g_m}<br>$$</p>
+<p>其中，$\eta$的值如下，</p>
+<p>$$<br>\eta=\frac{V_T}{V_A}<br>$$</p>
+<p>如果我们的$V_A=100V$，那么对应的$\eta=2.6\times 10^{-4}$，其实$1/\eta$就是我们的双极型晶体管的本征增益，大概对应了70dB左右，这里可以看到这个增益只与$V_A$有关，因为$V_T$提供了大约$30dB$的增益，这一部分是固定的，剩下的$40dB$全部由$V_A$提供。</p>
 
             </div>
             <hr/>
@@ -1217,7 +1238,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">127k</span>&nbsp;字
+                class="white-color">127.9k</span>&nbsp;字
             
             
             
