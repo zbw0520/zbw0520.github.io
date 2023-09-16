@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    638
+                    843
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -475,6 +475,16 @@
 <p>该电路为无源负载CS放大器，挂载了输出电容，可以直接写出该点的表达式$H(s)$，如下所示，</p>
 <p>$$<br>H(s)=-g_m(R_D||\frac{1}{sC_L})<br>$$</p>
 <p>可以看出，该表达式最多提供不超过270度的相移，无法使得相移为360度，因此无法产生振荡。</p>
+<p>我们再从阻抗的角度来分析一下这个电路，该电路的M1的漏极（输出）位置的阻抗大小为，</p>
+<p>$$<br>Z(s)=R_D||\frac{1}{g_m}||\frac{1}{sC_L}=\frac{R_D}{R_D(sC_L+g_m)+1}<br>$$</p>
+<p>可以看出，这个表达式无论取什么值，都不会使得阻抗的模趋于无穷大，所以自然不会产生振荡。</p>
+<p>下面这个这个电路通过一个延时线的作用，将信号延迟$\Delta T$，从MOS管漏出发的电压经过了$\Delta T$的时间才会到达栅极，下面我们来研究一下这个电路的起振条件和振荡频率。</p>
+<img src="/2023/09/15/razavi-cmos-suo-xiang-huan-she-ji-di-yi-zhang/7a8841504d4f9a0709bf58f6c557bfb6057cefa9d7012d573b9bc9979778a754.png" class="" title="picture 4">  
+
+<p>首先，先求出电路的开环增益，如下所示，</p>
+<p>$$<br>H(s)=-g_mR_De^{-s\Delta T}<br>$$</p>
+<p>如果需要起振，则需要$H(s)=1$，即，</p>
+<p>$$<br>\angle e^{-s\Delta T}=\omega \Delta T=\pi<br>$$</p>
 
             </div>
             <hr/>
@@ -947,7 +957,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">132.1k</span>&nbsp;字
+                class="white-color">132.3k</span>&nbsp;字
             
             
             
