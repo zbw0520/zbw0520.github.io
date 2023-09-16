@@ -423,14 +423,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    10.5k
+                    12.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    38 分
+                    46 分
                 </div>
                 
 
@@ -617,7 +617,7 @@
 <p>$$<br>Q_e=q\int_{0}^{W_B}n_p(x)Adx=\frac{1}{2}qAW_Bn_p(0)<br>$$</p>
 <p>定义$\tau_b$为基区少子的平均生存时间，那么，该时间内，基区所有少子都会被重新结合，所以，该电流表示如下，</p>
 <p>$$<br>I_{B1}=\frac{Q_e}{\tau_b}=\frac{1}{2}\frac{qAW_Bn_p(0)}{\tau_b}<br>$$</p>
-<p>另一个主要部分的电流主要来自于空穴的扩散，造成了空穴总基极注入到了发射极，如下所示，注意，这一部分电流主导了基区电流。</p>
+<p>另一个主要部分的电流主要来自于空穴的扩散，造成了空穴从基极注入到了发射极，如下所示，注意，这一部分电流主导了基区电流，后面的集电极-基极电流的一章说了，这一部分电流占据了90%，而前面一部分由于基极电子与空穴的重结合造成的电流只占据了10%。</p>
 <p>$$<br>I_{B2}=\frac{qAD_p}{L_p}p_{nE}(0)<br>$$</p>
 <p>注意，该扩散运动的电子运动速率与单位长度上的浓度差$p_{nE}(0)/L_p$成正比。一般管子不希望有这一部分电流，因为这一部分电流过大会影响管子的性能和效率，管子一般不希望基极电流过大，这样，其电流放大倍数可以很大；另一方面，由于发射极重掺杂，所以，发射极一般是一个好的电子的发射端，而不是空穴的接收端。因此，从两个层面讲，该电流都不会太大。</p>
 <h4 id="beta-的定义"><a href="#beta-的定义" class="headerlink" title="$\beta$的定义"></a>$\beta$的定义</h4><p>将上面表达的两个电流组合起来，得到了总的晶体管的电流如下所示，</p>
@@ -697,7 +697,7 @@
 <p>$$<br>I_C=I_S(exp\frac{V_{BE}}{V_T}-1)-\frac{I_S}{\alpha_R}(exp\frac{V_{BC}}{V_T}-1)<br>$$</p>
 <p>$$<br>I_E=-\frac{I_S}{\alpha_F}(exp\frac{V_{BE}}{V_T}-1)-I_S(exp\frac{V_{BC}}{V_T}-1)<br>$$</p>
 <p>上面这个表达式通常用于计算机计算管子的大信号行为中。</p>
-<h4 id="I-CO-集电极-基极漏电流"><a href="#I-CO-集电极-基极漏电流" class="headerlink" title="$I_{CO}集电极-基极漏电流$"></a>$I_{CO}集电极-基极漏电流$</h4><p>集电极基极漏电流由下式表达，</p>
+<h4 id="I-CO-集电极-基极漏电流"><a href="#I-CO-集电极-基极漏电流" class="headerlink" title="$I_{CO}$集电极-基极漏电流"></a>$I_{CO}$集电极-基极漏电流</h4><p>集电极基极漏电流由下式表达，</p>
 <p>$$<br>I_{CO}=I_{CS}(1-\alpha_R\alpha_F)<br>$$</p>
 <p>其定义为，当发射极开路时，从集电极漏到基极的电流，通常来说，当BC结处于反偏状态时，这个漏电流的典型值为，25C下，$1pA-100pA$，这个漏电流的大小会随着温度上升而增大，趋势大约为每上升8C，电流增大一倍。所以，这个电流在高温情况下，可能会相当大，大到不可以被忽视的程度。</p>
 <p>基极电流表示成集电极电流和集电极漏电流的形式的表达式如下所示，</p>
@@ -760,6 +760,64 @@
 <p>其中，$\eta$的值如下，</p>
 <p>$$<br>\eta=\frac{V_T}{V_A}<br>$$</p>
 <p>如果我们的$V_A=100V$，那么对应的$\eta=2.6\times 10^{-4}$，其实$1/\eta$就是我们的双极型晶体管的本征增益，大概对应了70dB左右，这里可以看到这个增益只与$V_A$有关，因为$V_T$提供了大约$30dB$的增益，这一部分是固定的，剩下的$40dB$全部由$V_A$提供。</p>
+<h3 id="集电极-基极电阻"><a href="#集电极-基极电阻" class="headerlink" title="集电极-基极电阻"></a>集电极-基极电阻</h3><p>考虑到之前描述的集电极电压调制基区宽度的情形，当集电极电压上升时，BC结的耗尽区宽度变大，造成基区宽度被压缩，如下图所示。</p>
+<p>这时，由于基区电子与空穴重结合效应而产生的基极电流$I_{B1}$由于基区宽度变小而变小，作者说这一部分由于$\Delta V_{CE}$变化造成的$I_B$电流变化的效应，由集电极到基极的电阻来进行建模。这里的合理性我还不是特别清楚。下面给出具体的数学表达，</p>
+<p>$$<br>r_\mu =\frac{\Delta V_{CE}}{\Delta I_{B1}}=\frac{\Delta V_{CE}}{\Delta I_C}\frac{\Delta I_C}{\Delta I_{B1}}=r_o\beta_0<br>$$</p>
+<p>作者这里给出了由于重结合造成的基极电流和因为多子扩散到发射极形成的基极电流的比例，后者占据了主导，前者在总基极电流中的比例小于10%。因此，$\beta_0$的典型值约为$\beta/10$。对于平面型的管子来说，其基区的重结合效应更加显著，这里其本质上就是平面型管子的基区宽度更宽，造成了重结合效应更显著了，更多从基极输入管子的基区多子与从发射极发射入基区的基区少子发生了结合，造成了基区电流的上升与到达集电极的基区少子载流子的降低，降低了管子的电流放大倍数。这里作者给出了具体的倍数关系，在平面结构中，由于基区宽度变宽造成的基区电流的增大，从而导致由于重结合效应产生的基区电流上升而造成的此部分电流占比上升，其倍数大约为$\beta_0=<br>\beta/5-\beta/2$。</p>
+<h3 id="小信号模型中的寄生"><a href="#小信号模型中的寄生" class="headerlink" title="小信号模型中的寄生"></a>小信号模型中的寄生</h3><p>目前仅仅是考虑到了一些直接可以看出来的管子的寄生，但是对于集成晶体管来说，还有很多寄生需要考虑，需要根据下面的集成晶体管剖面图来进行分析。</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/c23047cd033097a3c5813604411a3943e3f1cd1605082c7dae1eb856c2f538a1.png" class="" title="picture 20">  
+
+<h4 id="容性寄生"><a href="#容性寄生" class="headerlink" title="容性寄生"></a>容性寄生</h4><p>在前面的章节里说过，在晶体管的所有PN结的界面上都存在一个与电压相关的电容，这个电容的成因是耗尽区的存在。在上图中，三个电容是耗尽层电容，分别是：</p>
+<ul>
+<li>BE界面上的耗尽层电容$C_{je}$；</li>
+<li>BC界面上的耗尽层电容$C_\mu$；</li>
+<li>集电极与衬底的耗尽层电容$C_{cs}$</li>
+</ul>
+<p>BE界面上的耗尽层电容由于发射极的重掺杂，BE结是一个突变结(abrupt junction)，其电容可以由下面的表达式很好地进行数学上地表达，</p>
+<p>$C_{\mu}=\frac{C_{j0}}{\sqrt{1-\frac{V_D}{\psi_0}}}$</p>
+<p>其中，$C_{j0}$是在结的偏置电压$V_D=0$时的结电容大小，$\psi_0$为内建电势，大约为$0.7mV$左右。</p>
+<p>BC界面上的耗尽层电容由于掺杂浓度不高，所以是个缓变结（graded junction），当偏置电压很小时，耗尽层的边缘在结面的附近，在这个区域内，掺杂浓度是耗尽层位置的函数，其结特性显示为一个缓变结，因此，其电容跟随位置的变化</p>
+<p>$C_{\mu}=\frac{C_{j0}}{^3\sqrt{1-\frac{V_D}{\psi_0}}}$</p>
+<p>当偏置电压很大时，集电极的耗尽区一路延伸到集电极的内部，其掺杂浓度是均匀的，这时，分母的根号为平方根。实际应用中，这个电容的根号取值为平方根到5次方根之间，如下所示，</p>
+<p>$$<br>C_\mu=\frac{C_{\mu 0}}{(1-\frac{V}{\psi_0})^n},n\in[0.2,0.5]<br>$$</p>
+<p>第三个寄生电容是集电极到衬底的结电容，这个等到以后需要的时候再重新阅读考虑。</p>
+<p>这里作者给出了这三个电容的典型值，$C_{je0}\approx10fF$，$C_{\mu 0}\approx10fF$，$C_{cs0}\approx20fF$，从中可以看出，集电极到衬底的电容要显著得更大。</p>
+<h4 id="阻性寄生"><a href="#阻性寄生" class="headerlink" title="阻性寄生"></a>阻性寄生</h4><p>这一部分里面最重要的就是基区电阻$r_b$，当集电极电流显著增大时，这个电阻会显著降低，恶化管子的性能。这个现象作者给出了解释，但是我没有看懂，等到以后有机会了再进行深入研究。</p>
+<h4 id="完整的双极型晶体管的小信号模型"><a href="#完整的双极型晶体管的小信号模型" class="headerlink" title="完整的双极型晶体管的小信号模型"></a>完整的双极型晶体管的小信号模型</h4><p>有了上面的分析，我们可以给出如下的完整的双极型晶体管的小信号模型，</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/f2a2b5b95ba1db40e35ebc510f9834c5733b53da926b7cdd4bb5879d74e1b2c1.png" class="" title="picture 21">  
+
+<p>图中的$C_\pi=C_b+C_{je}$，由基区充电电容（基区少子的存在对应存储的多子空穴）以及耗尽层结电容组成。</p>
+<h3 id="晶体管频率响应的一些指标"><a href="#晶体管频率响应的一些指标" class="headerlink" title="晶体管频率响应的一些指标"></a>晶体管频率响应的一些指标</h3><p>双极型晶体管的高频增益受到小信号模型中的容性器件的大小控制；双极型晶体管的频率能力主要靠衡量管子的短路集电极电流增益掉到1的频率。这个频率称为截止频率（Transition Frequency），这个频率的本质是管子可以被用作放大器的最大的频率。</p>
+<p>这个频率可以通过手算来进行分析，使用如下的电路模型，</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/0359f521758ab19a05592cc5fdb2000f202d7d1ff3eaf00f2f46eac55c4c3a88.png" class="" title="picture 22">  
+
+<p>在基极施加一个AC电流，将管子的CE短路起来，测量流入C的电流。如下是该电路的小信号模型，</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/9aab08be117b3474cec5d756c3735fb10f5f61f904a0846dc883abbcf130b43c.png" class="" title="picture 23">  
+
+<p>这里为了计算简单，假设$r_c\rarr0$，那么右边的$r_o$和$C_{cs}$就可以认为是被短路了，对电路的传输函数不起到影响，这时，$C_\mu$的右侧为地，$v_1$的电位为$i_1$流过两个电容和一个电阻的并联，如下所示，</p>
+<p>$$<br>v_1=\frac{1}{s(C_\pi+C_\mu)}||r_\pi i_i=\frac{r_\pi}{s(C_\pi+C_\mu)r_\pi+1}i_i<br>$$</p>
+<p>如果通过$C_\mu$的前馈电流可以忽略不计，那么，可以直接写出集电极短路电流$i_o$，如下所示</p>
+<p>$$<br>i_o=\frac{g_mr_\pi}{s(C_\pi+C_\mu)r_\pi+1}i_i<br>$$</p>
+<p>当频率非常大时，上式中的分母中的1可以忽略不计，这时，当电流增益为1时对应的截至角频率$\omega_T$值也可以直接写出，</p>
+<p>$$<br>\omega_T=\frac{g_m}{C_\pi+C_\mu}<br>$$</p>
+<p>转换成频率为，</p>
+<p>$$<br>f_T=\frac{\omega_T}{2\pi}=\frac{g_m}{2\pi(C_\pi+C_\mu)}<br>$$</p>
+<p>双极型晶体管的幅频响应可以由下面的图进行表达，</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/eca6b81a35045a3b763588af4a896fe3bbadbadb03a37992a91a86bcaefaaaab.png" class="" title="picture 24">  
+
+<p>图中的$3dB$折点的频率如下所示，</p>
+<p>$$<br>\omega_\beta=\frac{g_m}{(C_\pi+C\mu)g_mr_\pi}=\frac{1}{r_\pi(C_\pi+C_\mu)}<br>$$</p>
+<p>再来分析一下截止频率的时间常数，如下，</p>
+<p>$$<br>\tau_T=\frac{C_\pi}{g_m}+\frac{C_\mu}{g_m}=\frac{C_b}{g_m}+\frac{C_{je}}{g_m}+\frac{C_\mu}{g_m}=\tau_F+\frac{C_{je}}{g_m}+\frac{C_\mu}{g_m}<br>$$</p>
+<p>因为$g_m=I_C/V_T$，所以，这个时间常数是和集电极电流直接相关的，如果集电极电流很大，那么$\tau_T\rarr\tau_F$。对于低电流的情形来说，$\tau_T\rarr\frac{C_{je}}{g_m}+\frac{C_\mu}{g_m}$，并且会导致截止频率的时间常数上升，也就是说会导致截止频率降低，如下图所示，</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/01dbb51cd3329b5e3cc097270613423c89238758dc09797f082c350500c7355c.png" class="" title="picture 25">  
+
+<p>在大电流的情形下，随着电流增大，截止频率也在降低，这一部分无法用我们的简单模型来进行解释。其实，当电流增大时，$\tau_T\rarr\tau_F$，但是当集电极电流进一步增大，$\tau_F$自身会因为之前说到过的高水平注入（High-level injection）和Kirk效应（Kirk Effect）而显著上升，进一步导致截止频率下降；这两个效应之前说过，也会导致电流放大倍数$\beta$显著下降。</p>
+<h2 id="MOSFET的大信号模型"><a href="#MOSFET的大信号模型" class="headerlink" title="MOSFET的大信号模型"></a>MOSFET的大信号模型</h2><p>MOSFET电路相对于Bipolar电路来说成本更低，与数字电路兼容性更好，于是，在此考虑MOSFET的各种模型。</p>
+<h3 id="MOS器件的传输特性"><a href="#MOS器件的传输特性" class="headerlink" title="MOS器件的传输特性"></a>MOS器件的传输特性</h3><p>下面是一个典型的增强型N沟道MOS管的剖面图，</p>
+<img src="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/59fd95fbe664225a68adbd75f91e02c5127317698424b8ebe7eb15fed1778307.png" class="" title="picture 27">  
+
+<p>可以看到源和漏是重掺杂的N型半导体，并且在衬底上有一层薄的氧化层。</p>
 
             </div>
             <hr/>
@@ -885,18 +943,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/08/25/paulgray-jing-dian-zhu-zuo-du-shu-bi-ji-di-yi-zhang/">
+                <a href="/2023/09/15/razavi-cmos-suo-xiang-huan-she-ji-di-yi-zhang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="PaulGray经典著作读书笔记第一章">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Razavi——CMOS锁相环设计第一章（振荡器基本概念）">
                         
-                        <span class="card-title">PaulGray经典著作读书笔记第一章</span>
+                        <span class="card-title">Razavi——CMOS锁相环设计第一章（振荡器基本概念）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -906,9 +963,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-25
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-15
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -921,16 +978,15 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Paul-Gray/">
-                        <span class="chip bg-color">Paul Gray</span>
+                    <a href="/tags/Razavi/">
+                        <span class="chip bg-color">Razavi</span>
                     </a>
                     
-                    <a href="/tags/%E6%A8%A1%E6%8B%9FIC%E8%AE%BE%E8%AE%A1/">
-                        <span class="chip bg-color">模拟IC设计</span>
+                    <a href="/tags/%E9%94%81%E7%9B%B8%E7%8E%AF%E8%AE%BE%E8%AE%A1/">
+                        <span class="chip bg-color">锁相环设计</span>
                     </a>
                     
                 </div>
@@ -1238,7 +1294,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">127.9k</span>&nbsp;字
+                class="white-color">131.9k</span>&nbsp;字
             
             
             
