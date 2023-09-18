@@ -490,7 +490,7 @@
 <p>我们也可以从阻抗的角度来分析这个问题，计算一下该电路输出点的闭环阻抗，从如下图中进行考虑，</p>
 <img src="/2023/09/15/razavi-cmos-suo-xiang-huan-she-ji-di-yi-zhang/e7ac348aa3c415c921371651bb814d0ac27a3b71cede8422a020f76fa65d57c2.png" class="" title="picture 5">  
 
-<p>$$<br>\underbrace{\frac{v_x}{R_D}}<em>{I</em>{R_D}}+\underbrace{g_me^{-s\Delta T}v_x}<em>{I</em>{MOS}}=i_x<br>$$</p>
+<p>$$<br>\underbrace{\frac{v_x}{R_D}}+\underbrace{g_me^{-s\Delta T}v_x}=i_x<br>$$</p>
 <p>化简上面的式子，得到如下的阻抗表达式，</p>
 <p>$$<br>Z(s)=\frac{v_x}{i_x}=\frac{R_D}{1+\underbrace{g_mR_D}<em>{Magnitude}\underbrace{e^{-s\Delta T}}</em>{Phase}}<br>$$</p>
 <p>所以根据先前的振荡条件，我们需要如下的两个条件，使得振荡存在并且一直持续下去，</p>
